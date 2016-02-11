@@ -16,7 +16,7 @@
       <property name="apellido" column="apellido"/>
       
       <many-to-one name="departamento"
-                   column="departamento_id"
+                   column="departamento"
                    class="modelo.Departamento"
                    lazy="false"/>
       

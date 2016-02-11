@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>InasistenciaDAO.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsistenciasOderiV2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dao</a> &gt; <span class="el_source">InasistenciaDAO.java</span></div><h1>InasistenciaDAO.java</h1><pre class="source lang-java linenums">
+package dao;
+
+import modelo.Inasistencia;
+import java.util.*;
+import nicon.notify.core.*;
+import org.hibernate.*;
+import org.hibernate.criterion.*;
+import hibernate.HibernateUtil;
+
+public class InasistenciaDAO implements IServicioInasistencia {
+
+    private Session sesion;
+
+<span class="nc" id="L15">    public InasistenciaDAO(Session sesion) {</span>
+<span class="nc" id="L16">        this.sesion = sesion;</span>
+<span class="nc" id="L17">    }</span>
+
+<span class="nc" id="L19">    public InasistenciaDAO() {</span>
+       
+<span class="nc" id="L21">    }</span>
+    
+    @Override
+    public void guardar(Inasistencia t) {
+        try {
+<span class="nc" id="L26">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L27">            sesion.beginTransaction();</span>
+<span class="nc" id="L28">            sesion.saveOrUpdate(t);</span>
+<span class="nc" id="L29">            sesion.getTransaction().commit();</span>
+<span class="nc" id="L30">        } catch (HibernateException e) {</span>
+<span class="nc" id="L31">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L32">                    +e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+<span class="nc" id="L35">            sesion.close();</span>
+<span class="nc" id="L36">        }</span>
+        
+<span class="nc" id="L38">    }</span>
+
+    @Override
+    public Inasistencia buscar(Object filtro) {
+<span class="nc" id="L42">        Inasistencia inasistencia = new Inasistencia();</span>
+        try {
+<span class="nc" id="L44">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L45">            sesion.beginTransaction();</span>
+<span class="nc" id="L46">            Criteria criterio = sesion.createCriteria(Inasistencia.class);</span>
+<span class="nc" id="L47">            criterio.add(Restrictions.eq(&quot;id&quot;, filtro));</span>
+<span class="nc" id="L48">            inasistencia = (Inasistencia) criterio.list().get(0);</span>
+<span class="nc" id="L49">        } catch (HibernateException e) {</span>
+<span class="nc" id="L50">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L51">                    +e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+<span class="nc" id="L54">            sesion.close();</span>
+<span class="nc" id="L55">        }</span>
+<span class="nc" id="L56">        return inasistencia;</span>
+    }
+
+    @Override
+    public void actualizar(Inasistencia t) {
+        try {
+<span class="nc" id="L62">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L63">            sesion.beginTransaction();</span>
+<span class="nc" id="L64">            sesion.update(t);</span>
+<span class="nc" id="L65">            sesion.getTransaction().commit();</span>
+<span class="nc" id="L66">        } catch (HibernateException e) {</span>
+<span class="nc" id="L67">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L68">                    +e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+<span class="nc" id="L71">            sesion.close();</span>
+<span class="nc" id="L72">        }</span>
+<span class="nc" id="L73">    }</span>
+
+    @Override
+    public void eliminar(Inasistencia t) {
+        try {
+<span class="nc" id="L78">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L79">            sesion.beginTransaction();</span>
+<span class="nc" id="L80">            sesion.delete(t);</span>
+<span class="nc" id="L81">            sesion.getTransaction().commit();</span>
+<span class="nc" id="L82">        } catch (HibernateException e) {</span>
+<span class="nc" id="L83">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L84">                    + e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+<span class="nc" id="L87">            sesion.close();</span>
+<span class="nc" id="L88">        }</span>
+<span class="nc" id="L89">    }</span>
+
+    @Override
+    public Collection&lt;Inasistencia&gt; buscarTodos() {
+<span class="nc" id="L93">        List&lt;Inasistencia&gt; lista = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="nc" id="L95">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L96">            sesion.beginTransaction();</span>
+<span class="nc" id="L97">            Criteria criterio = sesion.createCriteria(Inasistencia.class);</span>
+<span class="nc" id="L98">            criterio.addOrder(Order.asc(&quot;id&quot;));</span>
+<span class="nc" id="L99">            lista = criterio.list();</span>
+<span class="nc" id="L100">        } catch (HibernateException e) {</span>
+<span class="nc" id="L101">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L102">                    + e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+<span class="nc" id="L104">        }</span>
+        
+<span class="nc" id="L106">        return lista;</span>
+    }
+
+    @Override
+    public Collection&lt;Inasistencia&gt; inasistenciasDeHoy() {
+<span class="nc" id="L111">        List&lt;Inasistencia&gt; lista = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="nc" id="L113">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L114">            sesion.beginTransaction();</span>
+<span class="nc" id="L115">            Query inasistencias = </span>
+<span class="nc" id="L116">                    sesion.createQuery(&quot;FROM Inasistencia as i WHERE i.dia = current_date&quot;);</span>
+<span class="nc" id="L117">            lista = inasistencias.list();</span>
+<span class="nc" id="L118">        } catch (HibernateException e) {</span>
+<span class="nc" id="L119">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L120">                    + e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+<span class="nc" id="L122">        }</span>
+<span class="nc" id="L123">        return lista;</span>
+    }
+
+    @Override
+    public Collection&lt;Inasistencia&gt; inasistenciasDurante(Date inicio, Date fin) {
+<span class="nc" id="L128">        List&lt;Inasistencia&gt; lista = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="nc" id="L130">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L131">            sesion.beginTransaction();</span>
+<span class="nc" id="L132">            Query inasistencias = </span>
+<span class="nc" id="L133">                    sesion.createQuery(&quot;From Inasistencia as i Where i.dia between :inicio and :fin order by i.dia asc&quot;)</span>
+<span class="nc" id="L134">                            .setParameter(&quot;inicio&quot;, inicio)</span>
+<span class="nc" id="L135">                            .setParameter(&quot;fin&quot;, fin);</span>
+<span class="nc" id="L136">            lista = inasistencias.list();</span>
+<span class="nc" id="L137">        } catch (HibernateException e) {</span>
+<span class="nc" id="L138">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L139">                    + e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+<span class="nc" id="L142">            sesion.close();</span>
+<span class="nc" id="L143">        }</span>
+<span class="nc" id="L144">        return lista;</span>
+    }
+
+    @Override
+    public Collection&lt;Inasistencia&gt; inasistenciasMensualDelEmpleado(String cedula, int mes, int year) {
+<span class="nc" id="L149">         List&lt;Inasistencia&gt; lista = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="nc" id="L151">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L152">            sesion.beginTransaction();</span>
+<span class="nc" id="L153">            Query asistenciasDelMesEnCurso = </span>
+<span class="nc" id="L154">                    sesion.createQuery(&quot;From Inasistencia as i WHERE i.empleado.cedula = :cedula AND month(i.dia) = :mes&quot;</span>
+                            + &quot; AND year(i.dia) = :year&quot;)
+<span class="nc" id="L156">                            .setParameter(&quot;cedula&quot;, cedula)</span>
+<span class="nc" id="L157">                            .setParameter(&quot;mes&quot;, mes)</span>
+<span class="nc" id="L158">                            .setParameter(&quot;year&quot;, year);                </span>
+<span class="nc" id="L159">            lista = asistenciasDelMesEnCurso.list();</span>
+            
+<span class="nc" id="L161">        } catch (HibernateException e) {</span>
+<span class="nc" id="L162">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L163">                    +e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+<span class="nc" id="L166">            sesion.close();</span>
+<span class="nc" id="L167">        }</span>
+<span class="nc" id="L168">        return lista;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

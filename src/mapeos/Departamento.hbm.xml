@@ -12,7 +12,7 @@
                 column="nombre"/>
       
       <set name="empleados" inverse="true" lazy="false">
-        <key column="departamento_id"/>
+        <key column="departamento"/>
         <one-to-many class="modelo.Empleado"/>
       </set>
   

@@ -5,11 +5,12 @@ import excepciones.*;
 import dao.IServicioAsistencia;
 import java.sql.Time;
 import java.util.Date;
+import org.joda.time.DateTime;
 
 public abstract class Jornada {
     
-    protected Date fecha;
-    protected EstadoDeJornada estado;
+    protected DateTime fecha;
+    protected int estado;
     protected Time horaDeInicio;
     protected Time horaDeCierre;
     protected IServicioAsistencia servicio;
@@ -23,31 +24,31 @@ public abstract class Jornada {
     
     public abstract void cerrar() throws AsistenciaIncompletaException;
     
-    public void setEstado(EstadoDeJornada estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
     
-    public EstadoDeJornada getEstado() {
+    public int getEstado() {
         return estado;
     }
     
     public boolean estaCerrada() {
-        return estado == EstadoDeJornada.CERRADA;
+        return estado == 2;
     }
     
     public boolean estaEnCurso() {
-        return estado == EstadoDeJornada.EN_CURSO;
+        return estado == 1;
     }
     
     public boolean estaSinIniciar() {
-        return estado == EstadoDeJornada.SIN_INICIAR;
+        return estado == 0;
     }
     
-    public Date getFecha() {
+    public DateTime getFecha() {
         return fecha;
     }
 
-    private void setFecha(Date fecha) {
+    private void setFecha(DateTime fecha) {
         this.fecha = fecha;
     }
     

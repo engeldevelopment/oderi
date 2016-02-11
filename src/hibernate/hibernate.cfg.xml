@@ -5,12 +5,17 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/peewee?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/oderi</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">223698745</property>
     
     <mapping resource="mapeos/Departamento.hbm.xml"/>
     <mapping resource="mapeos/Empleado.hbm.xml"/>
- 
+    <mapping resource="mapeos/Asistencia.hbm.xml"/>
+    <mapping resource="mapeos/JornadaDeTrabajo.hbm.xml"/>
+    <mapping resource="mapeos/Justificacion.hbm.xml"/>
+    <mapping resource="mapeos/MotivoDeInasistencia.hbm.xml"/>
+    <mapping resource="mapeos/Inasistencia.hbm.xml"/>
+    
   </session-factory>
 </hibernate-configuration>

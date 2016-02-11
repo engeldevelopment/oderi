@@ -73,9 +73,10 @@ public class Permiso {
             throw new FechaDeInicioIncorrecta("Verifique la fecha de inicio por favor.");
         } else if(esIncorrectoElNumeroDeDias()) {
             throw new NumeroDeDiaIncorrectoException("Debes ingresar de 1 a 3 días de permiso.");
-        } else {    
-           generarFechaDeCorte();
-        }
+        }     
+        
+        generarFechaDeCorte();
+        
     }
     
     private boolean ingresoUnaFechaPasadaOIgualALaFechaDeEmision() {

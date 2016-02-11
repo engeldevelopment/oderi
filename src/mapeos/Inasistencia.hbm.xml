@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="modelo.Inasistencia" table="inasistencias">
+      <id name="id" column="id">
+          <generator class="native"/>
+      </id>
+      
+      <property type="org.joda.time.contrib.hibernate.PersistentDateTime"
+                name="dia" 
+                column="fecha"/>
+      <property name="horaDeGeneracion" column="hora_de_generacion"/>
+      <property name="justificada" column="justificada"/>
+      
+      <many-to-one name="motivo" 
+                  column="motivo" 
+                  class="modelo.MotivoDeInasistencia" 
+                  lazy="false"/>
+      
+      <many-to-one name="empleado" 
+                  column="empleado" 
+                  class="modelo.Empleado" 
+                  lazy="false"/>
+      
+      <one-to-one name="justificacion"
+                  property-ref="inasistencia"
+                  class="modelo.Justificacion"
+                  cascade="all"/>
+  </class>
+</hibernate-mapping>

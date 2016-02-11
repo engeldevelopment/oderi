@@ -2,12 +2,12 @@
 package modelo;
 
 import java.sql.Time;
-import java.util.Date;
+import org.joda.time.DateTime;
 
 public class Justificacion {
 
     private Long id;
-    private Date fecha;
+    private DateTime fecha;
     private String descripcion;
     private Time hora;
     private Inasistencia inasistencia;
@@ -18,8 +18,8 @@ public class Justificacion {
     
     public  Justificacion(String descripcion) {
         this.descripcion = descripcion;
-        fecha = new Date();
-        hora = new Time(fecha.getTime());
+        fecha = new DateTime();
+        hora = new Time(fecha.getHourOfDay(),fecha.getMinuteOfHour(), fecha.getSecondOfMinute());
     }
 
     public Long getId() {
@@ -30,11 +30,11 @@ public class Justificacion {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public DateTime getFecha() {
         return fecha;
     }
 
-    private void setFecha(Date fecha) {
+    private void setFecha(DateTime fecha) {
         this.fecha = fecha;
     }
 

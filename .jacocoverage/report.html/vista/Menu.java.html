@@ -1,0 +1,1440 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Menu.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsistenciasOderiV2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">vista</a> &gt; <span class="el_source">Menu.java</span></div><h1>Menu.java</h1><pre class="source lang-java linenums">
+package vista;
+
+public class Menu extends javax.swing.JFrame {
+
+<span class="nc" id="L6">    public Menu() {</span>
+<span class="nc" id="L7">        initComponents();</span>
+<span class="nc" id="L8">        setLocationRelativeTo(null);</span>
+<span class="nc" id="L9">    }</span>
+    
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L15">        VistaDeAsistenciaDiaria = new javax.swing.JDialog();</span>
+<span class="nc" id="L16">        panel1 = new org.edisoncor.gui.panel.Panel();</span>
+<span class="nc" id="L17">        btnIniciarJornada = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L18">        btnFinalizarJornada = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L19">        relojDigital = new org.edisoncor.gui.varios.ClockDigital();</span>
+<span class="nc" id="L20">        panel2 = new org.edisoncor.gui.panel.Panel();</span>
+<span class="nc" id="L21">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L22">        listaDeAsistencia = new javax.swing.JTable();</span>
+<span class="nc" id="L23">        lblFecha = new javax.swing.JLabel();</span>
+<span class="nc" id="L24">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L25">        txtBusquedaPorCedula = new org.edisoncor.gui.textField.TextFieldRectImage();</span>
+<span class="nc" id="L26">        btnEntrada = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L27">        btnSalida = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L28">        btnReporte = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L29">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L30">        lblEstado = new javax.swing.JLabel();</span>
+<span class="nc" id="L31">        jLabel8 = new javax.swing.JLabel();</span>
+<span class="nc" id="L32">        jLabel9 = new javax.swing.JLabel();</span>
+<span class="nc" id="L33">        lblHoraInicio = new javax.swing.JLabel();</span>
+<span class="nc" id="L34">        lblHoraCierre = new javax.swing.JLabel();</span>
+<span class="nc" id="L35">        ReporteDeInasistenciaActual = new javax.swing.JDialog();</span>
+<span class="nc" id="L36">        panel3 = new org.edisoncor.gui.panel.Panel();</span>
+<span class="nc" id="L37">        jScrollPane2 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L38">        listaDeInasistencias = new javax.swing.JTable();</span>
+<span class="nc" id="L39">        lblFechaDeInasistencia = new javax.swing.JLabel();</span>
+<span class="nc" id="L40">        NuevoEmpleado = new javax.swing.JDialog();</span>
+<span class="nc" id="L41">        panel6 = new org.edisoncor.gui.panel.Panel();</span>
+<span class="nc" id="L42">        jLabel4 = new javax.swing.JLabel();</span>
+<span class="nc" id="L43">        txtCedula = new javax.swing.JFormattedTextField();</span>
+<span class="nc" id="L44">        jLabel5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L45">        txtNombreEmpleado = new org.edisoncor.gui.textField.TextFieldRectImage();</span>
+<span class="nc" id="L46">        jLabel6 = new javax.swing.JLabel();</span>
+<span class="nc" id="L47">        txtApellidoEmpleado = new org.edisoncor.gui.textField.TextFieldRectImage();</span>
+<span class="nc" id="L48">        jLabel7 = new javax.swing.JLabel();</span>
+<span class="nc" id="L49">        txtDepartamentoAsignado = new org.edisoncor.gui.textField.TextFieldRectImage();</span>
+<span class="nc" id="L50">        btnGuardarEmpleado = new javax.swing.JButton();</span>
+<span class="nc" id="L51">        btnAgregarDepartamento = new javax.swing.JButton();</span>
+<span class="nc" id="L52">        VistaSeleccionarDepartamento = new javax.swing.JDialog();</span>
+<span class="nc" id="L53">        panel7 = new org.edisoncor.gui.panel.Panel();</span>
+<span class="nc" id="L54">        jScrollPane4 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L55">        listadoDeDepartamentos = new javax.swing.JTable();</span>
+<span class="nc" id="L56">        btnAsignarDepartamento = new javax.swing.JButton();</span>
+<span class="nc" id="L57">        Login = new javax.swing.JDialog();</span>
+<span class="nc" id="L58">        panel8 = new org.edisoncor.gui.panel.Panel();</span>
+<span class="nc" id="L59">        txtNombreDeUsuario = new org.edisoncor.gui.textField.TextFieldRoundImage();</span>
+<span class="nc" id="L60">        txtClave = new org.edisoncor.gui.passwordField.PasswordFieldRoundImage();</span>
+<span class="nc" id="L61">        jLabel17 = new javax.swing.JLabel();</span>
+<span class="nc" id="L62">        jLabel18 = new javax.swing.JLabel();</span>
+<span class="nc" id="L63">        btnEntrar = new javax.swing.JButton();</span>
+<span class="nc" id="L64">        InasistenciaPersonal = new javax.swing.JDialog();</span>
+<span class="nc" id="L65">        panel9 = new org.edisoncor.gui.panel.Panel();</span>
+<span class="nc" id="L66">        mesInasistencia = new com.toedter.calendar.JMonthChooser();</span>
+<span class="nc" id="L67">        yearInasistencia = new com.toedter.calendar.JYearChooser();</span>
+<span class="nc" id="L68">        jLabel11 = new javax.swing.JLabel();</span>
+<span class="nc" id="L69">        jLabel12 = new javax.swing.JLabel();</span>
+<span class="nc" id="L70">        jScrollPane6 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L71">        listaDeInasistenciaPorEmpleado = new javax.swing.JTable();</span>
+<span class="nc" id="L72">        btnConsultarInasistencia = new javax.swing.JButton();</span>
+<span class="nc" id="L73">        btnCrearJustificacion = new javax.swing.JButton();</span>
+<span class="nc" id="L74">        VistaReporteDeAsistencia = new javax.swing.JDialog();</span>
+<span class="nc" id="L75">        panel12 = new org.edisoncor.gui.panel.Panel();</span>
+<span class="nc" id="L76">        calendarFechaConsulta = new com.toedter.calendar.JDateChooser();</span>
+<span class="nc" id="L77">        jLabel19 = new javax.swing.JLabel();</span>
+<span class="nc" id="L78">        jScrollPane7 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L79">        tablaReportAsistencia = new javax.swing.JTable();</span>
+<span class="nc" id="L80">        btnVerReporteDeAsistencia = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L81">        VistaJustificacion = new javax.swing.JDialog();</span>
+<span class="nc" id="L82">        panel13 = new org.edisoncor.gui.panel.Panel();</span>
+<span class="nc" id="L83">        btnJustificar = new org.edisoncor.gui.button.ButtonAction();</span>
+<span class="nc" id="L84">        jScrollPane8 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L85">        areaObservacion = new javax.swing.JTextArea();</span>
+<span class="nc" id="L86">        jLabel20 = new javax.swing.JLabel();</span>
+<span class="nc" id="L87">        jLabel22 = new javax.swing.JLabel();</span>
+<span class="nc" id="L88">        lblHoraDeGeneracion = new javax.swing.JLabel();</span>
+<span class="nc" id="L89">        VistaBuscarEmpleado = new javax.swing.JDialog();</span>
+<span class="nc" id="L90">        jPanel1 = new javax.swing.JPanel();</span>
+<span class="nc" id="L91">        jLabel23 = new javax.swing.JLabel();</span>
+<span class="nc" id="L92">        btnBuscarEmpleado = new javax.swing.JButton();</span>
+<span class="nc" id="L93">        txtCedulaEmpleadoBuscar = new javax.swing.JTextField();</span>
+<span class="nc" id="L94">        jLabel25 = new javax.swing.JLabel();</span>
+<span class="nc" id="L95">        VistaSubMenu = new javax.swing.JDialog();</span>
+<span class="nc" id="L96">        panelSubMenu = new javax.swing.JPanel();</span>
+<span class="nc" id="L97">        panelDeFunciones = new javax.swing.JPanel();</span>
+<span class="nc" id="L98">        btnInformacionPersonal = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L99">        btnInasistenciasDeEmpleado = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L100">        btnPermisosEmpleado = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L101">        btnSalirEmpleado = new org.edisoncor.gui.button.ButtonTask();</span>
+<span class="nc" id="L102">        panelInformacionDeEmpleado = new javax.swing.JPanel();</span>
+<span class="nc" id="L103">        jLabel27 = new javax.swing.JLabel();</span>
+<span class="nc" id="L104">        lblNombreEmpleado = new javax.swing.JLabel();</span>
+<span class="nc" id="L105">        jLabel28 = new javax.swing.JLabel();</span>
+<span class="nc" id="L106">        lblApellidosEmpleado = new javax.swing.JLabel();</span>
+<span class="nc" id="L107">        jLabel29 = new javax.swing.JLabel();</span>
+<span class="nc" id="L108">        lblDepartamentoEmpleado = new javax.swing.JLabel();</span>
+<span class="nc" id="L109">        jLabel30 = new javax.swing.JLabel();</span>
+<span class="nc" id="L110">        lblCedulaEmpleado = new javax.swing.JLabel();</span>
+<span class="nc" id="L111">        jButton3 = new javax.swing.JButton();</span>
+<span class="nc" id="L112">        NuevoPermiso = new javax.swing.JDialog();</span>
+<span class="nc" id="L113">        jPanel4 = new javax.swing.JPanel();</span>
+<span class="nc" id="L114">        lblFechaDeEmision = new javax.swing.JLabel();</span>
+<span class="nc" id="L115">        btnEmitir = new javax.swing.JButton();</span>
+<span class="nc" id="L116">        jLabel10 = new javax.swing.JLabel();</span>
+<span class="nc" id="L117">        jSeparator1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L118">        jLabel13 = new javax.swing.JLabel();</span>
+<span class="nc" id="L119">        fechaDeIncio = new com.toedter.calendar.JDateChooser();</span>
+<span class="nc" id="L120">        jLabel14 = new javax.swing.JLabel();</span>
+<span class="nc" id="L121">        txtDiasDePermiso = new javax.swing.JSpinner();</span>
+<span class="nc" id="L122">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L123">        chRemunerado = new javax.swing.JCheckBox();</span>
+<span class="nc" id="L124">        VistaPermisos = new javax.swing.JDialog();</span>
+<span class="nc" id="L125">        panelDeImagen = new org.edisoncor.gui.panel.PanelImage();</span>
+<span class="nc" id="L126">        barraDeMenu = new javax.swing.JMenuBar();</span>
+<span class="nc" id="L127">        Archivo = new javax.swing.JMenu();</span>
+<span class="nc" id="L128">        itemEmpleados = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L129">        Control = new javax.swing.JMenu();</span>
+<span class="nc" id="L130">        itemAsistenciaDiaria = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L131">        Consultas = new javax.swing.JMenu();</span>
+<span class="nc" id="L132">        jMenu1 = new javax.swing.JMenu();</span>
+<span class="nc" id="L133">        itemEntradaSalida = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L134">        Ayuda = new javax.swing.JMenu();</span>
+<span class="nc" id="L135">        itemManual = new javax.swing.JMenuItem();</span>
+
+<span class="nc" id="L137">        VistaDeAsistenciaDiaria.setTitle(&quot;Asistencia diaria&quot;);</span>
+
+<span class="nc" id="L139">        panel1.setColorPrimario(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L140">        panel1.setColorSecundario(new java.awt.Color(204, 204, 204));</span>
+
+<span class="nc" id="L142">        btnIniciarJornada.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_special-offer_59207.png&quot;))); // NOI18N</span>
+<span class="nc" id="L143">        btnIniciarJornada.setText(&quot;INICIAR JORNADA&quot;);</span>
+<span class="nc" id="L144">        btnIniciarJornada.setDescription(&quot;Nuevo día&quot;);</span>
+
+<span class="nc" id="L146">        btnFinalizarJornada.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_No_984759.png&quot;))); // NOI18N</span>
+<span class="nc" id="L147">        btnFinalizarJornada.setText(&quot;FINALIZAR JORNADA&quot;);</span>
+<span class="nc" id="L148">        btnFinalizarJornada.setDescription(&quot;Fin del día&quot;);</span>
+
+<span class="nc" id="L150">        relojDigital.setFont(new java.awt.Font(&quot;Microsoft Sans Serif&quot;, 1, 36)); // NOI18N</span>
+
+<span class="nc" id="L152">        panel2.setBorder(javax.swing.BorderFactory.createTitledBorder(&quot;Asistencia de hoy&quot;));</span>
+<span class="nc" id="L153">        panel2.setColorPrimario(new java.awt.Color(204, 204, 204));</span>
+<span class="nc" id="L154">        panel2.setColorSecundario(new java.awt.Color(204, 204, 204));</span>
+
+<span class="nc" id="L156">        listaDeAsistencia.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                &quot;ID&quot;, &quot;Empleado&quot;, &quot;Departamento&quot;, &quot;Hora de entrada&quot;, &quot;Hora de salida&quot;
+            }
+<span class="nc" id="L166">        ) {</span>
+<span class="nc" id="L167">            Class[] types = new Class [] {</span>
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+<span class="nc" id="L170">            boolean[] canEdit = new boolean [] {</span>
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+<span class="nc" id="L175">                return types [columnIndex];</span>
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L179">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L182">        listaDeAsistencia.setFocusable(false);</span>
+<span class="nc" id="L183">        listaDeAsistencia.setRowHeight(30);</span>
+<span class="nc" id="L184">        listaDeAsistencia.setRowMargin(5);</span>
+<span class="nc" id="L185">        listaDeAsistencia.setSelectionBackground(new java.awt.Color(204, 204, 204));</span>
+<span class="nc" id="L186">        listaDeAsistencia.setSelectionForeground(java.awt.Color.darkGray);</span>
+<span class="nc" id="L187">        listaDeAsistencia.setShowHorizontalLines(false);</span>
+<span class="nc" id="L188">        listaDeAsistencia.setShowVerticalLines(false);</span>
+<span class="nc" id="L189">        listaDeAsistencia.getTableHeader().setReorderingAllowed(false);</span>
+<span class="nc" id="L190">        jScrollPane1.setViewportView(listaDeAsistencia);</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">        if (listaDeAsistencia.getColumnModel().getColumnCount() &gt; 0) {</span>
+<span class="nc" id="L192">            listaDeAsistencia.getColumnModel().getColumn(0).setResizable(false);</span>
+<span class="nc" id="L193">            listaDeAsistencia.getColumnModel().getColumn(1).setResizable(false);</span>
+<span class="nc" id="L194">            listaDeAsistencia.getColumnModel().getColumn(2).setResizable(false);</span>
+<span class="nc" id="L195">            listaDeAsistencia.getColumnModel().getColumn(3).setResizable(false);</span>
+<span class="nc" id="L196">            listaDeAsistencia.getColumnModel().getColumn(4).setResizable(false);</span>
+        }
+
+<span class="nc" id="L199">        lblFecha.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L200">        lblFecha.setText(&quot;FECHA&quot;);</span>
+
+<span class="nc" id="L202">        jLabel2.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L203">        jLabel2.setText(&quot;Búsqueda por cédula&quot;);</span>
+
+<span class="nc" id="L205">        txtBusquedaPorCedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);</span>
+
+<span class="nc" id="L207">        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);</span>
+<span class="nc" id="L208">        panel2.setLayout(panel2Layout);</span>
+<span class="nc" id="L209">        panel2Layout.setHorizontalGroup(</span>
+<span class="nc" id="L210">            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L211">            .addGroup(panel2Layout.createSequentialGroup()</span>
+<span class="nc" id="L212">                .addContainerGap()</span>
+<span class="nc" id="L213">                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L214">                    .addGroup(panel2Layout.createSequentialGroup()</span>
+<span class="nc" id="L215">                        .addGap(48, 48, 48)</span>
+<span class="nc" id="L216">                        .addComponent(lblFecha)</span>
+<span class="nc" id="L217">                        .addGap(163, 163, 163)</span>
+<span class="nc" id="L218">                        .addComponent(jLabel2)</span>
+<span class="nc" id="L219">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L220">                        .addComponent(txtBusquedaPorCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L221">                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))</span>
+<span class="nc" id="L222">                .addContainerGap())</span>
+        );
+<span class="nc" id="L224">        panel2Layout.setVerticalGroup(</span>
+<span class="nc" id="L225">            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L226">            .addGroup(panel2Layout.createSequentialGroup()</span>
+<span class="nc" id="L227">                .addContainerGap()</span>
+<span class="nc" id="L228">                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L229">                    .addComponent(lblFecha)</span>
+<span class="nc" id="L230">                    .addComponent(jLabel2)</span>
+<span class="nc" id="L231">                    .addComponent(txtBusquedaPorCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L232">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L233">                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L234">                .addContainerGap(20, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L237">        btnEntrada.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_check_59131.png&quot;))); // NOI18N</span>
+<span class="nc" id="L238">        btnEntrada.setText(&quot;Entrada&quot;);</span>
+<span class="nc" id="L239">        btnEntrada.setDescription(&quot;Marcar&quot;);</span>
+
+<span class="nc" id="L241">        btnSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_check_59131.png&quot;))); // NOI18N</span>
+<span class="nc" id="L242">        btnSalida.setText(&quot;Salida&quot;);</span>
+<span class="nc" id="L243">        btnSalida.setDescription(&quot;Marcar&quot;);</span>
+
+<span class="nc" id="L245">        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_order-2_59180.png&quot;))); // NOI18N</span>
+<span class="nc" id="L246">        btnReporte.setText(&quot;Reporte&quot;);</span>
+<span class="nc" id="L247">        btnReporte.setDescription(&quot;Relación de asistencia de hoy&quot;);</span>
+
+<span class="nc" id="L249">        jLabel1.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L250">        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L251">        jLabel1.setText(&quot;Jornada de hoy:&quot;);</span>
+
+<span class="nc" id="L253">        lblEstado.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L254">        lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L255">        lblEstado.setText(&quot;ESTADO&quot;);</span>
+
+<span class="nc" id="L257">        jLabel8.setFont(new java.awt.Font(&quot;Dialog&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L258">        jLabel8.setText(&quot;Hora de inicio:&quot;);</span>
+
+<span class="nc" id="L260">        jLabel9.setFont(new java.awt.Font(&quot;Dialog&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L261">        jLabel9.setText(&quot;Hora de cierre:&quot;);</span>
+
+<span class="nc" id="L263">        lblHoraInicio.setText(&quot;00:00:00&quot;);</span>
+
+<span class="nc" id="L265">        lblHoraCierre.setText(&quot;00:00:00&quot;);</span>
+
+<span class="nc" id="L267">        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);</span>
+<span class="nc" id="L268">        panel1.setLayout(panel1Layout);</span>
+<span class="nc" id="L269">        panel1Layout.setHorizontalGroup(</span>
+<span class="nc" id="L270">            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L271">            .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L272">                .addGap(34, 34, 34)</span>
+<span class="nc" id="L273">                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L274">                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L275">                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L276">                            .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L277">                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L278">                                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L279">                                        .addComponent(jLabel1)</span>
+<span class="nc" id="L280">                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L281">                                        .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L282">                                    .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L283">                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L284">                                    .addComponent(relojDigital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L285">                                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L286">                                        .addGap(231, 231, 231)</span>
+<span class="nc" id="L287">                                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L288">                                            .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L289">                                                .addComponent(jLabel9)</span>
+<span class="nc" id="L290">                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L291">                                                .addComponent(lblHoraCierre))</span>
+<span class="nc" id="L292">                                            .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L293">                                                .addComponent(jLabel8)</span>
+<span class="nc" id="L294">                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L295">                                                .addComponent(lblHoraInicio))))))</span>
+<span class="nc" id="L296">                            .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L297">                                .addGap(110, 110, 110)</span>
+<span class="nc" id="L298">                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L299">                                    .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L300">                                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L301">                                        .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L302">                                        .addGap(193, 193, 193)</span>
+<span class="nc" id="L303">                                        .addComponent(btnSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))</span>
+<span class="nc" id="L304">                        .addContainerGap(120, Short.MAX_VALUE))</span>
+<span class="nc" id="L305">                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L306">                        .addComponent(btnIniciarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L307">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L308">                        .addComponent(btnFinalizarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L309">                        .addGap(24, 24, 24))))</span>
+        );
+<span class="nc" id="L311">        panel1Layout.setVerticalGroup(</span>
+<span class="nc" id="L312">            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L313">            .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L314">                .addGap(26, 26, 26)</span>
+<span class="nc" id="L315">                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L316">                    .addComponent(btnIniciarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L317">                    .addComponent(btnFinalizarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L318">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L319">                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L320">                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L321">                        .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L322">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L323">                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L324">                            .addComponent(jLabel1)</span>
+<span class="nc" id="L325">                            .addComponent(lblEstado)))</span>
+<span class="nc" id="L326">                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L327">                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L328">                            .addComponent(jLabel8)</span>
+<span class="nc" id="L329">                            .addComponent(lblHoraInicio))</span>
+<span class="nc" id="L330">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L331">                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L332">                            .addComponent(jLabel9)</span>
+<span class="nc" id="L333">                            .addComponent(lblHoraCierre))</span>
+<span class="nc" id="L334">                        .addGap(25, 25, 25)</span>
+<span class="nc" id="L335">                        .addComponent(relojDigital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L336">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)</span>
+<span class="nc" id="L337">                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L338">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L339">                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L340">                    .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L341">                    .addComponent(btnSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L342">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L345">        javax.swing.GroupLayout VistaDeAsistenciaDiariaLayout = new javax.swing.GroupLayout(VistaDeAsistenciaDiaria.getContentPane());</span>
+<span class="nc" id="L346">        VistaDeAsistenciaDiaria.getContentPane().setLayout(VistaDeAsistenciaDiariaLayout);</span>
+<span class="nc" id="L347">        VistaDeAsistenciaDiariaLayout.setHorizontalGroup(</span>
+<span class="nc" id="L348">            VistaDeAsistenciaDiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L349">            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L351">        VistaDeAsistenciaDiariaLayout.setVerticalGroup(</span>
+<span class="nc" id="L352">            VistaDeAsistenciaDiariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L353">            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L356">        ReporteDeInasistenciaActual.setTitle(&quot;Inasistencias de Hoy&quot;);</span>
+
+<span class="nc" id="L358">        panel3.setColorPrimario(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L359">        panel3.setColorSecundario(new java.awt.Color(204, 204, 204));</span>
+
+<span class="nc" id="L361">        listaDeInasistencias.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                &quot;Cédula&quot;, &quot;Empleado&quot;, &quot;Motivo&quot;
+            }
+<span class="nc" id="L371">        ) {</span>
+<span class="nc" id="L372">            Class[] types = new Class [] {</span>
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+<span class="nc" id="L375">            boolean[] canEdit = new boolean [] {</span>
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+<span class="nc" id="L380">                return types [columnIndex];</span>
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L384">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L387">        listaDeInasistencias.setFocusable(false);</span>
+<span class="nc" id="L388">        listaDeInasistencias.setRowHeight(30);</span>
+<span class="nc" id="L389">        listaDeInasistencias.setRowMargin(10);</span>
+<span class="nc" id="L390">        listaDeInasistencias.setSelectionBackground(java.awt.Color.lightGray);</span>
+<span class="nc" id="L391">        listaDeInasistencias.setShowHorizontalLines(false);</span>
+<span class="nc" id="L392">        listaDeInasistencias.setShowVerticalLines(false);</span>
+<span class="nc" id="L393">        listaDeInasistencias.getTableHeader().setReorderingAllowed(false);</span>
+<span class="nc" id="L394">        jScrollPane2.setViewportView(listaDeInasistencias);</span>
+<span class="nc bnc" id="L395" title="All 2 branches missed.">        if (listaDeInasistencias.getColumnModel().getColumnCount() &gt; 0) {</span>
+<span class="nc" id="L396">            listaDeInasistencias.getColumnModel().getColumn(0).setResizable(false);</span>
+<span class="nc" id="L397">            listaDeInasistencias.getColumnModel().getColumn(1).setResizable(false);</span>
+<span class="nc" id="L398">            listaDeInasistencias.getColumnModel().getColumn(2).setResizable(false);</span>
+        }
+
+<span class="nc" id="L401">        lblFechaDeInasistencia.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L402">        lblFechaDeInasistencia.setText(&quot;Fecha&quot;);</span>
+
+<span class="nc" id="L404">        javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);</span>
+<span class="nc" id="L405">        panel3.setLayout(panel3Layout);</span>
+<span class="nc" id="L406">        panel3Layout.setHorizontalGroup(</span>
+<span class="nc" id="L407">            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L408">            .addGroup(panel3Layout.createSequentialGroup()</span>
+<span class="nc" id="L409">                .addGap(57, 57, 57)</span>
+<span class="nc" id="L410">                .addComponent(lblFechaDeInasistencia)</span>
+<span class="nc" id="L411">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L412">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()</span>
+<span class="nc" id="L413">                .addContainerGap(19, Short.MAX_VALUE)</span>
+<span class="nc" id="L414">                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L415">                .addContainerGap())</span>
+        );
+<span class="nc" id="L417">        panel3Layout.setVerticalGroup(</span>
+<span class="nc" id="L418">            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L419">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()</span>
+<span class="nc" id="L420">                .addGap(25, 25, 25)</span>
+<span class="nc" id="L421">                .addComponent(lblFechaDeInasistencia)</span>
+<span class="nc" id="L422">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)</span>
+<span class="nc" id="L423">                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L424">                .addGap(62, 62, 62))</span>
+        );
+
+<span class="nc" id="L427">        javax.swing.GroupLayout ReporteDeInasistenciaActualLayout = new javax.swing.GroupLayout(ReporteDeInasistenciaActual.getContentPane());</span>
+<span class="nc" id="L428">        ReporteDeInasistenciaActual.getContentPane().setLayout(ReporteDeInasistenciaActualLayout);</span>
+<span class="nc" id="L429">        ReporteDeInasistenciaActualLayout.setHorizontalGroup(</span>
+<span class="nc" id="L430">            ReporteDeInasistenciaActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L431">            .addComponent(panel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L433">        ReporteDeInasistenciaActualLayout.setVerticalGroup(</span>
+<span class="nc" id="L434">            ReporteDeInasistenciaActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L435">            .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L438">        NuevoEmpleado.setTitle(&quot;Nuevo empleado&quot;);</span>
+
+<span class="nc" id="L440">        panel6.setColorPrimario(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L441">        panel6.setColorSecundario(java.awt.Color.white);</span>
+
+<span class="nc" id="L443">        jLabel4.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 12)); // NOI18N</span>
+<span class="nc" id="L444">        jLabel4.setText(&quot;Cédula&quot;);</span>
+
+<span class="nc" id="L446">        txtCedula.setEditable(false);</span>
+<span class="nc" id="L447">        txtCedula.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), null));</span>
+        try {
+<span class="nc" id="L449">            txtCedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;##.###.###&quot;)));</span>
+<span class="nc" id="L450">        } catch (java.text.ParseException ex) {</span>
+<span class="nc" id="L451">            ex.printStackTrace();</span>
+<span class="nc" id="L452">        }</span>
+<span class="nc" id="L453">        txtCedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);</span>
+
+<span class="nc" id="L455">        jLabel5.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 12)); // NOI18N</span>
+<span class="nc" id="L456">        jLabel5.setText(&quot;Nombre&quot;);</span>
+
+<span class="nc" id="L458">        txtNombreEmpleado.setBackground(java.awt.Color.white);</span>
+<span class="nc" id="L459">        txtNombreEmpleado.setHorizontalAlignment(javax.swing.JTextField.CENTER);</span>
+
+<span class="nc" id="L461">        jLabel6.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 12)); // NOI18N</span>
+<span class="nc" id="L462">        jLabel6.setText(&quot;Apellido&quot;);</span>
+
+<span class="nc" id="L464">        txtApellidoEmpleado.setHorizontalAlignment(javax.swing.JTextField.CENTER);</span>
+
+<span class="nc" id="L466">        jLabel7.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 12)); // NOI18N</span>
+<span class="nc" id="L467">        jLabel7.setText(&quot;Departamento&quot;);</span>
+
+<span class="nc" id="L469">        txtDepartamentoAsignado.setEditable(false);</span>
+<span class="nc" id="L470">        txtDepartamentoAsignado.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L471">        txtDepartamentoAsignado.setHorizontalAlignment(javax.swing.JTextField.CENTER);</span>
+
+<span class="nc" id="L473">        btnGuardarEmpleado.setFont(new java.awt.Font(&quot;Ubuntu&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L474">        btnGuardarEmpleado.setText(&quot;Guardar&quot;);</span>
+
+<span class="nc" id="L476">        btnAgregarDepartamento.setText(&quot;+&quot;);</span>
+
+<span class="nc" id="L478">        javax.swing.GroupLayout panel6Layout = new javax.swing.GroupLayout(panel6);</span>
+<span class="nc" id="L479">        panel6.setLayout(panel6Layout);</span>
+<span class="nc" id="L480">        panel6Layout.setHorizontalGroup(</span>
+<span class="nc" id="L481">            panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L482">            .addGroup(panel6Layout.createSequentialGroup()</span>
+<span class="nc" id="L483">                .addGap(31, 31, 31)</span>
+<span class="nc" id="L484">                .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L485">                    .addGroup(panel6Layout.createSequentialGroup()</span>
+<span class="nc" id="L486">                        .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L487">                            .addComponent(jLabel6)</span>
+<span class="nc" id="L488">                            .addComponent(jLabel5)</span>
+<span class="nc" id="L489">                            .addComponent(jLabel4))</span>
+<span class="nc" id="L490">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L491">                        .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L492">                            .addComponent(txtCedula)</span>
+<span class="nc" id="L493">                            .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L494">                            .addComponent(txtApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L495">                    .addGroup(panel6Layout.createSequentialGroup()</span>
+<span class="nc" id="L496">                        .addComponent(jLabel7)</span>
+<span class="nc" id="L497">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L498">                        .addComponent(txtDepartamentoAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L499">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L500">                .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L501">                .addContainerGap(60, Short.MAX_VALUE))</span>
+<span class="nc" id="L502">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel6Layout.createSequentialGroup()</span>
+<span class="nc" id="L503">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L504">                .addComponent(btnGuardarEmpleado)</span>
+<span class="nc" id="L505">                .addGap(22, 22, 22))</span>
+        );
+<span class="nc" id="L507">        panel6Layout.setVerticalGroup(</span>
+<span class="nc" id="L508">            panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L509">            .addGroup(panel6Layout.createSequentialGroup()</span>
+<span class="nc" id="L510">                .addContainerGap(59, Short.MAX_VALUE)</span>
+<span class="nc" id="L511">                .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L512">                    .addComponent(jLabel4)</span>
+<span class="nc" id="L513">                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L514">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L515">                .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L516">                    .addComponent(jLabel5)</span>
+<span class="nc" id="L517">                    .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L518">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L519">                .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L520">                    .addComponent(jLabel6)</span>
+<span class="nc" id="L521">                    .addComponent(txtApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L522">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L523">                .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L524">                    .addComponent(jLabel7)</span>
+<span class="nc" id="L525">                    .addComponent(txtDepartamentoAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L526">                    .addComponent(btnAgregarDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L527">                .addGap(52, 52, 52)</span>
+<span class="nc" id="L528">                .addComponent(btnGuardarEmpleado)</span>
+<span class="nc" id="L529">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L532">        javax.swing.GroupLayout NuevoEmpleadoLayout = new javax.swing.GroupLayout(NuevoEmpleado.getContentPane());</span>
+<span class="nc" id="L533">        NuevoEmpleado.getContentPane().setLayout(NuevoEmpleadoLayout);</span>
+<span class="nc" id="L534">        NuevoEmpleadoLayout.setHorizontalGroup(</span>
+<span class="nc" id="L535">            NuevoEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L536">            .addComponent(panel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L538">        NuevoEmpleadoLayout.setVerticalGroup(</span>
+<span class="nc" id="L539">            NuevoEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L540">            .addComponent(panel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L543">        VistaSeleccionarDepartamento.setTitle(&quot;Lista de Departamentos&quot;);</span>
+
+<span class="nc" id="L545">        panel7.setColorPrimario(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L546">        panel7.setColorSecundario(new java.awt.Color(204, 204, 204));</span>
+
+<span class="nc" id="L548">        listadoDeDepartamentos.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+
+            },
+            new String [] {
+                &quot;ID&quot;, &quot;Departamento&quot;
+            }
+<span class="nc" id="L555">        ) {</span>
+<span class="nc" id="L556">            Class[] types = new Class [] {</span>
+                java.lang.String.class, java.lang.String.class
+            };
+<span class="nc" id="L559">            boolean[] canEdit = new boolean [] {</span>
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+<span class="nc" id="L564">                return types [columnIndex];</span>
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L568">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L571">        listadoDeDepartamentos.setFocusable(false);</span>
+<span class="nc" id="L572">        listadoDeDepartamentos.setRowHeight(30);</span>
+<span class="nc" id="L573">        listadoDeDepartamentos.setSelectionBackground(new java.awt.Color(204, 204, 204));</span>
+<span class="nc" id="L574">        listadoDeDepartamentos.setShowHorizontalLines(false);</span>
+<span class="nc" id="L575">        listadoDeDepartamentos.setShowVerticalLines(false);</span>
+<span class="nc" id="L576">        listadoDeDepartamentos.getTableHeader().setReorderingAllowed(false);</span>
+<span class="nc" id="L577">        jScrollPane4.setViewportView(listadoDeDepartamentos);</span>
+<span class="nc bnc" id="L578" title="All 2 branches missed.">        if (listadoDeDepartamentos.getColumnModel().getColumnCount() &gt; 0) {</span>
+<span class="nc" id="L579">            listadoDeDepartamentos.getColumnModel().getColumn(0).setResizable(false);</span>
+<span class="nc" id="L580">            listadoDeDepartamentos.getColumnModel().getColumn(1).setResizable(false);</span>
+        }
+
+<span class="nc" id="L583">        btnAsignarDepartamento.setFont(new java.awt.Font(&quot;Ubuntu&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L584">        btnAsignarDepartamento.setText(&quot;asignar&quot;);</span>
+
+<span class="nc" id="L586">        javax.swing.GroupLayout panel7Layout = new javax.swing.GroupLayout(panel7);</span>
+<span class="nc" id="L587">        panel7.setLayout(panel7Layout);</span>
+<span class="nc" id="L588">        panel7Layout.setHorizontalGroup(</span>
+<span class="nc" id="L589">            panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L590">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel7Layout.createSequentialGroup()</span>
+<span class="nc" id="L591">                .addContainerGap(15, Short.MAX_VALUE)</span>
+<span class="nc" id="L592">                .addGroup(panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L593">                    .addComponent(btnAsignarDepartamento)</span>
+<span class="nc" id="L594">                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L595">                .addContainerGap())</span>
+        );
+<span class="nc" id="L597">        panel7Layout.setVerticalGroup(</span>
+<span class="nc" id="L598">            panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L599">            .addGroup(panel7Layout.createSequentialGroup()</span>
+<span class="nc" id="L600">                .addContainerGap(57, Short.MAX_VALUE)</span>
+<span class="nc" id="L601">                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L602">                .addGap(22, 22, 22)</span>
+<span class="nc" id="L603">                .addComponent(btnAsignarDepartamento)</span>
+<span class="nc" id="L604">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L607">        javax.swing.GroupLayout VistaSeleccionarDepartamentoLayout = new javax.swing.GroupLayout(VistaSeleccionarDepartamento.getContentPane());</span>
+<span class="nc" id="L608">        VistaSeleccionarDepartamento.getContentPane().setLayout(VistaSeleccionarDepartamentoLayout);</span>
+<span class="nc" id="L609">        VistaSeleccionarDepartamentoLayout.setHorizontalGroup(</span>
+<span class="nc" id="L610">            VistaSeleccionarDepartamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L611">            .addComponent(panel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L613">        VistaSeleccionarDepartamentoLayout.setVerticalGroup(</span>
+<span class="nc" id="L614">            VistaSeleccionarDepartamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L615">            .addComponent(panel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L618">        Login.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);</span>
+<span class="nc" id="L619">        Login.setTitle(&quot;Login&quot;);</span>
+
+<span class="nc" id="L621">        panel8.setColorPrimario(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L622">        panel8.setColorSecundario(java.awt.Color.white);</span>
+
+<span class="nc" id="L624">        txtNombreDeUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);</span>
+
+<span class="nc" id="L626">        txtClave.setHorizontalAlignment(javax.swing.JTextField.CENTER);</span>
+
+<span class="nc" id="L628">        jLabel17.setFont(new java.awt.Font(&quot;Ubuntu&quot;, 1, 15)); // NOI18N</span>
+<span class="nc" id="L629">        jLabel17.setForeground(java.awt.Color.darkGray);</span>
+<span class="nc" id="L630">        jLabel17.setText(&quot;Usuario&quot;);</span>
+
+<span class="nc" id="L632">        jLabel18.setFont(new java.awt.Font(&quot;Ubuntu&quot;, 1, 15)); // NOI18N</span>
+<span class="nc" id="L633">        jLabel18.setForeground(java.awt.Color.darkGray);</span>
+<span class="nc" id="L634">        jLabel18.setText(&quot;Contraseña&quot;);</span>
+
+<span class="nc" id="L636">        btnEntrar.setFont(new java.awt.Font(&quot;Ubuntu&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L637">        btnEntrar.setText(&quot;entrar &quot;);</span>
+
+<span class="nc" id="L639">        javax.swing.GroupLayout panel8Layout = new javax.swing.GroupLayout(panel8);</span>
+<span class="nc" id="L640">        panel8.setLayout(panel8Layout);</span>
+<span class="nc" id="L641">        panel8Layout.setHorizontalGroup(</span>
+<span class="nc" id="L642">            panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L643">            .addGroup(panel8Layout.createSequentialGroup()</span>
+<span class="nc" id="L644">                .addGap(0, 228, Short.MAX_VALUE)</span>
+<span class="nc" id="L645">                .addComponent(btnEntrar)</span>
+<span class="nc" id="L646">                .addGap(30, 30, 30))</span>
+<span class="nc" id="L647">            .addGroup(panel8Layout.createSequentialGroup()</span>
+<span class="nc" id="L648">                .addGap(78, 78, 78)</span>
+<span class="nc" id="L649">                .addGroup(panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L650">                    .addComponent(jLabel17)</span>
+<span class="nc" id="L651">                    .addComponent(txtNombreDeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L652">                    .addComponent(jLabel18)</span>
+<span class="nc" id="L653">                    .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L654">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L656">        panel8Layout.setVerticalGroup(</span>
+<span class="nc" id="L657">            panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L658">            .addGroup(panel8Layout.createSequentialGroup()</span>
+<span class="nc" id="L659">                .addGap(42, 42, 42)</span>
+<span class="nc" id="L660">                .addComponent(jLabel17)</span>
+<span class="nc" id="L661">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L662">                .addComponent(txtNombreDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L663">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L664">                .addComponent(jLabel18)</span>
+<span class="nc" id="L665">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L666">                .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L667">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)</span>
+<span class="nc" id="L668">                .addComponent(btnEntrar)</span>
+<span class="nc" id="L669">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L672">        javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login.getContentPane());</span>
+<span class="nc" id="L673">        Login.getContentPane().setLayout(LoginLayout);</span>
+<span class="nc" id="L674">        LoginLayout.setHorizontalGroup(</span>
+<span class="nc" id="L675">            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L676">            .addComponent(panel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L678">        LoginLayout.setVerticalGroup(</span>
+<span class="nc" id="L679">            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L680">            .addComponent(panel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L683">        InasistenciaPersonal.setTitle(&quot;Inasistencias mensuales del empleado&quot;);</span>
+
+<span class="nc" id="L685">        panel9.setColorPrimario(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L686">        panel9.setColorSecundario(java.awt.Color.white);</span>
+
+<span class="nc" id="L688">        mesInasistencia.setBackground(new java.awt.Color(255, 255, 255));</span>
+
+<span class="nc" id="L690">        jLabel11.setFont(new java.awt.Font(&quot;Dialog&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L691">        jLabel11.setText(&quot;Mes&quot;);</span>
+
+<span class="nc" id="L693">        jLabel12.setFont(new java.awt.Font(&quot;Dialog&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L694">        jLabel12.setText(&quot;Año&quot;);</span>
+
+<span class="nc" id="L696">        listaDeInasistenciaPorEmpleado.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                &quot;ID&quot;, &quot;Día&quot;, &quot;Motivo&quot;, &quot;Justificada&quot;
+            }
+<span class="nc" id="L706">        ) {</span>
+<span class="nc" id="L707">            Class[] types = new Class [] {</span>
+                java.lang.Long.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+<span class="nc" id="L710">            boolean[] canEdit = new boolean [] {</span>
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+<span class="nc" id="L715">                return types [columnIndex];</span>
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L719">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L722">        listaDeInasistenciaPorEmpleado.setFocusable(false);</span>
+<span class="nc" id="L723">        listaDeInasistenciaPorEmpleado.setRowHeight(30);</span>
+<span class="nc" id="L724">        listaDeInasistenciaPorEmpleado.setSelectionBackground(new java.awt.Color(204, 204, 204));</span>
+<span class="nc" id="L725">        listaDeInasistenciaPorEmpleado.setShowHorizontalLines(false);</span>
+<span class="nc" id="L726">        listaDeInasistenciaPorEmpleado.setShowVerticalLines(false);</span>
+<span class="nc" id="L727">        listaDeInasistenciaPorEmpleado.getTableHeader().setReorderingAllowed(false);</span>
+<span class="nc" id="L728">        jScrollPane6.setViewportView(listaDeInasistenciaPorEmpleado);</span>
+<span class="nc bnc" id="L729" title="All 2 branches missed.">        if (listaDeInasistenciaPorEmpleado.getColumnModel().getColumnCount() &gt; 0) {</span>
+<span class="nc" id="L730">            listaDeInasistenciaPorEmpleado.getColumnModel().getColumn(0).setResizable(false);</span>
+<span class="nc" id="L731">            listaDeInasistenciaPorEmpleado.getColumnModel().getColumn(1).setResizable(false);</span>
+<span class="nc" id="L732">            listaDeInasistenciaPorEmpleado.getColumnModel().getColumn(2).setResizable(false);</span>
+<span class="nc" id="L733">            listaDeInasistenciaPorEmpleado.getColumnModel().getColumn(3).setResizable(false);</span>
+        }
+
+<span class="nc" id="L736">        btnConsultarInasistencia.setFont(new java.awt.Font(&quot;Ubuntu&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L737">        btnConsultarInasistencia.setText(&quot;consultar&quot;);</span>
+
+<span class="nc" id="L739">        btnCrearJustificacion.setFont(new java.awt.Font(&quot;Ubuntu&quot;, 0, 16)); // NOI18N</span>
+<span class="nc" id="L740">        btnCrearJustificacion.setText(&quot;crear justificación&quot;);</span>
+
+<span class="nc" id="L742">        javax.swing.GroupLayout panel9Layout = new javax.swing.GroupLayout(panel9);</span>
+<span class="nc" id="L743">        panel9.setLayout(panel9Layout);</span>
+<span class="nc" id="L744">        panel9Layout.setHorizontalGroup(</span>
+<span class="nc" id="L745">            panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L746">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()</span>
+<span class="nc" id="L747">                .addGap(0, 59, Short.MAX_VALUE)</span>
+<span class="nc" id="L748">                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L749">                    .addComponent(btnCrearJustificacion)</span>
+<span class="nc" id="L750">                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L751">                .addGap(51, 51, 51))</span>
+<span class="nc" id="L752">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()</span>
+<span class="nc" id="L753">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L754">                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L755">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()</span>
+<span class="nc" id="L756">                        .addComponent(btnConsultarInasistencia)</span>
+<span class="nc" id="L757">                        .addGap(226, 226, 226))</span>
+<span class="nc" id="L758">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()</span>
+<span class="nc" id="L759">                        .addComponent(jLabel11)</span>
+<span class="nc" id="L760">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L761">                        .addComponent(mesInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L762">                        .addGap(20, 20, 20)</span>
+<span class="nc" id="L763">                        .addComponent(jLabel12)</span>
+<span class="nc" id="L764">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L765">                        .addComponent(yearInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L766">                        .addGap(129, 129, 129))))</span>
+        );
+<span class="nc" id="L768">        panel9Layout.setVerticalGroup(</span>
+<span class="nc" id="L769">            panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L770">            .addGroup(panel9Layout.createSequentialGroup()</span>
+<span class="nc" id="L771">                .addGap(48, 48, 48)</span>
+<span class="nc" id="L772">                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L773">                    .addComponent(mesInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L774">                    .addComponent(yearInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L775">                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L776">                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))</span>
+<span class="nc" id="L777">                .addGap(29, 29, 29)</span>
+<span class="nc" id="L778">                .addComponent(btnConsultarInasistencia)</span>
+<span class="nc" id="L779">                .addGap(27, 27, 27)</span>
+<span class="nc" id="L780">                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L781">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)</span>
+<span class="nc" id="L782">                .addComponent(btnCrearJustificacion)</span>
+<span class="nc" id="L783">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L786">        javax.swing.GroupLayout InasistenciaPersonalLayout = new javax.swing.GroupLayout(InasistenciaPersonal.getContentPane());</span>
+<span class="nc" id="L787">        InasistenciaPersonal.getContentPane().setLayout(InasistenciaPersonalLayout);</span>
+<span class="nc" id="L788">        InasistenciaPersonalLayout.setHorizontalGroup(</span>
+<span class="nc" id="L789">            InasistenciaPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L790">            .addComponent(panel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L792">        InasistenciaPersonalLayout.setVerticalGroup(</span>
+<span class="nc" id="L793">            InasistenciaPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L794">            .addComponent(panel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L797">        VistaReporteDeAsistencia.setTitle(&quot;Entradas y Salidas&quot;);</span>
+
+<span class="nc" id="L799">        panel12.setColorPrimario(java.awt.Color.white);</span>
+<span class="nc" id="L800">        panel12.setColorSecundario(java.awt.Color.lightGray);</span>
+
+<span class="nc" id="L802">        jLabel19.setText(&quot;Fecha del reporte&quot;);</span>
+
+<span class="nc" id="L804">        tablaReportAsistencia.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                &quot;Cédula&quot;, &quot;Empleado&quot;, &quot;Entró&quot;, &quot;Salió&quot;, &quot;Hrs. Trabajadas&quot;
+            }
+<span class="nc" id="L814">        ) {</span>
+<span class="nc" id="L815">            Class[] types = new Class [] {</span>
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+<span class="nc" id="L818">            boolean[] canEdit = new boolean [] {</span>
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+<span class="nc" id="L823">                return types [columnIndex];</span>
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L827">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L830">        tablaReportAsistencia.setFocusable(false);</span>
+<span class="nc" id="L831">        tablaReportAsistencia.setRowHeight(30);</span>
+<span class="nc" id="L832">        tablaReportAsistencia.setSelectionBackground(java.awt.Color.lightGray);</span>
+<span class="nc" id="L833">        tablaReportAsistencia.setShowHorizontalLines(false);</span>
+<span class="nc" id="L834">        tablaReportAsistencia.setShowVerticalLines(false);</span>
+<span class="nc" id="L835">        tablaReportAsistencia.getTableHeader().setReorderingAllowed(false);</span>
+<span class="nc" id="L836">        jScrollPane7.setViewportView(tablaReportAsistencia);</span>
+<span class="nc bnc" id="L837" title="All 2 branches missed.">        if (tablaReportAsistencia.getColumnModel().getColumnCount() &gt; 0) {</span>
+<span class="nc" id="L838">            tablaReportAsistencia.getColumnModel().getColumn(0).setResizable(false);</span>
+<span class="nc" id="L839">            tablaReportAsistencia.getColumnModel().getColumn(1).setResizable(false);</span>
+<span class="nc" id="L840">            tablaReportAsistencia.getColumnModel().getColumn(2).setResizable(false);</span>
+<span class="nc" id="L841">            tablaReportAsistencia.getColumnModel().getColumn(3).setResizable(false);</span>
+<span class="nc" id="L842">            tablaReportAsistencia.getColumnModel().getColumn(4).setResizable(false);</span>
+        }
+
+<span class="nc" id="L845">        btnVerReporteDeAsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_calendar_2_42176.png&quot;))); // NOI18N</span>
+<span class="nc" id="L846">        btnVerReporteDeAsistencia.setText(&quot;Ver&quot;);</span>
+<span class="nc" id="L847">        btnVerReporteDeAsistencia.setDescription(&quot;Entradas y salidas&quot;);</span>
+
+<span class="nc" id="L849">        javax.swing.GroupLayout panel12Layout = new javax.swing.GroupLayout(panel12);</span>
+<span class="nc" id="L850">        panel12.setLayout(panel12Layout);</span>
+<span class="nc" id="L851">        panel12Layout.setHorizontalGroup(</span>
+<span class="nc" id="L852">            panel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L853">            .addGroup(panel12Layout.createSequentialGroup()</span>
+<span class="nc" id="L854">                .addGroup(panel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L855">                    .addGroup(panel12Layout.createSequentialGroup()</span>
+<span class="nc" id="L856">                        .addGap(39, 39, 39)</span>
+<span class="nc" id="L857">                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L858">                    .addGroup(panel12Layout.createSequentialGroup()</span>
+<span class="nc" id="L859">                        .addGap(195, 195, 195)</span>
+<span class="nc" id="L860">                        .addComponent(jLabel19)</span>
+<span class="nc" id="L861">                        .addGap(3, 3, 3)</span>
+<span class="nc" id="L862">                        .addComponent(calendarFechaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L863">                .addContainerGap(45, Short.MAX_VALUE))</span>
+<span class="nc" id="L864">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel12Layout.createSequentialGroup()</span>
+<span class="nc" id="L865">                .addGap(0, 0, Short.MAX_VALUE)</span>
+<span class="nc" id="L866">                .addComponent(btnVerReporteDeAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L867">                .addGap(60, 60, 60))</span>
+        );
+<span class="nc" id="L869">        panel12Layout.setVerticalGroup(</span>
+<span class="nc" id="L870">            panel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L871">            .addGroup(panel12Layout.createSequentialGroup()</span>
+<span class="nc" id="L872">                .addGap(73, 73, 73)</span>
+<span class="nc" id="L873">                .addGroup(panel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L874">                    .addComponent(jLabel19)</span>
+<span class="nc" id="L875">                    .addComponent(calendarFechaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L876">                .addGap(97, 97, 97)</span>
+<span class="nc" id="L877">                .addComponent(btnVerReporteDeAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L878">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L879">                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L880">                .addContainerGap(82, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L883">        javax.swing.GroupLayout VistaReporteDeAsistenciaLayout = new javax.swing.GroupLayout(VistaReporteDeAsistencia.getContentPane());</span>
+<span class="nc" id="L884">        VistaReporteDeAsistencia.getContentPane().setLayout(VistaReporteDeAsistenciaLayout);</span>
+<span class="nc" id="L885">        VistaReporteDeAsistenciaLayout.setHorizontalGroup(</span>
+<span class="nc" id="L886">            VistaReporteDeAsistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L887">            .addComponent(panel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L889">        VistaReporteDeAsistenciaLayout.setVerticalGroup(</span>
+<span class="nc" id="L890">            VistaReporteDeAsistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L891">            .addComponent(panel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L894">        VistaJustificacion.setTitle(&quot;Justificar inasistencia&quot;);</span>
+
+<span class="nc" id="L896">        panel13.setBackground(java.awt.Color.white);</span>
+<span class="nc" id="L897">        panel13.setColorPrimario(java.awt.Color.white);</span>
+<span class="nc" id="L898">        panel13.setColorSecundario(java.awt.Color.white);</span>
+
+<span class="nc" id="L900">        btnJustificar.setText(&quot;Justificar&quot;);</span>
+
+<span class="nc" id="L902">        areaObservacion.setColumns(20);</span>
+<span class="nc" id="L903">        areaObservacion.setRows(5);</span>
+<span class="nc" id="L904">        jScrollPane8.setViewportView(areaObservacion);</span>
+
+<span class="nc" id="L906">        jLabel20.setText(&quot;Observación&quot;);</span>
+
+<span class="nc" id="L908">        jLabel22.setText(&quot;Hora de generación:&quot;);</span>
+
+<span class="nc" id="L910">        lblHoraDeGeneracion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L911">        lblHoraDeGeneracion.setText(&quot;Hora&quot;);</span>
+
+<span class="nc" id="L913">        javax.swing.GroupLayout panel13Layout = new javax.swing.GroupLayout(panel13);</span>
+<span class="nc" id="L914">        panel13.setLayout(panel13Layout);</span>
+<span class="nc" id="L915">        panel13Layout.setHorizontalGroup(</span>
+<span class="nc" id="L916">            panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L917">            .addGroup(panel13Layout.createSequentialGroup()</span>
+<span class="nc" id="L918">                .addContainerGap()</span>
+<span class="nc" id="L919">                .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L920">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel13Layout.createSequentialGroup()</span>
+<span class="nc" id="L921">                        .addGap(0, 0, Short.MAX_VALUE)</span>
+<span class="nc" id="L922">                        .addComponent(btnJustificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L923">                    .addGroup(panel13Layout.createSequentialGroup()</span>
+<span class="nc" id="L924">                        .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L925">                            .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L926">                                .addComponent(jLabel20)</span>
+<span class="nc" id="L927">                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L928">                            .addGroup(panel13Layout.createSequentialGroup()</span>
+<span class="nc" id="L929">                                .addComponent(jLabel22)</span>
+<span class="nc" id="L930">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L931">                                .addComponent(lblHoraDeGeneracion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L932">                                .addGap(54, 54, 54)))</span>
+<span class="nc" id="L933">                        .addGap(0, 70, Short.MAX_VALUE)))</span>
+<span class="nc" id="L934">                .addContainerGap())</span>
+        );
+<span class="nc" id="L936">        panel13Layout.setVerticalGroup(</span>
+<span class="nc" id="L937">            panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L938">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel13Layout.createSequentialGroup()</span>
+<span class="nc" id="L939">                .addContainerGap(39, Short.MAX_VALUE)</span>
+<span class="nc" id="L940">                .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L941">                    .addComponent(jLabel22)</span>
+<span class="nc" id="L942">                    .addComponent(lblHoraDeGeneracion))</span>
+<span class="nc" id="L943">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L944">                .addComponent(jLabel20)</span>
+<span class="nc" id="L945">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L946">                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L947">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L948">                .addComponent(btnJustificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L949">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L952">        javax.swing.GroupLayout VistaJustificacionLayout = new javax.swing.GroupLayout(VistaJustificacion.getContentPane());</span>
+<span class="nc" id="L953">        VistaJustificacion.getContentPane().setLayout(VistaJustificacionLayout);</span>
+<span class="nc" id="L954">        VistaJustificacionLayout.setHorizontalGroup(</span>
+<span class="nc" id="L955">            VistaJustificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L956">            .addComponent(panel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L958">        VistaJustificacionLayout.setVerticalGroup(</span>
+<span class="nc" id="L959">            VistaJustificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L960">            .addComponent(panel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+        );
+
+<span class="nc" id="L963">        VistaBuscarEmpleado.setTitle(&quot;Buscar empleado&quot;);</span>
+
+<span class="nc" id="L965">        jPanel1.setBackground(java.awt.Color.white);</span>
+
+<span class="nc" id="L967">        jLabel23.setText(&quot;Cédula&quot;);</span>
+
+<span class="nc" id="L969">        btnBuscarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_Black_Search_60944.png&quot;))); // NOI18N</span>
+<span class="nc" id="L970">        btnBuscarEmpleado.setText(&quot;buscar&quot;);</span>
+
+<span class="nc" id="L972">        txtCedulaEmpleadoBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);</span>
+
+<span class="nc" id="L974">        jLabel25.setText(&quot;Ej. 22222222&quot;);</span>
+
+<span class="nc" id="L976">        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);</span>
+<span class="nc" id="L977">        jPanel1.setLayout(jPanel1Layout);</span>
+<span class="nc" id="L978">        jPanel1Layout.setHorizontalGroup(</span>
+<span class="nc" id="L979">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L980">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L981">                .addGap(81, 81, 81)</span>
+<span class="nc" id="L982">                .addComponent(jLabel23)</span>
+<span class="nc" id="L983">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L984">                .addComponent(txtCedulaEmpleadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L985">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L986">                .addComponent(jLabel25)</span>
+<span class="nc" id="L987">                .addContainerGap(48, Short.MAX_VALUE))</span>
+<span class="nc" id="L988">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L989">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L990">                .addComponent(btnBuscarEmpleado)</span>
+<span class="nc" id="L991">                .addGap(27, 27, 27))</span>
+        );
+<span class="nc" id="L993">        jPanel1Layout.setVerticalGroup(</span>
+<span class="nc" id="L994">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L995">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L996">                .addGap(56, 56, 56)</span>
+<span class="nc" id="L997">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L998">                    .addComponent(jLabel23)</span>
+<span class="nc" id="L999">                    .addComponent(txtCedulaEmpleadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L1000">                    .addComponent(jLabel25))</span>
+<span class="nc" id="L1001">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)</span>
+<span class="nc" id="L1002">                .addComponent(btnBuscarEmpleado)</span>
+<span class="nc" id="L1003">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L1006">        javax.swing.GroupLayout VistaBuscarEmpleadoLayout = new javax.swing.GroupLayout(VistaBuscarEmpleado.getContentPane());</span>
+<span class="nc" id="L1007">        VistaBuscarEmpleado.getContentPane().setLayout(VistaBuscarEmpleadoLayout);</span>
+<span class="nc" id="L1008">        VistaBuscarEmpleadoLayout.setHorizontalGroup(</span>
+<span class="nc" id="L1009">            VistaBuscarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1010">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L1012">        VistaBuscarEmpleadoLayout.setVerticalGroup(</span>
+<span class="nc" id="L1013">            VistaBuscarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1014">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L1017">        panelSubMenu.setBackground(java.awt.Color.white);</span>
+
+<span class="nc" id="L1019">        panelDeFunciones.setBackground(java.awt.Color.white);</span>
+<span class="nc" id="L1020">        panelDeFunciones.setBorder(javax.swing.BorderFactory.createTitledBorder(null, &quot;Panel de opciones&quot;, javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));</span>
+<span class="nc" id="L1021">        panelDeFunciones.setLayout(new java.awt.GridLayout(4, 1));</span>
+
+<span class="nc" id="L1023">        btnInformacionPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_my-account_59177.png&quot;))); // NOI18N</span>
+<span class="nc" id="L1024">        btnInformacionPersonal.setText(&quot;Información&quot;);</span>
+<span class="nc" id="L1025">        btnInformacionPersonal.setDescription(&quot;Datos del empleado&quot;);</span>
+<span class="nc" id="L1026">        panelDeFunciones.add(btnInformacionPersonal);</span>
+
+<span class="nc" id="L1028">        btnInasistenciasDeEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_calendar_2_42176.png&quot;))); // NOI18N</span>
+<span class="nc" id="L1029">        btnInasistenciasDeEmpleado.setText(&quot;Inasistencias&quot;);</span>
+<span class="nc" id="L1030">        btnInasistenciasDeEmpleado.setDescription(&quot;Mensuales&quot;);</span>
+<span class="nc" id="L1031">        panelDeFunciones.add(btnInasistenciasDeEmpleado);</span>
+
+<span class="nc" id="L1033">        btnPermisosEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_order-2_59180.png&quot;))); // NOI18N</span>
+<span class="nc" id="L1034">        btnPermisosEmpleado.setText(&quot;Permisos&quot;);</span>
+<span class="nc" id="L1035">        btnPermisosEmpleado.setDescription(&quot;Solicitudes&quot;);</span>
+<span class="nc" id="L1036">        panelDeFunciones.add(btnPermisosEmpleado);</span>
+
+<span class="nc" id="L1038">        btnSalirEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/vista/icon/if_logout_59175.png&quot;))); // NOI18N</span>
+<span class="nc" id="L1039">        btnSalirEmpleado.setText(&quot;Salir&quot;);</span>
+<span class="nc" id="L1040">        btnSalirEmpleado.setDescription(&quot;  &quot;);</span>
+<span class="nc" id="L1041">        panelDeFunciones.add(btnSalirEmpleado);</span>
+
+<span class="nc" id="L1043">        panelInformacionDeEmpleado.setBackground(java.awt.Color.white);</span>
+<span class="nc" id="L1044">        panelInformacionDeEmpleado.setBorder(javax.swing.BorderFactory.createTitledBorder(&quot;&quot;));</span>
+
+<span class="nc" id="L1046">        jLabel27.setText(&quot;Nombre(es):&quot;);</span>
+
+<span class="nc" id="L1048">        lblNombreEmpleado.setText(&quot;nombre&quot;);</span>
+
+<span class="nc" id="L1050">        jLabel28.setText(&quot;Apellidos:&quot;);</span>
+
+<span class="nc" id="L1052">        lblApellidosEmpleado.setText(&quot;apellidos&quot;);</span>
+
+<span class="nc" id="L1054">        jLabel29.setText(&quot;Departamento:&quot;);</span>
+
+<span class="nc" id="L1056">        lblDepartamentoEmpleado.setText(&quot;departamento&quot;);</span>
+
+<span class="nc" id="L1058">        jLabel30.setText(&quot;Cédula:&quot;);</span>
+
+<span class="nc" id="L1060">        lblCedulaEmpleado.setText(&quot;cedula&quot;);</span>
+
+<span class="nc" id="L1062">        jButton3.setFont(new java.awt.Font(&quot;Noto Sans&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L1063">        jButton3.setText(&quot;Editar&quot;);</span>
+
+<span class="nc" id="L1065">        javax.swing.GroupLayout panelInformacionDeEmpleadoLayout = new javax.swing.GroupLayout(panelInformacionDeEmpleado);</span>
+<span class="nc" id="L1066">        panelInformacionDeEmpleado.setLayout(panelInformacionDeEmpleadoLayout);</span>
+<span class="nc" id="L1067">        panelInformacionDeEmpleadoLayout.setHorizontalGroup(</span>
+<span class="nc" id="L1068">            panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1069">            .addGroup(panelInformacionDeEmpleadoLayout.createSequentialGroup()</span>
+<span class="nc" id="L1070">                .addGroup(panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1071">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInformacionDeEmpleadoLayout.createSequentialGroup()</span>
+<span class="nc" id="L1072">                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L1073">                        .addComponent(jButton3))</span>
+<span class="nc" id="L1074">                    .addGroup(panelInformacionDeEmpleadoLayout.createSequentialGroup()</span>
+<span class="nc" id="L1075">                        .addGap(30, 30, 30)</span>
+<span class="nc" id="L1076">                        .addGroup(panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L1077">                            .addComponent(jLabel30)</span>
+<span class="nc" id="L1078">                            .addComponent(jLabel29)</span>
+<span class="nc" id="L1079">                            .addComponent(jLabel27)</span>
+<span class="nc" id="L1080">                            .addComponent(jLabel28))</span>
+<span class="nc" id="L1081">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L1082">                        .addGroup(panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L1083">                            .addComponent(lblCedulaEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L1084">                            .addComponent(lblNombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L1085">                            .addComponent(lblApellidosEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L1086">                            .addComponent(lblDepartamentoEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))</span>
+<span class="nc" id="L1087">                        .addGap(0, 207, Short.MAX_VALUE)))</span>
+<span class="nc" id="L1088">                .addContainerGap())</span>
+        );
+<span class="nc" id="L1090">        panelInformacionDeEmpleadoLayout.setVerticalGroup(</span>
+<span class="nc" id="L1091">            panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1092">            .addGroup(panelInformacionDeEmpleadoLayout.createSequentialGroup()</span>
+<span class="nc" id="L1093">                .addGap(40, 40, 40)</span>
+<span class="nc" id="L1094">                .addGroup(panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L1095">                    .addComponent(jLabel30)</span>
+<span class="nc" id="L1096">                    .addComponent(lblCedulaEmpleado))</span>
+<span class="nc" id="L1097">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L1098">                .addGroup(panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L1099">                    .addComponent(jLabel27)</span>
+<span class="nc" id="L1100">                    .addComponent(lblNombreEmpleado))</span>
+<span class="nc" id="L1101">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L1102">                .addGroup(panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L1103">                    .addComponent(jLabel28)</span>
+<span class="nc" id="L1104">                    .addComponent(lblApellidosEmpleado))</span>
+<span class="nc" id="L1105">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L1106">                .addGroup(panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L1107">                    .addComponent(jLabel29)</span>
+<span class="nc" id="L1108">                    .addComponent(lblDepartamentoEmpleado))</span>
+<span class="nc" id="L1109">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L1110">                .addComponent(jButton3)</span>
+<span class="nc" id="L1111">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L1114">        javax.swing.GroupLayout panelSubMenuLayout = new javax.swing.GroupLayout(panelSubMenu);</span>
+<span class="nc" id="L1115">        panelSubMenu.setLayout(panelSubMenuLayout);</span>
+<span class="nc" id="L1116">        panelSubMenuLayout.setHorizontalGroup(</span>
+<span class="nc" id="L1117">            panelSubMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1118">            .addGroup(panelSubMenuLayout.createSequentialGroup()</span>
+<span class="nc" id="L1119">                .addContainerGap()</span>
+<span class="nc" id="L1120">                .addComponent(panelDeFunciones, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L1121">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L1122">                .addComponent(panelInformacionDeEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L1123">                .addContainerGap())</span>
+        );
+<span class="nc" id="L1125">        panelSubMenuLayout.setVerticalGroup(</span>
+<span class="nc" id="L1126">            panelSubMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1127">            .addGroup(panelSubMenuLayout.createSequentialGroup()</span>
+<span class="nc" id="L1128">                .addGroup(panelSubMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1129">                    .addGroup(panelSubMenuLayout.createSequentialGroup()</span>
+<span class="nc" id="L1130">                        .addGap(29, 29, 29)</span>
+<span class="nc" id="L1131">                        .addComponent(panelDeFunciones, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE))</span>
+<span class="nc" id="L1132">                    .addGroup(panelSubMenuLayout.createSequentialGroup()</span>
+<span class="nc" id="L1133">                        .addGap(37, 37, 37)</span>
+<span class="nc" id="L1134">                        .addComponent(panelInformacionDeEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))</span>
+<span class="nc" id="L1135">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L1138">        javax.swing.GroupLayout VistaSubMenuLayout = new javax.swing.GroupLayout(VistaSubMenu.getContentPane());</span>
+<span class="nc" id="L1139">        VistaSubMenu.getContentPane().setLayout(VistaSubMenuLayout);</span>
+<span class="nc" id="L1140">        VistaSubMenuLayout.setHorizontalGroup(</span>
+<span class="nc" id="L1141">            VistaSubMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1142">            .addComponent(panelSubMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L1144">        VistaSubMenuLayout.setVerticalGroup(</span>
+<span class="nc" id="L1145">            VistaSubMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1146">            .addComponent(panelSubMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L1149">        jPanel4.setBackground(java.awt.Color.white);</span>
+
+<span class="nc" id="L1151">        lblFechaDeEmision.setText(&quot;Fecha de Emision&quot;);</span>
+
+<span class="nc" id="L1153">        btnEmitir.setFont(new java.awt.Font(&quot;Noto Sans&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L1154">        btnEmitir.setText(&quot;Emitir&quot;);</span>
+
+<span class="nc" id="L1156">        jLabel10.setText(&quot;Días de permiso&quot;);</span>
+
+<span class="nc" id="L1158">        jLabel13.setText(&quot;Fecha de inicio&quot;);</span>
+
+<span class="nc" id="L1160">        jLabel14.setText(&quot;Fecha de elaboración:&quot;);</span>
+
+<span class="nc" id="L1162">        txtDiasDePermiso.setModel(new javax.swing.SpinnerNumberModel(0, 0, 3, 1));</span>
+
+<span class="nc" id="L1164">        jLabel3.setText(&quot;Remunerado&quot;);</span>
+
+<span class="nc" id="L1166">        chRemunerado.setText(&quot;Sí / No&quot;);</span>
+
+<span class="nc" id="L1168">        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);</span>
+<span class="nc" id="L1169">        jPanel4.setLayout(jPanel4Layout);</span>
+<span class="nc" id="L1170">        jPanel4Layout.setHorizontalGroup(</span>
+<span class="nc" id="L1171">            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1172">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()</span>
+<span class="nc" id="L1173">                .addContainerGap()</span>
+<span class="nc" id="L1174">                .addComponent(jSeparator1)</span>
+<span class="nc" id="L1175">                .addContainerGap())</span>
+<span class="nc" id="L1176">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()</span>
+<span class="nc" id="L1177">                .addContainerGap(115, Short.MAX_VALUE)</span>
+<span class="nc" id="L1178">                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1179">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()</span>
+<span class="nc" id="L1180">                        .addComponent(jLabel14)</span>
+<span class="nc" id="L1181">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L1182">                        .addComponent(lblFechaDeEmision)</span>
+<span class="nc" id="L1183">                        .addGap(48, 48, 48))</span>
+<span class="nc" id="L1184">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()</span>
+<span class="nc" id="L1185">                        .addComponent(btnEmitir)</span>
+<span class="nc" id="L1186">                        .addContainerGap())))</span>
+<span class="nc" id="L1187">            .addGroup(jPanel4Layout.createSequentialGroup()</span>
+<span class="nc" id="L1188">                .addGap(45, 45, 45)</span>
+<span class="nc" id="L1189">                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L1190">                    .addComponent(jLabel3)</span>
+<span class="nc" id="L1191">                    .addComponent(jLabel13)</span>
+<span class="nc" id="L1192">                    .addComponent(jLabel10))</span>
+<span class="nc" id="L1193">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L1194">                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1195">                    .addComponent(fechaDeIncio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L1196">                    .addComponent(txtDiasDePermiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L1197">                    .addComponent(chRemunerado))</span>
+<span class="nc" id="L1198">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L1200">        jPanel4Layout.setVerticalGroup(</span>
+<span class="nc" id="L1201">            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1202">            .addGroup(jPanel4Layout.createSequentialGroup()</span>
+<span class="nc" id="L1203">                .addContainerGap()</span>
+<span class="nc" id="L1204">                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L1205">                    .addComponent(lblFechaDeEmision)</span>
+<span class="nc" id="L1206">                    .addComponent(jLabel14))</span>
+<span class="nc" id="L1207">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)</span>
+<span class="nc" id="L1208">                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1209">                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L1210">                    .addComponent(fechaDeIncio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L1211">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L1212">                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L1213">                    .addComponent(txtDiasDePermiso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L1214">                    .addComponent(jLabel10))</span>
+<span class="nc" id="L1215">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L1216">                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L1217">                    .addComponent(jLabel3)</span>
+<span class="nc" id="L1218">                    .addComponent(chRemunerado))</span>
+<span class="nc" id="L1219">                .addGap(13, 13, 13)</span>
+<span class="nc" id="L1220">                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L1221">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L1222">                .addComponent(btnEmitir)</span>
+<span class="nc" id="L1223">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L1226">        javax.swing.GroupLayout NuevoPermisoLayout = new javax.swing.GroupLayout(NuevoPermiso.getContentPane());</span>
+<span class="nc" id="L1227">        NuevoPermiso.getContentPane().setLayout(NuevoPermisoLayout);</span>
+<span class="nc" id="L1228">        NuevoPermisoLayout.setHorizontalGroup(</span>
+<span class="nc" id="L1229">            NuevoPermisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1230">            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L1232">        NuevoPermisoLayout.setVerticalGroup(</span>
+<span class="nc" id="L1233">            NuevoPermisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1234">            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L1237">        javax.swing.GroupLayout VistaPermisosLayout = new javax.swing.GroupLayout(VistaPermisos.getContentPane());</span>
+<span class="nc" id="L1238">        VistaPermisos.getContentPane().setLayout(VistaPermisosLayout);</span>
+<span class="nc" id="L1239">        VistaPermisosLayout.setHorizontalGroup(</span>
+<span class="nc" id="L1240">            VistaPermisosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1241">            .addGap(0, 513, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L1243">        VistaPermisosLayout.setVerticalGroup(</span>
+<span class="nc" id="L1244">            VistaPermisosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1245">            .addGap(0, 300, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L1248">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L1249">        setTitle(&quot;Cacao Oderí&quot;);</span>
+
+<span class="nc" id="L1251">        panelDeImagen.setBackground(java.awt.Color.white);</span>
+
+<span class="nc" id="L1253">        javax.swing.GroupLayout panelDeImagenLayout = new javax.swing.GroupLayout(panelDeImagen);</span>
+<span class="nc" id="L1254">        panelDeImagen.setLayout(panelDeImagenLayout);</span>
+<span class="nc" id="L1255">        panelDeImagenLayout.setHorizontalGroup(</span>
+<span class="nc" id="L1256">            panelDeImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1257">            .addGap(0, 759, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L1259">        panelDeImagenLayout.setVerticalGroup(</span>
+<span class="nc" id="L1260">            panelDeImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1261">            .addGap(0, 563, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L1264">        barraDeMenu.setFocusable(false);</span>
+
+<span class="nc" id="L1266">        Archivo.setText(&quot;Archivo&quot;);</span>
+<span class="nc" id="L1267">        Archivo.setRequestFocusEnabled(false);</span>
+
+<span class="nc" id="L1269">        itemEmpleados.setText(&quot;Empleado&quot;);</span>
+<span class="nc" id="L1270">        Archivo.add(itemEmpleados);</span>
+
+<span class="nc" id="L1272">        barraDeMenu.add(Archivo);</span>
+
+<span class="nc" id="L1274">        Control.setText(&quot;Control&quot;);</span>
+
+<span class="nc" id="L1276">        itemAsistenciaDiaria.setText(&quot;Registro de asistencias&quot;);</span>
+<span class="nc" id="L1277">        Control.add(itemAsistenciaDiaria);</span>
+
+<span class="nc" id="L1279">        barraDeMenu.add(Control);</span>
+
+<span class="nc" id="L1281">        Consultas.setText(&quot;Consultas&quot;);</span>
+
+<span class="nc" id="L1283">        jMenu1.setText(&quot;Asistencias&quot;);</span>
+
+<span class="nc" id="L1285">        itemEntradaSalida.setText(&quot;Entrada y Salida&quot;);</span>
+<span class="nc" id="L1286">        jMenu1.add(itemEntradaSalida);</span>
+
+<span class="nc" id="L1288">        Consultas.add(jMenu1);</span>
+
+<span class="nc" id="L1290">        barraDeMenu.add(Consultas);</span>
+
+<span class="nc" id="L1292">        Ayuda.setText(&quot;Ayuda&quot;);</span>
+
+<span class="nc" id="L1294">        itemManual.setText(&quot;Sobre la aplicación&quot;);</span>
+<span class="nc" id="L1295">        Ayuda.add(itemManual);</span>
+
+<span class="nc" id="L1297">        barraDeMenu.add(Ayuda);</span>
+
+<span class="nc" id="L1299">        setJMenuBar(barraDeMenu);</span>
+
+<span class="nc" id="L1301">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L1302">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L1303">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L1304">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1305">            .addComponent(panelDeImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L1307">        layout.setVerticalGroup(</span>
+<span class="nc" id="L1308">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L1309">            .addComponent(panelDeImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L1312">        pack();</span>
+<span class="nc" id="L1313">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Archivo;
+    private javax.swing.JMenu Ayuda;
+    private javax.swing.JMenu Consultas;
+    private javax.swing.JMenu Control;
+    public javax.swing.JDialog InasistenciaPersonal;
+    public javax.swing.JDialog Login;
+    public javax.swing.JDialog NuevoEmpleado;
+    public javax.swing.JDialog NuevoPermiso;
+    public javax.swing.JDialog ReporteDeInasistenciaActual;
+    public javax.swing.JDialog VistaBuscarEmpleado;
+    public javax.swing.JDialog VistaDeAsistenciaDiaria;
+    public javax.swing.JDialog VistaJustificacion;
+    private javax.swing.JDialog VistaPermisos;
+    public javax.swing.JDialog VistaReporteDeAsistencia;
+    public javax.swing.JDialog VistaSeleccionarDepartamento;
+    public javax.swing.JDialog VistaSubMenu;
+    public javax.swing.JTextArea areaObservacion;
+    private javax.swing.JMenuBar barraDeMenu;
+    public javax.swing.JButton btnAgregarDepartamento;
+    public javax.swing.JButton btnAsignarDepartamento;
+    public javax.swing.JButton btnBuscarEmpleado;
+    public javax.swing.JButton btnConsultarInasistencia;
+    public javax.swing.JButton btnCrearJustificacion;
+    public javax.swing.JButton btnEmitir;
+    public org.edisoncor.gui.button.ButtonTask btnEntrada;
+    public javax.swing.JButton btnEntrar;
+    public org.edisoncor.gui.button.ButtonTask btnFinalizarJornada;
+    public javax.swing.JButton btnGuardarEmpleado;
+    public org.edisoncor.gui.button.ButtonTask btnInasistenciasDeEmpleado;
+    public org.edisoncor.gui.button.ButtonTask btnInformacionPersonal;
+    public org.edisoncor.gui.button.ButtonTask btnIniciarJornada;
+    public org.edisoncor.gui.button.ButtonAction btnJustificar;
+    public org.edisoncor.gui.button.ButtonTask btnPermisosEmpleado;
+    public org.edisoncor.gui.button.ButtonTask btnReporte;
+    public org.edisoncor.gui.button.ButtonTask btnSalida;
+    public org.edisoncor.gui.button.ButtonTask btnSalirEmpleado;
+    public org.edisoncor.gui.button.ButtonTask btnVerReporteDeAsistencia;
+    public com.toedter.calendar.JDateChooser calendarFechaConsulta;
+    private javax.swing.JCheckBox chRemunerado;
+    public com.toedter.calendar.JDateChooser fechaDeIncio;
+    public javax.swing.JMenuItem itemAsistenciaDiaria;
+    public javax.swing.JMenuItem itemEmpleados;
+    public javax.swing.JMenuItem itemEntradaSalida;
+    private javax.swing.JMenuItem itemManual;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JSeparator jSeparator1;
+    public javax.swing.JLabel lblApellidosEmpleado;
+    public javax.swing.JLabel lblCedulaEmpleado;
+    public javax.swing.JLabel lblDepartamentoEmpleado;
+    public javax.swing.JLabel lblEstado;
+    public javax.swing.JLabel lblFecha;
+    public javax.swing.JLabel lblFechaDeEmision;
+    public javax.swing.JLabel lblFechaDeInasistencia;
+    public javax.swing.JLabel lblHoraCierre;
+    public javax.swing.JLabel lblHoraDeGeneracion;
+    public javax.swing.JLabel lblHoraInicio;
+    public javax.swing.JLabel lblNombreEmpleado;
+    public javax.swing.JTable listaDeAsistencia;
+    public javax.swing.JTable listaDeInasistenciaPorEmpleado;
+    public javax.swing.JTable listaDeInasistencias;
+    public javax.swing.JTable listadoDeDepartamentos;
+    public com.toedter.calendar.JMonthChooser mesInasistencia;
+    private org.edisoncor.gui.panel.Panel panel1;
+    private org.edisoncor.gui.panel.Panel panel12;
+    private org.edisoncor.gui.panel.Panel panel13;
+    private org.edisoncor.gui.panel.Panel panel2;
+    private org.edisoncor.gui.panel.Panel panel3;
+    private org.edisoncor.gui.panel.Panel panel6;
+    private org.edisoncor.gui.panel.Panel panel7;
+    private org.edisoncor.gui.panel.Panel panel8;
+    private org.edisoncor.gui.panel.Panel panel9;
+    private javax.swing.JPanel panelDeFunciones;
+    private org.edisoncor.gui.panel.PanelImage panelDeImagen;
+    public javax.swing.JPanel panelInformacionDeEmpleado;
+    private javax.swing.JPanel panelSubMenu;
+    public org.edisoncor.gui.varios.ClockDigital relojDigital;
+    public javax.swing.JTable tablaReportAsistencia;
+    public org.edisoncor.gui.textField.TextFieldRectImage txtApellidoEmpleado;
+    public org.edisoncor.gui.textField.TextFieldRectImage txtBusquedaPorCedula;
+    public javax.swing.JFormattedTextField txtCedula;
+    public javax.swing.JTextField txtCedulaEmpleadoBuscar;
+    public org.edisoncor.gui.passwordField.PasswordFieldRoundImage txtClave;
+    public org.edisoncor.gui.textField.TextFieldRectImage txtDepartamentoAsignado;
+    public javax.swing.JSpinner txtDiasDePermiso;
+    public org.edisoncor.gui.textField.TextFieldRoundImage txtNombreDeUsuario;
+    public org.edisoncor.gui.textField.TextFieldRectImage txtNombreEmpleado;
+    public com.toedter.calendar.JYearChooser yearInasistencia;
+    // End of variables declaration//GEN-END:variables
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

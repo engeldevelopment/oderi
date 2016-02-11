@@ -42,12 +42,13 @@ public class SubMenuController extends Controlador {
         vista.panelInformacionDeEmpleado.setVisible(true);
     }
     
-    private void verPanelDeInasistencia() {
+    private void ocultarPaneles() {
         vista.panelInformacionDeEmpleado.setVisible(false);
     }
     
-    private void ocultarPaneles() {
-        vista.panelInformacionDeEmpleado.setVisible(false);
+    private void establecerSolicitante() {
+        vista.NuevoPermiso.setTitle("Solicitante: "+vista.lblNombreEmpleado.getText()+" "+
+                        vista.lblApellidosEmpleado.getText());
     }
     
     private class ManejadorDeEventos implements ActionListener, WindowListener {
@@ -60,7 +61,11 @@ public class SubMenuController extends Controlador {
                 verPanelDeInformacion();
                 
             } else if (evento.equals(vista.btnInasistenciasDeEmpleado)) {
-                verPanelDeInasistencia();
+                ventana(vista.InasistenciaPersonal, 560, 345);
+            
+            } else if (evento.equals(vista.btnPermisosEmpleado)) {
+                establecerSolicitante();
+                ventana(vista.NuevoPermiso, 400, 265);
             }
         }
 

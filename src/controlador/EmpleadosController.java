@@ -1,11 +1,13 @@
 
 package controlador;
 
-import dao.EmpleadoDAO;
+import dao.*;
+import excepciones.*;
 import java.awt.event.*;
-import modelo.Empleado;
-import modelo.ValidacionDeTexto;
+import java.util.List;
+import modelo.*;
 import nicon.notify.core.*;
+import presenter.*;
 import vista.Menu;
 
 public class EmpleadosController extends Controlador {
@@ -15,6 +17,13 @@ public class EmpleadosController extends Controlador {
     private EmpleadoDAO servicioEmpleado;
     private Empleado empleado;
     private ValidacionDeTexto validacion;
+    private DepartamentoDAO servicioDepartamento;
+    private Departamento departamento;
+    private DepartamentoPresenter dptoPresenter;
+    private EmpleadoPresenter empleadoPresenter;
+    private ValidacionDeTexto texto;
+    private String nombre;
+    private String apellido;
     
     public EmpleadosController(Menu vista) {
         this.vista = vista;
@@ -25,21 +34,37 @@ public class EmpleadosController extends Controlador {
          manejador = new ManejadorDeEventos();
          servicioEmpleado = new EmpleadoDAO();
          validacion = new ValidacionDeTexto();
+         servicioDepartamento = new DepartamentoDAO();
+         dptoPresenter = new DepartamentoPresenter(vista);
+         empleadoPresenter = new EmpleadoPresenter(vista);
+         texto = new ValidacionDeTexto();
     }
 
     @Override
     protected void cargarInformacionDeLaBDs() {
-        
+        listarDepartamentos();
     }
 
     @Override
     protected void boton() {
         vista.btnBuscarEmpleado.addActionListener(manejador);
+        vista.btnAgregarDepartamento.addActionListener(manejador);
+        vista.btnAsignarDepartamento.addActionListener(manejador);
+        vista.NuevoEmpleado.addWindowListener(manejador);
+        vista.btnGuardarEmpleado.addActionListener(manejador);
     }
 
     @Override
     protected void campo() {
         vista.txtCedulaEmpleadoBuscar.addKeyListener(manejador);
+    }
+    
+    private void listarDepartamentos() {
+    
+        List<Departamento> listado = (List<Departamento>) 
+                servicioDepartamento.buscarTodos();
+        dptoPresenter.setLista(listado);
+        dptoPresenter.verLista();
     }
 
     String cedula;
@@ -76,10 +101,10 @@ public class EmpleadosController extends Controlador {
     
     private void verficarExistencia() {
         if (empleado.esNull()) {
-            int respuesta = Notification.windowConfirmMessage(vista, 
+            int deseaRegistrarlo = Notification.windowConfirmMessage(vista, 
                     "Disculpe!", 
                     "Este empleado no existe. ¿Desea registrarlo?");
-            if (respuesta == 1) {
+            if (deseaRegistrarlo == 1) {
                 vista.txtCedula.setText(cedula);
                 ventana(vista.NuevoEmpleado, 360, 295);
             }
@@ -98,7 +123,71 @@ public class EmpleadosController extends Controlador {
         vista.lblDepartamentoEmpleado.setText(empleado.getDepartamento().getNombre());
     }
     
-    private class ManejadorDeEventos implements ActionListener, KeyListener {
+    private void guardar() {
+        
+        try {
+            obtenerLosDatosDelEmpleado();
+            validarDatosDelEmpleado();
+            procesarEmpleado();
+                 
+        } catch (SinDepartamentoAsignadoException ex) {
+           
+            Notification.windowMessage(vista, 
+                    "Disculpe!", 
+                    "Debe asignar el departamento por favor..");
+        } catch (CamposVaciosException | ContenidoInvalidoException ex) {
+            Notification.windowMessage(vista, "Disculpe!", ex.getMessage());
+        }
+    }
+    
+    private void obtenerLosDatosDelEmpleado() {
+        cedula = vista.txtCedula.getText().replace(".", "");
+        nombre = vista.txtNombreEmpleado.getText();
+        apellido = vista.txtApellidoEmpleado.getText();
+    }
+    
+    private void validarDatosDelEmpleado() throws CamposVaciosException, ContenidoInvalidoException {
+        if (texto.estaVacio(nombre) || texto.estaVacio(apellido)) {
+            throw new CamposVaciosException("Todos los campos son obligatorios.");
+        } else if (!texto.esValido(nombre) || !texto.esValido(apellido)) {
+           throw new ContenidoInvalidoException("No se permiten caracteres especiales y/o números en los campos.");
+        }
+    }
+    
+    private void procesarEmpleado() throws SinDepartamentoAsignadoException {
+        empleado = new Empleado(cedula, nombre, apellido, departamento);
+        empleado.listo();
+        servicioEmpleado.guardar(empleado);
+        empleadoPresenter.limpiarCampos();
+                
+        Notification.windowMessage(vista, 
+                    "Listo!", 
+                    "Ha sido registrado el empleado exitosamente!",
+                    NiconEvent.NOTIFY_OK);
+    }
+   
+   long idDepartamento = 0; 
+   private void asignarDepartamento() {
+        if (noSeleccionoUnDepartamento()) {
+            Notification.windowMessage(vista, 
+                    "Disculpe!", 
+                    "Debe seleccionar el departamento para asignarlo al empleado.");
+        } else {
+            idDepartamento = Integer.parseInt(vista.listadoDeDepartamentos.getValueAt(fila, 0).toString());
+            departamento = servicioDepartamento.buscar(idDepartamento);
+            vista.txtDepartamentoAsignado.setText(departamento.getNombre());
+            vista.VistaSeleccionarDepartamento.dispose();
+        }
+    }
+    
+    int fila = 0;
+    private boolean noSeleccionoUnDepartamento() {
+        fila = vista.listadoDeDepartamentos.getSelectedRow();
+        return fila == -1;
+    }
+    
+    private class ManejadorDeEventos implements ActionListener, KeyListener, 
+            WindowListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -106,7 +195,15 @@ public class EmpleadosController extends Controlador {
             
             if(evento.equals(vista.btnBuscarEmpleado)) {
                validarCedulaABuscar();
-            } 
+               
+            } else if (evento.equals(vista.btnAgregarDepartamento)) {
+                ventana(vista.VistaSeleccionarDepartamento, 400, 217);
+            } else if (evento.equals(vista.btnAsignarDepartamento)) {
+                asignarDepartamento();
+                
+            } else if (evento.equals(vista.btnGuardarEmpleado)) {
+                guardar();
+            }
         }
 
         @Override
@@ -125,6 +222,44 @@ public class EmpleadosController extends Controlador {
 
         @Override
         public void keyReleased(KeyEvent e) {
+            
+        }
+
+        @Override
+        public void windowOpened(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            Object evento = e.getSource();
+            if (evento.equals(vista.NuevoEmpleado)) {
+                empleadoPresenter.limpiarCampos();
+            }
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowActivated(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
             
         }
     

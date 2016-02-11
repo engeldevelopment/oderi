@@ -1,6 +1,7 @@
 
 package controlador;
 
+import reportes.RelacionDeAsistencia;
 import excepciones.*;
 import modelo.*;
 import vista.Menu;

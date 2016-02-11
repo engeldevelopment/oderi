@@ -4,6 +4,7 @@ package modelo;
 import excepciones.*;
 import dao.*;
 import java.util.*;
+import org.joda.time.DateTime;
 
 public class JornadaDeTrabajo extends Jornada {
     
@@ -12,14 +13,14 @@ public class JornadaDeTrabajo extends Jornada {
     private GeneradorDeInasistencia generador;
     
     public JornadaDeTrabajo(List<Empleado> empleados, IServicioAsistencia servicio) {
-        fecha = new Date();
+        fecha = new DateTime();
         this.empleados = empleados;
         this.servicio = servicio;
-        estado = EstadoDeJornada.SIN_INICIAR;
+        estado = EstadoDeJornada.SIN_INICIAR.Valor();
     }
     
     public JornadaDeTrabajo() {
-        estado = EstadoDeJornada.SIN_INICIAR;
+        estado = EstadoDeJornada.SIN_INICIAR.Valor();
     }
 
     public JornadaDeTrabajo(IServicioAsistencia servicio) {
@@ -49,7 +50,7 @@ public class JornadaDeTrabajo extends Jornada {
              agregarALaListaDeAsistencia(alEmpleado);      
         }
         horaDeInicio = JornadaBuild.HoraActual();
-        estado = EstadoDeJornada.EN_CURSO;
+        estado = EstadoDeJornada.EN_CURSO.Valor();
     }
     
     private boolean noHayEmpleadosRegistrados() {
@@ -74,6 +75,6 @@ public class JornadaDeTrabajo extends Jornada {
         }
         
         horaDeCierre = JornadaBuild.HoraActual();
-        estado = EstadoDeJornada.CERRADA;
+        estado = EstadoDeJornada.CERRADA.Valor();
     }
 }

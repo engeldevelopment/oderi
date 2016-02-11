@@ -19,7 +19,7 @@ public class AsistenciaBuild {
         return new Time(new Date().getTime());
     }
     
-    public static Date fechaActual() {
-        return new DateTime().toDate();
+    public static DateTime fechaActual() {
+        return new DateTime();
     }
 }

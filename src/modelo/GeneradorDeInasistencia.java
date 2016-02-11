@@ -4,6 +4,7 @@ package modelo;
 import dao.*;
 import java.sql.Time;
 import java.util.*;
+import org.joda.time.DateTime;
 
 public class GeneradorDeInasistencia {
     
@@ -33,7 +34,7 @@ public class GeneradorDeInasistencia {
     }
     
     private Inasistencia generarInasistenciaAlEmpleado(Empleado empleado, 
-            Date dia) {
+            DateTime dia) {
         return new Inasistencia(empleado, dia, horaActual,motivo);
     }
 }

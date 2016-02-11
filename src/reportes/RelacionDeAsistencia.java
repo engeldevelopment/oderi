@@ -1,8 +1,9 @@
 
-package modelo;
+package reportes;
 
 import excepciones.*;
 import dao.*;
+import modelo.Jornada;
 
 public class RelacionDeAsistencia {
     

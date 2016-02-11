@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>JornadaDAO.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsistenciasOderiV2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dao</a> &gt; <span class="el_source">JornadaDAO.java</span></div><h1>JornadaDAO.java</h1><pre class="source lang-java linenums">
+package dao;
+
+import modelo.*;
+import nullObjects.NullJornada;
+import java.util.Collection;
+import nicon.notify.core.*;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
+import hibernate.HibernateUtil;
+
+public class JornadaDAO implements IDAO&lt;Jornada&gt; {
+
+    private Session sesion;
+
+<span class="nc" id="L16">    public JornadaDAO() {</span>
+    
+<span class="nc" id="L18">    }</span>
+    
+    
+<span class="nc" id="L21">    public JornadaDAO(Session sesion) {</span>
+<span class="nc" id="L22">        this.sesion = sesion;</span>
+<span class="nc" id="L23">    }</span>
+    
+    @Override
+    public void guardar(Jornada t) {
+        try {
+<span class="nc" id="L28">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L29">            sesion.beginTransaction();</span>
+<span class="nc" id="L30">            sesion.save(t);</span>
+<span class="nc" id="L31">            sesion.getTransaction().commit();</span>
+<span class="nc" id="L32">        } catch (HibernateException e) {</span>
+<span class="nc" id="L33">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L34">                    +e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+<span class="nc" id="L37">            sesion.close();</span>
+<span class="nc" id="L38">        }</span>
+<span class="nc" id="L39">    }</span>
+
+    @Override
+    public Jornada buscar(Object fecha) {
+<span class="nc" id="L43">        Jornada jornada = new NullJornada();</span>
+        try {
+<span class="nc" id="L45">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L46">            sesion.beginTransaction();</span>
+<span class="nc" id="L47">            Criteria criterio = sesion.createCriteria(JornadaDeTrabajo.class);</span>
+<span class="nc" id="L48">            criterio.add(Restrictions.eq(&quot;fecha&quot;, fecha));</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">            if (!criterio.list().isEmpty()) {</span>
+<span class="nc" id="L50">                jornada = (JornadaDeTrabajo) criterio.list().get(0);</span>
+            } 
+<span class="nc" id="L52">        } catch (HibernateException e) {</span>
+<span class="nc" id="L53">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L54">                    +e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+<span class="nc" id="L57">            sesion.close();</span>
+<span class="nc" id="L58">        }</span>
+<span class="nc" id="L59">        return jornada;</span>
+    }
+    
+    public Jornada jornadaDeHoy() {
+<span class="nc" id="L63">         Jornada jornada = new JornadaDeTrabajo();</span>
+        try {
+<span class="nc" id="L65">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L66">            sesion.beginTransaction();</span>
+<span class="nc" id="L67">            Query diaDeHoy = </span>
+<span class="nc" id="L68">                    sesion.createQuery(&quot;FROM JornadaDeTrabajo as j WHERE j.fecha = current_date&quot;);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">           if (diaDeHoy.list().isEmpty()) {</span>
+<span class="nc" id="L70">               return new NullJornada();</span>
+           }
+<span class="nc" id="L72">           jornada = (JornadaDeTrabajo) diaDeHoy.list().get(0);</span>
+<span class="nc" id="L73">        } catch (HibernateException e) {</span>
+<span class="nc" id="L74">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L75">                    + e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+<span class="nc" id="L77">        }</span>
+<span class="nc" id="L78">        return jornada;</span>
+    }
+
+    @Override
+    public void actualizar(Jornada t) {
+        try {
+<span class="nc" id="L84">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L85">            sesion.beginTransaction();</span>
+<span class="nc" id="L86">            sesion.update(t);</span>
+<span class="nc" id="L87">            sesion.getTransaction().commit();</span>
+<span class="nc" id="L88">        } catch (HibernateException e) {</span>
+<span class="nc" id="L89">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L90">                    +e.getMessage(), </span>
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+<span class="nc" id="L93">            sesion.close();</span>
+<span class="nc" id="L94">        }</span>
+<span class="nc" id="L95">    }</span>
+
+    @Override
+    public void eliminar(Jornada t) {
+        
+<span class="nc" id="L100">    }</span>
+
+    @Override
+    public Collection&lt;Jornada&gt; buscarTodos() {
+<span class="nc" id="L104">        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); //To change body of generated methods, choose Tools | Templates.</span>
+    }
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

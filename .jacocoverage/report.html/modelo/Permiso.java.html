@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Permiso.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsistenciasOderiV2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">modelo</a> &gt; <span class="el_source">Permiso.java</span></div><h1>Permiso.java</h1><pre class="source lang-java linenums">
+package modelo;
+
+import excepciones.*;
+import org.joda.time.DateTime;
+
+public class Permiso {
+   
+    private Long id;
+    private DateTime fechaDeEmision;
+    private DateTime fechaDeInicio;
+    private DateTime fechaDeCorte;
+    private int numeroDeDias;
+    
+<span class="nc" id="L15">    public Permiso(DateTime fechaDeEmision, DateTime fechaDeInicio, int dias) {</span>
+<span class="nc" id="L16">       this.fechaDeEmision = fechaDeEmision;</span>
+<span class="nc" id="L17">       this.fechaDeInicio = fechaDeInicio;</span>
+<span class="nc" id="L18">       this.numeroDeDias = dias;</span>
+<span class="nc" id="L19">    }</span>
+
+<span class="nc" id="L21">    public Permiso() {</span>
+    
+<span class="nc" id="L23">    }</span>
+
+    public Long getId() {
+<span class="nc" id="L26">        return id;</span>
+    }
+
+    private void setId(Long id) {
+<span class="nc" id="L30">        this.id = id;</span>
+<span class="nc" id="L31">    }</span>
+
+    public DateTime getFechaDeEmision() {
+<span class="nc" id="L34">        return fechaDeEmision;</span>
+    }
+
+    private void setFechaDeEmision(DateTime fechaDeEmision) {
+<span class="nc" id="L38">        this.fechaDeEmision = fechaDeEmision;</span>
+<span class="nc" id="L39">    }</span>
+
+    public DateTime getFechaDeInicio() {
+<span class="nc" id="L42">        return fechaDeInicio;</span>
+    }
+
+    private void setFechaDeInicio(DateTime fechaDeInicio) {
+<span class="nc" id="L46">        this.fechaDeInicio = fechaDeInicio;</span>
+<span class="nc" id="L47">    }</span>
+
+    public DateTime getFechaDeCorte() {
+<span class="nc" id="L50">        return fechaDeCorte;</span>
+    }
+
+    private void setFechaDeCorte(DateTime fechaDeCorte) {
+<span class="nc" id="L54">        this.fechaDeCorte = fechaDeCorte;</span>
+<span class="nc" id="L55">    }</span>
+
+    public int getNumeroDeDias() {
+<span class="nc" id="L58">        return numeroDeDias;</span>
+    }
+
+    private void setNumeroDeDias(int numeroDeDias) {
+<span class="nc" id="L62">        this.numeroDeDias = numeroDeDias;</span>
+<span class="nc" id="L63">    }</span>
+    
+
+    public void emitir() throws NumeroDeDiaIncorrectoException,
+            FechaDeInicioIncorrecta,
+            FechaDeInicioVacia {
+        
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (fechaDeInicio == null) {</span>
+<span class="nc" id="L71">          throw new FechaDeInicioVacia(&quot;Ingresa la fecha de inicio por favor.&quot;);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        } else if (ingresoUnaFechaPasadaOIgualALaFechaDeEmision()){</span>
+<span class="nc" id="L73">            throw new FechaDeInicioIncorrecta(&quot;Verifique la fecha de inicio por favor.&quot;);</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        } else if(esIncorrectoElNumeroDeDias()) {</span>
+<span class="nc" id="L75">            throw new NumeroDeDiaIncorrectoException(&quot;Debes ingresar de 1 a 3 días de permiso.&quot;);</span>
+        } else {    
+<span class="nc" id="L77">           generarFechaDeCorte();</span>
+        }
+<span class="nc" id="L79">    }</span>
+    
+    private boolean ingresoUnaFechaPasadaOIgualALaFechaDeEmision() {
+<span class="nc" id="L82">        return fechaDeInicio.isBefore(fechaDeEmision);</span>
+    }
+    
+    private boolean esIncorrectoElNumeroDeDias() {
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        return numeroDeDias &lt;= 0;</span>
+    }
+    
+    private boolean esViernes() {
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        return fechaDeInicio.getDayOfWeek() == 5;</span>
+    }
+    
+    private boolean sonTresDias() {
+<span class="nc bnc" id="L94" title="All 2 branches missed.">        return numeroDeDias == 3;</span>
+    }
+    private void generarFechaDeCorteConDiasAdicionales() {
+<span class="nc" id="L97">        int diasAdicionales = numeroDeDias + 1;</span>
+<span class="nc" id="L98">        this.fechaDeCorte = fechaDeInicio;</span>
+<span class="nc" id="L99">        this.fechaDeCorte.plusDays(diasAdicionales);</span>
+<span class="nc" id="L100">    }</span>
+    
+    private void generarFechaDeCorte() {
+<span class="nc" id="L103">        this.fechaDeCorte = fechaDeInicio.plusDays(getNumeroDeDias());</span>
+<span class="nc" id="L104">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

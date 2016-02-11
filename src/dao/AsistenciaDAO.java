@@ -7,6 +7,7 @@ import nicon.notify.core.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import hibernate.HibernateUtil;
+import org.joda.time.DateTime;
 
 public class AsistenciaDAO implements IServicioAsistencia {
     
@@ -165,7 +166,7 @@ public class AsistenciaDAO implements IServicioAsistencia {
     }
 
     @Override
-    public Collection<Asistencia> asistenciasDelDia(Date fecha) {
+    public Collection<Asistencia> asistenciasDelDia(DateTime fecha) {
         Collection<Asistencia> lista = new ArrayList<>();
         try {
             sesion = HibernateUtil.getSessionFactory().openSession();

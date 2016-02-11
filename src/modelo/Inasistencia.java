@@ -2,19 +2,19 @@
 package modelo;
 
 import java.sql.Time;
-import java.util.Date;
+import org.joda.time.DateTime;
 
 public class Inasistencia {
     
     private Long id;
-    private Date dia;
+    private DateTime dia;
     private Time horaDeGeneracion;
     private MotivoDeInasistencia motivo;
     private Empleado empleado;
     private boolean justificada;
     private Justificacion justificacion;
     
-    public Inasistencia(Empleado empleado, Date dia, Time horaDeGeneracion, 
+    public Inasistencia(Empleado empleado, DateTime dia, Time horaDeGeneracion, 
              MotivoDeInasistencia motivo) {
         this.empleado = empleado;
         this.dia = dia;
@@ -35,11 +35,11 @@ public class Inasistencia {
         return empleado;
     }
 
-    private void setDia(Date dia) {
+    private void setDia(DateTime dia) {
         this.dia = dia;
     }
     
-    public Date getDia() {
+    public DateTime getDia() {
         return dia;
     }
 

@@ -3,24 +3,23 @@ package modelo;
 
 import excepciones.*;
 import java.sql.Time;
-import java.util.Date;
 import org.joda.time.*;
 
 public class Asistencia {
     
     private Long id;
-    private Date dia;
+    private DateTime dia;
     private Time horaDeEntrada;
     private Time horaDeSalida;
     private Empleado empleado;
     
     public Asistencia() {
-        dia = new Date();
+        dia = new DateTime();
         horaDeEntrada = AsistenciaBuild.horaSinFirmar();
         horaDeSalida = AsistenciaBuild.horaSinFirmar();
     }
     
-    public Asistencia(Empleado empleado, Date fecha) {
+    public Asistencia(Empleado empleado, DateTime fecha) {
         this.empleado = empleado;
         this.dia = fecha;
         horaDeEntrada = AsistenciaBuild.horaSinFirmar();
@@ -51,11 +50,11 @@ public class Asistencia {
         return horaDeSalida;
     }
 
-    public Date getDia() {
+    public DateTime getDia() {
         return dia;
     }
 
-    private void setDia(Date dia) {
+    private void setDia(DateTime dia) {
         this.dia = dia;
     }
 

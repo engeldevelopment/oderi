@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AsistenciaController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsistenciasOderiV2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">controlador</a> &gt; <span class="el_source">AsistenciaController.java</span></div><h1>AsistenciaController.java</h1><pre class="source lang-java linenums">
+package controlador;
+
+import modelo.*;
+import excepciones.*;
+import presenter.AsistenciaPresenter;
+import dao.AsistenciaDAO;
+import vista.Menu;
+import dao.IServicioAsistencia;
+import java.awt.event.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import nicon.notify.core.*;
+
+public class AsistenciaController extends Controlador {
+    
+    private IServicioAsistencia servicio;
+    private Asistencia asistencia;
+    private AsistenciaPresenter presenter;
+    private List&lt;Asistencia&gt; listadoDeAsistencias;
+    private Menu vista;
+    private ManejadorDeEventoAction manejador;
+    private SimpleDateFormat formatoDeFecha;
+    
+<span class="nc" id="L25">    public AsistenciaController(Menu vista) {</span>
+<span class="nc" id="L26">        this.vista = vista;</span>
+<span class="nc" id="L27">    }</span>
+
+    @Override
+    protected void instancias() {
+<span class="nc" id="L31">        servicio = new AsistenciaDAO();</span>
+<span class="nc" id="L32">        manejador = new ManejadorDeEventoAction();</span>
+<span class="nc" id="L33">        formatoDeFecha = new SimpleDateFormat(&quot;EEEE, dd MMM YYYY&quot;);</span>
+<span class="nc" id="L34">        vista.lblFecha.setText(&quot;&quot;+formatoDeFecha.format(new Date()));</span>
+<span class="nc" id="L35">        presenter = new AsistenciaPresenter(vista);</span>
+<span class="nc" id="L36">    }</span>
+    
+    @Override
+    protected void cargarInformacionDeLaBDs() {
+<span class="nc" id="L40">         cargarAsistencias();</span>
+<span class="nc" id="L41">    }</span>
+    
+    @Override
+    protected void boton() {
+<span class="nc" id="L45">        vista.btnEntrada.addActionListener(manejador);</span>
+<span class="nc" id="L46">        vista.btnSalida.addActionListener(manejador);</span>
+<span class="nc" id="L47">        vista.btnIniciarJornada.addActionListener(manejador);</span>
+<span class="nc" id="L48">        vista.txtBusquedaPorCedula.addKeyListener(manejador);</span>
+<span class="nc" id="L49">        vista.btnVerReporteDeAsistencia.addActionListener(manejador);</span>
+<span class="nc" id="L50">    }</span>
+    
+    @Override
+    protected void item() {
+<span class="nc" id="L54">        vista.itemEntradaSalida.addActionListener(manejador);</span>
+<span class="nc" id="L55">    }</span>
+    
+    private void cargarAsistencias(){
+<span class="nc" id="L58">        buscarAsistenciaDeHoy();</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if (hayAsistencias()) {</span>
+<span class="nc" id="L60">            mostrarLista();</span>
+        } 
+<span class="nc" id="L62">    }</span>
+    
+    private void buscarAsistenciaDeHoy() {
+<span class="nc" id="L65">        listadoDeAsistencias = (List&lt;Asistencia&gt;) servicio.asistenciasDeHoy();</span>
+<span class="nc" id="L66">    }</span>
+    
+    private boolean hayAsistencias() {
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        return !listadoDeAsistencias.isEmpty();</span>
+    }
+    
+    private void mostrarLista() {
+<span class="nc" id="L73">        presenter.setLista(listadoDeAsistencias);</span>
+<span class="nc" id="L74">        presenter.verLista();</span>
+<span class="nc" id="L75">    }</span>
+    
+    private void BuscarPorCedula() {
+<span class="nc" id="L78">        listadoDeAsistencias = (List&lt;Asistencia&gt;) </span>
+<span class="nc" id="L79">                servicio.buscarAsistenciaDelEmpleado(Filtro());</span>
+<span class="nc" id="L80">        mostrarLista();</span>
+<span class="nc" id="L81">    }</span>
+    
+    private String Filtro() {
+<span class="nc" id="L84">        return vista.txtBusquedaPorCedula.getText();</span>
+    }
+    
+<span class="nc" id="L87">    int asistenciaSeleccionada = 0; </span>
+    private void marcarEntrada() {
+        try {
+            
+<span class="nc" id="L91">            ubicarAsistencia();</span>
+<span class="nc" id="L92">            asistencia.marcarEntrada();</span>
+<span class="nc" id="L93">            procesarAsistencia();</span>
+<span class="nc" id="L94">            Notification.windowMessage(vista, </span>
+                &quot;Listo!&quot;, 
+                &quot;Entrada Marcada&quot;, NiconEvent.NOTIFY_OK);
+        
+<span class="nc" id="L98">        } catch (AsistenciaMarcadaException e) {</span>
+            
+<span class="nc" id="L100">            Notification.windowMessage(vista, </span>
+                &quot;Disculpe!&quot;, 
+                &quot;Ya a este empleado se le marcó la entrada!&quot;,
+                NiconEvent.NOTIFY_DEFAULT);
+            
+<span class="nc" id="L105">        } catch (SinSeleccionarAsistencia e) {</span>
+            
+<span class="nc" id="L107">            Notification.windowMessage(vista,</span>
+                &quot;Disculpe!&quot;,
+                &quot;Debe seleccionar una asistencia.&quot;, 
+                NiconEvent.NOTIFY_WARNING);
+<span class="nc" id="L111">        }</span>
+<span class="nc" id="L112">    }</span>
+    
+    private void ubicarAsistencia() throws SinSeleccionarAsistencia {
+<span class="nc" id="L115">        seleccionarAsistencia(); </span>
+<span class="nc" id="L116">        asistencia = servicio.buscar(asistenciaSeleccionada());</span>
+<span class="nc" id="L117">    }</span>
+    
+    private void seleccionarAsistencia() throws SinSeleccionarAsistencia {
+<span class="nc" id="L120">        asistenciaSeleccionada = vista.listaDeAsistencia.getSelectedRow();</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        if (asistenciaSeleccionada == -1)</span>
+<span class="nc" id="L122">            throw new SinSeleccionarAsistencia();</span>
+<span class="nc" id="L123">    }</span>
+    
+    private Long asistenciaSeleccionada() {
+<span class="nc" id="L126">        return Long.parseLong(vista.listaDeAsistencia.getValueAt(</span>
+                asistenciaSeleccionada, 
+<span class="nc" id="L128">                        0).toString());</span>
+    }
+    
+    private void procesarAsistencia() {
+<span class="nc" id="L132">        servicio.guardar(asistencia);</span>
+<span class="nc" id="L133">        actualizarListaDeAsistencia();</span>
+<span class="nc" id="L134">    }</span>
+    
+    private void marcarSalida() {
+        try {
+            
+<span class="nc" id="L139">            ubicarAsistencia();</span>
+<span class="nc" id="L140">            asistencia.marcarSalida();</span>
+<span class="nc" id="L141">            procesarAsistencia();</span>
+<span class="nc" id="L142">            Notification.windowMessage(vista, </span>
+                &quot;Listo!&quot;, 
+                &quot;Salida Marcada&quot;, NiconEvent.NOTIFY_OK);
+        
+<span class="nc" id="L146">        } catch (AsistenciaMarcadaException  e) {</span>
+            
+<span class="nc" id="L148">            Notification.windowMessage(vista, </span>
+                &quot;Disculpe!&quot;, 
+                &quot;Ya a este empleado se le marcó su salida!&quot;,
+                NiconEvent.NOTIFY_DEFAULT);
+        
+<span class="nc" id="L153">        } catch(EntradaSinMarcarException e) {</span>
+            
+<span class="nc" id="L155">            Notification.windowMessage(vista, </span>
+                &quot;Disculpe!&quot;, 
+                &quot;Primero marque la entrada!&quot;,
+                NiconEvent.NOTIFY_DEFAULT);
+        
+<span class="nc" id="L160">        } catch (SinSeleccionarAsistencia ex) {</span>
+        
+<span class="nc" id="L162">            Notification.windowMessage(vista,</span>
+                &quot;Disculpe!&quot;,
+                &quot;Debe seleccionar una asistencia.&quot;, 
+                NiconEvent.NOTIFY_WARNING);
+<span class="nc" id="L166">        } </span>
+<span class="nc" id="L167">    }</span>
+    
+    private void actualizarListaDeAsistencia() {
+<span class="nc" id="L170">        cargarAsistencias();</span>
+<span class="nc" id="L171">    }</span>
+    
+    
+<span class="nc" id="L174">    private class ManejadorDeEventoAction implements ActionListener, KeyListener {</span>
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L178">            Object evento = e.getSource();</span>
+            
+            
+<span class="nc bnc" id="L181" title="All 2 branches missed.">            if (evento.equals(vista.btnIniciarJornada)) {</span>
+<span class="nc" id="L182">                cargarAsistencias();</span>
+            }
+            
+<span class="nc bnc" id="L185" title="All 2 branches missed.">            if (evento.equals(vista.btnEntrada)) {</span>
+<span class="nc" id="L186">                marcarEntrada();</span>
+            }
+            
+<span class="nc bnc" id="L189" title="All 2 branches missed.">            if (evento.equals(vista.btnSalida)) {</span>
+<span class="nc" id="L190">                marcarSalida();</span>
+            }
+            
+<span class="nc bnc" id="L193" title="All 2 branches missed.">            if (evento.equals(vista.itemEntradaSalida)) {</span>
+<span class="nc" id="L194">                ventana(vista.VistaReporteDeAsistencia, 700, 500);</span>
+            }
+            
+<span class="nc" id="L197">        }</span>
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+            
+<span class="nc" id="L202">        }</span>
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            
+<span class="nc" id="L207">        }</span>
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+<span class="nc" id="L211">             Object eventoLetras = e.getSource();</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">            if (eventoLetras.equals(vista.txtBusquedaPorCedula)) {</span>
+<span class="nc" id="L213">                BuscarPorCedula();</span>
+            }
+<span class="nc" id="L215">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

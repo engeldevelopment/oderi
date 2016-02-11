@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EmpleadosController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AsistenciasOderiV2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">controlador</a> &gt; <span class="el_source">EmpleadosController.java</span></div><h1>EmpleadosController.java</h1><pre class="source lang-java linenums">
+package controlador;
+
+import dao.*;
+import excepciones.*;
+import java.awt.event.*;
+import java.util.List;
+import modelo.*;
+import nicon.notify.core.*;
+import presenter.*;
+import vista.Menu;
+
+public class EmpleadosController extends Controlador {
+
+    private Menu vista;
+    private ManejadorDeEventos manejador;
+    private EmpleadoDAO servicioEmpleado;
+    private Empleado empleado;
+    private ValidacionDeTexto validacion;
+    private DepartamentoDAO servicioDepartamento;
+    private Departamento departamento;
+    private DepartamentoPresenter dptoPresenter;
+    private EmpleadoPresenter empleadoPresenter;
+    private ValidacionDeTexto texto;
+    private String nombre;
+    private String apellido;
+    
+<span class="nc" id="L28">    public EmpleadosController(Menu vista) {</span>
+<span class="nc" id="L29">        this.vista = vista;</span>
+<span class="nc" id="L30">    }</span>
+    
+    @Override
+    protected void instancias() {
+<span class="nc" id="L34">         manejador = new ManejadorDeEventos();</span>
+<span class="nc" id="L35">         servicioEmpleado = new EmpleadoDAO();</span>
+<span class="nc" id="L36">         validacion = new ValidacionDeTexto();</span>
+<span class="nc" id="L37">         servicioDepartamento = new DepartamentoDAO();</span>
+<span class="nc" id="L38">         dptoPresenter = new DepartamentoPresenter(vista);</span>
+<span class="nc" id="L39">         empleadoPresenter = new EmpleadoPresenter(vista);</span>
+<span class="nc" id="L40">         texto = new ValidacionDeTexto();</span>
+<span class="nc" id="L41">    }</span>
+
+    @Override
+    protected void cargarInformacionDeLaBDs() {
+<span class="nc" id="L45">        listarDepartamentos();</span>
+<span class="nc" id="L46">    }</span>
+
+    @Override
+    protected void boton() {
+<span class="nc" id="L50">        vista.btnBuscarEmpleado.addActionListener(manejador);</span>
+<span class="nc" id="L51">        vista.btnAgregarDepartamento.addActionListener(manejador);</span>
+<span class="nc" id="L52">        vista.btnAsignarDepartamento.addActionListener(manejador);</span>
+<span class="nc" id="L53">        vista.NuevoEmpleado.addWindowListener(manejador);</span>
+<span class="nc" id="L54">        vista.btnGuardarEmpleado.addActionListener(manejador);</span>
+<span class="nc" id="L55">    }</span>
+
+    @Override
+    protected void campo() {
+<span class="nc" id="L59">        vista.txtCedulaEmpleadoBuscar.addKeyListener(manejador);</span>
+<span class="nc" id="L60">    }</span>
+    
+    private void listarDepartamentos() {
+    
+<span class="nc" id="L64">        List&lt;Departamento&gt; listado = (List&lt;Departamento&gt;) </span>
+<span class="nc" id="L65">                servicioDepartamento.buscarTodos();</span>
+<span class="nc" id="L66">        dptoPresenter.setLista(listado);</span>
+<span class="nc" id="L67">        dptoPresenter.verLista();</span>
+<span class="nc" id="L68">    }</span>
+
+    String cedula;
+    private void validarCedulaABuscar() {
+<span class="nc" id="L72">       cedula = vista.txtCedulaEmpleadoBuscar.getText();</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">       if (validacion.estaVacio(cedula)) {</span>
+<span class="nc" id="L74">           Notification.windowMessage(vista, </span>
+                   &quot;Disculpe!&quot;, 
+                   &quot;Debe ingresar un número de cédula.&quot;,
+                   NiconEvent.NOTIFY_WARNING);
+<span class="nc bnc" id="L78" title="All 2 branches missed.">       } else if (!validacion.esDigito(cedula)) {</span>
+<span class="nc" id="L79">           Notification.windowMessage(vista, </span>
+                   &quot;Disculpe!&quot;, 
+                   &quot;La cédula no debe contener caracteres especiales ni letras.&quot;,
+                   NiconEvent.NOTIFY_WARNING);
+<span class="nc bnc" id="L83" title="All 2 branches missed.">       }else if (!esValidaLaCedula()) {</span>
+<span class="nc" id="L84">           Notification.windowMessage(vista, </span>
+                   &quot;Disculpe!&quot;, 
+                   &quot;El número de cédula es incorrecto.&quot;,
+                   NiconEvent.NOTIFY_WARNING);
+       } else {
+<span class="nc" id="L89">           buscar();</span>
+       }
+<span class="nc" id="L91">    }</span>
+    
+    private boolean esValidaLaCedula() {
+<span class="nc bnc" id="L94" title="All 4 branches missed.">        return cedula.length() &gt;= 6 &amp;&amp; cedula.length() &lt;= 8;</span>
+    }
+    
+    private void buscar() {
+<span class="nc" id="L98">        empleado = servicioEmpleado.buscar(cedula);</span>
+<span class="nc" id="L99">        verficarExistencia();</span>
+<span class="nc" id="L100">    }</span>
+    
+    private void verficarExistencia() {
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        if (empleado.esNull()) {</span>
+<span class="nc" id="L104">            int respuesta = Notification.windowConfirmMessage(vista, </span>
+                    &quot;Disculpe!&quot;, 
+                    &quot;Este empleado no existe. ¿Desea registrarlo?&quot;);
+<span class="nc bnc" id="L107" title="All 2 branches missed.">            if (respuesta == 1) {</span>
+<span class="nc" id="L108">                vista.txtCedula.setText(cedula);</span>
+<span class="nc" id="L109">                ventana(vista.NuevoEmpleado, 360, 295);</span>
+            }
+<span class="nc" id="L111">        } else {</span>
+<span class="nc" id="L112">            establecerInformacionDelEmpleado();</span>
+<span class="nc" id="L113">            vista.txtCedulaEmpleadoBuscar.setText(&quot;&quot;);</span>
+<span class="nc" id="L114">            ventana(vista.VistaSubMenu, 700, 500);</span>
+        }
+<span class="nc" id="L116">    }</span>
+    
+    private void establecerInformacionDelEmpleado() {
+<span class="nc" id="L119">        vista.VistaSubMenu.setTitle(&quot;Empleado: &quot;+empleado.getNombre() +&quot; &quot;+empleado.getApellido());</span>
+<span class="nc" id="L120">        vista.lblCedulaEmpleado.setText(empleado.getCedula());</span>
+<span class="nc" id="L121">        vista.lblNombreEmpleado.setText(empleado.getNombre());</span>
+<span class="nc" id="L122">        vista.lblApellidosEmpleado.setText(empleado.getApellido());</span>
+<span class="nc" id="L123">        vista.lblDepartamentoEmpleado.setText(empleado.getDepartamento().getNombre());</span>
+<span class="nc" id="L124">    }</span>
+    
+    private void guardar() {
+        
+        try {
+<span class="nc" id="L129">            obtenerLosDatosDelEmpleado();</span>
+<span class="nc" id="L130">            validarDatosDelEmpleado();</span>
+<span class="nc" id="L131">            procesarEmpleado();</span>
+                 
+<span class="nc" id="L133">        } catch (SinDepartamentoAsignadoException ex) {</span>
+           
+<span class="nc" id="L135">            Notification.windowMessage(vista, </span>
+                    &quot;Disculpe!&quot;, 
+                    &quot;Debe asignar el departamento por favor..&quot;);
+<span class="nc" id="L138">        } catch (CamposVaciosException | ContenidoInvalidoException ex) {</span>
+<span class="nc" id="L139">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, ex.getMessage());</span>
+<span class="nc" id="L140">        }</span>
+<span class="nc" id="L141">    }</span>
+    
+    private void obtenerLosDatosDelEmpleado() {
+<span class="nc" id="L144">        cedula = vista.txtCedula.getText().replace(&quot;.&quot;, &quot;&quot;);</span>
+<span class="nc" id="L145">        nombre = vista.txtNombreEmpleado.getText();</span>
+<span class="nc" id="L146">        apellido = vista.txtApellidoEmpleado.getText();</span>
+<span class="nc" id="L147">    }</span>
+    
+    private void validarDatosDelEmpleado() throws CamposVaciosException, ContenidoInvalidoException {
+<span class="nc bnc" id="L150" title="All 4 branches missed.">        if (texto.estaVacio(nombre) || texto.estaVacio(apellido)) {</span>
+<span class="nc" id="L151">            throw new CamposVaciosException(&quot;Todos los campos son obligatorios.&quot;);</span>
+<span class="nc bnc" id="L152" title="All 4 branches missed.">        } else if (!texto.esValido(nombre) || !texto.esValido(apellido)) {</span>
+<span class="nc" id="L153">           throw new ContenidoInvalidoException(&quot;No se permiten caracteres especiales y/o números en los campos.&quot;);</span>
+        }
+<span class="nc" id="L155">    }</span>
+    
+    private void procesarEmpleado() throws SinDepartamentoAsignadoException {
+<span class="nc" id="L158">        empleado = new Empleado(cedula, nombre, apellido, departamento);</span>
+<span class="nc" id="L159">        empleado.listo();</span>
+<span class="nc" id="L160">        servicioEmpleado.guardar(empleado);</span>
+<span class="nc" id="L161">        empleadoPresenter.limpiarCampos();</span>
+                
+<span class="nc" id="L163">        Notification.windowMessage(vista, </span>
+                    &quot;Listo!&quot;, 
+                    &quot;Ha sido registrado el empleado exitosamente!&quot;,
+                    NiconEvent.NOTIFY_OK);
+<span class="nc" id="L167">    }</span>
+   
+<span class="nc" id="L169">   long idDepartamento = 0; </span>
+   private void asignarDepartamento() {
+<span class="nc bnc" id="L171" title="All 2 branches missed.">        if (noSeleccionoUnDepartamento()) {</span>
+<span class="nc" id="L172">            Notification.windowMessage(vista, </span>
+                    &quot;Disculpe!&quot;, 
+                    &quot;Debe seleccionar el departamento para asignarlo al empleado.&quot;);
+        } else {
+<span class="nc" id="L176">            idDepartamento = Integer.parseInt(vista.listadoDeDepartamentos.getValueAt(fila, 0).toString());</span>
+<span class="nc" id="L177">            departamento = servicioDepartamento.buscar(idDepartamento);</span>
+<span class="nc" id="L178">            vista.txtDepartamentoAsignado.setText(departamento.getNombre());</span>
+<span class="nc" id="L179">            vista.VistaSeleccionarDepartamento.dispose();</span>
+        }
+<span class="nc" id="L181">    }</span>
+    
+<span class="nc" id="L183">    int fila = 0;</span>
+    private boolean noSeleccionoUnDepartamento() {
+<span class="nc" id="L185">        fila = vista.listadoDeDepartamentos.getSelectedRow();</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">        return fila == -1;</span>
+    }
+    
+<span class="nc" id="L189">    private class ManejadorDeEventos implements ActionListener, KeyListener, </span>
+            WindowListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L194">            Object evento = e.getSource();</span>
+            
+<span class="nc bnc" id="L196" title="All 2 branches missed.">            if(evento.equals(vista.btnBuscarEmpleado)) {</span>
+<span class="nc" id="L197">               validarCedulaABuscar();</span>
+               
+<span class="nc bnc" id="L199" title="All 2 branches missed.">            } else if (evento.equals(vista.btnAgregarDepartamento)) {</span>
+<span class="nc" id="L200">                ventana(vista.VistaSeleccionarDepartamento, 400, 217);</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">            } else if (evento.equals(vista.btnAsignarDepartamento)) {</span>
+<span class="nc" id="L202">                asignarDepartamento();</span>
+                
+<span class="nc bnc" id="L204" title="All 2 branches missed.">            } else if (evento.equals(vista.btnGuardarEmpleado)) {</span>
+<span class="nc" id="L205">                guardar();</span>
+            }
+<span class="nc" id="L207">        }</span>
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+<span class="nc" id="L211">            Object evento = e.getSource();</span>
+            
+<span class="nc bnc" id="L213" title="All 2 branches missed.">            if (evento.equals(vista.txtCedulaEmpleadoBuscar)) {</span>
+<span class="nc" id="L214">                limitarDigitos(e, vista.txtCedulaEmpleadoBuscar, 8);</span>
+            }
+<span class="nc" id="L216">        }</span>
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            
+<span class="nc" id="L221">        }</span>
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            
+<span class="nc" id="L226">        }</span>
+
+        @Override
+        public void windowOpened(WindowEvent e) {
+            
+<span class="nc" id="L231">        }</span>
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+<span class="nc" id="L235">            Object evento = e.getSource();</span>
+<span class="nc bnc" id="L236" title="All 2 branches missed.">            if (evento.equals(vista.NuevoEmpleado)) {</span>
+<span class="nc" id="L237">                empleadoPresenter.limpiarCampos();</span>
+            }
+<span class="nc" id="L239">        }</span>
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+            
+<span class="nc" id="L244">        }</span>
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+            
+<span class="nc" id="L249">        }</span>
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+            
+<span class="nc" id="L254">        }</span>
+
+        @Override
+        public void windowActivated(WindowEvent e) {
+            
+<span class="nc" id="L259">        }</span>
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+            
+<span class="nc" id="L264">        }</span>
+    
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

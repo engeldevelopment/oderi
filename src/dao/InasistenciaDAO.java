@@ -7,6 +7,7 @@ import nicon.notify.core.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import hibernate.HibernateUtil;
+import org.joda.time.DateTime;
 
 public class InasistenciaDAO implements IServicioInasistencia {
 
@@ -68,7 +69,7 @@ public class InasistenciaDAO implements IServicioInasistencia {
                     +e.getMessage(), 
                     NiconEvent.NOTIFY_ERROR);
         } finally {
-            sesion.clear();
+            sesion.close();
         }
     }
 
@@ -124,7 +125,7 @@ public class InasistenciaDAO implements IServicioInasistencia {
     }
 
     @Override
-    public Collection<Inasistencia> inasistenciasDurante(Date inicio, Date fin) {
+    public Collection<Inasistencia> inasistenciasDurante(DateTime inicio, DateTime fin) {
         List<Inasistencia> lista = new ArrayList<>();
         try {
             sesion = HibernateUtil.getSessionFactory().openSession();

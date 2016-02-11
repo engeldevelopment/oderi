@@ -11,6 +11,9 @@ import hibernate.HibernateUtil;
 public class DepartamentoDAO implements IDAO<Departamento>{
     
     private Session sesion;
+
+    public DepartamentoDAO() {
+    }
     
     public DepartamentoDAO(Session sesion) {
         this.sesion = sesion;
