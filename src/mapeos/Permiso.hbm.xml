@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="modelo.Permiso" table="permisos">
+      <id name="id" column="id">
+          <generator class="native"/>
+      </id>
+      
+      <property type="org.joda.time.contrib.hibernate.PersistentDateTime"
+                name="fechaDeEmision" 
+                column="fecha_emision"/>
+      
+      <property type="org.joda.time.contrib.hibernate.PersistentDateTime"
+                name="fechaDeInicio" 
+                column="fecha_inicio"/>
+      
+      <property type="org.joda.time.contrib.hibernate.PersistentDateTime"
+                name="fechaDeCorte" 
+                column="fecha_corte"/>
+      
+      <property name="numeroDeDias" 
+                column="dias_ausente"/>
+      
+  </class>    
+</hibernate-mapping>
