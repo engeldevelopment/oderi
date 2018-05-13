@@ -3,14 +3,13 @@ package presenter;
 
 import modelo.Inasistencia;
 import vista.Menu;
-import java.util.List;
 import javax.swing.*;
 import javax.swing.table.*;
 import org.joda.time.format.*;
+import reportes.ReporteDeInasistenciaMensual;
 
 public class InasistenciaPresenter {
     
-    private List<Inasistencia> inasistencias;
     private Menu vista;
     private DefaultTableModel tabla;
     private DefaultTableCellRenderer alinear;
@@ -41,15 +40,10 @@ public class InasistenciaPresenter {
                 .getColumn(3).setCellRenderer(alinear);     
     }
     
-    
-    public void setLista(List<Inasistencia> inasistencias) {
-        this.inasistencias = inasistencias;
-    }
-    
-    public void verListado() {
-        tabla.setNumRows(inasistencias.size());
+    public void ver(ReporteDeInasistenciaMensual reporte) {
+        tabla.setNumRows(reporte.getInasistencias().size());
         int index = 0;
-        for (Inasistencia inasistencia : inasistencias) {
+        for (Inasistencia inasistencia : reporte.getInasistencias()) {
             tabla.setValueAt(inasistencia.getId(), index, 0);
             tabla.setValueAt(formato.print(inasistencia.getDia()), index, 1);
             tabla.setValueAt(inasistencia.getMotivo().getNombre(), index, 2);

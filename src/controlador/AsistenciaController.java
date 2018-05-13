@@ -50,11 +50,6 @@ public class AsistenciaController extends Controlador {
         vista.btnVerReporteDeAsistencia.addActionListener(manejador);
     }
     
-    @Override
-    protected void item() {
-        vista.itemEntradaSalida.addActionListener(manejador);
-    }
-    
     private void cargarAsistencias(){
         buscarAsistenciaDeHoy();
         if (hayAsistencias()) {
@@ -213,11 +208,7 @@ public class AsistenciaController extends Controlador {
             if (evento.equals(vista.btnSalida)) {
                 marcarSalida();
             }
-            
-            if (evento.equals(vista.itemEntradaSalida)) {
-                ventana(vista.VistaReporteDeAsistencia, 700, 500);
-            }
-            
+           
             if (evento.equals(vista.btnVerReporteDeAsistencia)) {
                 VerReporteDeEntadaSalida();
             }

@@ -1,18 +1,18 @@
 
 package controlador;
 
-import reportes.ReporteDeInasistenciaSemanal;
+import reportes.*;
 import modelo.*;
 import excepciones.*;
-import presenter.InasistenciaPresenter;
+import presenter.*;
 import vista.Menu;
 import dao.*;
 import java.awt.event.*;
-import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import nicon.notify.core.*;
 import org.joda.time.DateTime;
 import org.joda.time.format.*;
-import presenter.InasistenciaSemanalPresenter;
 
 public class InasistenciasController extends Controlador {
     
@@ -24,6 +24,7 @@ public class InasistenciasController extends Controlador {
     private Inasistencia inasistencia;
     private DateTimeFormatter formato;
     private ReporteDeInasistenciaSemanal reporteSemanal;
+    private ReporteDeInasistenciaMensual reporteMensual;
     private InasistenciaSemanalPresenter inasistenciaSemanalPresenter;
     
     public InasistenciasController(Menu vista) {
@@ -44,11 +45,6 @@ public class InasistenciasController extends Controlador {
     protected void cargarInformacionDeLaBDs() {
          
     }
-
-    @Override
-    protected void item() {
-        vista.itemInasistenciaSemanalGeneral.addActionListener(manejador);
-    }
     
     @Override
     protected void boton() {
@@ -60,19 +56,23 @@ public class InasistenciasController extends Controlador {
         vista.btnVerInasistenciaSemanal.addActionListener(manejador);
     }
     
-    private void buscarInasistenciaDelEmpleado() { 
-        List<Inasistencia> listado =  (List<Inasistencia>) 
-                servicioDeInasistencia.inasistenciasMensualDelEmpleado(
-                        vista.lblCedulaEmpleado.getText(), Mes(), Year());
-        if (!listado.isEmpty()) {
-             presenter.setLista(listado);
-             presenter.verListado();
-        } else {
+    private void buscarInasistenciaDelEmpleado() {
+        try {
+            reporteMensual = new ReporteDeInasistenciaMensual(servicioDeInasistencia, 
+                Empleado(), Mes(), Year());
+            reporteMensual.generar();
+            presenter.ver(reporteMensual);
+            
+        } catch (SinInasistenciasException e) {
+            Notification.windowMessage(vista, "Aviso", 
+                    e.getMessage());
             presenter.borrarListado();
-            Notification.windowMessage(vista,"Aviso!",
-                    "No tiene inasistencias para esta fecha!");
         }
         vista.listaDeInasistenciaPorEmpleado.clearSelection();
+    }
+    
+    private String Empleado() {
+        return vista.lblCedulaEmpleado.getText();
     }
     
     private int Mes() {
@@ -84,13 +84,13 @@ public class InasistenciasController extends Controlador {
     }
     
     private void JustificarInasistencia() {
-        DateTime fechaActual = new DateTime();
-        
-        try {           
+      
+        try {
+            DateTime fechaActual = new DateTime();
+            String observacion = vista.areaObservacion.getText();
             justificacion = new JustificacionDeInasistencia(inasistencia, 
                     fechaActual, servicioDeInasistencia);
            
-            String observacion = vista.areaObservacion.getText();
             justificacion.Justificar(observacion);
             
             Notification.windowMessage(vista, 
@@ -127,7 +127,7 @@ public class InasistenciasController extends Controlador {
         } else {
             inasistencia = servicioDeInasistencia.buscar(obtenerIdDeLaInasistenciaSeleccionada());
             vista.lblHoraDeGeneracion.setText(String.valueOf(inasistencia.getHoraDeGeneracion()));
-            ventana(vista.VistaJustificacion, 400, 345);
+            ventana(vista.VistaJustificacion, 373, 300);
         }
     }
     
@@ -144,23 +144,22 @@ public class InasistenciasController extends Controlador {
     
     private void verInasistenciaSemanal() {
         try {
-            DateTime fechaDeSolicitud = new DateTime(
-                    vista.fechaInasistenciaSemanal.getDate());
-            reporteSemanal = new ReporteDeInasistenciaSemanal(fechaDeSolicitud);
+           
+            reporteSemanal = new ReporteDeInasistenciaSemanal(vista.fechaInasistenciaSemanal.getDate());
             reporteSemanal.setServicio(servicioDeInasistencia);
             
             reporteSemanal.generar();
             inasistenciaSemanalPresenter.ver(reporteSemanal);
             ventana(vista.VistaInasistenciaSemanal, 729, 736);
             
-        } catch (FechaDeInicioIncorrecta | SinInasistenciasException e) {
+        } catch (FechaDeInicioIncorrecta | SinInasistenciasException | SinFechasException e) {
             Notification.windowMessage(vista, "Disculpe!", 
                     e.getMessage(),
                     NiconEvent.NOTIFY_DEFAULT);
-        }
+        } 
     }
     
-    private class ManejadorDeEventos implements ActionListener, WindowListener {
+    private class ManejadorDeEventos extends WindowAdapter implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -178,51 +177,17 @@ public class InasistenciasController extends Controlador {
                 JustificarInasistencia();
             }
             
-            if (evento.equals(vista.itemInasistenciaSemanalGeneral)) {
-                ventana(vista.VistaSeleccionDeFecha, 400, 175);
-            }
-            
             if (evento.equals(vista.btnVerInasistenciaSemanal)) {
                 verInasistenciaSemanal();
             }
         }
-
-        @Override
-        public void windowOpened(WindowEvent e) {
-            
-        }
-
+        
         @Override
         public void windowClosing(WindowEvent e) {
             Object evento = e.getSource();
             if (evento.equals(vista.VistaSubMenu)) {
                 presenter.borrarListado();
             }
-        }
-
-        @Override
-        public void windowClosed(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowIconified(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowDeiconified(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowActivated(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowDeactivated(WindowEvent e) {
-            
         }
     }
 }

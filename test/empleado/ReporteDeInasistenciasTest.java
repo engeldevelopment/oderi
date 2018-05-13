@@ -5,8 +5,10 @@ import reportes.ReporteDeInasistenciaSemanal;
 import excepciones.SinInasistenciasException;
 import dao.InasistenciaDAO;
 import excepciones.FechaDeInicioIncorrecta;
+import excepciones.SinFechasException;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import modelo.Empleado;
 import modelo.Inasistencia;
@@ -19,8 +21,8 @@ import static org.mockito.Mockito.*;
 public class ReporteDeInasistenciasTest {
     
     private ReporteDeInasistenciaSemanal reporte;
-    private DateTime diaDeSolicitud;
-    private DateTime viernes;
+    private Date diaDeSolicitud;
+    private Date viernes;
     private InasistenciaDAO servicio;
     
     public ReporteDeInasistenciasTest() {
@@ -45,9 +47,10 @@ public class ReporteDeInasistenciasTest {
 
     @Test(expected = FechaDeInicioIncorrecta.class)
     public void laFechaDeInicioDebeSerUnDiaLunes() throws FechaDeInicioIncorrecta, 
-            SinInasistenciasException {
+            SinInasistenciasException,
+            SinFechasException {
         
-        diaDeSolicitud = new DateTime("2018-04-03");
+        diaDeSolicitud = new Date(2018, 4, 2);
         reporte = new ReporteDeInasistenciaSemanal(diaDeSolicitud);
         
         reporte.generar();
@@ -55,10 +58,11 @@ public class ReporteDeInasistenciasTest {
     
     //@Test
     public void laFechaDeInicioEsUnDiaLunes() throws FechaDeInicioIncorrecta, 
-            SinInasistenciasException {
+            SinInasistenciasException,
+            SinFechasException {
         
-        diaDeSolicitud = new DateTime("2018-04-02");
-        viernes = new DateTime("2018-04-06");
+        diaDeSolicitud = new Date(2018, 4, 2);
+        viernes = new Date(2018, 4, 6);
         reporte = new ReporteDeInasistenciaSemanal(diaDeSolicitud);
         
         reporte.generar();
@@ -68,10 +72,11 @@ public class ReporteDeInasistenciasTest {
     
     //@Test
     public void laFechaDeInicioEsUnDiaLunesYTerminaUnViernes() throws FechaDeInicioIncorrecta, 
-            SinInasistenciasException {
+            SinInasistenciasException,
+            SinFechasException {
         
-        diaDeSolicitud = new DateTime("2018-04-30");
-        viernes = new DateTime("2018-05-04");
+        diaDeSolicitud = new Date(2018, 4, 30);
+        viernes = new Date(2018, 5, 4);
         reporte = new ReporteDeInasistenciaSemanal(diaDeSolicitud);
         
         reporte.generar();
@@ -81,8 +86,9 @@ public class ReporteDeInasistenciasTest {
     
     @Test
     public void inasistenciaDelDiaMartes() throws FechaDeInicioIncorrecta, 
-            SinInasistenciasException {
-        diaDeSolicitud = new DateTime("2018-04-30");
+            SinInasistenciasException,
+            SinFechasException {
+        diaDeSolicitud = new Date(2018, 4, 30);
         List<Inasistencia> lista = new ArrayList();
         Inasistencia martes = new Inasistencia(new Empleado(), new DateTime("2018-05-02"), 
                 new Time(12, 0, 0), new MotivoDeInasistencia());
@@ -91,7 +97,7 @@ public class ReporteDeInasistenciasTest {
         reporte = new ReporteDeInasistenciaSemanal(diaDeSolicitud);
         reporte.setServicio(servicio);
         
-        when(servicio.inasistenciasDurante(diaDeSolicitud, diaDeSolicitud)).thenReturn(lista);
+        when(servicio.inasistenciasDurante(new DateTime(diaDeSolicitud), new DateTime(diaDeSolicitud))).thenReturn(lista);
         
         reporte.generar();
         

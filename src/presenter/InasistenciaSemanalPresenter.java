@@ -1,6 +1,7 @@
 
 package presenter;
 
+import java.util.ArrayList;
 import reportes.ReporteDeInasistenciaSemanal;
 import java.util.List;
 import javax.swing.*;
@@ -32,6 +33,7 @@ public class InasistenciaSemanalPresenter {
     }
     
     private void alinearTextoDeTablas() {
+        ajustarAnchoDeTablas();
         alinearTextoDe(vista.tablaInasistenciaLunes);
         alinearTextoDe(vista.tablaInasistenciaMartes);
         alinearTextoDe(vista.tablaInasistenciaMiercoles);
@@ -49,6 +51,25 @@ public class InasistenciaSemanalPresenter {
                 .getColumn(2).setCellRenderer(redender);
     }
     
+    private void ajustarAnchoDeTablas() {
+        List<JTable> tablasDeInasistencias = new ArrayList();
+        tablasDeInasistencias.add(vista.tablaInasistenciaLunes);
+        tablasDeInasistencias.add(vista.tablaInasistenciaMartes);
+        tablasDeInasistencias.add(vista.tablaInasistenciaMiercoles);
+        tablasDeInasistencias.add(vista.tablaInasistenciaJueves);
+        tablasDeInasistencias.add(vista.tablaInasistenciaViernes);
+        
+        for (JTable t: tablasDeInasistencias) {
+            ajustarAnchoDeTabla(t, 0, 8);
+            ajustarAnchoDeTabla(t, 1, 140);
+            ajustarAnchoDeTabla(t, 2, 8);
+        }
+    }
+    
+    private void ajustarAnchoDeTabla(JTable tabla, int col, int ancho) {
+        tabla.getColumnModel().getColumn(col).setPreferredWidth(ancho);
+    }
+    
     public void ver(ReporteDeInasistenciaSemanal reporte) {
         vista.VistaInasistenciaSemanal.setTitle("Inasistencia Semanal desde "+
                 formato.print(reporte.getFechaDeInicio())+" hasta "+
@@ -64,7 +85,7 @@ public class InasistenciaSemanalPresenter {
     private void verLista(DefaultTableModel tabla, List<Inasistencia> lista) {
         tabla.setNumRows(lista.size());
         int index = 0;
-        
+        System.out.println(lista.size());
         for (Inasistencia inasistencia: lista) {
             tabla.setValueAt(inasistencia.getEmpleado().getCedula(), index, 0);
             tabla.setValueAt(inasistencia.getEmpleado().getNombre(), index, 1);

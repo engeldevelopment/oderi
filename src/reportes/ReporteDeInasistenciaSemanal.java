@@ -18,8 +18,11 @@ public class ReporteDeInasistenciaSemanal {
     private List<Inasistencia> listado;
     private IServicioInasistencia servicio;
     
-    public ReporteDeInasistenciaSemanal(DateTime fechaDeSolicitud) {
-        this.fechaDeIncio = fechaDeSolicitud;
+    public ReporteDeInasistenciaSemanal(Date fechaDeSolicitud) throws SinFechasException {
+        if (fechaDeSolicitud == null) {
+            throw new SinFechasException("Debe seleccionar una fecha por favor.");
+        }
+        this.fechaDeIncio = new DateTime(fechaDeSolicitud);
     }
 
     public void generar() throws FechaDeInicioIncorrecta, 

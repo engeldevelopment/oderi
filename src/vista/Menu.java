@@ -79,12 +79,12 @@ public class Menu extends javax.swing.JFrame {
         btnVerReporteDeAsistencia = new org.edisoncor.gui.button.ButtonTask();
         VistaJustificacion = new javax.swing.JDialog();
         panel13 = new org.edisoncor.gui.panel.Panel();
-        btnJustificar = new org.edisoncor.gui.button.ButtonAction();
         jScrollPane8 = new javax.swing.JScrollPane();
         areaObservacion = new javax.swing.JTextArea();
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         lblHoraDeGeneracion = new javax.swing.JLabel();
+        btnJustificar = new org.edisoncor.gui.button.ButtonTask();
         VistaBuscarEmpleado = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
@@ -120,7 +120,6 @@ public class Menu extends javax.swing.JFrame {
         txtDiasDePermiso = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         chRemunerado = new javax.swing.JCheckBox();
-        VistaPermisos = new javax.swing.JDialog();
         VistaInasistenciaSemanal = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -143,6 +142,15 @@ public class Menu extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         fechaInasistenciaSemanal = new com.toedter.calendar.JDateChooser();
         btnVerInasistenciaSemanal = new org.edisoncor.gui.button.ButtonTask();
+        VistaSeleccionDeMesYQuincena = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        mesReporteQuincenal = new com.toedter.calendar.JMonthChooser();
+        anioReporteQuincenal = new com.toedter.calendar.JYearChooser();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        cmbQuincena = new javax.swing.JComboBox<>();
+        buttonTask1 = new org.edisoncor.gui.button.ButtonTask();
         jPanel2 = new javax.swing.JPanel();
         barraDeMenu = new javax.swing.JMenuBar();
         Archivo = new javax.swing.JMenu();
@@ -319,18 +327,19 @@ public class Menu extends javax.swing.JFrame {
                                                 .addComponent(lblHoraInicio))))))
                             .addGroup(panel1Layout.createSequentialGroup()
                                 .addGap(110, 110, 110)
-                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panel1Layout.createSequentialGroup()
-                                        .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(193, 193, 193)
-                                        .addComponent(btnSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(120, Short.MAX_VALUE))
+                                .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(193, 193, 193)
+                                .addComponent(btnSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(125, Short.MAX_VALUE))
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addComponent(btnIniciarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFinalizarJornada, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))))
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,9 +366,9 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(lblHoraCierre))
                         .addGap(25, 25, 25)
                         .addComponent(relojDigital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -918,8 +927,6 @@ public class Menu extends javax.swing.JFrame {
         panel13.setColorPrimario(java.awt.Color.white);
         panel13.setColorSecundario(java.awt.Color.white);
 
-        btnJustificar.setText("Justificar");
-
         areaObservacion.setColumns(20);
         areaObservacion.setRows(5);
         jScrollPane8.setViewportView(areaObservacion);
@@ -931,6 +938,10 @@ public class Menu extends javax.swing.JFrame {
         lblHoraDeGeneracion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHoraDeGeneracion.setText("Hora");
 
+        btnJustificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icon/if_check_59131.png"))); // NOI18N
+        btnJustificar.setText("Justificar");
+        btnJustificar.setDescription(" ");
+
         javax.swing.GroupLayout panel13Layout = new javax.swing.GroupLayout(panel13);
         panel13.setLayout(panel13Layout);
         panel13Layout.setHorizontalGroup(
@@ -938,35 +949,34 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(panel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel13Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnJustificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel13Layout.createSequentialGroup()
                         .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel20)
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panel13Layout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblHoraDeGeneracion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)))
-                        .addGap(0, 70, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblHoraDeGeneracion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel13Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel13Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnJustificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         panel13Layout.setVerticalGroup(
             panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel13Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(lblHoraDeGeneracion))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnJustificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btnJustificar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -978,7 +988,7 @@ public class Menu extends javax.swing.JFrame {
         );
         VistaJustificacionLayout.setVerticalGroup(
             VistaJustificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         VistaBuscarEmpleado.setTitle("Buscar empleado");
@@ -1253,17 +1263,6 @@ public class Menu extends javax.swing.JFrame {
         NuevoPermisoLayout.setVerticalGroup(
             NuevoPermisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout VistaPermisosLayout = new javax.swing.GroupLayout(VistaPermisos.getContentPane());
-        VistaPermisos.getContentPane().setLayout(VistaPermisosLayout);
-        VistaPermisosLayout.setHorizontalGroup(
-            VistaPermisosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 513, Short.MAX_VALUE)
-        );
-        VistaPermisosLayout.setVerticalGroup(
-            VistaPermisosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         VistaInasistenciaSemanal.setTitle("Reporte de Inasistencia Semanal");
@@ -1576,6 +1575,77 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        VistaSeleccionDeMesYQuincena.setTitle("Seleccione una Fecha");
+
+        jPanel6.setBackground(java.awt.Color.white);
+
+        jLabel16.setText("Mes");
+
+        jLabel21.setText("Año");
+
+        jLabel24.setText("Quincena");
+
+        cmbQuincena.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+
+        buttonTask1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icon/if_calendar_2_42176.png"))); // NOI18N
+        buttonTask1.setText("Ver");
+        buttonTask1.setDescription("detalle de quincena");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel16))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel24)))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mesReporteQuincenal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbQuincena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel21)
+                .addGap(6, 6, 6)
+                .addComponent(anioReporteQuincenal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(buttonTask1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel16)
+                    .addComponent(anioReporteQuincenal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mesReporteQuincenal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(cmbQuincena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(buttonTask1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout VistaSeleccionDeMesYQuincenaLayout = new javax.swing.GroupLayout(VistaSeleccionDeMesYQuincena.getContentPane());
+        VistaSeleccionDeMesYQuincena.getContentPane().setLayout(VistaSeleccionDeMesYQuincenaLayout);
+        VistaSeleccionDeMesYQuincenaLayout.setHorizontalGroup(
+            VistaSeleccionDeMesYQuincenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        VistaSeleccionDeMesYQuincenaLayout.setVerticalGroup(
+            VistaSeleccionDeMesYQuincenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cacao Oderí");
 
@@ -1668,11 +1738,12 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JDialog VistaDeAsistenciaDiaria;
     public javax.swing.JDialog VistaInasistenciaSemanal;
     public javax.swing.JDialog VistaJustificacion;
-    private javax.swing.JDialog VistaPermisos;
     public javax.swing.JDialog VistaReporteDeAsistencia;
     public javax.swing.JDialog VistaSeleccionDeFecha;
+    public javax.swing.JDialog VistaSeleccionDeMesYQuincena;
     public javax.swing.JDialog VistaSeleccionarDepartamento;
     public javax.swing.JDialog VistaSubMenu;
+    private com.toedter.calendar.JYearChooser anioReporteQuincenal;
     public javax.swing.JTextArea areaObservacion;
     private javax.swing.JMenuBar barraDeMenu;
     public javax.swing.JButton btnAgregarDepartamento;
@@ -1688,21 +1759,23 @@ public class Menu extends javax.swing.JFrame {
     public org.edisoncor.gui.button.ButtonTask btnInasistenciasDeEmpleado;
     public org.edisoncor.gui.button.ButtonTask btnInformacionPersonal;
     public org.edisoncor.gui.button.ButtonTask btnIniciarJornada;
-    public org.edisoncor.gui.button.ButtonAction btnJustificar;
+    public org.edisoncor.gui.button.ButtonTask btnJustificar;
     public org.edisoncor.gui.button.ButtonTask btnPermisosEmpleado;
     public org.edisoncor.gui.button.ButtonTask btnReporte;
     public org.edisoncor.gui.button.ButtonTask btnSalida;
     public org.edisoncor.gui.button.ButtonTask btnSalirEmpleado;
     public org.edisoncor.gui.button.ButtonTask btnVerInasistenciaSemanal;
     public org.edisoncor.gui.button.ButtonTask btnVerReporteDeAsistencia;
+    private org.edisoncor.gui.button.ButtonTask buttonTask1;
     public com.toedter.calendar.JDateChooser calendarFechaConsulta;
     private javax.swing.JCheckBox chRemunerado;
+    public javax.swing.JComboBox<String> cmbQuincena;
     public com.toedter.calendar.JDateChooser fechaDeIncio;
     public com.toedter.calendar.JDateChooser fechaInasistenciaSemanal;
     public javax.swing.JMenuItem itemAsistenciaDiaria;
     public javax.swing.JMenuItem itemEmpleados;
     public javax.swing.JMenuItem itemEntradaSalida;
-    private javax.swing.JMenuItem itemInasistenciaQuincenalGeneral;
+    public javax.swing.JMenuItem itemInasistenciaQuincenalGeneral;
     public javax.swing.JMenuItem itemInasistenciaSemanalGeneral;
     private javax.swing.JMenuItem itemManual;
     private javax.swing.JButton jButton3;
@@ -1713,13 +1786,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -1739,6 +1815,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
@@ -1772,6 +1849,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JTable listaDeInasistencias;
     public javax.swing.JTable listadoDeDepartamentos;
     public com.toedter.calendar.JMonthChooser mesInasistencia;
+    private com.toedter.calendar.JMonthChooser mesReporteQuincenal;
     private org.edisoncor.gui.panel.Panel panel1;
     private org.edisoncor.gui.panel.Panel panel12;
     private org.edisoncor.gui.panel.Panel panel13;
