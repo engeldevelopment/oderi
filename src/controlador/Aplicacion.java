@@ -17,6 +17,7 @@ public class Aplicacion {
     private InasistenciasController inasistencias;
     private PermisosController permisos;
     private Menu vistaPrincipal;
+    private UsuariosController usuario;
     
     private Aplicacion() {
         
@@ -33,7 +34,7 @@ public class Aplicacion {
         lookAndFeel();
         instancias();
         controladores();
-        vistaMenu();
+        usuario.vistaLogin();
     }
     
     private void lookAndFeel() {
@@ -59,6 +60,7 @@ public class Aplicacion {
         jornadas = new JornadaController(vistaPrincipal);
         inasistencias = new InasistenciasController(vistaPrincipal);
         permisos = new PermisosController(vistaPrincipal);
+        usuario = new UsuariosController(vistaPrincipal);
         
         controladores.add(menu);
         controladores.add(subMenu);
@@ -67,16 +69,12 @@ public class Aplicacion {
         controladores.add(jornadas);
         controladores.add(inasistencias);
         controladores.add(permisos);
+        controladores.add(usuario);
     }
     
     private void controladores() {
         for (IControlador controlador: controladores) {
             controlador.iniciar();
         }
-    }
-    
-    private void vistaMenu() {
-        vistaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        vistaPrincipal.setVisible(true);
     }
 }

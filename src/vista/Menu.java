@@ -171,11 +171,11 @@ public class Menu extends javax.swing.JFrame {
         panel1.setColorPrimario(new java.awt.Color(255, 255, 255));
         panel1.setColorSecundario(new java.awt.Color(204, 204, 204));
 
-        btnIniciarJornada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icon/if_special-offer_59207.png"))); // NOI18N
+        btnIniciarJornada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-56-stopwatch.png"))); // NOI18N
         btnIniciarJornada.setText("INICIAR JORNADA");
         btnIniciarJornada.setDescription("Nuevo día");
 
-        btnFinalizarJornada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icon/if_No_984759.png"))); // NOI18N
+        btnFinalizarJornada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-533-stop-sign.png"))); // NOI18N
         btnFinalizarJornada.setText("FINALIZAR JORNADA");
         btnFinalizarJornada.setDescription("Fin del día");
 
@@ -665,15 +665,16 @@ public class Menu extends javax.swing.JFrame {
         jLabel18.setForeground(java.awt.Color.darkGray);
         jLabel18.setText("Contraseña");
 
-        btnEntrar.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
-        btnEntrar.setText("entrar ");
+        btnEntrar.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-387-log-in.png"))); // NOI18N
+        btnEntrar.setText("Entrar ");
 
         javax.swing.GroupLayout panel8Layout = new javax.swing.GroupLayout(panel8);
         panel8.setLayout(panel8Layout);
         panel8Layout.setHorizontalGroup(
             panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel8Layout.createSequentialGroup()
-                .addGap(0, 228, Short.MAX_VALUE)
+                .addGap(0, 204, Short.MAX_VALUE)
                 .addComponent(btnEntrar)
                 .addGap(30, 30, 30))
             .addGroup(panel8Layout.createSequentialGroup()
@@ -765,10 +766,10 @@ public class Menu extends javax.swing.JFrame {
         }
 
         btnConsultarInasistencia.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
-        btnConsultarInasistencia.setText("consultar");
+        btnConsultarInasistencia.setText("Consultar");
 
         btnCrearJustificacion.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
-        btnCrearJustificacion.setText("crear justificación");
+        btnCrearJustificacion.setText("Crear justificación");
 
         javax.swing.GroupLayout panel9Layout = new javax.swing.GroupLayout(panel9);
         panel9.setLayout(panel9Layout);
@@ -998,7 +999,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel23.setText("Cédula");
 
         btnBuscarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icon/if_Black_Search_60944.png"))); // NOI18N
-        btnBuscarEmpleado.setText("buscar");
+        btnBuscarEmpleado.setText("Buscar");
 
         txtCedulaEmpleadoBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
@@ -1675,6 +1676,7 @@ public class Menu extends javax.swing.JFrame {
 
         Control.setText("Control");
 
+        itemAsistenciaDiaria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-530-list-alt.png"))); // NOI18N
         itemAsistenciaDiaria.setText("Registro de asistencias");
         Control.add(itemAsistenciaDiaria);
 
@@ -1684,6 +1686,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu1.setText("Asistencias");
 
+        itemEntradaSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-622-businessman.png"))); // NOI18N
         itemEntradaSalida.setText("Entrada y Salida");
         jMenu1.add(itemEntradaSalida);
 
@@ -1691,6 +1694,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu2.setText("Inasistencias");
 
+        itemInasistenciaSemanalGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-704-file-minus.png"))); // NOI18N
         itemInasistenciaSemanalGeneral.setText("Semanal");
         jMenu2.add(itemInasistenciaSemanalGeneral);
 
@@ -1703,6 +1707,7 @@ public class Menu extends javax.swing.JFrame {
 
         Ayuda.setText("Ayuda");
 
+        itemManual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-196-info-sign.png"))); // NOI18N
         itemManual.setText("Sobre la aplicación");
         Ayuda.add(itemManual);
 

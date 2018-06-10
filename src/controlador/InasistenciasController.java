@@ -8,8 +8,6 @@ import presenter.*;
 import vista.Menu;
 import dao.*;
 import java.awt.event.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import nicon.notify.core.*;
 import org.joda.time.DateTime;
 import org.joda.time.format.*;

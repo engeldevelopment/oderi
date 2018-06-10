@@ -16,6 +16,7 @@
     <mapping resource="mapeos/Justificacion.hbm.xml"/>
     <mapping resource="mapeos/MotivoDeInasistencia.hbm.xml"/>
     <mapping resource="mapeos/Inasistencia.hbm.xml"/>
+    <mapping resource="mapeos/Usuario.hbm.xml"/>
     
   </session-factory>
 </hibernate-configuration>

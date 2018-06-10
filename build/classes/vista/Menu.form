@@ -141,7 +141,7 @@
             <Component class="org.edisoncor.gui.button.ButtonTask" name="btnIniciarJornada">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/vista/icon/if_special-offer_59207.png"/>
+                  <Image iconType="3" name="/vista/png/glyphicons-56-stopwatch.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="INICIAR JORNADA"/>
                 <Property name="description" type="java.lang.String" value="Nuevo d&#xed;a"/>
@@ -153,7 +153,7 @@
             <Component class="org.edisoncor.gui.button.ButtonTask" name="btnFinalizarJornada">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/vista/icon/if_No_984759.png"/>
+                  <Image iconType="3" name="/vista/png/glyphicons-533-stop-sign.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="FINALIZAR JORNADA"/>
                 <Property name="description" type="java.lang.String" value="Fin del d&#xed;a"/>
@@ -896,7 +896,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="228" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="204" max="32767" attributes="0"/>
                       <Component id="btnEntrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
@@ -972,9 +972,12 @@
             <Component class="javax.swing.JButton" name="btnEntrar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Ubuntu" size="16" style="1"/>
+                  <Font name="Ubuntu" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="entrar "/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vista/png/glyphicons-387-log-in.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Entrar "/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -1160,7 +1163,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="consultar"/>
+                <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -1171,7 +1174,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Ubuntu" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="crear justificaci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Crear justificaci&#xf3;n"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -1551,7 +1554,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/vista/icon/if_Black_Search_60944.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="buscar"/>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -2624,6 +2627,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemAsistenciaDiaria">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vista/png/glyphicons-530-list-alt.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Registro de asistencias"/>
               </Properties>
               <AuxValues>
@@ -2644,6 +2650,9 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="itemEntradaSalida">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/vista/png/glyphicons-622-businessman.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Entrada y Salida"/>
                   </Properties>
                   <AuxValues>
@@ -2659,6 +2668,9 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="itemInasistenciaSemanalGeneral">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/vista/png/glyphicons-704-file-minus.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Semanal"/>
                   </Properties>
                   <AuxValues>
@@ -2684,6 +2696,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemManual">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vista/png/glyphicons-196-info-sign.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Sobre la aplicaci&#xf3;n"/>
               </Properties>
             </MenuItem>
