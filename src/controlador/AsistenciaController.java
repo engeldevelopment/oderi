@@ -11,6 +11,7 @@ import java.awt.event.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import nicon.notify.core.*;
+import presenter.ReporteDeEntradaSalidaPresenter;
 
 public class AsistenciaController extends Controlador {
     
@@ -19,6 +20,7 @@ public class AsistenciaController extends Controlador {
     private AsistenciaPresenter presenter;
     private List<Asistencia> listadoDeAsistencias;
     private ReporteDeAsistencia reporte;
+    private ReporteDeEntradaSalidaPresenter reporteDeEntradaSalidaP;
     private Menu vista;
     private ManejadorDeEventoAction manejador;
     private SimpleDateFormat formatoDeFecha;
@@ -34,6 +36,7 @@ public class AsistenciaController extends Controlador {
         formatoDeFecha = new SimpleDateFormat("EEEE, dd MMM YYYY");
         vista.lblFecha.setText(""+formatoDeFecha.format(new Date()));
         presenter = new AsistenciaPresenter(vista);
+        reporteDeEntradaSalidaP = new ReporteDeEntradaSalidaPresenter(vista);
     }
     
     @Override
@@ -169,9 +172,11 @@ public class AsistenciaController extends Controlador {
     private void VerReporteDeEntadaSalida() {
         try {
             reporte = new ReporteDeAsistencia(
-                        vista.calendarFechaConsulta.getDate(), new Date(), vista);
+                        vista.calendarFechaConsulta.getDate(), new Date());
             reporte.setServicio(servicio);
-            reporte.ver();
+            reporte.generar();
+            reporteDeEntradaSalidaP.ver(reporte);
+            ventana(vista.VistaReporteDeAsistencia, 700, 490);
         } catch (FechaAcualException e  ) {
             Notification.windowMessage(vista, 
                     "Disculpe!", 
@@ -185,6 +190,7 @@ public class AsistenciaController extends Controlador {
                     "Disculpe!", 
                     "Debe seleccionar una fecha..");
         } catch (FechaSinActividad e){
+            reporteDeEntradaSalidaP.borrarListado();
             Notification.windowMessage(vista, 
                     "Aviso!", 
                     "No hubo actividad en este día!");

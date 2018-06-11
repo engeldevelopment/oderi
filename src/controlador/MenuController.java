@@ -30,6 +30,9 @@ public class MenuController extends Controlador {
        vista.itemEntradaSalida.addActionListener(manejador);
        vista.itemInasistenciaSemanalGeneral.addActionListener(manejador);
        vista.itemInasistenciaQuincenalGeneral.addActionListener(manejador);
+       vista.barraEmpleado.addActionListener(manejador);
+       vista.barraRegistroDeAsistencias.addActionListener(manejador);
+       vista.barraEntradasSalidas.addActionListener(manejador);
     }
     
     private class ManejadorDeEventos implements ActionListener {
@@ -38,16 +41,16 @@ public class MenuController extends Controlador {
         public void actionPerformed(ActionEvent e) {
             Object evento = e.getSource();
             
-            if (evento.equals(vista.itemEmpleados)) {
+            if (evento.equals(vista.itemEmpleados) || evento.equals(vista.barraEmpleado)) {
                 ventana(vista.VistaBuscarEmpleado, 400, 180);
             } 
             
-            if(evento.equals(vista.itemAsistenciaDiaria)) {
+            if(evento.equals(vista.itemAsistenciaDiaria) || evento.equals(vista.barraRegistroDeAsistencias)) {
                 ventana(vista.VistaDeAsistenciaDiaria, 880, 540);
             }
             
-            if (evento.equals(vista.itemEntradaSalida)) {
-                ventana(vista.VistaReporteDeAsistencia, 700, 500);
+            if (evento.equals(vista.itemEntradaSalida) || evento.equals(vista.barraEntradasSalidas)) {
+                ventana(vista.VistaSeleccionarFechaES, 400, 175);
             }
             
             if (evento.equals(vista.itemInasistenciaSemanalGeneral)) {
