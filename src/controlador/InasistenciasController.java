@@ -116,17 +116,26 @@ public class InasistenciasController extends Controlador {
         vista.VistaJustificacion.setVisible(false);
     }
     
-    private void crearJustificacion() {
-        if (noHaSeleccionadoUnaInasistencia()) {
+    private void seleccionarInasistencia() {
+        if (noHaConsultadoUnaFecha()) {
+            Notification.windowMessage(vista, 
+                    "Disculpe!", 
+                    "Primero debe realizar una consulta.", 
+                    NiconEvent.NOTIFY_DEFAULT);
+        } else if (noHaSeleccionadoUnaInasistencia()) {
             Notification.windowMessage(vista, 
                     "Disculpe!", 
                     "Debe seleccionar una inasistencia", 
                     NiconEvent.NOTIFY_WARNING);
         } else {
-            inasistencia = servicioDeInasistencia.buscar(obtenerIdDeLaInasistenciaSeleccionada());
-            vista.lblHoraDeGeneracion.setText(String.valueOf(inasistencia.getHoraDeGeneracion()));
-            ventana(vista.VistaJustificacion, 373, 300);
-        }
+            buscar();
+            verificarSiEstaJustifica();
+        }   
+    }
+    
+    private boolean noHaConsultadoUnaFecha() {
+        int nroDeInasistencia = vista.listaDeInasistenciaPorEmpleado.getRowCount();
+        return nroDeInasistencia <= 0;
     }
     
     int inasistenciaSeleccionada;
@@ -135,9 +144,29 @@ public class InasistenciasController extends Controlador {
         return inasistenciaSeleccionada == -1;
     }
     
+    private void buscar() {
+        inasistencia = servicioDeInasistencia.buscar(obtenerIdDeLaInasistenciaSeleccionada());
+    }
+    
     private long obtenerIdDeLaInasistenciaSeleccionada() {
         return (long) vista.listaDeInasistenciaPorEmpleado.
                     getValueAt(inasistenciaSeleccionada, 0);
+    }
+    
+    private void verificarSiEstaJustifica() {
+        if (inasistencia.estaJustificada()) {
+            Notification.windowMessage(vista, 
+                    "Disculpe!", 
+                    "Esta inasistencia ya está justificada.", 
+                    NiconEvent.NOTIFY_WARNING);
+        } else {
+            mostrarVistaDeJustificacion();
+        }
+    }
+    
+    private void mostrarVistaDeJustificacion() {   
+        vista.lblHoraDeGeneracion.setText(String.valueOf(inasistencia.getHoraDeGeneracion()));
+        ventana(vista.VistaJustificacion, 373, 300);
     }
     
     private void verInasistenciaSemanal() {
@@ -168,7 +197,7 @@ public class InasistenciasController extends Controlador {
             }
             
             if (evento.equals(vista.btnCrearJustificacion)) {
-                crearJustificacion();
+                seleccionarInasistencia();
             }
             
             if (evento.equals(vista.btnJustificar)) {

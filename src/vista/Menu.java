@@ -62,14 +62,15 @@ public class Menu extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         InasistenciaPersonal = new javax.swing.JDialog();
         panel9 = new org.edisoncor.gui.panel.Panel();
-        mesInasistencia = new com.toedter.calendar.JMonthChooser();
-        yearInasistencia = new com.toedter.calendar.JYearChooser();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         listaDeInasistenciaPorEmpleado = new javax.swing.JTable();
-        btnConsultarInasistencia = new javax.swing.JButton();
         btnCrearJustificacion = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        mesInasistencia = new com.toedter.calendar.JMonthChooser();
+        jLabel12 = new javax.swing.JLabel();
+        yearInasistencia = new com.toedter.calendar.JYearChooser();
+        btnConsultarInasistencia = new javax.swing.JButton();
         VistaReporteDeAsistencia = new javax.swing.JDialog();
         panel12 = new org.edisoncor.gui.panel.Panel();
         calendarFechaConsulta = new com.toedter.calendar.JDateChooser();
@@ -84,7 +85,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         lblHoraDeGeneracion = new javax.swing.JLabel();
-        btnJustificar = new org.edisoncor.gui.button.ButtonTask();
+        btnJustificar = new javax.swing.JButton();
         VistaBuscarEmpleado = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
@@ -503,7 +504,8 @@ public class Menu extends javax.swing.JFrame {
         txtDepartamentoAsignado.setBackground(new java.awt.Color(255, 255, 255));
         txtDepartamentoAsignado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        btnGuardarEmpleado.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        btnGuardarEmpleado.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        btnGuardarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-199-ok-circle.png"))); // NOI18N
         btnGuardarEmpleado.setText("Guardar");
 
         btnAgregarDepartamento.setText("+");
@@ -540,7 +542,7 @@ public class Menu extends javax.swing.JFrame {
         panel6Layout.setVerticalGroup(
             panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel6Layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -613,7 +615,8 @@ public class Menu extends javax.swing.JFrame {
         }
 
         btnAsignarDepartamento.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
-        btnAsignarDepartamento.setText("asignar");
+        btnAsignarDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-153-check.png"))); // NOI18N
+        btnAsignarDepartamento.setText("Asignar");
 
         javax.swing.GroupLayout panel7Layout = new javax.swing.GroupLayout(panel7);
         panel7.setLayout(panel7Layout);
@@ -718,20 +721,9 @@ public class Menu extends javax.swing.JFrame {
         panel9.setColorPrimario(new java.awt.Color(255, 255, 255));
         panel9.setColorSecundario(java.awt.Color.white);
 
-        mesInasistencia.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel11.setText("Mes");
-
-        jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel12.setText("Año");
-
         listaDeInasistenciaPorEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Día", "Motivo", "Justificada"
@@ -765,52 +757,85 @@ public class Menu extends javax.swing.JFrame {
             listaDeInasistenciaPorEmpleado.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        btnCrearJustificacion.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        btnCrearJustificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-151-edit.png"))); // NOI18N
+        btnCrearJustificacion.setText("Crear justificación");
+
+        jPanel7.setBackground(java.awt.Color.white);
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccione una fecha"));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel11.setText("Mes");
+
+        mesInasistencia.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel12.setText("Año");
+
         btnConsultarInasistencia.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        btnConsultarInasistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-28-search.png"))); // NOI18N
         btnConsultarInasistencia.setText("Consultar");
 
-        btnCrearJustificacion.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
-        btnCrearJustificacion.setText("Crear justificación");
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mesInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnConsultarInasistencia)
+                            .addComponent(yearInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mesInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(yearInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultarInasistencia)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout panel9Layout = new javax.swing.GroupLayout(panel9);
         panel9.setLayout(panel9Layout);
         panel9Layout.setHorizontalGroup(
             panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()
-                .addGap(0, 59, Short.MAX_VALUE)
-                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCrearJustificacion)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51))
+            .addGroup(panel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()
-                        .addComponent(btnConsultarInasistencia)
-                        .addGap(226, 226, 226))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mesInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(yearInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129))))
+                .addComponent(btnCrearJustificacion)
+                .addContainerGap())
         );
         panel9Layout.setVerticalGroup(
             panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel9Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mesInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yearInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(29, 29, 29)
-                .addComponent(btnConsultarInasistencia)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel9Layout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCrearJustificacion)
                 .addContainerGap())
         );
@@ -939,9 +964,9 @@ public class Menu extends javax.swing.JFrame {
         lblHoraDeGeneracion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHoraDeGeneracion.setText("Hora");
 
-        btnJustificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icon/if_check_59131.png"))); // NOI18N
+        btnJustificar.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        btnJustificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-153-check.png"))); // NOI18N
         btnJustificar.setText("Justificar");
-        btnJustificar.setDescription(" ");
 
         javax.swing.GroupLayout panel13Layout = new javax.swing.GroupLayout(panel13);
         panel13.setLayout(panel13Layout);
@@ -962,8 +987,8 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(95, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel13Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnJustificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(btnJustificar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         panel13Layout.setVerticalGroup(
             panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -976,8 +1001,8 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(btnJustificar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(btnJustificar)
                 .addContainerGap())
         );
 
@@ -1669,6 +1694,7 @@ public class Menu extends javax.swing.JFrame {
         Archivo.setText("Archivo");
         Archivo.setRequestFocusEnabled(false);
 
+        itemEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-25-parents.png"))); // NOI18N
         itemEmpleados.setText("Empleado");
         Archivo.add(itemEmpleados);
 
@@ -1764,7 +1790,7 @@ public class Menu extends javax.swing.JFrame {
     public org.edisoncor.gui.button.ButtonTask btnInasistenciasDeEmpleado;
     public org.edisoncor.gui.button.ButtonTask btnInformacionPersonal;
     public org.edisoncor.gui.button.ButtonTask btnIniciarJornada;
-    public org.edisoncor.gui.button.ButtonTask btnJustificar;
+    public javax.swing.JButton btnJustificar;
     public org.edisoncor.gui.button.ButtonTask btnPermisosEmpleado;
     public org.edisoncor.gui.button.ButtonTask btnReporte;
     public org.edisoncor.gui.button.ButtonTask btnSalida;
@@ -1821,6 +1847,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;

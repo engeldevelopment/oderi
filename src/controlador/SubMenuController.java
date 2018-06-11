@@ -61,7 +61,7 @@ public class SubMenuController extends Controlador {
                 verPanelDeInformacion();
                 
             } else if (evento.equals(vista.btnInasistenciasDeEmpleado)) {
-                ventana(vista.InasistenciaPersonal, 560, 345);
+                ventana(vista.InasistenciaPersonal, 680, 345);
             
             } else if (evento.equals(vista.btnPermisosEmpleado)) {
                 establecerSolicitante();
