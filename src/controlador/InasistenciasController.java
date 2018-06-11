@@ -8,6 +8,7 @@ import presenter.*;
 import vista.Menu;
 import dao.*;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
 import nicon.notify.core.*;
 import org.joda.time.DateTime;
 import org.joda.time.format.*;
@@ -21,6 +22,8 @@ public class InasistenciasController extends Controlador {
     private JustificacionDeInasistencia justificacion;
     private Inasistencia inasistencia;
     private DateTimeFormatter formato;
+    private DateTimeFormatter formatoCortoFecha;
+    private SimpleDateFormat formatoHora;
     private ReporteDeInasistenciaSemanal reporteSemanal;
     private ReporteDeInasistenciaMensual reporteMensual;
     private InasistenciaSemanalPresenter inasistenciaSemanalPresenter;
@@ -34,6 +37,8 @@ public class InasistenciasController extends Controlador {
         manejador = new ManejadorDeEventos();
         servicioDeInasistencia = new InasistenciaDAO();
         formato = DateTimeFormat.forPattern("EEEE, dd MMM YYYY");
+        formatoCortoFecha = DateTimeFormat.forPattern("dd MMM YYYY");
+        formatoHora = new SimpleDateFormat("hh:mm:s a");
         vista.lblFechaDeInasistencia.setText(""+formato.print(DateTime.now()));
         presenter = new InasistenciaPresenter(vista);
         inasistenciaSemanalPresenter = new InasistenciaSemanalPresenter(vista);
@@ -52,6 +57,7 @@ public class InasistenciasController extends Controlador {
         vista.btnJustificar.addActionListener(manejador);
         vista.VistaSubMenu.addWindowListener(manejador);
         vista.btnVerInasistenciaSemanal.addActionListener(manejador);
+        vista.btnVerJustificacion.addActionListener(manejador);
     }
     
     private void buscarInasistenciaDelEmpleado() {
@@ -158,7 +164,7 @@ public class InasistenciasController extends Controlador {
             Notification.windowMessage(vista, 
                     "Disculpe!", 
                     "Esta inasistencia ya está justificada.", 
-                    NiconEvent.NOTIFY_WARNING);
+                    NiconEvent.NOTIFY_DEFAULT);
         } else {
             mostrarVistaDeJustificacion();
         }
@@ -167,6 +173,37 @@ public class InasistenciasController extends Controlador {
     private void mostrarVistaDeJustificacion() {   
         vista.lblHoraDeGeneracion.setText(String.valueOf(inasistencia.getHoraDeGeneracion()));
         ventana(vista.VistaJustificacion, 373, 300);
+    }
+    
+    private void verJustificacion() { 
+        if (noHaConsultadoUnaFecha()) {
+            Notification.windowMessage(vista, 
+                    "Disculpe!", 
+                    "Primero debe realizar una consulta.", 
+                    NiconEvent.NOTIFY_DEFAULT);
+        } else if (noHaSeleccionadoUnaInasistencia()) {
+            Notification.windowMessage(vista, 
+                    "Disculpe!", 
+                    "Debe seleccionar una inasistencia", 
+                    NiconEvent.NOTIFY_WARNING);
+        } else {
+            buscar();
+            verificarSiEstaJustificaParaMostrarLaJustificacion();
+        }
+    }
+    
+    private void verificarSiEstaJustificaParaMostrarLaJustificacion() {
+        if (inasistencia.estaJustificada()) {
+            vista.lblFechaDeJustificacion.setText(formatoCortoFecha.print(inasistencia.getJustificacion().getFecha()));
+            vista.lblHoraDeJustificacion.setText(formatoHora.format(inasistencia.getJustificacion().getHora()));
+            vista.txtObservacionJustificacion.setText(inasistencia.getJustificacion().getDescripcion());
+            ventana(vista.VistaVerJustificacion, 400, 300);
+        } else {
+            Notification.windowMessage(vista, 
+                    "Disculpe!", 
+                    "Debe seleccionar una inasistencia justificada.", 
+                    NiconEvent.NOTIFY_DEFAULT);
+        }
     }
     
     private void verInasistenciaSemanal() {
@@ -206,6 +243,10 @@ public class InasistenciasController extends Controlador {
             
             if (evento.equals(vista.btnVerInasistenciaSemanal)) {
                 verInasistenciaSemanal();
+            }
+            
+            if (evento.equals(vista.btnVerJustificacion)) {
+                verJustificacion();
             }
         }
         

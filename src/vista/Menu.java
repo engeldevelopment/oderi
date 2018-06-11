@@ -71,6 +71,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         yearInasistencia = new com.toedter.calendar.JYearChooser();
         btnConsultarInasistencia = new javax.swing.JButton();
+        btnVerJustificacion = new javax.swing.JButton();
         VistaReporteDeAsistencia = new javax.swing.JDialog();
         panel12 = new org.edisoncor.gui.panel.Panel();
         calendarFechaConsulta = new com.toedter.calendar.JDateChooser();
@@ -152,6 +153,16 @@ public class Menu extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         cmbQuincena = new javax.swing.JComboBox<>();
         buttonTask1 = new org.edisoncor.gui.button.ButtonTask();
+        VistaVerJustificacion = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        lblFechaDeJustificacion = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        lblHoraDeJustificacion = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtObservacionJustificacion = new javax.swing.JTextArea();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         barraDeMenu = new javax.swing.JMenuBar();
         Archivo = new javax.swing.JMenu();
@@ -811,20 +822,26 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnVerJustificacion.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        btnVerJustificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-52-eye-open.png"))); // NOI18N
+        btnVerJustificacion.setText("Ver justificación");
+
         javax.swing.GroupLayout panel9Layout = new javax.swing.GroupLayout(panel9);
         panel9.setLayout(panel9Layout);
         panel9Layout.setHorizontalGroup(
             panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCrearJustificacion)
-                .addContainerGap())
+                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panel9Layout.createSequentialGroup()
+                        .addComponent(btnVerJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCrearJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel9Layout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         panel9Layout.setVerticalGroup(
             panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -836,7 +853,9 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCrearJustificacion)
+                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCrearJustificacion)
+                    .addComponent(btnVerJustificacion))
                 .addContainerGap())
         );
 
@@ -1672,6 +1691,86 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        VistaVerJustificacion.setTitle("Detalle de Justificación");
+
+        jPanel8.setBackground(java.awt.Color.white);
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-649-important-day.png"))); // NOI18N
+
+        lblFechaDeJustificacion.setText("fecha");
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-54-alarm.png"))); // NOI18N
+
+        lblHoraDeJustificacion.setText("hora");
+
+        txtObservacionJustificacion.setEditable(false);
+        txtObservacionJustificacion.setBackground(java.awt.Color.white);
+        txtObservacionJustificacion.setColumns(20);
+        txtObservacionJustificacion.setRows(5);
+        jScrollPane5.setViewportView(txtObservacionJustificacion);
+
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-151-edit.png"))); // NOI18N
+
+        jLabel33.setText("Observación");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel33))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblFechaDeJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblHoraDeJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblFechaDeJustificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblHoraDeJustificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout VistaVerJustificacionLayout = new javax.swing.GroupLayout(VistaVerJustificacion.getContentPane());
+        VistaVerJustificacion.getContentPane().setLayout(VistaVerJustificacionLayout);
+        VistaVerJustificacionLayout.setHorizontalGroup(
+            VistaVerJustificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        VistaVerJustificacionLayout.setVerticalGroup(
+            VistaVerJustificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cacao Oderí");
 
@@ -1774,6 +1873,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JDialog VistaSeleccionDeMesYQuincena;
     public javax.swing.JDialog VistaSeleccionarDepartamento;
     public javax.swing.JDialog VistaSubMenu;
+    public javax.swing.JDialog VistaVerJustificacion;
     private com.toedter.calendar.JYearChooser anioReporteQuincenal;
     public javax.swing.JTextArea areaObservacion;
     private javax.swing.JMenuBar barraDeMenu;
@@ -1796,6 +1896,7 @@ public class Menu extends javax.swing.JFrame {
     public org.edisoncor.gui.button.ButtonTask btnSalida;
     public org.edisoncor.gui.button.ButtonTask btnSalirEmpleado;
     public org.edisoncor.gui.button.ButtonTask btnVerInasistenciaSemanal;
+    public javax.swing.JButton btnVerJustificacion;
     public org.edisoncor.gui.button.ButtonTask btnVerReporteDeAsistencia;
     private org.edisoncor.gui.button.ButtonTask buttonTask1;
     public com.toedter.calendar.JDateChooser calendarFechaConsulta;
@@ -1828,11 +1929,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1848,6 +1953,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
@@ -1856,6 +1962,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -1867,6 +1974,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JLabel lblFecha;
     public javax.swing.JLabel lblFechaDeEmision;
     public javax.swing.JLabel lblFechaDeInasistencia;
+    public javax.swing.JLabel lblFechaDeJustificacion;
     public javax.swing.JLabel lblFechaJueves;
     public javax.swing.JLabel lblFechaLunes;
     public javax.swing.JLabel lblFechaMartes;
@@ -1874,6 +1982,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JLabel lblFechaViernes;
     public javax.swing.JLabel lblHoraCierre;
     public javax.swing.JLabel lblHoraDeGeneracion;
+    public javax.swing.JLabel lblHoraDeJustificacion;
     public javax.swing.JLabel lblHoraInicio;
     public javax.swing.JLabel lblNombreEmpleado;
     public javax.swing.JTable listaDeAsistencia;
@@ -1910,6 +2019,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JSpinner txtDiasDePermiso;
     public org.edisoncor.gui.textField.TextFieldRoundImage txtNombreDeUsuario;
     public org.edisoncor.gui.textField.TextFieldRectImage txtNombreEmpleado;
+    public javax.swing.JTextArea txtObservacionJustificacion;
     public com.toedter.calendar.JYearChooser yearInasistencia;
     // End of variables declaration//GEN-END:variables
 
