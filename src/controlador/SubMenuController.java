@@ -16,8 +16,6 @@ public class SubMenuController extends Controlador {
     @Override
     protected void instancias() {
         manejador = new ManejadorDeEventos();
-        vista.panelInformacionDeEmpleado.setVisible(false);
-        
     }
 
     @Override
@@ -76,11 +74,7 @@ public class SubMenuController extends Controlador {
 
         @Override
         public void windowClosing(WindowEvent e) {
-            Object evento = e.getSource();
-            
-            if (evento.equals(vista.VistaSubMenu)) {
-                ocultarPaneles();
-            }    
+                
         }
 
         @Override

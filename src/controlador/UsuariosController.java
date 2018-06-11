@@ -81,11 +81,7 @@ public class UsuariosController extends Controlador {
     }
     
     public void vistaLogin() {
-        vista.Login.setSize(420, 245);
-        vista.Login.setResizable(false);
-        vista.Login.setLocationRelativeTo(vista);
-        vista.Login.setModal(true);
-        vista.Login.setVisible(true);
+        ventana(vista.Login, 320, 245);
     }
     
     private class ManejadorDeEventos extends WindowAdapter implements ActionListener  {
