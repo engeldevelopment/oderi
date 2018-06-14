@@ -41,7 +41,7 @@ public class ReporteDeInasistenciaSemanal {
     }
     
     private void establecerFechaDeCorteComoViernes() {
-        fechaDeCorte = fechaDeIncio.plusDays(4);
+        fechaDeCorte = fechaDeIncio.plusDays(5);
     }
     
     private void agruparInasistencias(List<Inasistencia> lista) {
