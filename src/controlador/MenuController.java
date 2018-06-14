@@ -54,7 +54,7 @@ public class MenuController extends Controlador {
             }
             
             if (evento.equals(vista.itemInasistenciaSemanalGeneral)) {
-                ventana(vista.VistaSeleccionDeFecha, 400, 175);
+                ventana(vista.VistaSeleccionDeFecha, 500, 375);
             }
             
             if (evento.equals(vista.itemInasistenciaQuincenalGeneral)) {

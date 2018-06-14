@@ -33,20 +33,24 @@ public class ReporteDeInasistenciaSemanal {
        establecerFechaDeCorteComoViernes();
        
        listado = (List<Inasistencia>) 
-               servicio.inasistenciasDurante(fechaDeIncio, fechaDeCorte);
+               servicio.inasistenciasDurante(fechaDeIncio.plusDays(-1), fechaDeCorte);
        if (listado.isEmpty()) {
            throw new SinInasistenciasException("No hubo inasistencias en esta semana!");
        }
-       for (Inasistencia i: listado) {
-           agruparPorDia(i); 
-       }
+        agruparInasistencias(listado);
     }
     
     private void establecerFechaDeCorteComoViernes() {
         fechaDeCorte = fechaDeIncio.plusDays(4);
     }
     
-    private void agruparPorDia(Inasistencia inasistencia) {
+    private void agruparInasistencias(List<Inasistencia> lista) {
+        for (Inasistencia i: listado) {
+            porDia(i); 
+        }
+    }
+    
+    private void porDia(Inasistencia inasistencia) {
         switch (inasistencia.getDia().getDayOfWeek()) {
             case 1: lunes.add(inasistencia);
                 break;

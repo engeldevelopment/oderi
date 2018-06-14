@@ -85,7 +85,7 @@ public class InasistenciaSemanalPresenter {
     private void verLista(DefaultTableModel tabla, List<Inasistencia> lista) {
         tabla.setNumRows(lista.size());
         int index = 0;
-        System.out.println(lista.size());
+        
         for (Inasistencia inasistencia: lista) {
             tabla.setValueAt(inasistencia.getEmpleado().getCedula(), index, 0);
             tabla.setValueAt(inasistencia.getEmpleado().getNombre(), index, 1);

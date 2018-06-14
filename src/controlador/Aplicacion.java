@@ -3,7 +3,7 @@ package controlador;
 
 import vista.Menu;
 import java.util.ArrayList;
-import javax.swing.JFrame;
+
 
 public class Aplicacion {
     
@@ -18,6 +18,7 @@ public class Aplicacion {
     private PermisosController permisos;
     private Menu vistaPrincipal;
     private UsuariosController usuario;
+    private CalendarioController calendario;
     
     private Aplicacion() {
         
@@ -61,6 +62,7 @@ public class Aplicacion {
         inasistencias = new InasistenciasController(vistaPrincipal);
         permisos = new PermisosController(vistaPrincipal);
         usuario = new UsuariosController(vistaPrincipal);
+        calendario = new CalendarioController(vistaPrincipal);
         
         controladores.add(menu);
         controladores.add(subMenu);
@@ -70,6 +72,7 @@ public class Aplicacion {
         controladores.add(inasistencias);
         controladores.add(permisos);
         controladores.add(usuario);
+        controladores.add(calendario);
     }
     
     private void controladores() {

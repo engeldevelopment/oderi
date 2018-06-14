@@ -141,8 +141,8 @@ public class Menu extends javax.swing.JFrame {
         VistaSeleccionDeFecha = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        fechaInasistenciaSemanal = new com.toedter.calendar.JDateChooser();
         btnVerInasistenciaSemanal = new org.edisoncor.gui.button.ButtonTask();
+        fechaInasistenciaSemanal = new com.toedter.calendar.JCalendar();
         VistaSeleccionDeMesYQuincena = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         mesReporteQuincenal = new com.toedter.calendar.JMonthChooser();
@@ -1587,24 +1587,26 @@ public class Menu extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fechaInasistenciaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVerInasistenciaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVerInasistenciaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(fechaInasistenciaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 52, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaInasistenciaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addComponent(fechaInasistenciaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(btnVerInasistenciaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1983,7 +1985,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JCheckBox chRemunerado;
     public javax.swing.JComboBox<String> cmbQuincena;
     public com.toedter.calendar.JDateChooser fechaDeIncio;
-    public com.toedter.calendar.JDateChooser fechaInasistenciaSemanal;
+    public com.toedter.calendar.JCalendar fechaInasistenciaSemanal;
     public javax.swing.JMenuItem itemAsistenciaDiaria;
     public javax.swing.JMenuItem itemEmpleados;
     public javax.swing.JMenuItem itemEntradaSalida;

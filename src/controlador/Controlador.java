@@ -1,8 +1,6 @@
 
 package controlador;
 
-import java.awt.Component;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
@@ -43,7 +41,9 @@ public abstract class Controlador implements IControlador {
     }
 
     
-    protected abstract void cargarInformacionDeLaBDs();
+    protected void cargarInformacionDeLaBDs() {
+    
+    }
     
     protected void ventana(JDialog dialogo, int ancho, int alto) {
         dialogo.setSize(ancho, alto);
