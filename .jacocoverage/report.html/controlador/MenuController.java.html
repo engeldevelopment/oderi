@@ -9,42 +9,53 @@ public class MenuController extends Controlador {
     private Menu vista;
     private ManejadorDeEventos manejador;
     
-    
-<span class="nc" id="L13">    public MenuController(Menu vista) {</span>
-<span class="nc" id="L14">        this.vista = vista;</span>
-<span class="nc" id="L15">    }</span>
-    
+<span class="nc" id="L12">    public MenuController(Menu vista) {</span>
+<span class="nc" id="L13">        this.vista = vista;</span>
+<span class="nc" id="L14">    }</span>
     
     @Override
     protected void instancias() {
-<span class="nc" id="L20">        manejador = new ManejadorDeEventos();</span>
-<span class="nc" id="L21">    }</span>
-
-    @Override
-    protected void cargarInformacionDeLaBDs() {
-        
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L18">        manejador = new ManejadorDeEventos();</span>
+<span class="nc" id="L19">    }</span>
 
     @Override
     protected void item() {
-<span class="nc" id="L30">       vista.itemEmpleados.addActionListener(manejador);</span>
-<span class="nc" id="L31">       vista.itemAsistenciaDiaria.addActionListener(manejador);</span>
-<span class="nc" id="L32">    }</span>
+<span class="nc" id="L23">       vista.itemEmpleados.addActionListener(manejador);</span>
+<span class="nc" id="L24">       vista.itemAsistenciaDiaria.addActionListener(manejador);</span>
+<span class="nc" id="L25">       vista.itemEntradaSalida.addActionListener(manejador);</span>
+<span class="nc" id="L26">       vista.itemInasistenciaSemanalGeneral.addActionListener(manejador);</span>
+<span class="nc" id="L27">       vista.itemInasistenciaQuincenalGeneral.addActionListener(manejador);</span>
+<span class="nc" id="L28">       vista.barraEmpleado.addActionListener(manejador);</span>
+<span class="nc" id="L29">       vista.barraRegistroDeAsistencias.addActionListener(manejador);</span>
+<span class="nc" id="L30">       vista.barraEntradasSalidas.addActionListener(manejador);</span>
+<span class="nc" id="L31">    }</span>
     
-<span class="nc" id="L34">    private class ManejadorDeEventos implements ActionListener {</span>
+<span class="nc" id="L33">    private class ManejadorDeEventos implements ActionListener {</span>
 
         @Override
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L38">            Object evento = e.getSource();</span>
+<span class="nc" id="L37">            Object evento = e.getSource();</span>
             
-<span class="nc bnc" id="L40" title="All 2 branches missed.">            if (evento.equals(vista.itemEmpleados)) {</span>
-<span class="nc" id="L41">                ventana(vista.VistaBuscarEmpleado, 400, 180);</span>
-<span class="nc bnc" id="L42" title="All 2 branches missed.">            } else if(evento.equals(vista.itemAsistenciaDiaria)) {</span>
-<span class="nc" id="L43">                ventana(vista.VistaDeAsistenciaDiaria, 855, 540);</span>
+<span class="nc bnc" id="L39" title="All 4 branches missed.">            if (evento.equals(vista.itemEmpleados) || evento.equals(vista.barraEmpleado)) {</span>
+<span class="nc" id="L40">                ventana(vista.VistaBuscarEmpleado, 400, 180);</span>
+            } 
+            
+<span class="nc bnc" id="L43" title="All 4 branches missed.">            if(evento.equals(vista.itemAsistenciaDiaria) || evento.equals(vista.barraRegistroDeAsistencias)) {</span>
+<span class="nc" id="L44">                ventana(vista.VistaDeAsistenciaDiaria, 880, 540);</span>
             }
-<span class="nc" id="L45">        }</span>
-    
-    }
-    
+            
+<span class="nc bnc" id="L47" title="All 4 branches missed.">            if (evento.equals(vista.itemEntradaSalida) || evento.equals(vista.barraEntradasSalidas)) {</span>
+<span class="nc" id="L48">                ventana(vista.VistaSeleccionarFechaES, 400, 175);</span>
+            }
+            
+<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (evento.equals(vista.itemInasistenciaSemanalGeneral)) {</span>
+<span class="nc" id="L52">                ventana(vista.VistaSeleccionDeFecha, 500, 375);</span>
+            }
+            
+<span class="nc bnc" id="L55" title="All 2 branches missed.">            if (evento.equals(vista.itemInasistenciaQuincenalGeneral)) {</span>
+<span class="nc" id="L56">                ventana(vista.VistaSeleccionDeMesYQuincena, 420, 220);</span>
+            }
+<span class="nc" id="L58">        }</span>
+    }  
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

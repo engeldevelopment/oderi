@@ -69,6 +69,14 @@ public class ReporteDeInasistenciaSemanal {
         return fechaDeIncio;
     }
     
+    public void setListado(List<Inasistencia> listado) {
+        this.listado = listado;
+    }
+    
+    public void setFechaDeCorte(DateTime fecha) {
+        this.fechaDeCorte = fecha;
+    }
+    
     public DateTime getFechaDeCorte() {
         return fechaDeCorte;
     }
@@ -95,5 +103,5 @@ public class ReporteDeInasistenciaSemanal {
 
     public void setServicio(IServicioInasistencia servicio) {
         this.servicio = servicio;
-    }   
+    }
 }

@@ -43,11 +43,6 @@ public class InasistenciasController extends Controlador {
         presenter = new InasistenciaPresenter(vista);
         inasistenciaSemanalPresenter = new InasistenciaSemanalPresenter(vista);
     }
-
-    @Override
-    protected void cargarInformacionDeLaBDs() {
-         
-    }
     
     @Override
     protected void boton() {
@@ -90,10 +85,9 @@ public class InasistenciasController extends Controlador {
     private void JustificarInasistencia() {
       
         try {
-            DateTime fechaActual = new DateTime();
             String observacion = vista.areaObservacion.getText();
             justificacion = new JustificacionDeInasistencia(inasistencia, 
-                    fechaActual, servicioDeInasistencia);
+                    DateTime.now(), servicioDeInasistencia);
            
             justificacion.Justificar(observacion);
             

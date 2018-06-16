@@ -3,7 +3,6 @@ package dao;
 
 import modelo.Inasistencia;
 import java.util.Collection;
-import java.util.Date;
 import org.joda.time.DateTime;
 
 public interface IServicioInasistencia extends IDAO<Inasistencia>{

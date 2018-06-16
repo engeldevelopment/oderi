@@ -101,10 +101,10 @@ public class EmpleadosController extends Controlador {
     
     private void verficarExistencia() {
 <span class="nc bnc" id="L103" title="All 2 branches missed.">        if (empleado.esNull()) {</span>
-<span class="nc" id="L104">            int respuesta = Notification.windowConfirmMessage(vista, </span>
+<span class="nc" id="L104">            int deseaRegistrarlo = Notification.windowConfirmMessage(vista, </span>
                     &quot;Disculpe!&quot;, 
                     &quot;Este empleado no existe. ¿Desea registrarlo?&quot;);
-<span class="nc bnc" id="L107" title="All 2 branches missed.">            if (respuesta == 1) {</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">            if (deseaRegistrarlo == 1) {</span>
 <span class="nc" id="L108">                vista.txtCedula.setText(cedula);</span>
 <span class="nc" id="L109">                ventana(vista.NuevoEmpleado, 360, 295);</span>
             }

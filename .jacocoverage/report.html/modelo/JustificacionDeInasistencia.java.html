@@ -3,47 +3,38 @@ package modelo;
 
 import excepciones.*;
 import dao.*;
-import java.sql.Time;
-import org.joda.time.DateTime;
+import org.joda.time.*;
 
 public class JustificacionDeInasistencia {
     
-    private Time horaActual;
     private Inasistencia inasistencia;
     private DateTime fechaActual;
     private IServicioInasistencia servicio;
     
     public JustificacionDeInasistencia(Inasistencia inasistencia, 
-<span class="fc" id="L17">            Time horaActual, DateTime fechaActual) {</span>
+<span class="fc" id="L15">            DateTime fechaActual, IServicioInasistencia servicio) {</span>
         
-<span class="fc" id="L19">        this.inasistencia = inasistencia;</span>
-<span class="fc" id="L20">        this.horaActual = horaActual;</span>
-<span class="fc" id="L21">        this.fechaActual = fechaActual;</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L17">        this.inasistencia = inasistencia;</span>
+<span class="fc" id="L18">        this.fechaActual = fechaActual;</span>
+<span class="fc" id="L19">        this.servicio = servicio;</span>
+<span class="fc" id="L20">    }</span>
    
-    public void Justificar(String descripcion) throws HorasDeInasistenciaExcedida, 
+    public void Justificar(String descripcion) throws TiempoDeJustificacionCaducadoException, 
             InasistenciaJustificadaException {
         
-<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (inasistencia.estaJustificada()){</span>
-<span class="fc" id="L28">            throw new InasistenciaJustificadaException();</span>
-<span class="fc bfc" id="L29" title="All 2 branches covered.">        } else if (tiene24HorasGenerada()) {</span>
-<span class="fc" id="L30">            throw new HorasDeInasistenciaExcedida();</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (inasistencia.estaJustificada()){</span>
+<span class="fc" id="L26">            throw new InasistenciaJustificadaException();</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        } else if (tieneMasDeUnDiaGenerada()) {</span>
+<span class="fc" id="L28">            throw new TiempoDeJustificacionCaducadoException();</span>
         }
-<span class="fc" id="L32">        inasistencia.CrearJustificacion(descripcion);</span>
-<span class="fc" id="L33">        servicio.guardar(inasistencia);</span>
-<span class="fc" id="L34">    }</span>
+<span class="fc" id="L30">        inasistencia.CrearJustificacion(descripcion);</span>
+<span class="fc" id="L31">        servicio.guardar(inasistencia);</span>
+<span class="fc" id="L32">    }</span>
     
-    private boolean tiene24HorasGenerada() {
-<span class="fc bfc" id="L37" title="All 2 branches covered.">        return esOtroDia() &amp;&amp; </span>
-<span class="pc bpc" id="L38" title="1 of 2 branches missed.">                horaActual.getTime() &gt;= inasistencia.getHoraDeGeneracion().getTime();</span>
+    private boolean tieneMasDeUnDiaGenerada() {
+<span class="fc" id="L35">        return Days.daysBetween(inasistencia.getDia(), </span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">                fechaActual).getDays() &gt; 1;</span>
+                
     }
-    
-    private boolean esOtroDia() {
-<span class="fc" id="L42">        return inasistencia.getDia().isBefore(fechaActual);</span>
-    }
-    
-    public void setServicio(IServicioInasistencia servI) {
-<span class="fc" id="L46">        this.servicio = servI;</span>
-<span class="fc" id="L47">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -19,11 +19,6 @@ public class MenuController extends Controlador {
     }
 
     @Override
-    protected void cargarInformacionDeLaBDs() {
-        
-    }
-
-    @Override
     protected void item() {
        vista.itemEmpleados.addActionListener(manejador);
        vista.itemAsistenciaDiaria.addActionListener(manejador);

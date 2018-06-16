@@ -3,7 +3,7 @@ package controlador;
 
 import vista.Menu;
 import java.util.ArrayList;
-import javax.swing.JFrame;
+
 
 public class Aplicacion {
     
@@ -17,67 +17,68 @@ public class Aplicacion {
     private InasistenciasController inasistencias;
     private PermisosController permisos;
     private Menu vistaPrincipal;
+    private UsuariosController usuario;
+    private CalendarioController calendario;
     
-<span class="nc" id="L21">    private Aplicacion() {</span>
+<span class="nc" id="L23">    private Aplicacion() {</span>
         
-<span class="nc" id="L23">    }</span>
+<span class="nc" id="L25">    }</span>
     
     public static Aplicacion get() {
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (aplicacion == null) {</span>
-<span class="nc" id="L27">            aplicacion = new Aplicacion();</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if (aplicacion == null) {</span>
+<span class="nc" id="L29">            aplicacion = new Aplicacion();</span>
         }
-<span class="nc" id="L29">        return aplicacion;</span>
+<span class="nc" id="L31">        return aplicacion;</span>
     }
     
     public void iniciar() {
-<span class="nc" id="L33">        lookAndFeel();</span>
-<span class="nc" id="L34">        instancias();</span>
-<span class="nc" id="L35">        controladores();</span>
-<span class="nc" id="L36">        vistaMenu();</span>
-<span class="nc" id="L37">    }</span>
+<span class="nc" id="L35">        lookAndFeel();</span>
+<span class="nc" id="L36">        instancias();</span>
+<span class="nc" id="L37">        controladores();</span>
+<span class="nc" id="L38">        usuario.vistaLogin();</span>
+<span class="nc" id="L39">    }</span>
     
     private void lookAndFeel() {
        try {
-<span class="nc bnc" id="L41" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
-<span class="nc bnc" id="L42" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
-<span class="nc" id="L43">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
-<span class="nc" id="L44">                    break;</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L45">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L46">                    break;</span>
                 }
             }
-<span class="nc" id="L47">        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {</span>
-<span class="nc" id="L48">            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L49">        }</span>
-<span class="nc" id="L50">    }</span>
+<span class="nc" id="L49">        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L50">            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L51">        }</span>
+<span class="nc" id="L52">    }</span>
     
     private void instancias() {
-<span class="nc" id="L53">        controladores = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L54">        vistaPrincipal = new Menu();</span>
-<span class="nc" id="L55">        menu = new MenuController(vistaPrincipal);</span>
-<span class="nc" id="L56">        empleados = new EmpleadosController(vistaPrincipal);</span>
-<span class="nc" id="L57">        asistencias = new AsistenciaController(vistaPrincipal);</span>
-<span class="nc" id="L58">        subMenu = new SubMenuController(vistaPrincipal);</span>
-<span class="nc" id="L59">        jornadas = new JornadaController(vistaPrincipal);</span>
-<span class="nc" id="L60">        inasistencias = new InasistenciasController(vistaPrincipal);</span>
-<span class="nc" id="L61">        permisos = new PermisosController(vistaPrincipal);</span>
+<span class="nc" id="L55">        controladores = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L56">        vistaPrincipal = new Menu();</span>
+<span class="nc" id="L57">        menu = new MenuController(vistaPrincipal);</span>
+<span class="nc" id="L58">        empleados = new EmpleadosController(vistaPrincipal);</span>
+<span class="nc" id="L59">        asistencias = new AsistenciaController(vistaPrincipal);</span>
+<span class="nc" id="L60">        subMenu = new SubMenuController(vistaPrincipal);</span>
+<span class="nc" id="L61">        jornadas = new JornadaController(vistaPrincipal);</span>
+<span class="nc" id="L62">        inasistencias = new InasistenciasController(vistaPrincipal);</span>
+<span class="nc" id="L63">        permisos = new PermisosController(vistaPrincipal);</span>
+<span class="nc" id="L64">        usuario = new UsuariosController(vistaPrincipal);</span>
+<span class="nc" id="L65">        calendario = new CalendarioController(vistaPrincipal);</span>
         
-<span class="nc" id="L63">        controladores.add(menu);</span>
-<span class="nc" id="L64">        controladores.add(subMenu);</span>
-<span class="nc" id="L65">        controladores.add(empleados);</span>
-<span class="nc" id="L66">        controladores.add(asistencias);</span>
-<span class="nc" id="L67">        controladores.add(jornadas);</span>
-<span class="nc" id="L68">        controladores.add(inasistencias);</span>
-<span class="nc" id="L69">        controladores.add(permisos);</span>
-<span class="nc" id="L70">    }</span>
-    
-    private void controladores() {
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        for (IControlador controlador: controladores) {</span>
-<span class="nc" id="L74">            controlador.iniciar();</span>
-<span class="nc" id="L75">        }</span>
+<span class="nc" id="L67">        controladores.add(menu);</span>
+<span class="nc" id="L68">        controladores.add(subMenu);</span>
+<span class="nc" id="L69">        controladores.add(empleados);</span>
+<span class="nc" id="L70">        controladores.add(asistencias);</span>
+<span class="nc" id="L71">        controladores.add(jornadas);</span>
+<span class="nc" id="L72">        controladores.add(inasistencias);</span>
+<span class="nc" id="L73">        controladores.add(permisos);</span>
+<span class="nc" id="L74">        controladores.add(usuario);</span>
+<span class="nc" id="L75">        controladores.add(calendario);</span>
 <span class="nc" id="L76">    }</span>
     
-    private void vistaMenu() {
-<span class="nc" id="L79">        vistaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);</span>
-<span class="nc" id="L80">        vistaPrincipal.setVisible(true);</span>
-<span class="nc" id="L81">    }</span>
+    private void controladores() {
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        for (IControlador controlador: controladores) {</span>
+<span class="nc" id="L80">            controlador.iniciar();</span>
+<span class="nc" id="L81">        }</span>
+<span class="nc" id="L82">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

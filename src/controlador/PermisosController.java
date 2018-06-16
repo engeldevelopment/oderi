@@ -29,11 +29,6 @@ public class PermisosController extends Controlador {
     }
 
     @Override
-    protected void cargarInformacionDeLaBDs() {
-        
-    }
-
-    @Override
     protected void boton() {
         vista.btnEmitir.addActionListener(manejador);
     }

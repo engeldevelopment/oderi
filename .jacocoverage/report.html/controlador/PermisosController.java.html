@@ -29,53 +29,48 @@ public class PermisosController extends Controlador {
 <span class="nc" id="L29">    }</span>
 
     @Override
-    protected void cargarInformacionDeLaBDs() {
-        
-<span class="nc" id="L34">    }</span>
-
-    @Override
     protected void boton() {
-<span class="nc" id="L38">        vista.btnEmitir.addActionListener(manejador);</span>
-<span class="nc" id="L39">    }</span>
+<span class="nc" id="L33">        vista.btnEmitir.addActionListener(manejador);</span>
+<span class="nc" id="L34">    }</span>
     
     private void emitir() {
-<span class="nc" id="L42">        int dias = 0;</span>
+<span class="nc" id="L37">        int dias = 0;</span>
         try {
-<span class="nc" id="L44">            DateTime fechaDeIncio = new DateTime(vista.fechaDeIncio.getDate());</span>
-<span class="nc" id="L45">            dias = (int) vista.txtDiasDePermiso.getValue();</span>
-<span class="nc" id="L46">            permiso = new Permiso(fechaDeEmision(), fechaDeIncio, dias);</span>
-<span class="nc" id="L47">            permiso.emitir();</span>
+<span class="nc" id="L39">            DateTime fechaDeIncio = new DateTime(vista.fechaDeIncio.getDate());</span>
+<span class="nc" id="L40">            dias = (int) vista.txtDiasDePermiso.getValue();</span>
+<span class="nc" id="L41">            permiso = new Permiso(fechaDeEmision(), fechaDeIncio, dias);</span>
+<span class="nc" id="L42">            permiso.emitir();</span>
             
-<span class="nc" id="L49">             Notification.windowMessage(vista, &quot;Listo!&quot;, </span>
+<span class="nc" id="L44">             Notification.windowMessage(vista, &quot;Listo!&quot;, </span>
                      &quot;Fecha de inicio: &quot;+
-<span class="nc" id="L51">                             formato.print(permiso.getFechaDeInicio())+</span>
-<span class="nc" id="L52">                             &quot;\n Fecha de corte: &quot;+formato.print(permiso.getFechaDeCorte()),</span>
+<span class="nc" id="L46">                             formato.print(permiso.getFechaDeInicio())+</span>
+<span class="nc" id="L47">                             &quot;\n Fecha de corte: &quot;+formato.print(permiso.getFechaDeCorte()),</span>
                      NiconEvent.NOTIFY_OK);
             
-<span class="nc" id="L55">        } catch (NumberFormatException | NumeroDeDiaIncorrectoException | </span>
+<span class="nc" id="L50">        } catch (NumberFormatException | NumeroDeDiaIncorrectoException | </span>
                 FechaDeInicioIncorrecta | FechaDeInicioVacia e) {
-<span class="nc" id="L57">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
-<span class="nc" id="L58">                    e.getMessage(), NiconEvent.NOTIFY_WARNING);</span>
-<span class="nc" id="L59">        } </span>
-<span class="nc" id="L60">    }</span>
+<span class="nc" id="L52">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
+<span class="nc" id="L53">                    e.getMessage(), NiconEvent.NOTIFY_WARNING);</span>
+<span class="nc" id="L54">        } </span>
+<span class="nc" id="L55">    }</span>
     
     private DateTime fechaDeEmision() {
-<span class="nc" id="L63">        return DateTime.now();</span>
+<span class="nc" id="L58">        return DateTime.now();</span>
     }
     
     private void definirRemuneracionDelPermiso() {
        
-<span class="nc" id="L68">    }</span>
+<span class="nc" id="L63">    }</span>
     
-<span class="nc" id="L70">    private class ManejadoDeEventos implements ActionListener {</span>
+<span class="nc" id="L65">    private class ManejadoDeEventos implements ActionListener {</span>
 
         @Override
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L74">            Object evento = e.getSource();</span>
-<span class="nc bnc" id="L75" title="All 2 branches missed.">            if (evento.equals(vista.btnEmitir)) {</span>
-<span class="nc" id="L76">                emitir();</span>
+<span class="nc" id="L69">            Object evento = e.getSource();</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">            if (evento.equals(vista.btnEmitir)) {</span>
+<span class="nc" id="L71">                emitir();</span>
             }
-<span class="nc" id="L78">        }</span>
+<span class="nc" id="L73">        }</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

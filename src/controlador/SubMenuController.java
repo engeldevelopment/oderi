@@ -19,11 +19,6 @@ public class SubMenuController extends Controlador {
     }
 
     @Override
-    protected void cargarInformacionDeLaBDs() {
-        
-    }
-
-    @Override
     protected void item() {
         vista.btnInformacionPersonal.addActionListener(manejador);
         vista.btnInasistenciasDeEmpleado.addActionListener(manejador);

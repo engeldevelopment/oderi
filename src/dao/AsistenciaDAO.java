@@ -71,7 +71,7 @@ public class AsistenciaDAO implements IServicioAsistencia {
     
     @Override
     public Collection<Asistencia> buscarTodos(){
-        Collection<Asistencia> lista = null;
+        Collection<Asistencia> lista = new ArrayList();
         try {
             sesion = HibernateUtil.getSessionFactory().openSession();
             sesion.beginTransaction();
@@ -110,7 +110,7 @@ public class AsistenciaDAO implements IServicioAsistencia {
 
     @Override
     public Collection<Asistencia> asistenciasDelMes(int mes, int year) {
-        List<Asistencia> lista = null;
+        List<Asistencia> lista = new ArrayList();
         try {
             sesion = HibernateUtil.getSessionFactory().openSession();
             sesion.beginTransaction();
