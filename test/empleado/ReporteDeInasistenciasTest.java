@@ -4,7 +4,7 @@ package empleado;
 import reportes.ReporteDeInasistenciaSemanal;
 import excepciones.SinInasistenciasException;
 import dao.InasistenciaDAO;
-import excepciones.FechaDeInicioIncorrecta;
+import excepciones.FechaIncorrectaException;
 import excepciones.SinFechasException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +43,8 @@ public class ReporteDeInasistenciasTest {
     public void tearDown() {
     }
 
-    @Test(expected = FechaDeInicioIncorrecta.class)
-    public void laFechaDeInicioDebeSerUnDiaLunes() throws FechaDeInicioIncorrecta, 
+    @Test(expected = FechaIncorrectaException.class)
+    public void laFechaDeInicioDebeSerUnDiaLunes() throws FechaIncorrectaException, 
             SinInasistenciasException,
             SinFechasException {
         
@@ -55,7 +55,7 @@ public class ReporteDeInasistenciasTest {
     }
     
     @Test
-    public void laFechaEsUnDiaLunes() throws FechaDeInicioIncorrecta, 
+    public void laFechaEsUnDiaLunes() throws FechaIncorrectaException, 
             SinInasistenciasException,
             SinFechasException {
         
@@ -68,7 +68,7 @@ public class ReporteDeInasistenciasTest {
     }
     
     @Test(expected = SinFechasException.class)
-    public void debeSeleccionarUnaFecha() throws FechaDeInicioIncorrecta, 
+    public void debeSeleccionarUnaFecha() throws FechaIncorrectaException, 
             SinInasistenciasException,
             SinFechasException {
         

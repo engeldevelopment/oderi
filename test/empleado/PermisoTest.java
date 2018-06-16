@@ -40,8 +40,7 @@ public class PermisoTest {
     
     @Test
     public void permisoDe_1_dia() throws NumeroDeDiaIncorrectoException,
-            FechaDeInicioIncorrecta,
-            FechaDeInicioVacia {
+            FechaIncorrectaException {
         
         dias = 1;
         
@@ -54,8 +53,7 @@ public class PermisoTest {
     
     @Test
     public void permisoDe_2_dias() throws NumeroDeDiaIncorrectoException, 
-            FechaDeInicioIncorrecta,
-            FechaDeInicioVacia {
+            FechaIncorrectaException {
         
         dias = 2;
         
@@ -68,8 +66,7 @@ public class PermisoTest {
     
     @Test(expected = NumeroDeDiaIncorrectoException.class)
     public void permisoDe_0_dias() throws NumeroDeDiaIncorrectoException, 
-            FechaDeInicioIncorrecta,
-            FechaDeInicioVacia {
+            FechaIncorrectaException {
         
         dias = 0;
         
@@ -78,9 +75,9 @@ public class PermisoTest {
         
     }
     
-    @Test(expected = FechaDeInicioIncorrecta.class)
+    @Test(expected = FechaIncorrectaException.class)
     public void fechaDeInicioMenorQueLaFechaDeEmision() throws 
-            FechaDeInicioIncorrecta, NumeroDeDiaIncorrectoException, FechaDeInicioVacia {
+            FechaIncorrectaException, NumeroDeDiaIncorrectoException {
         
         dias = 1;
         fechaDeInicio = new DateTime("2018-03-11");
@@ -89,10 +86,9 @@ public class PermisoTest {
         permiso.emitir();
     }
     
-    @Test(expected = FechaDeInicioVacia.class)
+    @Test(expected = FechaIncorrectaException.class)
     public void fechaDeInicioVacia() throws 
-            FechaDeInicioVacia, NumeroDeDiaIncorrectoException, 
-            FechaDeInicioIncorrecta {
+            FechaIncorrectaException, NumeroDeDiaIncorrectoException {
         
         dias = 1;
         

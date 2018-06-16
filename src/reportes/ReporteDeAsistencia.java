@@ -23,21 +23,21 @@ public class ReporteDeAsistencia {
         this.servicio = servicio;
     }
 
-    public void generar() throws FechaAcualException, 
-            FechaPosteriorException, SinFechasException, FechaSinActividad {
+    public void generar() throws FechaIncorrectaException, 
+             SinFechasException {
         
         if (fechaDeConsulta == null){
-            throw new SinFechasException();
+            throw new SinFechasException("Seleccione una fecha por favor");
         } else if (fechaDeConsulta.equals(fechaActual)) {
-            throw new FechaAcualException();
+            throw new FechaIncorrectaException("No puede seleccionar la fecha de hoy.");
         } else if (fechaDeConsulta.after(fechaActual)) {
-            throw new FechaPosteriorException();
+            throw new FechaIncorrectaException("Para esta fecha aún no hay asistencias");
         }
         
         listado = (List<Asistencia>) servicio.asistenciasDelDia(new DateTime(fechaDeConsulta));
         
         if (listado.isEmpty()){
-            throw new FechaSinActividad();
+            throw new FechaIncorrectaException("No huvo actividad en este día.");
         }
     }
     

@@ -9,6 +9,8 @@ import vista.Menu;
 import dao.*;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import nicon.notify.core.*;
 import org.joda.time.DateTime;
 import org.joda.time.format.*;
@@ -210,11 +212,11 @@ public class InasistenciasController extends Controlador {
             inasistenciaSemanalPresenter.ver(reporteSemanal);
             ventana(vista.VistaInasistenciaSemanal, 729, 736);
             
-        } catch (FechaDeInicioIncorrecta | SinInasistenciasException | SinFechasException e) {
+        } catch (SinInasistenciasException | SinFechasException | FechaIncorrectaException e) {
             Notification.windowMessage(vista, "Disculpe!", 
                     e.getMessage(),
                     NiconEvent.NOTIFY_DEFAULT);
-        } 
+        }
     }
     
     private class ManejadorDeEventos extends WindowAdapter implements ActionListener {

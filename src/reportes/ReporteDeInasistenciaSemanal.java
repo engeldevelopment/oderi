@@ -25,10 +25,10 @@ public class ReporteDeInasistenciaSemanal {
         this.fechaDeIncio = new DateTime(fechaDeSolicitud);
     }
 
-    public void generar() throws FechaDeInicioIncorrecta, 
+    public void generar() throws FechaIncorrectaException, 
             SinInasistenciasException {
        if (fechaDeIncio.getDayOfWeek() != 1) {
-           throw new FechaDeInicioIncorrecta("El día de la fecha de inicio debe ser un lunes.");
+           throw new FechaIncorrectaException("El día de la fecha de inicio debe ser un lunes.");
        }
        establecerFechaDeCorteComoViernes();
        

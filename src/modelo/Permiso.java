@@ -64,13 +64,12 @@ public class Permiso {
     
 
     public void emitir() throws NumeroDeDiaIncorrectoException,
-            FechaDeInicioIncorrecta,
-            FechaDeInicioVacia {
+            FechaIncorrectaException {
         
         if (fechaDeInicio == null) {
-          throw new FechaDeInicioVacia("Ingresa la fecha de inicio por favor.");
+          throw new FechaIncorrectaException("Ingresa la fecha de inicio por favor.");
         } else if (ingresoUnaFechaPasadaOIgualALaFechaDeEmision()){
-            throw new FechaDeInicioIncorrecta("Verifique la fecha de inicio por favor.");
+            throw new FechaIncorrectaException("No puedes seleccionar la fecha de hoy o fechas anteriores.");
         } else if(esIncorrectoElNumeroDeDias()) {
             throw new NumeroDeDiaIncorrectoException("Debes ingresar de 1 a 3 días de permiso.");
         }     

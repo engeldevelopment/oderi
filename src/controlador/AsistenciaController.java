@@ -177,24 +177,11 @@ public class AsistenciaController extends Controlador {
             reporte.generar();
             reporteDeEntradaSalidaP.ver(reporte);
             ventana(vista.VistaReporteDeAsistencia, 700, 490);
-        } catch (FechaAcualException e  ) {
+        } catch (SinFechasException | FechaIncorrectaException e  ) {
             Notification.windowMessage(vista, 
-                    "Disculpe!", 
-                    "No puede consultar las asistencias de hoy..");
-        } catch(FechaPosteriorException e) {
-            Notification.windowMessage(vista, 
-                    "Disculpe!", 
-                    "Para este fecha aún no existen asistencias!");
-        } catch (SinFechasException e) {
-                Notification.windowMessage(vista, 
-                    "Disculpe!", 
-                    "Debe seleccionar una fecha..");
-        } catch (FechaSinActividad e){
-            reporteDeEntradaSalidaP.borrarListado();
-            Notification.windowMessage(vista, 
-                    "Aviso!", 
-                    "No hubo actividad en este día!");
-        }
+                    "Disculpe!", e.getMessage(),
+                    NiconEvent.NOTIFY_DEFAULT); 
+        }  
     }
     
     private class ManejadorDeEventoAction implements ActionListener, KeyListener {
