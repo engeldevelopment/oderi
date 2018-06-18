@@ -177,67 +177,54 @@ public class AsistenciaController extends Controlador {
 <span class="nc" id="L177">            reporte.generar();</span>
 <span class="nc" id="L178">            reporteDeEntradaSalidaP.ver(reporte);</span>
 <span class="nc" id="L179">            ventana(vista.VistaReporteDeAsistencia, 700, 490);</span>
-<span class="nc" id="L180">        } catch (FechaAcualException e  ) {</span>
+<span class="nc" id="L180">        } catch (SinFechasException | FechaIncorrectaException e  ) {</span>
 <span class="nc" id="L181">            Notification.windowMessage(vista, </span>
-                    &quot;Disculpe!&quot;, 
-                    &quot;No puede consultar las asistencias de hoy..&quot;);
-<span class="nc" id="L184">        } catch(FechaPosteriorException e) {</span>
-<span class="nc" id="L185">            Notification.windowMessage(vista, </span>
-                    &quot;Disculpe!&quot;, 
-                    &quot;Para este fecha aún no existen asistencias!&quot;);
-<span class="nc" id="L188">        } catch (SinFechasException e) {</span>
-<span class="nc" id="L189">                Notification.windowMessage(vista, </span>
-                    &quot;Disculpe!&quot;, 
-                    &quot;Debe seleccionar una fecha..&quot;);
-<span class="nc" id="L192">        } catch (FechaSinActividad e){</span>
-<span class="nc" id="L193">            reporteDeEntradaSalidaP.borrarListado();</span>
-<span class="nc" id="L194">            Notification.windowMessage(vista, </span>
-                    &quot;Aviso!&quot;, 
-                    &quot;No hubo actividad en este día!&quot;);
-<span class="nc" id="L197">        }</span>
-<span class="nc" id="L198">    }</span>
+<span class="nc" id="L182">                    &quot;Disculpe!&quot;, e.getMessage(),</span>
+                    NiconEvent.NOTIFY_DEFAULT); 
+<span class="nc" id="L184">        }  </span>
+<span class="nc" id="L185">    }</span>
     
-<span class="nc" id="L200">    private class ManejadorDeEventoAction implements ActionListener, KeyListener {</span>
+<span class="nc" id="L187">    private class ManejadorDeEventoAction implements ActionListener, KeyListener {</span>
 
         @Override
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L204">            Object evento = e.getSource();</span>
+<span class="nc" id="L191">            Object evento = e.getSource();</span>
             
-<span class="nc bnc" id="L206" title="All 2 branches missed.">            if (evento.equals(vista.btnIniciarJornada)) {</span>
-<span class="nc" id="L207">                cargarAsistencias();</span>
+<span class="nc bnc" id="L193" title="All 2 branches missed.">            if (evento.equals(vista.btnIniciarJornada)) {</span>
+<span class="nc" id="L194">                cargarAsistencias();</span>
             }
             
-<span class="nc bnc" id="L210" title="All 2 branches missed.">            if (evento.equals(vista.btnEntrada)) {</span>
-<span class="nc" id="L211">                marcarEntrada();</span>
+<span class="nc bnc" id="L197" title="All 2 branches missed.">            if (evento.equals(vista.btnEntrada)) {</span>
+<span class="nc" id="L198">                marcarEntrada();</span>
             }
             
-<span class="nc bnc" id="L214" title="All 2 branches missed.">            if (evento.equals(vista.btnSalida)) {</span>
-<span class="nc" id="L215">                marcarSalida();</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">            if (evento.equals(vista.btnSalida)) {</span>
+<span class="nc" id="L202">                marcarSalida();</span>
             }
            
-<span class="nc bnc" id="L218" title="All 2 branches missed.">            if (evento.equals(vista.btnVerReporteDeAsistencia)) {</span>
-<span class="nc" id="L219">                VerReporteDeEntadaSalida();</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">            if (evento.equals(vista.btnVerReporteDeAsistencia)) {</span>
+<span class="nc" id="L206">                VerReporteDeEntadaSalida();</span>
             }
             
-<span class="nc" id="L222">        }</span>
+<span class="nc" id="L209">        }</span>
 
         @Override
         public void keyTyped(KeyEvent e) {
             
-<span class="nc" id="L227">        }</span>
+<span class="nc" id="L214">        }</span>
 
         @Override
         public void keyPressed(KeyEvent e) {
             
-<span class="nc" id="L232">        }</span>
+<span class="nc" id="L219">        }</span>
 
         @Override
         public void keyReleased(KeyEvent e) {
-<span class="nc" id="L236">             Object eventoLetras = e.getSource();</span>
-<span class="nc bnc" id="L237" title="All 2 branches missed.">            if (eventoLetras.equals(vista.txtBusquedaPorCedula)) {</span>
-<span class="nc" id="L238">                BuscarPorCedula();</span>
+<span class="nc" id="L223">             Object eventoLetras = e.getSource();</span>
+<span class="nc bnc" id="L224" title="All 2 branches missed.">            if (eventoLetras.equals(vista.txtBusquedaPorCedula)) {</span>
+<span class="nc" id="L225">                BuscarPorCedula();</span>
             }
-<span class="nc" id="L240">        }</span>
+<span class="nc" id="L227">        }</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

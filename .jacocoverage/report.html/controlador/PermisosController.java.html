@@ -48,7 +48,7 @@ public class PermisosController extends Controlador {
                      NiconEvent.NOTIFY_OK);
             
 <span class="nc" id="L50">        } catch (NumberFormatException | NumeroDeDiaIncorrectoException | </span>
-                FechaDeInicioIncorrecta | FechaDeInicioVacia e) {
+                FechaIncorrectaException e) {
 <span class="nc" id="L52">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
 <span class="nc" id="L53">                    e.getMessage(), NiconEvent.NOTIFY_WARNING);</span>
 <span class="nc" id="L54">        } </span>

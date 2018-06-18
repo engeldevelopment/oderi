@@ -9,6 +9,8 @@ import vista.Menu;
 import dao.*;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import nicon.notify.core.*;
 import org.joda.time.DateTime;
 import org.joda.time.format.*;
@@ -28,229 +30,229 @@ public class InasistenciasController extends Controlador {
     private ReporteDeInasistenciaMensual reporteMensual;
     private InasistenciaSemanalPresenter inasistenciaSemanalPresenter;
     
-<span class="nc" id="L31">    public InasistenciasController(Menu vista) {</span>
-<span class="nc" id="L32">        this.vista = vista;</span>
-<span class="nc" id="L33">    }</span>
+<span class="nc" id="L33">    public InasistenciasController(Menu vista) {</span>
+<span class="nc" id="L34">        this.vista = vista;</span>
+<span class="nc" id="L35">    }</span>
     
     @Override
     protected void instancias() {
-<span class="nc" id="L37">        manejador = new ManejadorDeEventos();</span>
-<span class="nc" id="L38">        servicioDeInasistencia = new InasistenciaDAO();</span>
-<span class="nc" id="L39">        formato = DateTimeFormat.forPattern(&quot;EEEE, dd MMM YYYY&quot;);</span>
-<span class="nc" id="L40">        formatoCortoFecha = DateTimeFormat.forPattern(&quot;dd MMM YYYY&quot;);</span>
-<span class="nc" id="L41">        formatoHora = new SimpleDateFormat(&quot;hh:mm:s a&quot;);</span>
-<span class="nc" id="L42">        vista.lblFechaDeInasistencia.setText(&quot;&quot;+formato.print(DateTime.now()));</span>
-<span class="nc" id="L43">        presenter = new InasistenciaPresenter(vista);</span>
-<span class="nc" id="L44">        inasistenciaSemanalPresenter = new InasistenciaSemanalPresenter(vista);</span>
-<span class="nc" id="L45">    }</span>
+<span class="nc" id="L39">        manejador = new ManejadorDeEventos();</span>
+<span class="nc" id="L40">        servicioDeInasistencia = new InasistenciaDAO();</span>
+<span class="nc" id="L41">        formato = DateTimeFormat.forPattern(&quot;EEEE, dd MMM YYYY&quot;);</span>
+<span class="nc" id="L42">        formatoCortoFecha = DateTimeFormat.forPattern(&quot;dd MMM YYYY&quot;);</span>
+<span class="nc" id="L43">        formatoHora = new SimpleDateFormat(&quot;hh:mm:s a&quot;);</span>
+<span class="nc" id="L44">        vista.lblFechaDeInasistencia.setText(&quot;&quot;+formato.print(DateTime.now()));</span>
+<span class="nc" id="L45">        presenter = new InasistenciaPresenter(vista);</span>
+<span class="nc" id="L46">        inasistenciaSemanalPresenter = new InasistenciaSemanalPresenter(vista);</span>
+<span class="nc" id="L47">    }</span>
     
     @Override
     protected void boton() {
-<span class="nc" id="L49">        vista.btnReporte.addActionListener(manejador);</span>
-<span class="nc" id="L50">        vista.btnConsultarInasistencia.addActionListener(manejador);</span>
-<span class="nc" id="L51">        vista.btnCrearJustificacion.addActionListener(manejador);</span>
-<span class="nc" id="L52">        vista.btnJustificar.addActionListener(manejador);</span>
-<span class="nc" id="L53">        vista.VistaSubMenu.addWindowListener(manejador);</span>
-<span class="nc" id="L54">        vista.btnVerInasistenciaSemanal.addActionListener(manejador);</span>
-<span class="nc" id="L55">        vista.btnVerJustificacion.addActionListener(manejador);</span>
-<span class="nc" id="L56">    }</span>
+<span class="nc" id="L51">        vista.btnReporte.addActionListener(manejador);</span>
+<span class="nc" id="L52">        vista.btnConsultarInasistencia.addActionListener(manejador);</span>
+<span class="nc" id="L53">        vista.btnCrearJustificacion.addActionListener(manejador);</span>
+<span class="nc" id="L54">        vista.btnJustificar.addActionListener(manejador);</span>
+<span class="nc" id="L55">        vista.VistaSubMenu.addWindowListener(manejador);</span>
+<span class="nc" id="L56">        vista.btnVerInasistenciaSemanal.addActionListener(manejador);</span>
+<span class="nc" id="L57">        vista.btnVerJustificacion.addActionListener(manejador);</span>
+<span class="nc" id="L58">    }</span>
     
     private void buscarInasistenciaDelEmpleado() {
         try {
-<span class="nc" id="L60">            reporteMensual = new ReporteDeInasistenciaMensual(servicioDeInasistencia, </span>
-<span class="nc" id="L61">                Empleado(), Mes(), Year());</span>
-<span class="nc" id="L62">            reporteMensual.generar();</span>
-<span class="nc" id="L63">            presenter.ver(reporteMensual);</span>
+<span class="nc" id="L62">            reporteMensual = new ReporteDeInasistenciaMensual(servicioDeInasistencia, </span>
+<span class="nc" id="L63">                Empleado(), Mes(), Year());</span>
+<span class="nc" id="L64">            reporteMensual.generar();</span>
+<span class="nc" id="L65">            presenter.ver(reporteMensual);</span>
             
-<span class="nc" id="L65">        } catch (SinInasistenciasException e) {</span>
-<span class="nc" id="L66">            Notification.windowMessage(vista, &quot;Aviso&quot;, </span>
-<span class="nc" id="L67">                    e.getMessage());</span>
-<span class="nc" id="L68">            presenter.borrarListado();</span>
-<span class="nc" id="L69">        }</span>
-<span class="nc" id="L70">        vista.listaDeInasistenciaPorEmpleado.clearSelection();</span>
-<span class="nc" id="L71">    }</span>
+<span class="nc" id="L67">        } catch (SinInasistenciasException e) {</span>
+<span class="nc" id="L68">            Notification.windowMessage(vista, &quot;Aviso&quot;, </span>
+<span class="nc" id="L69">                    e.getMessage());</span>
+<span class="nc" id="L70">            presenter.borrarListado();</span>
+<span class="nc" id="L71">        }</span>
+<span class="nc" id="L72">        vista.listaDeInasistenciaPorEmpleado.clearSelection();</span>
+<span class="nc" id="L73">    }</span>
     
     private String Empleado() {
-<span class="nc" id="L74">        return vista.lblCedulaEmpleado.getText();</span>
+<span class="nc" id="L76">        return vista.lblCedulaEmpleado.getText();</span>
     }
     
     private int Mes() {
-<span class="nc" id="L78">        return vista.mesInasistencia.getMonth() + 1;</span>
+<span class="nc" id="L80">        return vista.mesInasistencia.getMonth() + 1;</span>
     }
     
     private int Year() {
-<span class="nc" id="L82">        return vista.yearInasistencia.getYear();</span>
+<span class="nc" id="L84">        return vista.yearInasistencia.getYear();</span>
     }
     
     private void JustificarInasistencia() {
       
         try {
-<span class="nc" id="L88">            String observacion = vista.areaObservacion.getText();</span>
-<span class="nc" id="L89">            justificacion = new JustificacionDeInasistencia(inasistencia, </span>
-<span class="nc" id="L90">                    DateTime.now(), servicioDeInasistencia);</span>
+<span class="nc" id="L90">            String observacion = vista.areaObservacion.getText();</span>
+<span class="nc" id="L91">            justificacion = new JustificacionDeInasistencia(inasistencia, </span>
+<span class="nc" id="L92">                    DateTime.now(), servicioDeInasistencia);</span>
            
-<span class="nc" id="L92">            justificacion.Justificar(observacion);</span>
+<span class="nc" id="L94">            justificacion.Justificar(observacion);</span>
             
-<span class="nc" id="L94">            Notification.windowMessage(vista, </span>
+<span class="nc" id="L96">            Notification.windowMessage(vista, </span>
                     &quot;Listo!&quot;, 
                     &quot;La inasistencia ha sido justificada exitosamente.&quot;,
                     NiconEvent.NOTIFY_OK);
-<span class="nc" id="L98">            reestablecerVistaDeJustificacionDeInasistencia();</span>
-<span class="nc" id="L99">            buscarInasistenciaDelEmpleado();</span>
+<span class="nc" id="L100">            reestablecerVistaDeJustificacionDeInasistencia();</span>
+<span class="nc" id="L101">            buscarInasistenciaDelEmpleado();</span>
             
-<span class="nc" id="L101">        } catch (TiempoDeJustificacionCaducadoException ex) {</span>
-<span class="nc" id="L102">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
+<span class="nc" id="L103">        } catch (TiempoDeJustificacionCaducadoException ex) {</span>
+<span class="nc" id="L104">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
                     &quot;Esta inasistencia tiene más de 24 horas generada.&quot;
                             + &quot;\nNo puede justificarla&quot;,
                     NiconEvent.NOTIFY_WARNING);
-<span class="nc" id="L106">        } catch (InasistenciaJustificadaException ex) {</span>
-<span class="nc" id="L107">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
+<span class="nc" id="L108">        } catch (InasistenciaJustificadaException ex) {</span>
+<span class="nc" id="L109">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
                     &quot;Esta inasistencia ya fue justifiada.&quot;,
                     NiconEvent.NOTIFY_WARNING);
-<span class="nc" id="L110">        }</span>
-<span class="nc" id="L111">    }</span>
+<span class="nc" id="L112">        }</span>
+<span class="nc" id="L113">    }</span>
     
     private void reestablecerVistaDeJustificacionDeInasistencia() {
-<span class="nc" id="L114">        vista.lblHoraDeGeneracion.setText(&quot;&quot;);</span>
-<span class="nc" id="L115">        vista.areaObservacion.setText(&quot;&quot;);</span>
-<span class="nc" id="L116">        vista.VistaJustificacion.setVisible(false);</span>
-<span class="nc" id="L117">    }</span>
+<span class="nc" id="L116">        vista.lblHoraDeGeneracion.setText(&quot;&quot;);</span>
+<span class="nc" id="L117">        vista.areaObservacion.setText(&quot;&quot;);</span>
+<span class="nc" id="L118">        vista.VistaJustificacion.setVisible(false);</span>
+<span class="nc" id="L119">    }</span>
     
     private void seleccionarInasistencia() {
-<span class="nc bnc" id="L120" title="All 2 branches missed.">        if (noHaConsultadoUnaFecha()) {</span>
-<span class="nc" id="L121">            Notification.windowMessage(vista, </span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">        if (noHaConsultadoUnaFecha()) {</span>
+<span class="nc" id="L123">            Notification.windowMessage(vista, </span>
                     &quot;Disculpe!&quot;, 
                     &quot;Primero debe realizar una consulta.&quot;, 
                     NiconEvent.NOTIFY_DEFAULT);
-<span class="nc bnc" id="L125" title="All 2 branches missed.">        } else if (noHaSeleccionadoUnaInasistencia()) {</span>
-<span class="nc" id="L126">            Notification.windowMessage(vista, </span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">        } else if (noHaSeleccionadoUnaInasistencia()) {</span>
+<span class="nc" id="L128">            Notification.windowMessage(vista, </span>
                     &quot;Disculpe!&quot;, 
                     &quot;Debe seleccionar una inasistencia&quot;, 
                     NiconEvent.NOTIFY_WARNING);
         } else {
-<span class="nc" id="L131">            buscar();</span>
-<span class="nc" id="L132">            verificarSiEstaJustifica();</span>
+<span class="nc" id="L133">            buscar();</span>
+<span class="nc" id="L134">            verificarSiEstaJustifica();</span>
         }   
-<span class="nc" id="L134">    }</span>
+<span class="nc" id="L136">    }</span>
     
     private boolean noHaConsultadoUnaFecha() {
-<span class="nc" id="L137">        int nroDeInasistencia = vista.listaDeInasistenciaPorEmpleado.getRowCount();</span>
-<span class="nc bnc" id="L138" title="All 2 branches missed.">        return nroDeInasistencia &lt;= 0;</span>
+<span class="nc" id="L139">        int nroDeInasistencia = vista.listaDeInasistenciaPorEmpleado.getRowCount();</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">        return nroDeInasistencia &lt;= 0;</span>
     }
     
     int inasistenciaSeleccionada;
     private boolean noHaSeleccionadoUnaInasistencia() {
-<span class="nc" id="L143">        inasistenciaSeleccionada = vista.listaDeInasistenciaPorEmpleado.getSelectedRow();</span>
-<span class="nc bnc" id="L144" title="All 2 branches missed.">        return inasistenciaSeleccionada == -1;</span>
+<span class="nc" id="L145">        inasistenciaSeleccionada = vista.listaDeInasistenciaPorEmpleado.getSelectedRow();</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">        return inasistenciaSeleccionada == -1;</span>
     }
     
     private void buscar() {
-<span class="nc" id="L148">        inasistencia = servicioDeInasistencia.buscar(obtenerIdDeLaInasistenciaSeleccionada());</span>
-<span class="nc" id="L149">    }</span>
+<span class="nc" id="L150">        inasistencia = servicioDeInasistencia.buscar(obtenerIdDeLaInasistenciaSeleccionada());</span>
+<span class="nc" id="L151">    }</span>
     
     private long obtenerIdDeLaInasistenciaSeleccionada() {
-<span class="nc" id="L152">        return (long) vista.listaDeInasistenciaPorEmpleado.</span>
-<span class="nc" id="L153">                    getValueAt(inasistenciaSeleccionada, 0);</span>
+<span class="nc" id="L154">        return (long) vista.listaDeInasistenciaPorEmpleado.</span>
+<span class="nc" id="L155">                    getValueAt(inasistenciaSeleccionada, 0);</span>
     }
     
     private void verificarSiEstaJustifica() {
-<span class="nc bnc" id="L157" title="All 2 branches missed.">        if (inasistencia.estaJustificada()) {</span>
-<span class="nc" id="L158">            Notification.windowMessage(vista, </span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">        if (inasistencia.estaJustificada()) {</span>
+<span class="nc" id="L160">            Notification.windowMessage(vista, </span>
                     &quot;Disculpe!&quot;, 
                     &quot;Esta inasistencia ya está justificada.&quot;, 
                     NiconEvent.NOTIFY_DEFAULT);
         } else {
-<span class="nc" id="L163">            mostrarVistaDeJustificacion();</span>
+<span class="nc" id="L165">            mostrarVistaDeJustificacion();</span>
         }
-<span class="nc" id="L165">    }</span>
+<span class="nc" id="L167">    }</span>
     
     private void mostrarVistaDeJustificacion() {   
-<span class="nc" id="L168">        vista.lblHoraDeGeneracion.setText(String.valueOf(inasistencia.getHoraDeGeneracion()));</span>
-<span class="nc" id="L169">        ventana(vista.VistaJustificacion, 373, 300);</span>
-<span class="nc" id="L170">    }</span>
+<span class="nc" id="L170">        vista.lblHoraDeGeneracion.setText(String.valueOf(inasistencia.getHoraDeGeneracion()));</span>
+<span class="nc" id="L171">        ventana(vista.VistaJustificacion, 373, 300);</span>
+<span class="nc" id="L172">    }</span>
     
     private void verJustificacion() { 
-<span class="nc bnc" id="L173" title="All 2 branches missed.">        if (noHaConsultadoUnaFecha()) {</span>
-<span class="nc" id="L174">            Notification.windowMessage(vista, </span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">        if (noHaConsultadoUnaFecha()) {</span>
+<span class="nc" id="L176">            Notification.windowMessage(vista, </span>
                     &quot;Disculpe!&quot;, 
                     &quot;Primero debe realizar una consulta.&quot;, 
                     NiconEvent.NOTIFY_DEFAULT);
-<span class="nc bnc" id="L178" title="All 2 branches missed.">        } else if (noHaSeleccionadoUnaInasistencia()) {</span>
-<span class="nc" id="L179">            Notification.windowMessage(vista, </span>
+<span class="nc bnc" id="L180" title="All 2 branches missed.">        } else if (noHaSeleccionadoUnaInasistencia()) {</span>
+<span class="nc" id="L181">            Notification.windowMessage(vista, </span>
                     &quot;Disculpe!&quot;, 
                     &quot;Debe seleccionar una inasistencia&quot;, 
                     NiconEvent.NOTIFY_WARNING);
         } else {
-<span class="nc" id="L184">            buscar();</span>
-<span class="nc" id="L185">            verificarSiEstaJustificaParaMostrarLaJustificacion();</span>
+<span class="nc" id="L186">            buscar();</span>
+<span class="nc" id="L187">            verificarSiEstaJustificaParaMostrarLaJustificacion();</span>
         }
-<span class="nc" id="L187">    }</span>
+<span class="nc" id="L189">    }</span>
     
     private void verificarSiEstaJustificaParaMostrarLaJustificacion() {
-<span class="nc bnc" id="L190" title="All 2 branches missed.">        if (inasistencia.estaJustificada()) {</span>
-<span class="nc" id="L191">            vista.lblFechaDeJustificacion.setText(formatoCortoFecha.print(inasistencia.getJustificacion().getFecha()));</span>
-<span class="nc" id="L192">            vista.lblHoraDeJustificacion.setText(formatoHora.format(inasistencia.getJustificacion().getHora()));</span>
-<span class="nc" id="L193">            vista.txtObservacionJustificacion.setText(inasistencia.getJustificacion().getDescripcion());</span>
-<span class="nc" id="L194">            ventana(vista.VistaVerJustificacion, 400, 300);</span>
+<span class="nc bnc" id="L192" title="All 2 branches missed.">        if (inasistencia.estaJustificada()) {</span>
+<span class="nc" id="L193">            vista.lblFechaDeJustificacion.setText(formatoCortoFecha.print(inasistencia.getJustificacion().getFecha()));</span>
+<span class="nc" id="L194">            vista.lblHoraDeJustificacion.setText(formatoHora.format(inasistencia.getJustificacion().getHora()));</span>
+<span class="nc" id="L195">            vista.txtObservacionJustificacion.setText(inasistencia.getJustificacion().getDescripcion());</span>
+<span class="nc" id="L196">            ventana(vista.VistaVerJustificacion, 400, 300);</span>
         } else {
-<span class="nc" id="L196">            Notification.windowMessage(vista, </span>
+<span class="nc" id="L198">            Notification.windowMessage(vista, </span>
                     &quot;Disculpe!&quot;, 
                     &quot;Debe seleccionar una inasistencia justificada.&quot;, 
                     NiconEvent.NOTIFY_DEFAULT);
         }
-<span class="nc" id="L201">    }</span>
+<span class="nc" id="L203">    }</span>
     
     private void verInasistenciaSemanal() {
         try {
            
-<span class="nc" id="L206">            reporteSemanal = new ReporteDeInasistenciaSemanal(vista.fechaInasistenciaSemanal.getDate());</span>
-<span class="nc" id="L207">            reporteSemanal.setServicio(servicioDeInasistencia);</span>
+<span class="nc" id="L208">            reporteSemanal = new ReporteDeInasistenciaSemanal(vista.fechaInasistenciaSemanal.getDate());</span>
+<span class="nc" id="L209">            reporteSemanal.setServicio(servicioDeInasistencia);</span>
             
-<span class="nc" id="L209">            reporteSemanal.generar();</span>
-<span class="nc" id="L210">            inasistenciaSemanalPresenter.ver(reporteSemanal);</span>
-<span class="nc" id="L211">            ventana(vista.VistaInasistenciaSemanal, 729, 736);</span>
+<span class="nc" id="L211">            reporteSemanal.generar();</span>
+<span class="nc" id="L212">            inasistenciaSemanalPresenter.ver(reporteSemanal);</span>
+<span class="nc" id="L213">            ventana(vista.VistaInasistenciaSemanal, 729, 736);</span>
             
-<span class="nc" id="L213">        } catch (FechaDeInicioIncorrecta | SinInasistenciasException | SinFechasException e) {</span>
-<span class="nc" id="L214">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
-<span class="nc" id="L215">                    e.getMessage(),</span>
+<span class="nc" id="L215">        } catch (SinInasistenciasException | SinFechasException | FechaIncorrectaException e) {</span>
+<span class="nc" id="L216">            Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
+<span class="nc" id="L217">                    e.getMessage(),</span>
                     NiconEvent.NOTIFY_DEFAULT);
-<span class="nc" id="L217">        } </span>
-<span class="nc" id="L218">    }</span>
+<span class="nc" id="L219">        }</span>
+<span class="nc" id="L220">    }</span>
     
-<span class="nc" id="L220">    private class ManejadorDeEventos extends WindowAdapter implements ActionListener {</span>
+<span class="nc" id="L222">    private class ManejadorDeEventos extends WindowAdapter implements ActionListener {</span>
 
         @Override
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L224">            Object evento = e.getSource();</span>
+<span class="nc" id="L226">            Object evento = e.getSource();</span>
             
-<span class="nc bnc" id="L226" title="All 2 branches missed.">            if (evento.equals(vista.btnConsultarInasistencia)) {</span>
-<span class="nc" id="L227">                buscarInasistenciaDelEmpleado();</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">            if (evento.equals(vista.btnConsultarInasistencia)) {</span>
+<span class="nc" id="L229">                buscarInasistenciaDelEmpleado();</span>
             }
             
-<span class="nc bnc" id="L230" title="All 2 branches missed.">            if (evento.equals(vista.btnCrearJustificacion)) {</span>
-<span class="nc" id="L231">                seleccionarInasistencia();</span>
+<span class="nc bnc" id="L232" title="All 2 branches missed.">            if (evento.equals(vista.btnCrearJustificacion)) {</span>
+<span class="nc" id="L233">                seleccionarInasistencia();</span>
             }
             
-<span class="nc bnc" id="L234" title="All 2 branches missed.">            if (evento.equals(vista.btnJustificar)) {</span>
-<span class="nc" id="L235">                JustificarInasistencia();</span>
+<span class="nc bnc" id="L236" title="All 2 branches missed.">            if (evento.equals(vista.btnJustificar)) {</span>
+<span class="nc" id="L237">                JustificarInasistencia();</span>
             }
             
-<span class="nc bnc" id="L238" title="All 2 branches missed.">            if (evento.equals(vista.btnVerInasistenciaSemanal)) {</span>
-<span class="nc" id="L239">                verInasistenciaSemanal();</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">            if (evento.equals(vista.btnVerInasistenciaSemanal)) {</span>
+<span class="nc" id="L241">                verInasistenciaSemanal();</span>
             }
             
-<span class="nc bnc" id="L242" title="All 2 branches missed.">            if (evento.equals(vista.btnVerJustificacion)) {</span>
-<span class="nc" id="L243">                verJustificacion();</span>
+<span class="nc bnc" id="L244" title="All 2 branches missed.">            if (evento.equals(vista.btnVerJustificacion)) {</span>
+<span class="nc" id="L245">                verJustificacion();</span>
             }
-<span class="nc" id="L245">        }</span>
+<span class="nc" id="L247">        }</span>
         
         @Override
         public void windowClosing(WindowEvent e) {
-<span class="nc" id="L249">            Object evento = e.getSource();</span>
-<span class="nc bnc" id="L250" title="All 2 branches missed.">            if (evento.equals(vista.VistaSubMenu)) {</span>
-<span class="nc" id="L251">                presenter.borrarListado();</span>
+<span class="nc" id="L251">            Object evento = e.getSource();</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">            if (evento.equals(vista.VistaSubMenu)) {</span>
+<span class="nc" id="L253">                presenter.borrarListado();</span>
             }
-<span class="nc" id="L253">        }</span>
+<span class="nc" id="L255">        }</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

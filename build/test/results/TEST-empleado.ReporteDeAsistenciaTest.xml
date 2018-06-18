@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="engel-Presario-C700-Notebook-PC" name="empleado.PermisoTest" skipped="0" tests="5" time="0.406" timestamp="2018-06-18T15:23:53">
+<testsuite errors="0" failures="0" hostname="engel-Presario-C700-Notebook-PC" name="empleado.ReporteDeAsistenciaTest" skipped="0" tests="4" time="0.844" timestamp="2018-06-18T15:23:54">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="VE" />
@@ -70,7 +70,7 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner empleado.PermisoTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/engel/NetBeansProjects/AsistenciasOderiV2/build/test/results/TEST-empleado.PermisoTest.xml crashfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junitvmwatcher8449055083441334666.properties propsfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junit9092944532539754862.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner empleado.ReporteDeAsistenciaTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/engel/NetBeansProjects/AsistenciasOderiV2/build/test/results/TEST-empleado.ReporteDeAsistenciaTest.xml crashfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junitvmwatcher704835432266009821.properties propsfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junit5487910234232505264.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -486,11 +486,10 @@
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/usr/local/netbeans-8.2/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="empleado.PermisoTest" name="permisoDe_0_dias" time="0.211" />
-  <testcase classname="empleado.PermisoTest" name="permisoDe_2_dias" time="0.001" />
-  <testcase classname="empleado.PermisoTest" name="fechaDeInicioVacia" time="0.001" />
-  <testcase classname="empleado.PermisoTest" name="fechaDeInicioMenorQueLaFechaDeEmision" time="0.001" />
-  <testcase classname="empleado.PermisoTest" name="permisoDe_1_dia" time="0.001" />
+  <testcase classname="empleado.ReporteDeAsistenciaTest" name="noSePuedeConsultarUnReporteDeAsistenciaConLaFechaActual" time="0.608" />
+  <testcase classname="empleado.ReporteDeAsistenciaTest" name="laFechaDeConsultaNoPuedeSerPosteriorALaActual" time="0.001" />
+  <testcase classname="empleado.ReporteDeAsistenciaTest" name="noHuboActividadParaLaFechaDeConsulta" time="0.046" />
+  <testcase classname="empleado.ReporteDeAsistenciaTest" name="fechaDeConsultaVacia" time="0.001" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,12 +1,13 @@
 package dao;
 
 import modelo.Empleado;
-import nullObjects.EmpleadoNull;
+import nullObjects.NullEmpleado;
 import java.util.*;
 import nicon.notify.core.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import hibernate.HibernateUtil;
+import nullObjects.NullEmpleado;
 
 public class EmpleadoDAO {
 
@@ -35,7 +36,7 @@ public class EmpleadoDAO {
             Criteria criterio = sesion.createCriteria(Empleado.class);
             criterio.add(Restrictions.eq("cedula", cedula));
             if (criterio.list().isEmpty())
-                return new EmpleadoNull();
+                return new NullEmpleado();
             empleado = (Empleado) criterio.list().get(0);
         } catch (HibernateException e) {
              Notification.windowMessage(null, "Disculpe!", "Ha ocurrido un Error:"

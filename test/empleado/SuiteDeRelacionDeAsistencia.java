@@ -10,7 +10,9 @@ import org.junit.runners.Suite;
     empleado.AnalizadorDeJornadaTest.class, 
     empleado.JornadaDeTrabajoTest.class, 
     empleado.PermisoTest.class, 
-    empleado.AsistenciaTest.class, empleado.InasistenciaTest.class})
+    empleado.AsistenciaTest.class, empleado.InasistenciaTest.class,
+    empleado.LoginTest.class,
+    empleado.ReporteDeAsistenciaTest.class, empleado.ReporteTest.class})
 public class SuiteDeRelacionDeAsistencia {
 
     @BeforeClass
