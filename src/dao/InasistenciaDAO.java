@@ -168,4 +168,30 @@ public class InasistenciaDAO implements IServicioInasistencia {
         }
         return lista;
     }
+
+    @Override
+    public Collection<Inasistencia> inasistenciasDeEmpleadoDurante(String cedula, 
+            DateTime inicio, DateTime fin) {
+        
+        List<Inasistencia> lista = new ArrayList<>();
+        try {
+            sesion = HibernateUtil.getSessionFactory().openSession();
+            sesion.beginTransaction();
+            Query inasistencias = 
+                    sesion.createQuery("FROM Inasistencia as i WHERE i.dia between :inicio and :fin "
+                            + "and i.empleado.cedula = :cedula ORDER BY i.dia asc")
+                            .setParameter("inicio", inicio)
+                            .setParameter("fin", fin)
+                            .setParameter("cedula", cedula);
+            
+            lista = inasistencias.list();
+        } catch (HibernateException e) {
+            Notification.windowMessage(null, "Disculpe!", "Ha ocurrido un Error:"
+                    + e.getMessage(), 
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+            sesion.close();
+        }
+        return lista;
+    }
 }

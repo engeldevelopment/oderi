@@ -72,6 +72,7 @@ public class Menu extends javax.swing.JFrame {
         yearInasistencia = new com.toedter.calendar.JYearChooser();
         btnConsultarInasistencia = new javax.swing.JButton();
         btnVerJustificacion = new javax.swing.JButton();
+        btnVerInasistenciasSemnalDeEmpleado = new javax.swing.JButton();
         VistaReporteDeAsistencia = new javax.swing.JDialog();
         panel12 = new org.edisoncor.gui.panel.Panel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -167,6 +168,24 @@ public class Menu extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         calendarFechaConsulta = new com.toedter.calendar.JDateChooser();
         btnVerReporteDeAsistencia = new org.edisoncor.gui.button.ButtonTask();
+        VistaInasistenciasSemanalPersonal = new javax.swing.JDialog();
+        jPanel10 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        listaDeInasistenciasSemanalDeEmpleado = new javax.swing.JList<>();
+        jLabel38 = new javax.swing.JLabel();
+        lblTotalInasistenciaSemanal = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel35 = new javax.swing.JLabel();
+        lblEmpleadoInasistenciaSemanal = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        lblCedulaInasistenciaSemanal = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        lblDepartamentoInasistenciaSemanal = new javax.swing.JLabel();
+        VistaSeleccionarFechaInasistenciaSemanalPersonal = new javax.swing.JDialog();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        btnVerInasistenciaSemanalPersonal = new org.edisoncor.gui.button.ButtonTask();
+        fechaInasistenciaSemanalPersonal = new com.toedter.calendar.JCalendar();
         jPanel2 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         barraEmpleado = new javax.swing.JButton();
@@ -836,6 +855,10 @@ public class Menu extends javax.swing.JFrame {
         btnVerJustificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-52-eye-open.png"))); // NOI18N
         btnVerJustificacion.setText("Ver justificación");
 
+        btnVerInasistenciasSemnalDeEmpleado.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        btnVerInasistenciasSemnalDeEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-52-eye-open.png"))); // NOI18N
+        btnVerInasistenciasSemnalDeEmpleado.setText("Ver semanales");
+
         javax.swing.GroupLayout panel9Layout = new javax.swing.GroupLayout(panel9);
         panel9.setLayout(panel9Layout);
         panel9Layout.setHorizontalGroup(
@@ -844,6 +867,8 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel9Layout.createSequentialGroup()
+                        .addComponent(btnVerInasistenciasSemnalDeEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnVerJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCrearJustificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -865,7 +890,8 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrearJustificacion)
-                    .addComponent(btnVerJustificacion))
+                    .addComponent(btnVerJustificacion)
+                    .addComponent(btnVerInasistenciasSemnalDeEmpleado))
                 .addContainerGap())
         );
 
@@ -1103,7 +1129,7 @@ public class Menu extends javax.swing.JFrame {
 
         btnInasistenciasDeEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icon/if_calendar_2_42176.png"))); // NOI18N
         btnInasistenciasDeEmpleado.setText("Inasistencias");
-        btnInasistenciasDeEmpleado.setDescription("Mensuales");
+        btnInasistenciasDeEmpleado.setDescription("Semanal/Mensual");
         panelDeFunciones.add(btnInasistenciasDeEmpleado);
 
         btnPermisosEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icon/if_order-2_59180.png"))); // NOI18N
@@ -1819,6 +1845,158 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        VistaInasistenciasSemanalPersonal.setTitle("Inasistencias Semanal Personal");
+
+        jPanel10.setBackground(java.awt.Color.white);
+
+        listaDeInasistenciasSemanalDeEmpleado.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Días")));
+        jScrollPane9.setViewportView(listaDeInasistenciasSemanalDeEmpleado);
+
+        jLabel38.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jLabel38.setText("Total de Inasistencias:");
+
+        lblTotalInasistenciaSemanal.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        lblTotalInasistenciaSemanal.setText("total");
+
+        jPanel12.setBackground(java.awt.Color.white);
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Empleado"));
+
+        jLabel35.setText("Empleado:");
+
+        lblEmpleadoInasistenciaSemanal.setText("empleado");
+
+        jLabel36.setText("Cédula:");
+
+        lblCedulaInasistenciaSemanal.setText("cedula");
+
+        jLabel37.setText("Departamento:");
+
+        lblDepartamentoInasistenciaSemanal.setText("departamento");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabel36)
+                    .addComponent(jLabel35))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblEmpleadoInasistenciaSemanal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCedulaInasistenciaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDepartamentoInasistenciaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(lblEmpleadoInasistenciaSemanal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCedulaInasistenciaSemanal)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(lblDepartamentoInasistenciaSemanal))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTotalInasistenciaSemanal))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(lblTotalInasistenciaSemanal))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout VistaInasistenciasSemanalPersonalLayout = new javax.swing.GroupLayout(VistaInasistenciasSemanalPersonal.getContentPane());
+        VistaInasistenciasSemanalPersonal.getContentPane().setLayout(VistaInasistenciasSemanalPersonalLayout);
+        VistaInasistenciasSemanalPersonalLayout.setHorizontalGroup(
+            VistaInasistenciasSemanalPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        VistaInasistenciasSemanalPersonalLayout.setVerticalGroup(
+            VistaInasistenciasSemanalPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel11.setBackground(java.awt.Color.white);
+
+        jLabel39.setText("Fecha");
+
+        btnVerInasistenciaSemanalPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icon/if_calendar_2_42176.png"))); // NOI18N
+        btnVerInasistenciaSemanalPersonal.setText("Ver");
+        btnVerInasistenciaSemanalPersonal.setDescription("Detalle de semana");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVerInasistenciaSemanalPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel39)
+                            .addComponent(fechaInasistenciaSemanalPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 52, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel39)
+                .addGap(18, 18, 18)
+                .addComponent(fechaInasistenciaSemanalPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVerInasistenciaSemanalPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout VistaSeleccionarFechaInasistenciaSemanalPersonalLayout = new javax.swing.GroupLayout(VistaSeleccionarFechaInasistenciaSemanalPersonal.getContentPane());
+        VistaSeleccionarFechaInasistenciaSemanalPersonal.getContentPane().setLayout(VistaSeleccionarFechaInasistenciaSemanalPersonalLayout);
+        VistaSeleccionarFechaInasistenciaSemanalPersonalLayout.setHorizontalGroup(
+            VistaSeleccionarFechaInasistenciaSemanalPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        VistaSeleccionarFechaInasistenciaSemanalPersonalLayout.setVerticalGroup(
+            VistaSeleccionarFechaInasistenciaSemanalPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cacao Oderí");
 
@@ -1945,12 +2123,14 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JDialog VistaBuscarEmpleado;
     public javax.swing.JDialog VistaDeAsistenciaDiaria;
     public javax.swing.JDialog VistaInasistenciaSemanal;
+    public javax.swing.JDialog VistaInasistenciasSemanalPersonal;
     public javax.swing.JDialog VistaJustificacion;
     public javax.swing.JDialog VistaReporteDeAsistencia;
     public javax.swing.JDialog VistaSeleccionDeFecha;
     public javax.swing.JDialog VistaSeleccionDeMesYQuincena;
     public javax.swing.JDialog VistaSeleccionarDepartamento;
     public javax.swing.JDialog VistaSeleccionarFechaES;
+    public javax.swing.JDialog VistaSeleccionarFechaInasistenciaSemanalPersonal;
     public javax.swing.JDialog VistaSubMenu;
     public javax.swing.JDialog VistaVerJustificacion;
     private com.toedter.calendar.JYearChooser anioReporteQuincenal;
@@ -1978,6 +2158,8 @@ public class Menu extends javax.swing.JFrame {
     public org.edisoncor.gui.button.ButtonTask btnSalida;
     public org.edisoncor.gui.button.ButtonTask btnSalirEmpleado;
     public org.edisoncor.gui.button.ButtonTask btnVerInasistenciaSemanal;
+    public org.edisoncor.gui.button.ButtonTask btnVerInasistenciaSemanalPersonal;
+    public javax.swing.JButton btnVerInasistenciasSemnalDeEmpleado;
     public javax.swing.JButton btnVerJustificacion;
     public org.edisoncor.gui.button.ButtonTask btnVerReporteDeAsistencia;
     private org.edisoncor.gui.button.ButtonTask buttonTask1;
@@ -1986,6 +2168,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> cmbQuincena;
     public com.toedter.calendar.JDateChooser fechaDeIncio;
     public com.toedter.calendar.JCalendar fechaInasistenciaSemanal;
+    public com.toedter.calendar.JCalendar fechaInasistenciaSemanalPersonal;
     public javax.swing.JMenuItem itemAsistenciaDiaria;
     public javax.swing.JMenuItem itemEmpleados;
     public javax.swing.JMenuItem itemEntradaSalida;
@@ -2021,6 +2204,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2030,6 +2218,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2050,13 +2241,17 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JLabel lblApellidosEmpleado;
     public javax.swing.JLabel lblCedulaEmpleado;
+    public javax.swing.JLabel lblCedulaInasistenciaSemanal;
     public javax.swing.JLabel lblDepartamentoEmpleado;
+    public javax.swing.JLabel lblDepartamentoInasistenciaSemanal;
+    public javax.swing.JLabel lblEmpleadoInasistenciaSemanal;
     public javax.swing.JLabel lblEstado;
     public javax.swing.JLabel lblFecha;
     public javax.swing.JLabel lblFechaDeEmision;
@@ -2073,9 +2268,11 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JLabel lblHoraDeJustificacion;
     public javax.swing.JLabel lblHoraInicio;
     public javax.swing.JLabel lblNombreEmpleado;
+    public javax.swing.JLabel lblTotalInasistenciaSemanal;
     public javax.swing.JTable listaDeAsistencia;
     public javax.swing.JTable listaDeInasistenciaPorEmpleado;
     public javax.swing.JTable listaDeInasistencias;
+    public javax.swing.JList<String> listaDeInasistenciasSemanalDeEmpleado;
     public javax.swing.JTable listadoDeDepartamentos;
     public com.toedter.calendar.JMonthChooser mesInasistencia;
     private com.toedter.calendar.JMonthChooser mesReporteQuincenal;

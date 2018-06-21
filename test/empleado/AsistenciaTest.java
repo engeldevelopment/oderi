@@ -47,17 +47,7 @@ public class AsistenciaTest {
         asistencia = new Asistencia();
         assertTrue(asistencia.estaSinFirmar());
     }
-    
-    @Test
-    public void marcarEntrada() {
-        try {
-             asistencia.marcarEntrada();
-        } catch (AsistenciaMarcadaException e) {
-            fail("Lanzó una excepcion");
-        }
-        
-        assertEquals(AsistenciaBuild.marcarHoraActual(), asistencia.getHoraDeEntrada());
-    }
+
     
     @Test(expected = AsistenciaMarcadaException.class)
     public void elEmpleadoYaFirmoSuEntrada() throws AsistenciaMarcadaException {
@@ -87,14 +77,14 @@ public class AsistenciaTest {
     public void marcarAsistencia() {
         try {
             asistencia.marcarEntrada();
-            System.out.println("Entrada Marcada");
+            
         } catch (AsistenciaMarcadaException ex) {
             fail("No debió lanzar una excepción");
         }
         
         try {
             asistencia.marcarSalida();
-            System.out.println("Salida Marcada");
+            
         } catch (EntradaSinMarcarException | AsistenciaMarcadaException ex) {
             fail("No debió lanzar una excepción");
         }        

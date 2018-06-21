@@ -7,16 +7,16 @@ import java.util.*;
 import modelo.Inasistencia;
 import org.joda.time.DateTime;
 
-public class ReporteDeInasistenciaSemanal {
-    private DateTime fechaDeIncio;
-    private DateTime fechaDeCorte;
+public abstract class ReporteDeInasistenciaSemanal {
+    protected DateTime fechaDeIncio;
+    protected DateTime fechaDeCorte;
     private List<Inasistencia> lunes = new ArrayList();
     private List<Inasistencia> martes = new ArrayList();
     private List<Inasistencia> miercoles = new ArrayList();
     private List<Inasistencia> jueves = new ArrayList();
     private List<Inasistencia> viernes = new ArrayList();
     private List<Inasistencia> listado;
-    private IServicioInasistencia servicio;
+    protected IServicioInasistencia servicio;
     
     public ReporteDeInasistenciaSemanal(Date fechaDeSolicitud) throws SinFechasException {
         if (fechaDeSolicitud == null) {
@@ -32,20 +32,21 @@ public class ReporteDeInasistenciaSemanal {
        }
        establecerFechaDeCorteComoViernes();
        
-       listado = (List<Inasistencia>) 
-               servicio.inasistenciasDurante(fechaDeIncio.plusDays(-1), fechaDeCorte);
+       listado = buscarInasistencias();
        if (listado.isEmpty()) {
-           throw new SinInasistenciasException("No hubo inasistencias en esta semana!");
+           throw new SinInasistenciasException("No hay inasistencias en esta semana!");
        }
         agruparInasistencias(listado);
     }
     
-    private void establecerFechaDeCorteComoViernes() {
-        fechaDeCorte = fechaDeIncio.plusDays(5);
+    public void establecerFechaDeCorteComoViernes() {
+        fechaDeCorte = fechaDeIncio.plusDays(4);
     }
     
+    protected abstract List<Inasistencia> buscarInasistencias();
+    
     private void agruparInasistencias(List<Inasistencia> lista) {
-        for (Inasistencia i: listado) {
+        for (Inasistencia i: lista) {
             porDia(i); 
         }
     }
@@ -71,6 +72,10 @@ public class ReporteDeInasistenciaSemanal {
     
     public void setListado(List<Inasistencia> listado) {
         this.listado = listado;
+    }
+    
+    public List<Inasistencia> getListado() {
+        return listado;
     }
     
     public void setFechaDeCorte(DateTime fecha) {

@@ -9,8 +9,6 @@ import vista.Menu;
 import dao.*;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import nicon.notify.core.*;
 import org.joda.time.DateTime;
 import org.joda.time.format.*;
@@ -29,6 +27,7 @@ public class InasistenciasController extends Controlador {
     private ReporteDeInasistenciaSemanal reporteSemanal;
     private ReporteDeInasistenciaMensual reporteMensual;
     private InasistenciaSemanalPresenter inasistenciaSemanalPresenter;
+    private ReporteDeInasistenciaSemanalPersonalPresenter reporteInasistenciaPersonal;
     
     public InasistenciasController(Menu vista) {
         this.vista = vista;
@@ -44,6 +43,7 @@ public class InasistenciasController extends Controlador {
         vista.lblFechaDeInasistencia.setText(""+formato.print(DateTime.now()));
         presenter = new InasistenciaPresenter(vista);
         inasistenciaSemanalPresenter = new InasistenciaSemanalPresenter(vista);
+        reporteInasistenciaPersonal = new ReporteDeInasistenciaSemanalPersonalPresenter(vista);
     }
     
     @Override
@@ -55,6 +55,8 @@ public class InasistenciasController extends Controlador {
         vista.VistaSubMenu.addWindowListener(manejador);
         vista.btnVerInasistenciaSemanal.addActionListener(manejador);
         vista.btnVerJustificacion.addActionListener(manejador);
+        vista.btnVerInasistenciasSemnalDeEmpleado.addActionListener(manejador);
+        vista.btnVerInasistenciaSemanalPersonal.addActionListener(manejador);
     }
     
     private void buscarInasistenciaDelEmpleado() {
@@ -202,15 +204,33 @@ public class InasistenciasController extends Controlador {
         }
     }
     
-    private void verInasistenciaSemanal() {
+    private void verInasistenciaSemanalGeneral() {
         try {
            
-            reporteSemanal = new ReporteDeInasistenciaSemanal(vista.fechaInasistenciaSemanal.getDate());
+            reporteSemanal = new ReporteDeInasistenciaSemanalGeneral(vista.fechaInasistenciaSemanal.getDate());
             reporteSemanal.setServicio(servicioDeInasistencia);
             
             reporteSemanal.generar();
             inasistenciaSemanalPresenter.ver(reporteSemanal);
             ventana(vista.VistaInasistenciaSemanal, 729, 736);
+            
+        } catch (SinInasistenciasException | SinFechasException | FechaIncorrectaException e) {
+            Notification.windowMessage(vista, "Disculpe!", 
+                    e.getMessage(),
+                    NiconEvent.NOTIFY_DEFAULT);
+        }
+    }
+    
+    private void verInasistenciaSemanalPersonal() {
+        try {
+           
+            reporteSemanal = new ReporteDeInasistenciaSemanalPersonal(vista.fechaInasistenciaSemanalPersonal.getDate(),
+                            vista.lblCedulaEmpleado.getText());
+            reporteSemanal.setServicio(servicioDeInasistencia);
+            
+            reporteSemanal.generar();
+            reporteInasistenciaPersonal.ver(reporteSemanal);
+            ventana(vista.VistaInasistenciasSemanalPersonal, 650, 270);
             
         } catch (SinInasistenciasException | SinFechasException | FechaIncorrectaException e) {
             Notification.windowMessage(vista, "Disculpe!", 
@@ -238,11 +258,20 @@ public class InasistenciasController extends Controlador {
             }
             
             if (evento.equals(vista.btnVerInasistenciaSemanal)) {
-                verInasistenciaSemanal();
+                verInasistenciaSemanalGeneral();
             }
             
             if (evento.equals(vista.btnVerJustificacion)) {
                 verJustificacion();
+            }
+            
+            if (evento.equals(vista.btnVerInasistenciasSemnalDeEmpleado)) {
+                ventana(vista.VistaSeleccionarFechaInasistenciaSemanalPersonal, 
+                        500, 375);
+            }
+            
+            if (evento.equals(vista.btnVerInasistenciaSemanalPersonal)) {
+                verInasistenciaSemanalPersonal();
             }
         }
         

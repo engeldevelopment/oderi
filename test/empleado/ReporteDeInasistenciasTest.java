@@ -13,6 +13,8 @@ import org.joda.time.DateTime;
 import org.junit.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
+import reportes.ReporteDeInasistenciaSemanalGeneral;
+import reportes.ReporteDeInasistenciaSemanalPersonal;
 
 public class ReporteDeInasistenciasTest {
     
@@ -49,7 +51,7 @@ public class ReporteDeInasistenciasTest {
             SinFechasException {
         
         diaDeSolicitud = new DateTime("2018-04-04");
-        reporte = new ReporteDeInasistenciaSemanal(diaDeSolicitud.toDate());
+        reporte = new ReporteDeInasistenciaSemanalGeneral(diaDeSolicitud.toDate());
         
         reporte.generar();
     }
@@ -60,7 +62,7 @@ public class ReporteDeInasistenciasTest {
             SinFechasException {
         
         diaDeSolicitud = new DateTime("2018-04-02");
-        reporte = new ReporteDeInasistenciaSemanal(diaDeSolicitud.toDate());
+        reporte = new ReporteDeInasistenciaSemanalGeneral(diaDeSolicitud.toDate());
         int dia = diaDeSolicitud.getDayOfWeek();
         int diaLunes = 1;
         
@@ -72,6 +74,18 @@ public class ReporteDeInasistenciasTest {
             SinInasistenciasException,
             SinFechasException {
         
-        reporte = new ReporteDeInasistenciaSemanal(null);
+        reporte = new ReporteDeInasistenciaSemanalGeneral(null);
     }
+    
+    @Test
+    public void dadoUnDiaLunesComoFechaDeSolicitudCuandoSeGenereElReporteLaFechaDeCulminacionSeraUnViernes() 
+            throws SinFechasException, FechaIncorrectaException, SinInasistenciasException {
+        
+        diaDeSolicitud = new DateTime("2018-04-02");
+        reporte = new ReporteDeInasistenciaSemanalPersonal(diaDeSolicitud.toDate(), "22387256");
+        
+        reporte.establecerFechaDeCorteComoViernes();
+        
+        assertEquals(5, reporte.getFechaDeCorte().getDayOfWeek());
+    }    
 }
