@@ -1,2 +1,16 @@
+nbproject/private/
+build/
+nbbuild/
 dist/
-.jacocoverage
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+.jacocoverage/
