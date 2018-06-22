@@ -39,7 +39,6 @@ public class Menu extends javax.swing.JFrame {
         NuevoEmpleado = new javax.swing.JDialog();
         panel6 = new org.edisoncor.gui.panel.Panel();
         jLabel4 = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         txtNombreEmpleado = new org.edisoncor.gui.textField.TextFieldRectImage();
         jLabel6 = new javax.swing.JLabel();
@@ -48,6 +47,7 @@ public class Menu extends javax.swing.JFrame {
         txtDepartamentoAsignado = new org.edisoncor.gui.textField.TextFieldRectImage();
         btnGuardarEmpleado = new javax.swing.JButton();
         btnAgregarDepartamento = new javax.swing.JButton();
+        txtCedula = new javax.swing.JTextField();
         VistaSeleccionarDepartamento = new javax.swing.JDialog();
         panel7 = new org.edisoncor.gui.panel.Panel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -186,6 +186,15 @@ public class Menu extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         btnVerInasistenciaSemanalPersonal = new org.edisoncor.gui.button.ButtonTask();
         fechaInasistenciaSemanalPersonal = new com.toedter.calendar.JCalendar();
+        Empleados = new javax.swing.JDialog();
+        panel4 = new org.edisoncor.gui.panel.Panel();
+        panel5 = new org.edisoncor.gui.panel.Panel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        listaDeEmpleados = new javax.swing.JTable();
+        jLabel40 = new javax.swing.JLabel();
+        txtEmpleadoABuscar = new org.edisoncor.gui.textField.TextFieldRectIcon();
+        jLabel41 = new javax.swing.JLabel();
+        cmbFiltrarPorDepartamento = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         barraEmpleado = new javax.swing.JButton();
@@ -195,7 +204,7 @@ public class Menu extends javax.swing.JFrame {
         barraEntradasSalidas = new javax.swing.JButton();
         barraDeMenu = new javax.swing.JMenuBar();
         Archivo = new javax.swing.JMenu();
-        itemEmpleados = new javax.swing.JMenuItem();
+        itemEmpleado = new javax.swing.JMenuItem();
         Control = new javax.swing.JMenu();
         itemAsistenciaDiaria = new javax.swing.JMenuItem();
         Consultas = new javax.swing.JMenu();
@@ -204,6 +213,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         itemInasistenciaSemanalGeneral = new javax.swing.JMenuItem();
         itemInasistenciaQuincenalGeneral = new javax.swing.JMenuItem();
+        itemEmpleadosConsulta = new javax.swing.JMenuItem();
         Ayuda = new javax.swing.JMenu();
         itemManual = new javax.swing.JMenuItem();
 
@@ -517,15 +527,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Cédula");
 
-        txtCedula.setEditable(false);
-        txtCedula.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), null));
-        try {
-            txtCedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtCedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Nombre");
 
@@ -550,6 +551,10 @@ public class Menu extends javax.swing.JFrame {
 
         btnAgregarDepartamento.setText("+");
 
+        txtCedula.setEditable(false);
+        txtCedula.setBackground(java.awt.Color.white);
+        txtCedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout panel6Layout = new javax.swing.GroupLayout(panel6);
         panel6.setLayout(panel6Layout);
         panel6Layout.setHorizontalGroup(
@@ -564,9 +569,9 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCedula)
                             .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtApellidoEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(txtCedula)))
                     .addGroup(panel6Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -582,7 +587,7 @@ public class Menu extends javax.swing.JFrame {
         panel6Layout.setVerticalGroup(
             panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel6Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1997,6 +2002,123 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        Empleados.setTitle("Lista de Empleados");
+
+        panel4.setColorPrimario(new java.awt.Color(255, 255, 255));
+        panel4.setColorSecundario(java.awt.Color.white);
+
+        panel5.setBackground(java.awt.Color.white);
+        panel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Empleados"));
+        panel5.setColorPrimario(java.awt.Color.white);
+        panel5.setColorSecundario(java.awt.Color.white);
+
+        listaDeEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Cédula", "Nombre", "Apellido", "Departamento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        listaDeEmpleados.setFocusable(false);
+        listaDeEmpleados.setRowHeight(30);
+        listaDeEmpleados.setRowMargin(3);
+        listaDeEmpleados.setShowHorizontalLines(false);
+        listaDeEmpleados.setShowVerticalLines(false);
+        listaDeEmpleados.getTableHeader().setReorderingAllowed(false);
+        jScrollPane10.setViewportView(listaDeEmpleados);
+
+        jLabel40.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText("Búsqueda por cédula");
+
+        txtEmpleadoABuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel41.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jLabel41.setText("Departamento");
+
+        cmbFiltrarPorDepartamento.setBackground(java.awt.Color.white);
+
+        javax.swing.GroupLayout panel5Layout = new javax.swing.GroupLayout(panel5);
+        panel5.setLayout(panel5Layout);
+        panel5Layout.setHorizontalGroup(
+            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel5Layout.createSequentialGroup()
+                        .addComponent(jLabel41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbFiltrarPorDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jLabel40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmpleadoABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(panel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane10)
+                        .addContainerGap())))
+        );
+        panel5Layout.setVerticalGroup(
+            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(txtEmpleadoABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41)
+                    .addComponent(cmbFiltrarPorDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panel4Layout = new javax.swing.GroupLayout(panel4);
+        panel4.setLayout(panel4Layout);
+        panel4Layout.setHorizontalGroup(
+            panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel4Layout.setVerticalGroup(
+            panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel4Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(panel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+        );
+
+        javax.swing.GroupLayout EmpleadosLayout = new javax.swing.GroupLayout(Empleados.getContentPane());
+        Empleados.getContentPane().setLayout(EmpleadosLayout);
+        EmpleadosLayout.setHorizontalGroup(
+            EmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        EmpleadosLayout.setVerticalGroup(
+            EmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cacao Oderí");
 
@@ -2049,9 +2171,9 @@ public class Menu extends javax.swing.JFrame {
         Archivo.setText("Archivo");
         Archivo.setRequestFocusEnabled(false);
 
-        itemEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-25-parents.png"))); // NOI18N
-        itemEmpleados.setText("Empleado");
-        Archivo.add(itemEmpleados);
+        itemEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-25-parents.png"))); // NOI18N
+        itemEmpleado.setText("Empleado");
+        Archivo.add(itemEmpleado);
 
         barraDeMenu.add(Archivo);
 
@@ -2084,6 +2206,9 @@ public class Menu extends javax.swing.JFrame {
 
         Consultas.add(jMenu2);
 
+        itemEmpleadosConsulta.setText("Empleados");
+        Consultas.add(itemEmpleadosConsulta);
+
         barraDeMenu.add(Consultas);
 
         Ayuda.setText("Ayuda");
@@ -2115,6 +2240,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu Ayuda;
     private javax.swing.JMenu Consultas;
     private javax.swing.JMenu Control;
+    public javax.swing.JDialog Empleados;
     public javax.swing.JDialog InasistenciaPersonal;
     public javax.swing.JDialog Login;
     public javax.swing.JDialog NuevoEmpleado;
@@ -2165,12 +2291,14 @@ public class Menu extends javax.swing.JFrame {
     private org.edisoncor.gui.button.ButtonTask buttonTask1;
     public com.toedter.calendar.JDateChooser calendarFechaConsulta;
     private javax.swing.JCheckBox chRemunerado;
+    public javax.swing.JComboBox<String> cmbFiltrarPorDepartamento;
     public javax.swing.JComboBox<String> cmbQuincena;
     public com.toedter.calendar.JDateChooser fechaDeIncio;
     public com.toedter.calendar.JCalendar fechaInasistenciaSemanal;
     public com.toedter.calendar.JCalendar fechaInasistenciaSemanalPersonal;
     public javax.swing.JMenuItem itemAsistenciaDiaria;
-    public javax.swing.JMenuItem itemEmpleados;
+    public javax.swing.JMenuItem itemEmpleado;
+    public javax.swing.JMenuItem itemEmpleadosConsulta;
     public javax.swing.JMenuItem itemEntradaSalida;
     public javax.swing.JMenuItem itemInasistenciaQuincenalGeneral;
     public javax.swing.JMenuItem itemInasistenciaSemanalGeneral;
@@ -2210,6 +2338,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2230,6 +2360,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
@@ -2270,6 +2401,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JLabel lblNombreEmpleado;
     public javax.swing.JLabel lblTotalInasistenciaSemanal;
     public javax.swing.JTable listaDeAsistencia;
+    public javax.swing.JTable listaDeEmpleados;
     public javax.swing.JTable listaDeInasistenciaPorEmpleado;
     public javax.swing.JTable listaDeInasistencias;
     public javax.swing.JList<String> listaDeInasistenciasSemanalDeEmpleado;
@@ -2281,6 +2413,8 @@ public class Menu extends javax.swing.JFrame {
     private org.edisoncor.gui.panel.Panel panel13;
     private org.edisoncor.gui.panel.Panel panel2;
     private org.edisoncor.gui.panel.Panel panel3;
+    private org.edisoncor.gui.panel.Panel panel4;
+    private org.edisoncor.gui.panel.Panel panel5;
     private org.edisoncor.gui.panel.Panel panel6;
     private org.edisoncor.gui.panel.Panel panel7;
     private org.edisoncor.gui.panel.Panel panel8;
@@ -2297,11 +2431,12 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JTable tablaReportAsistencia;
     public org.edisoncor.gui.textField.TextFieldRectImage txtApellidoEmpleado;
     public org.edisoncor.gui.textField.TextFieldRectImage txtBusquedaPorCedula;
-    public javax.swing.JFormattedTextField txtCedula;
+    public javax.swing.JTextField txtCedula;
     public javax.swing.JTextField txtCedulaEmpleadoBuscar;
     public org.edisoncor.gui.passwordField.PasswordFieldRoundImage txtClave;
     public org.edisoncor.gui.textField.TextFieldRectImage txtDepartamentoAsignado;
     public javax.swing.JSpinner txtDiasDePermiso;
+    public org.edisoncor.gui.textField.TextFieldRectIcon txtEmpleadoABuscar;
     public org.edisoncor.gui.textField.TextFieldRoundImage txtNombreDeUsuario;
     public org.edisoncor.gui.textField.TextFieldRectImage txtNombreEmpleado;
     public javax.swing.JTextArea txtObservacionJustificacion;

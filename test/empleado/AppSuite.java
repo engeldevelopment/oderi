@@ -1,19 +1,24 @@
 
 package empleado;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({empleado.ReporteDeInasistenciasTest.class, 
+@Suite.SuiteClasses({empleado.LoginTest.class, 
+    empleado.ReporteDeInasistenciasTest.class, 
     empleado.AnalizadorDeJornadaTest.class, 
+    empleado.ReporteDeAsistenciaTest.class, 
     empleado.JornadaDeTrabajoTest.class, 
     empleado.PermisoTest.class, 
-    empleado.AsistenciaTest.class, empleado.InasistenciaTest.class,
-    empleado.LoginTest.class,
-    empleado.ReporteDeAsistenciaTest.class, empleado.ReporteTest.class})
-public class SuiteDeRelacionDeAsistencia {
+    empleado.AsistenciaTest.class, 
+    empleado.InasistenciaTest.class, 
+    empleado.CedulaTest.class, empleado.ReporteTest.class})
+public class AppSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {

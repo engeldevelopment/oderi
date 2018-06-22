@@ -17,11 +17,7 @@ public class DepartamentoPresenter {
         tabla = (DefaultTableModel) vista.listadoDeDepartamentos.getModel();
     }
     
-    public void setLista(List<Departamento> listado) {
-        this.listado = listado;
-    }
-    
-    public void verLista() {
+    public void ver(List<Departamento> listado) {
         tabla.setNumRows(listado.size());
         int index = 0;
         for(Departamento departamento : listado) {

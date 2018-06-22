@@ -20,7 +20,7 @@ public class MenuController extends Controlador {
 
     @Override
     protected void item() {
-       vista.itemEmpleados.addActionListener(manejador);
+       vista.itemEmpleado.addActionListener(manejador);
        vista.itemAsistenciaDiaria.addActionListener(manejador);
        vista.itemEntradaSalida.addActionListener(manejador);
        vista.itemInasistenciaSemanalGeneral.addActionListener(manejador);
@@ -36,7 +36,7 @@ public class MenuController extends Controlador {
         public void actionPerformed(ActionEvent e) {
             Object evento = e.getSource();
             
-            if (evento.equals(vista.itemEmpleados) || evento.equals(vista.barraEmpleado)) {
+            if (evento.equals(vista.itemEmpleado) || evento.equals(vista.barraEmpleado)) {
                 ventana(vista.VistaBuscarEmpleado, 400, 180);
             } 
             

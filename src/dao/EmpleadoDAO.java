@@ -1,7 +1,6 @@
 package dao;
 
 import modelo.Empleado;
-import nullObjects.NullEmpleado;
 import java.util.*;
 import nicon.notify.core.*;
 import org.hibernate.*;
@@ -96,14 +95,17 @@ public class EmpleadoDAO {
         return lista;
     }
     
-    public Collection<Empleado> buscarTodosEmpleadoComo(String cedula){
+    public Collection<Empleado> buscarEmpleadoPor(String cedula, String departamento){
         List<Empleado> lista = new ArrayList<>();
         try {
             sesion = HibernateUtil.getSessionFactory().openSession();
             sesion.beginTransaction();
-            Criteria criterio = sesion.createCriteria(Empleado.class);
-            criterio.add(Restrictions.like("cedula", cedula+"%"));
-            lista = criterio.list();
+            Query empleadoPorDepartamento = 
+                    sesion.createQuery("From Empleado e Where e.cedula like :cedula "
+                            + "and e.departamento.nombre = :departamento")
+                    .setParameter("cedula", cedula+"%")
+                    .setParameter("departamento", departamento);
+            lista = empleadoPorDepartamento.list();
         } catch (HibernateException e) {
             Notification.windowMessage(null, "Disculpe!", "Ha ocurrido un Error:"
                     +e.getMessage(), 

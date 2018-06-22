@@ -24,6 +24,7 @@ public class EmpleadosController extends Controlador {
     private ValidacionDeTexto texto;
     private String nombre;
     private String apellido;
+    private Cedula cedula;
     
     public EmpleadosController(Menu vista) {
         this.vista = vista;
@@ -52,50 +53,49 @@ public class EmpleadosController extends Controlador {
         vista.btnAsignarDepartamento.addActionListener(manejador);
         vista.NuevoEmpleado.addWindowListener(manejador);
         vista.btnGuardarEmpleado.addActionListener(manejador);
+        vista.cmbFiltrarPorDepartamento.addActionListener(manejador);
     }
 
     @Override
+    protected void item() {
+        vista.itemEmpleadosConsulta.addActionListener(manejador);
+    }
+    
+    @Override
     protected void campo() {
         vista.txtCedulaEmpleadoBuscar.addKeyListener(manejador);
+        vista.txtEmpleadoABuscar.addKeyListener(manejador);
     }
     
     private void listarDepartamentos() {
-    
         List<Departamento> listado = (List<Departamento>) 
                 servicioDepartamento.buscarTodos();
-        dptoPresenter.setLista(listado);
-        dptoPresenter.verLista();
-    }
-
-    String cedula;
-    private void validarCedulaABuscar() {
-       cedula = vista.txtCedulaEmpleadoBuscar.getText();
-       if (validacion.estaVacio(cedula)) {
-           Notification.windowMessage(vista, 
-                   "Disculpe!", 
-                   "Debe ingresar un número de cédula.",
-                   NiconEvent.NOTIFY_WARNING);
-       } else if (!validacion.esDigito(cedula)) {
-           Notification.windowMessage(vista, 
-                   "Disculpe!", 
-                   "La cédula no debe contener caracteres especiales ni letras.",
-                   NiconEvent.NOTIFY_WARNING);
-       }else if (!esValidaLaCedula()) {
-           Notification.windowMessage(vista, 
-                   "Disculpe!", 
-                   "El número de cédula es incorrecto.",
-                   NiconEvent.NOTIFY_WARNING);
-       } else {
-           buscar();
-       }
+        
+        dptoPresenter.ver(listado);
+        enComboxDelListadoDeEmpleado(listado);
     }
     
-    private boolean esValidaLaCedula() {
-        return cedula.length() >= 6 && cedula.length() <= 8;
+    private void enComboxDelListadoDeEmpleado(List<Departamento> listado) {
+        vista.cmbFiltrarPorDepartamento.removeAllItems();
+        for (Departamento d: listado) {
+            vista.cmbFiltrarPorDepartamento.addItem(d.getNombre());
+        }
+    }
+
+    String ced;
+    private void buscarEmpleado() {
+       ced = vista.txtCedulaEmpleadoBuscar.getText();
+        try {
+            cedula = new Cedula(ced);
+            buscar();
+        } catch (ContenidoInvalidoException e) {
+            Notification.windowMessage(vista, 
+                    "Disculpe!", e.getMessage());
+        }
     }
     
     private void buscar() {
-        empleado = servicioEmpleado.buscar(cedula);
+        empleado = servicioEmpleado.buscar(cedula.get());
         verficarExistencia();
     }
     
@@ -105,7 +105,7 @@ public class EmpleadosController extends Controlador {
                     "Disculpe!", 
                     "Este empleado no existe. ¿Desea registrarlo?");
             if (deseaRegistrarlo == 1) {
-                vista.txtCedula.setText(cedula);
+                vista.txtCedula.setText(cedula.get());
                 ventana(vista.NuevoEmpleado, 360, 295);
             }
         } else {
@@ -141,7 +141,6 @@ public class EmpleadosController extends Controlador {
     }
     
     private void obtenerLosDatosDelEmpleado() {
-        cedula = vista.txtCedula.getText().replace(".", "");
         nombre = vista.txtNombreEmpleado.getText();
         apellido = vista.txtApellidoEmpleado.getText();
     }
@@ -155,7 +154,7 @@ public class EmpleadosController extends Controlador {
     }
     
     private void procesarEmpleado() throws SinDepartamentoAsignadoException {
-        empleado = new Empleado(cedula, nombre, apellido, departamento);
+        empleado = new Empleado(cedula.get(), nombre, apellido, departamento);
         empleado.listo();
         servicioEmpleado.guardar(empleado);
         empleadoPresenter.limpiarCampos();
@@ -186,6 +185,19 @@ public class EmpleadosController extends Controlador {
         return fila == -1;
     }
     
+    private void listarEmpleados() {
+        List<Empleado> listado = (List<Empleado>) servicioEmpleado.buscarTodos();
+        empleadoPresenter.ver(listado);
+        ventana(vista.Empleados, 660, 303);
+    }
+    
+    private void buscarEmpleadoPorDepartamentoYCedula() {
+        List<Empleado> listado = (List<Empleado>) 
+                servicioEmpleado.buscarEmpleadoPor(vista.txtEmpleadoABuscar.getText(), 
+                        vista.cmbFiltrarPorDepartamento.getSelectedItem().toString());
+        empleadoPresenter.ver(listado);
+    }
+    
     private class ManejadorDeEventos implements ActionListener, KeyListener, 
             WindowListener {
 
@@ -194,7 +206,7 @@ public class EmpleadosController extends Controlador {
             Object evento = e.getSource();
             
             if(evento.equals(vista.btnBuscarEmpleado)) {
-               validarCedulaABuscar();
+               buscarEmpleado();
                
             } else if (evento.equals(vista.btnAgregarDepartamento)) {
                 ventana(vista.VistaSeleccionarDepartamento, 400, 217);
@@ -203,6 +215,12 @@ public class EmpleadosController extends Controlador {
                 
             } else if (evento.equals(vista.btnGuardarEmpleado)) {
                 guardar();
+                
+            } else if (evento.equals(vista.itemEmpleadosConsulta)) {
+                listarEmpleados();
+                
+            } else if (evento.equals(vista.cmbFiltrarPorDepartamento)) {
+                buscarEmpleadoPorDepartamentoYCedula();
             }
         }
 
@@ -213,6 +231,12 @@ public class EmpleadosController extends Controlador {
             if (evento.equals(vista.txtCedulaEmpleadoBuscar)) {
                 limitarDigitos(e, vista.txtCedulaEmpleadoBuscar, 8);
             }
+            
+            if (evento.equals(vista.txtEmpleadoABuscar)) {
+                limitarDigitos(e, vista.txtEmpleadoABuscar, 8);
+                buscarEmpleadoPorDepartamentoYCedula();
+            }
+            
         }
 
         @Override
