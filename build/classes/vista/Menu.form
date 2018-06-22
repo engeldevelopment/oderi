@@ -273,13 +273,6 @@
                         </Property>
                         <Property name="focusable" type="boolean" value="false"/>
                         <Property name="rowHeight" type="int" value="30"/>
-                        <Property name="rowMargin" type="int" value="5"/>
-                        <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                        </Property>
-                        <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
-                        </Property>
                         <Property name="showHorizontalLines" type="boolean" value="false"/>
                         <Property name="showVerticalLines" type="boolean" value="false"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -480,7 +473,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="listaDeInasistencias">
+                <Component class="javax.swing.JTable" name="listaDeInasistenciasDiaria">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="3" rowCount="4">
@@ -510,10 +503,6 @@
                     </Property>
                     <Property name="focusable" type="boolean" value="false"/>
                     <Property name="rowHeight" type="int" value="30"/>
-                    <Property name="rowMargin" type="int" value="10"/>
-                    <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
-                    </Property>
                     <Property name="showHorizontalLines" type="boolean" value="false"/>
                     <Property name="showVerticalLines" type="boolean" value="false"/>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">

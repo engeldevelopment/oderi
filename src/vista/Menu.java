@@ -34,7 +34,7 @@ public class Menu extends javax.swing.JFrame {
         ReporteDeInasistenciaActual = new javax.swing.JDialog();
         panel3 = new org.edisoncor.gui.panel.Panel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listaDeInasistencias = new javax.swing.JTable();
+        listaDeInasistenciasDiaria = new javax.swing.JTable();
         lblFechaDeInasistencia = new javax.swing.JLabel();
         NuevoEmpleado = new javax.swing.JDialog();
         panel6 = new org.edisoncor.gui.panel.Panel();
@@ -264,9 +264,6 @@ public class Menu extends javax.swing.JFrame {
         });
         listaDeAsistencia.setFocusable(false);
         listaDeAsistencia.setRowHeight(30);
-        listaDeAsistencia.setRowMargin(5);
-        listaDeAsistencia.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        listaDeAsistencia.setSelectionForeground(java.awt.Color.darkGray);
         listaDeAsistencia.setShowHorizontalLines(false);
         listaDeAsistencia.setShowVerticalLines(false);
         listaDeAsistencia.getTableHeader().setReorderingAllowed(false);
@@ -442,7 +439,7 @@ public class Menu extends javax.swing.JFrame {
         panel3.setColorPrimario(new java.awt.Color(255, 255, 255));
         panel3.setColorSecundario(new java.awt.Color(204, 204, 204));
 
-        listaDeInasistencias.setModel(new javax.swing.table.DefaultTableModel(
+        listaDeInasistenciasDiaria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -468,18 +465,16 @@ public class Menu extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        listaDeInasistencias.setFocusable(false);
-        listaDeInasistencias.setRowHeight(30);
-        listaDeInasistencias.setRowMargin(10);
-        listaDeInasistencias.setSelectionBackground(java.awt.Color.lightGray);
-        listaDeInasistencias.setShowHorizontalLines(false);
-        listaDeInasistencias.setShowVerticalLines(false);
-        listaDeInasistencias.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(listaDeInasistencias);
-        if (listaDeInasistencias.getColumnModel().getColumnCount() > 0) {
-            listaDeInasistencias.getColumnModel().getColumn(0).setResizable(false);
-            listaDeInasistencias.getColumnModel().getColumn(1).setResizable(false);
-            listaDeInasistencias.getColumnModel().getColumn(2).setResizable(false);
+        listaDeInasistenciasDiaria.setFocusable(false);
+        listaDeInasistenciasDiaria.setRowHeight(30);
+        listaDeInasistenciasDiaria.setShowHorizontalLines(false);
+        listaDeInasistenciasDiaria.setShowVerticalLines(false);
+        listaDeInasistenciasDiaria.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(listaDeInasistenciasDiaria);
+        if (listaDeInasistenciasDiaria.getColumnModel().getColumnCount() > 0) {
+            listaDeInasistenciasDiaria.getColumnModel().getColumn(0).setResizable(false);
+            listaDeInasistenciasDiaria.getColumnModel().getColumn(1).setResizable(false);
+            listaDeInasistenciasDiaria.getColumnModel().getColumn(2).setResizable(false);
         }
 
         lblFechaDeInasistencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -2403,7 +2398,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JTable listaDeAsistencia;
     public javax.swing.JTable listaDeEmpleados;
     public javax.swing.JTable listaDeInasistenciaPorEmpleado;
-    public javax.swing.JTable listaDeInasistencias;
+    public javax.swing.JTable listaDeInasistenciasDiaria;
     public javax.swing.JList<String> listaDeInasistenciasSemanalDeEmpleado;
     public javax.swing.JTable listadoDeDepartamentos;
     public com.toedter.calendar.JMonthChooser mesInasistencia;

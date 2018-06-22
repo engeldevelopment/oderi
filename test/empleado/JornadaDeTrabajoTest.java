@@ -13,10 +13,7 @@ import static org.mockito.Mockito.*;
 public class JornadaDeTrabajoTest {
     
     private JornadaDeTrabajo jornada;
-    private NullJornada nullJornada;
-    private JornadaDAO jornadaDao;
     private IServicioAsistencia servicio;
-    private List<Empleado> empleados;
     public JornadaDeTrabajoTest() {
     }
     
@@ -30,10 +27,7 @@ public class JornadaDeTrabajoTest {
     
     @Before
     public void setUp() {
-        nullJornada = new NullJornada();
-        jornadaDao = mock(JornadaDAO.class);
         servicio = mock(AsistenciaDAO.class);
-        empleados = new ArrayList<>();
         jornada = mock(JornadaDeTrabajo.class);
     }
     
@@ -48,20 +42,11 @@ public class JornadaDeTrabajoTest {
         assertEquals(EstadoDeJornada.SIN_INICIAR.Valor(), jornada.getEstado());
     }
     
-    @Test(expected = NoHayEmpleadoException.class)
-    public void noSePuedeIniciarLaJornadaPorQueAunNoHayEmpleadosRegistrados() throws 
-            NoHayEmpleadoException, JornadaEnCursoException, JornadaCerradaException{
-        jornada = new JornadaDeTrabajo(empleados, servicio);
-        jornada.iniciar();
-    }
-    
-    
     @Test(expected = JornadaEnCursoException.class)
     public void yaHayUnaJornadaEnCurso() throws JornadaEnCursoException, 
-            NoHayEmpleadoException,
             JornadaCerradaException {
-        empleados.add(new Empleado());
-        jornada = new JornadaDeTrabajo(empleados, servicio);
+       
+        jornada = new JornadaDeTrabajo();
         jornada.iniciar();
         jornada.iniciar();
     }
@@ -70,8 +55,8 @@ public class JornadaDeTrabajoTest {
     public void NoPuedeIniciarMasJornada_YaFueCerradaLaJornadaEnCurso() throws JornadaEnCursoException, 
             NoHayEmpleadoException,
             JornadaCerradaException {
-        empleados.add(new Empleado());
-        jornada = new JornadaDeTrabajo(empleados, servicio);
+       
+        jornada = new JornadaDeTrabajo();
         jornada.setEstado(EstadoDeJornada.CERRADA.Valor());
         jornada.iniciar();
     }
@@ -96,7 +81,8 @@ public class JornadaDeTrabajoTest {
         
         when(servicio.asistenciasDeHoy()).thenReturn(asistencias);
         
-        jornada = new JornadaDeTrabajo(servicio);
+        jornada = new JornadaDeTrabajo();
+        jornada.setServicio(servicio);
         jornada.cerrar();  
     }
 }

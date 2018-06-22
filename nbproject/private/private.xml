@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/engel/NetBeansProjects/AsistenciasOderiV2/src/controlador/InasistenciasController.java</file>
+            <file>file:/home/engel/NetBeansProjects/AsistenciasOderiV2/src/controlador/JornadaController.java</file>
+            <file>file:/home/engel/NetBeansProjects/AsistenciasOderiV2/test/empleado/ReporteDeInasistenciasTest.java</file>
+            <file>file:/home/engel/NetBeansProjects/AsistenciasOderiV2/test/empleado/JornadaDeTrabajoTest.java</file>
+            <file>file:/home/engel/NetBeansProjects/AsistenciasOderiV2/src/modelo/JornadaDeTrabajo.java</file>
+            <file>file:/home/engel/NetBeansProjects/AsistenciasOderiV2/src/modelo/Jornada.java</file>
+            <file>file:/home/engel/NetBeansProjects/AsistenciasOderiV2/test/empleado/GeneradorDeAsistenciaTest.java</file>
             <file>file:/home/engel/NetBeansProjects/AsistenciasOderiV2/src/vista/Menu.java</file>
+            <file>file:/home/engel/NetBeansProjects/AsistenciasOderiV2/test/empleado/GeneradorDeAsistencia.java</file>
         </group>
     </open-files>
 </project-private>

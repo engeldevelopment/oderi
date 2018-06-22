@@ -13,8 +13,8 @@ import org.joda.time.DateTime;
 import org.junit.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-import reportes.ReporteDeInasistenciaSemanalGeneral;
-import reportes.ReporteDeInasistenciaSemanalPersonal;
+import reportes.*;
+
 
 public class ReporteDeInasistenciasTest {
     

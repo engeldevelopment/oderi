@@ -9,22 +9,11 @@ import org.joda.time.DateTime;
 public class JornadaDeTrabajo extends Jornada {
     
     private Long id;
-    private List<Empleado> empleados;
     private GeneradorDeInasistencia generador;
-    
-    public JornadaDeTrabajo(List<Empleado> empleados, IServicioAsistencia servicio) {
-        fecha = new DateTime();
-        this.empleados = empleados;
-        this.servicio = servicio;
-        estado = EstadoDeJornada.SIN_INICIAR.Valor();
-    }
-    
+   
     public JornadaDeTrabajo() {
+        fecha = new DateTime();
         estado = EstadoDeJornada.SIN_INICIAR.Valor();
-    }
-
-    public JornadaDeTrabajo(IServicioAsistencia servicio) {
-        this.servicio = servicio;
     }
 
     public Long getId() {
@@ -37,30 +26,16 @@ public class JornadaDeTrabajo extends Jornada {
 
     @Override
     public void iniciar() throws JornadaEnCursoException,
-            NoHayEmpleadoException,
             JornadaCerradaException {
+        
         if (estaEnCurso()) {
             throw new JornadaEnCursoException();
-        } else if (noHayEmpleadosRegistrados()) {
-            throw new NoHayEmpleadoException();
-        } else if (estaCerrada()) {
+        }  else if (estaCerrada()) {
             throw new JornadaCerradaException();
         }
-        for (Empleado alEmpleado : empleados) {
-             agregarALaListaDeAsistencia(alEmpleado);      
-        }
+        
         horaDeInicio = JornadaBuild.HoraActual();
         estado = EstadoDeJornada.EN_CURSO.Valor();
-    }
-    
-    private boolean noHayEmpleadosRegistrados() {
-        return empleados.isEmpty() == true;
-    }
-        
-    private void agregarALaListaDeAsistencia(Empleado empleado) {
-        Asistencia asistencia = new Asistencia(empleado, 
-                    AsistenciaBuild.fechaActual());
-            servicio.guardar(asistencia);
     }
 
     @Override

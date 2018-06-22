@@ -4,10 +4,8 @@ package excepciones;
 public class TiempoDeJustificacionCaducadoException extends Exception {
 
     public TiempoDeJustificacionCaducadoException() {
-    
     }
-    
-    public TiempoDeJustificacionCaducadoException(String msj) {
-        super(msj);
+    public TiempoDeJustificacionCaducadoException(String msg) {
+        super(msg);
     }
 }

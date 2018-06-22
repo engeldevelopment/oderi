@@ -4,7 +4,6 @@ package modelo;
 import excepciones.*;
 import dao.IServicioAsistencia;
 import java.sql.Time;
-import java.util.Date;
 import org.joda.time.DateTime;
 
 public abstract class Jornada {
@@ -20,7 +19,7 @@ public abstract class Jornada {
     }
     
     public abstract void iniciar() throws JornadaEnCursoException, 
-            NoHayEmpleadoException, JornadaCerradaException;
+             JornadaCerradaException;
     
     public abstract void cerrar() throws AsistenciaIncompletaException;
     
