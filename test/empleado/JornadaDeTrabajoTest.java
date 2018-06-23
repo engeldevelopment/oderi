@@ -3,7 +3,6 @@ package empleado;
 
 import excepciones.*;
 import modelo.*;
-import nullObjects.NullJornada;
 import dao.*;
 import java.util.*;
 import org.junit.*;
@@ -14,6 +13,7 @@ public class JornadaDeTrabajoTest {
     
     private JornadaDeTrabajo jornada;
     private IServicioAsistencia servicio;
+    
     public JornadaDeTrabajoTest() {
     }
     
@@ -64,7 +64,9 @@ public class JornadaDeTrabajoTest {
     @Test
     public void jornadaIniciadaYFinalizadaConExito() throws JornadaEnCursoException, 
             NoHayEmpleadoException,
-            AsistenciaIncompletaException {
+            AsistenciaIncompletaException,
+            JornadaCerradaException {
+        
         when(jornada.getEstado()).thenReturn(EstadoDeJornada.CERRADA.Valor());
         jornada.cerrar();
         assertEquals(EstadoDeJornada.CERRADA.Valor(), jornada.getEstado());
@@ -72,7 +74,7 @@ public class JornadaDeTrabajoTest {
     
     @Test(expected = AsistenciaIncompletaException.class)
     public void NoSePuedeCerrarLaJornadaPorQueFaltanEmpleadosPorMarcarSuSalida() throws 
-            AsistenciaIncompletaException, AsistenciaMarcadaException {
+            AsistenciaIncompletaException, AsistenciaMarcadaException, JornadaCerradaException {
         
         Asistencia asistencia = new Asistencia();
         asistencia.marcarEntrada();

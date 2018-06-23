@@ -4,10 +4,10 @@ package empleado;
 import modelo.*;
 import excepciones.AsistenciaIncompletaException;
 import dao.JornadaDAO;
+import excepciones.JornadaCerradaException;
 import java.util.*;
 import org.joda.time.DateTime;
 import org.junit.*;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class AnalizadorDeJornadaTest {
@@ -40,7 +40,8 @@ public class AnalizadorDeJornadaTest {
     }
     
     @Test
-    public void cerrarJornadasDeFechasAnterioresALaActual() throws AsistenciaIncompletaException {
+    public void cerrarJornadasDeFechasAnterioresALaActual() throws 
+            AsistenciaIncompletaException, JornadaCerradaException {
          
          when(jornada.estaEnCurso()).thenReturn(true);
          when(jornada.getFecha()).thenReturn(new DateTime("2017-11-01"));

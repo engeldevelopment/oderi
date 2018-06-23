@@ -22,6 +22,7 @@ public class JornadaController extends Controlador {
     private Menu vista;
     private ManejadorDeEventosAction manejador;
     private GeneradorDeInasistencia generador;
+    private GeneradorDeAsistencia generadorDeAsistencia;
     private IServicioAsistencia servicioDeAsistencia;
     private IServicioInasistencia servicioDeInasistencia;
     private MotivoDeInasistenciaDAO servicioDeMotivo;
@@ -61,7 +62,7 @@ public class JornadaController extends Controlador {
     private void analizar() {
         buscarJornada();
         if (jornada.estaSinIniciar()) {
-            deshabilitarBotones();
+            deshabilitarBotonesParaMarcarAsistencias();
         }
         
         if (jornada.estaEnCurso())  {
@@ -70,7 +71,7 @@ public class JornadaController extends Controlador {
         }
         
         if (jornada.estaCerrada()) {
-            deshabilitarBotones();
+            deshabilitarBotonesParaMarcarAsistencias();
             vista.lblHoraInicio.setText(formatoDeHora.format(jornada.getHoraDeInicio()));
             vista.lblHoraCierre.setText(formatoDeHora.format(jornada.getHoraDeCierre()));
         }
@@ -78,9 +79,8 @@ public class JornadaController extends Controlador {
     }
     
     private void iniciarJornada() {
-        buscarJornada();
-        if (jornada.estaSinIniciar()) 
-             crearNuevaJornada();
+        buscarJornada(); 
+        crearNuevaJornada();
     }
     
     private void buscarJornada() {
@@ -89,10 +89,8 @@ public class JornadaController extends Controlador {
     
     private void crearNuevaJornada() {
         try {
-            
-            jornada = new JornadaDeTrabajo();
-            jornada.iniciar();
-            
+       
+            jornada.iniciar();     
             generarListadoDeAsistencia();
             servicioDeJornada.guardar(jornada);
             vista.lblHoraInicio.setText(formatoDeHora.format(jornada.getHoraDeInicio()));
@@ -101,27 +99,20 @@ public class JornadaController extends Controlador {
                     "Listo!", 
                     "Nueva jornada de trabajo iniciada!", 
                     NiconEvent.NOTIFY_OK);
-        } catch (JornadaCerradaException ex) {
-            Notification.windowMessage(vista, 
-                    "Disculpe!", 
-                    "No se pueden iniciar más jornadas por hoy!"
-                            + "\nEspere otro día..");
-        
-        } catch (JornadaEnCursoException ex) {
-            Notification.windowMessage(vista, 
-                    "Disculpe!", 
-                    "Ya hay una jornada en curso!");
+        } catch (JornadaCerradaException | JornadaEnCursoException | 
+                NoHayEmpleadoException ex) {
             
-        } catch (NoHayEmpleadoException ex) {
-            Notification.windowMessage(vista, "Disculpe!", ex.getMessage());
-        }
+            Notification.windowMessage(vista, 
+                    "Disculpe!", 
+                    ex.getMessage());
+        
+        } 
         vista.lblEstado.setText(NombreDeJornada.establecer(jornada));
     }
     
     private void generarListadoDeAsistencia() throws NoHayEmpleadoException {
         empleados = (List<Empleado>) servicioDeEmpleados.buscarTodos();    
-        GeneradorDeAsistencia generadorDeAsistencia = 
-                    new GeneradorDeAsistencia(empleados, servicioDeAsistencia);
+        generadorDeAsistencia = new GeneradorDeAsistencia(empleados, servicioDeAsistencia);
             
         generadorDeAsistencia.generar();   
     }
@@ -156,20 +147,19 @@ public class JornadaController extends Controlador {
             
             generador.evaluar();
             
-            deshabilitarBotones();        
+            deshabilitarBotonesParaMarcarAsistencias();        
             vista.lblEstado.setText(NombreDeJornada.establecer(jornada));
             vista.lblHoraCierre.setText(formatoDeHora.format(jornada.getHoraDeCierre()));
                     Notification.windowMessage(vista, "Listo!",
                             "Fin de la jornada!",
                             NiconEvent.NOTIFY_OK);
-        } catch (AsistenciaIncompletaException ex) {
-             Notification.windowMessage(vista, "Disculpa!", 
-                    "Hay empleados que aún no han marcado su salida!\n"
-                    + "Por favor marcalas para poder cerrar la jornada.");
-        }
+        } catch (AsistenciaIncompletaException | JornadaCerradaException ex) {
+             Notification.windowMessage(vista, "Disculpe!", 
+                    ex.getMessage());
+        } 
     }
    
-    private void deshabilitarBotones() {
+    private void deshabilitarBotonesParaMarcarAsistencias() {
         vista.btnEntrada.setEnabled(false);
         vista.btnSalida.setEnabled(false);
         vista.txtBusquedaPorCedula.setEnabled(false);
@@ -183,8 +173,8 @@ public class JornadaController extends Controlador {
             
             reporte.generar();
             reporteDeInasistencia.ver(reporte);
+            ventana(vista.ReporteDeInasistenciaActual, 410, 270);
             
-            ventana(vista.ReporteDeInasistenciaActual, 410, 270);            
         } catch (SinIniciarJornadaException | SinInasistenciasException | 
                 JornadaEnCursoException ex) {
            Notification.windowMessage(vista, "Disculpe!", 

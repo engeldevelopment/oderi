@@ -66,9 +66,9 @@ public class JornadaDAO implements IDAO<Jornada> {
             sesion.beginTransaction();
             Query diaDeHoy = 
                     sesion.createQuery("FROM JornadaDeTrabajo as j WHERE j.fecha = current_date");
-           if (diaDeHoy.list().isEmpty()) {
-               return new NullJornada();
-           }
+           if (diaDeHoy.list().isEmpty()) 
+               return jornada;
+           
            jornada = (JornadaDeTrabajo) diaDeHoy.list().get(0);
         } catch (HibernateException e) {
             Notification.windowMessage(null, "Disculpe!", "Ha ocurrido un Error:"

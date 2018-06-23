@@ -11,7 +11,5 @@ public class Oderi {
     public static void main(String[] args) {
         Aplicacion api = Aplicacion.get();
         api.iniciar();
-
-    }
-    
+    }   
 }

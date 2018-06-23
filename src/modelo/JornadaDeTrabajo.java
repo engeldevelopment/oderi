@@ -2,26 +2,13 @@
 package modelo;
 
 import excepciones.*;
-import dao.*;
 import java.util.*;
 import org.joda.time.DateTime;
 
 public class JornadaDeTrabajo extends Jornada {
-    
-    private Long id;
-    private GeneradorDeInasistencia generador;
-   
+     
     public JornadaDeTrabajo() {
-        fecha = new DateTime();
         estado = EstadoDeJornada.SIN_INICIAR.Valor();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    private void setId(Long id) {
-        this.id = id;
     }
 
     @Override
@@ -29,23 +16,26 @@ public class JornadaDeTrabajo extends Jornada {
             JornadaCerradaException {
         
         if (estaEnCurso()) {
-            throw new JornadaEnCursoException();
+            throw new JornadaEnCursoException("Ya hay una jornada en curso! No puedes iniciar otra.");
         }  else if (estaCerrada()) {
-            throw new JornadaCerradaException();
+            throw new JornadaCerradaException("No puedes iniciar más "
+                    + "jornada en el día de hoy! Ya fue iniciada y cerrada una jornada.");
         }
-        
+        fecha = new DateTime();
         horaDeInicio = JornadaBuild.HoraActual();
         estado = EstadoDeJornada.EN_CURSO.Valor();
     }
 
     @Override
-    public void cerrar() throws AsistenciaIncompletaException {
+    public void cerrar() throws AsistenciaIncompletaException, JornadaCerradaException {
+        if (estaCerrada()) {
+            throw new JornadaCerradaException("La jornada de hoy ya fue cerrada.");
+        }
         List<Asistencia> listado = (List<Asistencia>) servicio.asistenciasDeHoy();
         for (Asistencia asistencia : listado) {
-            if (!asistencia.estaSinFirmar()){
-                if (!asistencia.estaMarcadaLaSalida()){
-                    throw new AsistenciaIncompletaException();
-                }
+            if (!asistencia.estaSinFirmar() && !asistencia.estaMarcadaLaSalida()){
+                
+                throw new AsistenciaIncompletaException("Faltan empleados por marcar su salida");   
             }
         }
         
