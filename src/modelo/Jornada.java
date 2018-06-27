@@ -21,7 +21,8 @@ public abstract class Jornada {
     public abstract void iniciar() throws JornadaEnCursoException, 
              JornadaCerradaException;
     
-    public abstract void cerrar() throws AsistenciaIncompletaException, JornadaCerradaException;
+    public abstract void cerrar() throws AsistenciaIncompletaException, 
+            JornadaCerradaException, SinIniciarJornadaException;
     
     public Long getId() {
         return id;

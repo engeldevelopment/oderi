@@ -153,7 +153,8 @@ public class JornadaController extends Controlador {
                     Notification.windowMessage(vista, "Listo!",
                             "Fin de la jornada!",
                             NiconEvent.NOTIFY_OK);
-        } catch (AsistenciaIncompletaException | JornadaCerradaException ex) {
+        } catch (AsistenciaIncompletaException | 
+                JornadaCerradaException | SinIniciarJornadaException ex) {
              Notification.windowMessage(vista, "Disculpe!", 
                     ex.getMessage());
         } 

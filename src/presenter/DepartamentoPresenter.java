@@ -9,7 +9,6 @@ import javax.swing.table.DefaultTableModel;
 public class DepartamentoPresenter {
     
     private Menu vista;
-    private List<Departamento> listado;
     private DefaultTableModel tabla;
     
     public DepartamentoPresenter(Menu vista) {
