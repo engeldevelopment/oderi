@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="engel-Presario-C700-Notebook-PC" name="empleado.LoginTest" skipped="0" tests="6" time="0.681" timestamp="2018-06-18T15:23:51">
+<testsuite errors="0" failures="0" hostname="engel-Presario-C700-Notebook-PC" name="empleado.LoginTest" skipped="0" tests="6" time="0.741" timestamp="2018-06-29T18:28:35">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="VE" />
@@ -18,6 +18,7 @@
     <property name="java.vm.version" value="25.161-b12" />
     <property name="libs.DataBindingME.classpath" value="/usr/local/netbeans-8.2/mobility/modules/ext/netbeans_databindingme.jar" />
     <property name="libs.j2me_common_ant.src" value="" />
+    <property name="libs.concordion.javadoc" value="" />
     <property name="libs.MySQLDriver.classpath" value="/usr/local/netbeans-8.2/ide/modules/ext/mysql-connector-java-5.1.23-bin.jar" />
     <property name="libs.eclipselinkmodelgen.src" value="" />
     <property name="javadoc.notree" value="false" />
@@ -70,7 +71,7 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner empleado.LoginTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/engel/NetBeansProjects/AsistenciasOderiV2/build/test/results/TEST-empleado.LoginTest.xml crashfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junitvmwatcher6385458926147029568.properties propsfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junit5489193748474763584.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner empleado.LoginTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/engel/NetBeansProjects/AsistenciasOderiV2/build/test/results/TEST-empleado.LoginTest.xml crashfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junitvmwatcher1687960356801650274.properties propsfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junit403296266374897814.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -141,6 +142,7 @@
     <property name="libs.junit_4.src" value="/usr/local/netbeans-8.2/platform/docs/junit-4.12-sources.jar" />
     <property name="ant.file.type.AsistenciasOderiV2-impl" value="file" />
     <property name="libs.testng.classpath" value="/usr/local/netbeans-8.2/platform/modules/ext/testng-6.8.1-dist.jar" />
+    <property name="libs.concordion.classpath" value="/home/engel/Documentos/librerias/concordion-2.1.3/concordion-2.1.3.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/asm-5.0.3.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/asm-analysis-5.0.3.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/asm-tree-5.0.3.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/asm-util-5.0.3.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/javassist-3.11.0.GA.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/ognl-3.1.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/parboiled-core-1.1.7.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/parboiled-java-1.1.7.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/pegdown-1.6.0.jar:/home/engel/Documentos/librerias/concordion-2.1.3/lib/xom-1.2.5.jar" />
     <property name="libs.absolutelayout.maven-pom" value="" />
     <property name="libs.Mockito_1.src" value="" />
     <property name="ant.java.version" value="1.8" />
@@ -288,56 +290,56 @@
     <property name="javadoc.private" value="false" />
     <property name="test.src.dir" value="test" />
     <property name="libs.jsf20.classpath" value="/usr/local/netbeans-8.2/enterprise/modules/ext/jsf-2_2/javax.faces.jar" />
-    <property name="ap.processors.internal" value="" />
     <property name="ant.file.AsistenciasOderiV2" value="/home/engel/NetBeansProjects/AsistenciasOderiV2/build.xml" />
+    <property name="ap.processors.internal" value="" />
     <property name="meta.inf.dir" value="src/META-INF" />
     <property name="javadoc.encoding.used" value="UTF-8" />
     <property name="libs.DataBindingME-SVG.src" value="/usr/local/netbeans-8.2/mobility/sources/netbeans_databindingme_svg-src.zip" />
     <property name="pythonplatform.Python_2.7.12.name" value="Python 2.7.12" />
     <property name="dist.jar" value="dist/AsistenciasOderiV2.jar" />
     <property name="libs.spring-framework400.maven-pom" value="" />
-    <property name="netbeans.automatic.build" value="true" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="netbeans.automatic.build" value="true" />
     <property name="ant.project.name" value="AsistenciasOderiV2" />
     <property name="netbeans.hash.code" value="unique=NB_CND_EXTIDE_GROOVY_JAVA_MOB_PHP_WEBCOMMON_WEBEE0bfc0c29d-60da-42c3-b22a-098317653ff7_18e3dd74-208f-4347-b260-ea1c5d600153" />
+    <property name="libs.JodaTime-Hibernate.javadoc" value="" />
     <property name="libs.jsp-compilation-syscp.maven-pom" value="" />
     <property name="netbeans.default_userdir_root" value="/home/engel/.netbeans" />
-    <property name="libs.JodaTime-Hibernate.javadoc" value="" />
     <property name="sun.cpu.isalist" value="" />
-    <property name="libs.CopyLibs.javadoc" value="" />
     <property name="libs.spring-framework400.javadoc" value="" />
+    <property name="libs.CopyLibs.javadoc" value="" />
     <property name="libs.Jadira-Joda.maven-pom" value="" />
     <property name="org.openide.specification.version" value="6.2" />
     <property name="libs.DataBindingME-PIM.classpath" value="/usr/local/netbeans-8.2/mobility/modules/ext/netbeans_databindingme_pim.jar" />
     <property name="user.home" value="/home/engel" />
     <property name="annotation.processing.processors.list" value="" />
-    <property name="debug-args-line" value="-Xdebug" />
     <property name="libs.primefaces.maven-pom" value="" />
+    <property name="debug-args-line" value="-Xdebug" />
     <property name="libs.javaee-api-6.0.maven-pom" value="" />
     <property name="libs.JWSAntTasks.src" value="" />
     <property name="libs.CopyLibs.maven-pom" value="" />
     <property name="jar.index" value="false" />
     <property name="pythonplatform.Python_2.7.12.sourcelevel" value="2.7" />
-    <property name="libs.spring-framework300.javadoc" value="" />
     <property name="libs.absolutelayout.javadoc" value="" />
+    <property name="libs.spring-framework300.javadoc" value="" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
     <property name="libs.LookAndFeel.javadoc" value="" />
     <property name="guice.disable.misplaced.annotation.check" value="true" />
-    <property name="java.specification.name" value="Java Platform API Specification" />
     <property name="libs.Hibernate_5.classpath" value="/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/antlr-2.7.7.jar:/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/classmate-1.3.0.jar:/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/dom4j-1.6.1.jar:/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/hibernate-commons-annotations-5.0.1.Final.jar:/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/hibernate-core-5.2.10.Final.jar:/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/hibernate-jpa-2.1-api-1.0.0.Final.jar:/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/jandex-2.0.3.Final.jar:/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/javassist-3.20.0-GA.jar:/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/jboss-logging-3.3.0.Final.jar:/home/engel/Documentos/Programas/Hibernate/hibernate 5.2.10/lib/required/jboss-transaction-api_1.2_spec-1.0.1.Final.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-api-1.7.25.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-log4j12-1.7.25.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-simple-1.7.25.jar" />
     <property name="do.archive+main.class.available" value="true" />
+    <property name="pythonplatform.Python_2.7.12.pythonlib" value="/home/engel/.netbeans/8.2:/usr/lib/python2.7:/usr/lib/python2.7/plat-i386-linux-gnu:/usr/lib/python2.7/lib-tk:/usr/lib/python2.7/lib-old:/usr/lib/python2.7/lib-dynload:/usr/local/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages/PILcompat:/usr/lib/python2.7/dist-packages/gtk-2.0:/usr/lib/python2.7/dist-packages/ubuntu-sso-client" />
     <property name="java.specification.vendor" value="Oracle Corporation" />
     <property name="libs.NiconNotify.src" value="" />
-    <property name="pythonplatform.Python_2.7.12.pythonlib" value="/home/engel/.netbeans/8.2:/usr/lib/python2.7:/usr/lib/python2.7/plat-i386-linux-gnu:/usr/lib/python2.7/lib-tk:/usr/lib/python2.7/lib-old:/usr/lib/python2.7/lib-dynload:/usr/local/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages/PILcompat:/usr/lib/python2.7/dist-packages/gtk-2.0:/usr/lib/python2.7/dist-packages/ubuntu-sso-client" />
-    <property name="libs.JCalendar.javadoc" value="" />
     <property name="libs.javac-api.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/nb-javac-api.jar" />
+    <property name="libs.JCalendar.javadoc" value="" />
     <property name="java.version" value="1.8.0_161" />
     <property name="javadoc.version" value="false" />
     <property name="libs.JodaTime-Hibernate.src" value="" />
     <property name="run.jvmargs.ide" value="" />
     <property name="libs.MySQLDriver.javadoc" value="" />
     <property name="org.openide.version" value="deprecated" />
-    <property name="source.encoding" value="UTF-8" />
     <property name="platform.java" value="/usr/lib/jvm/java-8-oracle/jre/bin/java" />
+    <property name="source.encoding" value="UTF-8" />
     <property name="ap.cmd.line.internal" value="" />
     <property name="libs.eclipselinkmodelgen.maven-pom" value="" />
     <property name="libs.jsp-compilation-syscp.javadoc" value="" />
@@ -348,6 +350,7 @@
     <property name="netbeans.home+have.tests" value="true" />
     <property name="annotation.processing.processor.options" value="" />
     <property name="libs.testng.maven-pom" value="" />
+    <property name="libs.concordion.maven-pom" value="" />
     <property name="libs.jaxb.src" value="" />
     <property name="work.dir" value="/home/engel/NetBeansProjects/AsistenciasOderiV2" />
     <property name="libs.jaxb.classpath" value="/usr/local/netbeans-8.2/ide/modules/ext/jaxb/jaxb-impl.jar:/usr/local/netbeans-8.2/ide/modules/ext/jaxb/jaxb-xjc.jar:/usr/local/netbeans-8.2/ide/modules/ext/jaxb/jaxb1-impl.jar:/usr/local/netbeans-8.2/ide/modules/ext/jaxb/activation.jar:/usr/local/netbeans-8.2/ide/modules/ext/jaxb/api/jaxb-api.jar:/usr/local/netbeans-8.2/ide/modules/ext/jaxb/api/jsr173_1.0_api.jar" />
@@ -356,12 +359,12 @@
     <property name="libs.Hibernate_3.maven-pom" value="" />
     <property name="dist.javadoc.dir" value="dist/javadoc" />
     <property name="libs.j2me_common_ant.classpath" value="/usr/local/netbeans-8.2/mobility/modules/org-netbeans-modules-j2me-common-ant.jar:/usr/local/netbeans-8.2/java/modules/org-netbeans-modules-classfile.jar" />
-    <property name="libs.spring-webmvc3.0.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-webmvc-3.2.7.RELEASE.jar" />
     <property name="libs.swing-layout.classpath" value="/usr/local/netbeans-8.2/platform/modules/ext/swing-layout-1.0.4.jar" />
+    <property name="libs.spring-webmvc3.0.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-webmvc-3.2.7.RELEASE.jar" />
     <property name="libs.javaee-web-api-7.0.maven-pom" value="" />
     <property name="libs.restlib.src" value="" />
-    <property name="javac.source" value="1.8" />
     <property name="build.generated.dir" value="build/generated" />
+    <property name="javac.source" value="1.8" />
     <property name="libs.Mockito_2.maven-pom" value="" />
     <property name="line.separator" value="&#xa;" />
     <property name="java.specification.version" value="1.8" />
@@ -381,12 +384,12 @@
     <property name="libs.Hibernate_3.javadoc" value="" />
     <property name="libs.jsf20.src" value="" />
     <property name="libs.jpa20-persistence.src" value="" />
-    <property name="libs.DataBindingME-SVG.maven-pom" value="" />
     <property name="libs.jsf12.src" value="" />
+    <property name="libs.DataBindingME-SVG.maven-pom" value="" />
     <property name="libs.JAVADB_DRIVER_LABEL.maven-pom" value="" />
+    <property name="libs.struts.javadoc" value="/usr/local/netbeans-8.2/enterprise/docs/struts-1.3.10-javadoc.zip" />
     <property name="libs.EdisonCordSX.javadoc" value="" />
     <property name="libs.EdisonCordSX.classpath" value="/home/engel/Documentos/librerias/dist/edisoncorSX.jar" />
-    <property name="libs.struts.javadoc" value="/usr/local/netbeans-8.2/enterprise/docs/struts-1.3.10-javadoc.zip" />
     <property name="libs.Comet-GlassFish-v3.classpath" value="" />
     <property name="libs.javaee-web-api-7.0.src" value="" />
     <property name="libs.primefaces.src" value="" />
@@ -402,8 +405,8 @@
     <property name="debug-transport-by-os" value="dt_socket" />
     <property name="sun.jnu.encoding" value="UTF-8" />
     <property name="libs.MySQLDriver.src" value="" />
-    <property name="build.test.results.dir" value="build/test/results" />
     <property name="java.runtime.version" value="1.8.0_161-b12" />
+    <property name="build.test.results.dir" value="build/test/results" />
     <property name="jna.platform.library.path" value="/usr/lib/i386-linux-gnu:/lib/i386-linux-gnu:/usr/lib:/lib:/usr/lib/i386-linux-gnu/i686/sse2:/usr/lib/i386-linux-gnu/sse2:/usr/lib/sse2:/usr/lib/i386-linux-gnu/libfakeroot:/usr/lib/i386-linux-gnu/mesa-egl:/usr/lib/i386-linux-gnu/mesa" />
     <property name="default.javac.target" value="1.8" />
     <property name="libs.junit_4.classpath" value="/usr/local/netbeans-8.2/platform/modules/ext/junit-4.12.jar" />
@@ -411,8 +414,8 @@
     <property name="nb.junit.single" value="false" />
     <property name="libs.NiconNotify.classpath" value="/home/engel/Documentos/librerias/NiconNotifyOSD 0.1.9-7.jar" />
     <property name="libs.JodaTime.classpath" value="/home/engel/Documentos/librerias/joda-time-2.9.9.jar" />
-    <property name="libs.javaee-endorsed-api-6.0.maven-pom" value="" />
     <property name="libs.JAVADB_DRIVER_LABEL.javadoc" value="" />
+    <property name="libs.javaee-endorsed-api-6.0.maven-pom" value="" />
     <property name="netbeans.dirs" value="/usr/local/netbeans-8.2/nb:/usr/local/netbeans-8.2/ergonomics:/usr/local/netbeans-8.2/ide:/usr/local/netbeans-8.2/extide:/usr/local/netbeans-8.2/java:/usr/local/netbeans-8.2/apisupport:/usr/local/netbeans-8.2/webcommon:/usr/local/netbeans-8.2/websvccommon:/usr/local/netbeans-8.2/enterprise:/usr/local/netbeans-8.2/mobility:/usr/local/netbeans-8.2/profiler:/usr/local/netbeans-8.2/python:/usr/local/netbeans-8.2/php:/usr/local/netbeans-8.2/identity:/usr/local/netbeans-8.2/harness:/usr/local/netbeans-8.2/cnd:/usr/local/netbeans-8.2/cndext:/usr/local/netbeans-8.2/dlight:/usr/local/netbeans-8.2/groovy:/usr/local/netbeans-8.2/extra:/usr/local/netbeans-8.2/javacard:/usr/local/netbeans-8.2/javafx:" />
     <property name="libs.jsf20.javadoc" value="/usr/local/netbeans-8.2/enterprise/docs/javaee-doc-api.jar" />
     <property name="libs.jstl.javadoc" value="/usr/local/netbeans-8.2/enterprise/docs/javaee-doc-api.jar" />
@@ -424,14 +427,15 @@
     <property name="libs.restlib.maven-pom" value="" />
     <property name="libs.jpa2-persistence.javadoc" value="/usr/local/netbeans-8.2/java/modules/ext/docs/javax.persistence-2.1.0-doc.zip" />
     <property name="libs.DataBindingME.javadoc" value="/usr/local/netbeans-8.2/mobility/modules/docs/netbeans_databindingme-api.zip" />
-    <property name="java.class.path" value="/home/engel/Documentos/librerias/dist/edisoncorSX.jar:/home/engel/Documentos/librerias/jcalendar-1.4.jar:/home/engel/Documentos/librerias/NiconNotifyOSD 0.1.9-7.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/antlr-2.7.6.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/commons-collections-3.1.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/dom4j-1.6.1.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/javassist-3.12.0.GA.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/jta-1.1.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/hibernate3.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/hibernate-testing.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-api-1.7.25.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-simple-1.7.25.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-jpa-2.1-api-1.0.0.Final.jar:/usr/local/netbeans-8.2/ide/modules/ext/mysql-connector-java-5.1.23-bin.jar:/home/engel/Documentos/librerias/joda-time-2.9.9.jar:/home/engel/Documentos/librerias/mockito-all-2.0.2-beta.jar:/home/engel/Documentos/librerias/joda-time-hibernate-1.4.jar:/home/engel/NetBeansProjects/AsistenciasOderiV2/build/classes:/usr/local/netbeans-8.2/platform/modules/ext/junit-4.12.jar:/usr/local/netbeans-8.2/platform/modules/ext/hamcrest-core-1.3.jar:/home/engel/NetBeansProjects/AsistenciasOderiV2/build/test/classes:/usr/local/netbeans-8.2/extide/ant/lib/ant-launcher.jar:/usr/local/netbeans-8.2/extide/ant/lib/ant.jar:/usr/local/netbeans-8.2/extide/ant/lib/ant-junit.jar:/usr/local/netbeans-8.2/extide/ant/lib/ant-junit4.jar:/home/engel/.netbeans/8.2/modules/ext/jacocoagent.jar" />
     <property name="apple.laf.useScreenMenuBar" value="true" />
+    <property name="java.class.path" value="/home/engel/Documentos/librerias/dist/edisoncorSX.jar:/home/engel/Documentos/librerias/jcalendar-1.4.jar:/home/engel/Documentos/librerias/NiconNotifyOSD 0.1.9-7.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/antlr-2.7.6.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/commons-collections-3.1.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/dom4j-1.6.1.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/javassist-3.12.0.GA.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/lib/required/jta-1.1.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/hibernate3.jar:/home/engel/Documentos/librerias/hibernate-distribution-3.6.3.Final/hibernate-testing.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-api-1.7.25.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-simple-1.7.25.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-jpa-2.1-api-1.0.0.Final.jar:/usr/local/netbeans-8.2/ide/modules/ext/mysql-connector-java-5.1.23-bin.jar:/home/engel/Documentos/librerias/joda-time-2.9.9.jar:/home/engel/Documentos/librerias/mockito-all-2.0.2-beta.jar:/home/engel/Documentos/librerias/joda-time-hibernate-1.4.jar:/home/engel/NetBeansProjects/AsistenciasOderiV2/build/classes:/usr/local/netbeans-8.2/platform/modules/ext/junit-4.12.jar:/usr/local/netbeans-8.2/platform/modules/ext/hamcrest-core-1.3.jar:/home/engel/NetBeansProjects/AsistenciasOderiV2/build/test/classes:/usr/local/netbeans-8.2/extide/ant/lib/ant-launcher.jar:/usr/local/netbeans-8.2/extide/ant/lib/ant.jar:/usr/local/netbeans-8.2/extide/ant/lib/ant-junit.jar:/usr/local/netbeans-8.2/extide/ant/lib/ant-junit4.jar:/home/engel/.netbeans/8.2/modules/ext/jacocoagent.jar" />
     <property name="addExports:java.desktop/java.awt.peer" value="ALL-UNNAMED" />
     <property name="addExports:java.desktop/com.sun.beans.editors" value="ALL-UNNAMED" />
     <property name="do.mkdist" value="true" />
     <property name="libs.absolutelayout.src" value="" />
     <property name="libs.jpa20-persistence.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/eclipselink/javax.persistence_2.1.0.v201304241213.jar" />
     <property name="libs.Mockito_2.javadoc" value="" />
+    <property name="libs.concordion.src" value="" />
     <property name="pythonplatform.default.pythonlib" value="/home/engel/.netbeans/8.2/jython-2.7.0/Lib:/home/engel/.netbeans/8.2/jython-2.7.0/Lib/site-packages" />
     <property name="os.version" value="4.10.0-38-generic" />
     <property name="application.args" value="" />
@@ -450,48 +454,48 @@
     <property name="libs.javaee-api-7.0.javadoc" value="/usr/local/netbeans-8.2/enterprise/docs/javaee-doc-api.jar" />
     <property name="libs.eclipselink.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/eclipselink/eclipselink.jar:/usr/local/netbeans-8.2/java/modules/ext/eclipselink/javax.persistence_2.1.0.v201304241213.jar:/usr/local/netbeans-8.2/java/modules/ext/eclipselink/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" />
     <property name="libs.Hibernate_5.javadoc" value="" />
-    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
     <property name="libs.beans-binding.javadoc" value="/usr/local/netbeans-8.2/java/docs/beansbinding-1.2.1-doc.zip" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="libs.CopyLibs.classpath" value="/usr/local/netbeans-8.2/java/ant/extra/org-netbeans-modules-java-j2seproject-copylibstask.jar" />
     <property name="libs.spring-framework300.classpath" value="/usr/local/netbeans-8.2/ide/modules/org-apache-commons-logging.jar:/usr/local/netbeans-8.2/java/modules/ext/cglib-2.2.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-aop-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-aspects-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-beans-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-build-src-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-context-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-context-support-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-core-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-expression-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-framework-bom-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-instrument-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-instrument-tomcat-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-jdbc-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-jms-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-orm-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-oxm-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-struts-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-test-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-tx-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-web-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-webmvc-3.2.7.RELEASE.jar:/usr/local/netbeans-8.2/java/modules/ext/spring-3.0/spring-webmvc-portlet-3.2.7.RELEASE.jar" />
     <property name="libs.jsp-compiler.maven-pom" value="" />
-    <property name="libs.JBehave.classpath" value="/home/engel/Documentos/librerias/jbehave-core-4.3.3.jar" />
     <property name="libs.hamcrest.src" value="" />
-    <property name="run.jvmargs" value="  -javaagent:&quot;/home/engel/.netbeans/8.2/modules/ext/jacocoagent.jar&quot;=includes=vista.*:reportes.*:nullObjects.*:dao.*:excepciones.*:mapeos.*:controlador.*:modelo.*:presenter.*:seguridad.*:hibernate.*:asistenciasoderiv2.*:vista.img.*:vista.icon.*:vista.png.*,destfile=&quot;/home/engel/NetBeansProjects/AsistenciasOderiV2/jacoco.exec-5347116763657&quot;" />
+    <property name="libs.JBehave.classpath" value="/home/engel/Documentos/librerias/jbehave-core-4.3.3.jar" />
     <property name="libs.JCalendar.maven-pom" value="" />
+    <property name="run.jvmargs" value="  -javaagent:&quot;/home/engel/.netbeans/8.2/modules/ext/jacocoagent.jar&quot;=includes=vista.*:reportes.*:nullObjects.*:dao.*:excepciones.*:mapeos.*:controlador.*:modelo.*:presenter.*:seguridad.*:hibernate.*:asistenciasoderiv2.*:vista.img.*:vista.icon.*:vista.png.*,destfile=&quot;/home/engel/NetBeansProjects/AsistenciasOderiV2/jacoco.exec-7484169568771&quot;" />
     <property name="libs.hibernate4-persistence.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/hibernate4/antlr-2.7.7.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/c3p0-0.9.2.1.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-c3p0-4.3.1.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/mchange-commons-java-0.2.3.4.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/dom4j-1.6.1.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/ehcache-core-2.4.3.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-ehcache-4.3.1.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-core-4.3.1.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/jboss-logging-3.1.3.GA.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-commons-annotations-4.0.4.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-entitymanager-4.3.1.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/javassist-3.18.1-GA.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/jboss-transaction-api_1.2_spec-1.0.0.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/slf4j-api-1.6.1.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/slf4j-simple-1.6.1.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-jpa-2.1-api-1.0.0.Final.jar" />
     <property name="dist.archive.excludes" value="" />
     <property name="libs.JAXB-ENDORSED.src" value="" />
     <property name="libs.testng.javadoc" value="/usr/local/netbeans-8.2/platform/docs/testng-6.8.1-javadoc.zip" />
     <property name="libs.DataBindingME-PIM.src" value="/usr/local/netbeans-8.2/mobility/sources/netbeans_databindingme_pim-src.zip" />
     <property name="libs.PostgreSQLDriver.classpath" value="/usr/local/netbeans-8.2/ide/modules/ext/postgresql-9.4.1209.jar" />
-    <property name="libs.jsf12.maven-pom" value="" />
     <property name="pythonplatform.default.javalib" value="/home/engel/.netbeans/8.2/jython-2.7.0/jython.jar" />
+    <property name="libs.jsf12.maven-pom" value="" />
     <property name="libs.hibernate4-persistencemodelgen.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-jpamodelgen-4.3.1.Final.jar" />
     <property name="annotation.processing.source.output" value="build/generated-sources/ap-source-output" />
     <property name="main.class" value="asistenciasoderiv2.Oderi" />
-    <property name="build.dir" value="build" />
     <property name="libs.CopyLibs.src" value="" />
+    <property name="build.dir" value="build" />
     <property name="libs.jsp-compilation.classpath" value="/usr/local/netbeans-8.2/extide/ant/lib/ant.jar:/usr/local/netbeans-8.2/enterprise/modules/ext/servlet3.1-jsp2.3-api.jar:/usr/local/netbeans-8.2/enterprise/modules/ext/glassfish-jspparser-4.0.jar:/usr/local/netbeans-8.2/enterprise/modules/ext/jsf-2_2/javax.faces.jar:/usr/local/netbeans-8.2/enterprise/modules/ext/jstl-api.jar:/usr/local/netbeans-8.2/extide/ant/lib/ant-launcher.jar" />
     <property name="libs.JBehave.src" value="" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.7 compiled on April 9 2016" />
     <property name="file.encoding" value="UTF-8" />
     <property name="build.classes.excludes" value="**/*.java,**/*.form" />
-    <property name="javadoc.nonavbar" value="false" />
-    <property name="libs.Hibernate_4.classpath" value="/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/antlr-2.7.7.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/dom4j-1.6.1.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/hibernate-commons-annotations-4.0.5.Final.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/hibernate-core-4.3.11.Final.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/hibernate-jpa-2.1-api-1.0.0.Final.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/jandex-1.1.0.Final.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/javassist-3.18.1-GA.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/jboss-logging-3.1.3.GA.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/jboss-logging-annotations-1.2.0.Beta1.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/jboss-transaction-api_1.2_spec-1.0.0.Final.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-api-1.7.25.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-log4j12-1.7.25.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-simple-1.7.25.jar" />
     <property name="jdkBug6558476" value="false" />
+    <property name="libs.Hibernate_4.classpath" value="/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/antlr-2.7.7.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/dom4j-1.6.1.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/hibernate-commons-annotations-4.0.5.Final.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/hibernate-core-4.3.11.Final.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/hibernate-jpa-2.1-api-1.0.0.Final.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/jandex-1.1.0.Final.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/javassist-3.18.1-GA.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/jboss-logging-3.1.3.GA.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/jboss-logging-annotations-1.2.0.Beta1.jar:/home/engel/Documentos/librerias/hibernate-release-4.3.11.Final/lib/required/jboss-transaction-api_1.2_spec-1.0.0.Final.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-api-1.7.25.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-log4j12-1.7.25.jar:/home/engel/Documentos/librerias/slf4j-1.7.25/slf4j-simple-1.7.25.jar" />
+    <property name="javadoc.nonavbar" value="false" />
     <property name="libs.spring-webmvc4.0.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/spring-4/spring-webmvc-4.0.1.RELEASE.jar" />
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/usr/local/netbeans-8.2/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="empleado.LoginTest" name="loginExitoso" time="0.489" />
+  <testcase classname="empleado.LoginTest" name="loginExitoso" time="0.498" />
   <testcase classname="empleado.LoginTest" name="composVacios" time="0.001" />
   <testcase classname="empleado.LoginTest" name="usuarioIncorrecto" time="0.001" />
-  <testcase classname="empleado.LoginTest" name="claveDelUsuarioIncorrecta" time="0.002" />
-  <testcase classname="empleado.LoginTest" name="noSeAceptanEspaciosVacios" time="0.0" />
-  <testcase classname="empleado.LoginTest" name="FaltaUnComposPorIngresar" time="0.0" />
+  <testcase classname="empleado.LoginTest" name="claveDelUsuarioIncorrecta" time="0.001" />
+  <testcase classname="empleado.LoginTest" name="noSeAceptanEspaciosVacios" time="0.001" />
+  <testcase classname="empleado.LoginTest" name="FaltaUnComposPorIngresar" time="0.001" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

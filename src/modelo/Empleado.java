@@ -2,7 +2,6 @@
 package modelo;
 
 import excepciones.*;
-import java.util.*;
 
 public class Empleado {
     
@@ -16,7 +15,12 @@ public class Empleado {
        
     }
     
-    public Empleado(String cedula, String nombre, String apellido, Departamento dpto) {
+    public Empleado(String cedula, String nombre, String apellido, 
+            Departamento dpto) throws SinDepartamentoAsignadoException {
+        
+        if (dpto.esNull()) {
+            throw new SinDepartamentoAsignadoException("Debes asignar al empleado en un departamento.");
+        }
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -61,12 +65,6 @@ public class Empleado {
     
     public Departamento getDepartamento(){
         return departamento;
-    }
-
-    public void listo() throws SinDepartamentoAsignadoException {
-        if (departamento.esNull()) {
-            throw new SinDepartamentoAsignadoException();
-        }
     }
     
     public boolean esNull() {

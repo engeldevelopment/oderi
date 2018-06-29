@@ -25,7 +25,7 @@ public class JustificacionDeInasistencia {
 <span class="fc bfc" id="L25" title="All 2 branches covered.">        if (inasistencia.estaJustificada()){</span>
 <span class="fc" id="L26">            throw new InasistenciaJustificadaException();</span>
 <span class="fc bfc" id="L27" title="All 2 branches covered.">        } else if (tieneMasDeUnDiaGenerada()) {</span>
-<span class="fc" id="L28">            throw new TiempoDeJustificacionCaducadoException();</span>
+<span class="fc" id="L28">            throw new TiempoDeJustificacionCaducadoException(&quot;Esta inasistencia tiene mas de 24 horas.&quot;);</span>
         }
 <span class="fc" id="L30">        inasistencia.CrearJustificacion(descripcion);</span>
 <span class="fc" id="L31">        servicio.guardar(inasistencia);</span>

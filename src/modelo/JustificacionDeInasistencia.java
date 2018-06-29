@@ -25,7 +25,7 @@ public class JustificacionDeInasistencia {
         if (inasistencia.estaJustificada()){
             throw new InasistenciaJustificadaException();
         } else if (tieneMasDeUnDiaGenerada()) {
-            throw new TiempoDeJustificacionCaducadoException();
+            throw new TiempoDeJustificacionCaducadoException("Esta inasistencia tiene mas de 24 horas.");
         }
         inasistencia.CrearJustificacion(descripcion);
         servicio.guardar(inasistencia);

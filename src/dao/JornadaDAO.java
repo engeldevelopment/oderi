@@ -2,7 +2,6 @@
 package dao;
 
 import modelo.*;
-import nullObjects.NullJornada;
 import java.util.Collection;
 import nicon.notify.core.*;
 import org.hibernate.*;
@@ -40,7 +39,7 @@ public class JornadaDAO implements IDAO<Jornada> {
 
     @Override
     public Jornada buscar(Object fecha) {
-        Jornada jornada = new NullJornada();
+        Jornada jornada = null;
         try {
             sesion = HibernateUtil.getSessionFactory().openSession();
             sesion.beginTransaction();

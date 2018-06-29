@@ -88,6 +88,7 @@ public class EmpleadosController extends Controlador {
         try {
             cedula = new Cedula(ced);
             buscar();
+            verficarExistencia();
         } catch (ContenidoInvalidoException e) {
             Notification.windowMessage(vista, 
                     "Disculpe!", e.getMessage());
@@ -96,7 +97,6 @@ public class EmpleadosController extends Controlador {
     
     private void buscar() {
         empleado = servicioEmpleado.buscar(cedula.get());
-        verficarExistencia();
     }
     
     private void verficarExistencia() {
@@ -109,13 +109,13 @@ public class EmpleadosController extends Controlador {
                 ventana(vista.NuevoEmpleado, 360, 295);
             }
         } else {
-            establecerInformacionDelEmpleado();
+            establecerInformacionDelEmpleadoEnElSubMenu();
             vista.txtCedulaEmpleadoBuscar.setText("");
             ventana(vista.VistaSubMenu, 700, 500);
         }
     }
     
-    private void establecerInformacionDelEmpleado() {
+    private void establecerInformacionDelEmpleadoEnElSubMenu() {
         vista.VistaSubMenu.setTitle("Empleado: "+empleado.getNombre() +" "+empleado.getApellido());
         vista.lblCedulaEmpleado.setText(empleado.getCedula());
         vista.lblNombreEmpleado.setText(empleado.getNombre());
@@ -124,19 +124,33 @@ public class EmpleadosController extends Controlador {
     }
     
     private void guardar() {
-        
         try {
-            obtenerLosDatosDelEmpleado();
+        
             validarDatosDelEmpleado();
-            procesarEmpleado();
+            empleado = new Empleado(cedula.get(), nombre, apellido, departamento);
+            servicioEmpleado.guardar(empleado);
+            empleadoPresenter.limpiarCampos();
+                
+        Notification.windowMessage(vista, 
+                    "Listo!", 
+                    "Ha sido registrado el empleado exitosamente!",
+                    NiconEvent.NOTIFY_OK);
                  
-        } catch (SinDepartamentoAsignadoException ex) {
+        } catch (SinDepartamentoAsignadoException | CamposVaciosException | 
+                ContenidoInvalidoException ex) {
            
             Notification.windowMessage(vista, 
                     "Disculpe!", 
-                    "Debe asignar el departamento por favor..");
-        } catch (CamposVaciosException | ContenidoInvalidoException ex) {
-            Notification.windowMessage(vista, "Disculpe!", ex.getMessage());
+                    ex.getMessage());
+        } 
+    }
+    
+    private void validarDatosDelEmpleado() throws CamposVaciosException, ContenidoInvalidoException {
+        obtenerLosDatosDelEmpleado();
+        if (texto.estaVacio(nombre) || texto.estaVacio(apellido)) {
+            throw new CamposVaciosException("Todos los campos son obligatorios.");
+        } else if (!texto.esValido(nombre) || !texto.esValido(apellido)) {
+           throw new ContenidoInvalidoException("No se permiten caracteres especiales y/o números en los campos.");
         }
     }
     
@@ -145,26 +159,6 @@ public class EmpleadosController extends Controlador {
         apellido = vista.txtApellidoEmpleado.getText();
     }
     
-    private void validarDatosDelEmpleado() throws CamposVaciosException, ContenidoInvalidoException {
-        if (texto.estaVacio(nombre) || texto.estaVacio(apellido)) {
-            throw new CamposVaciosException("Todos los campos son obligatorios.");
-        } else if (!texto.esValido(nombre) || !texto.esValido(apellido)) {
-           throw new ContenidoInvalidoException("No se permiten caracteres especiales y/o números en los campos.");
-        }
-    }
-    
-    private void procesarEmpleado() throws SinDepartamentoAsignadoException {
-        empleado = new Empleado(cedula.get(), nombre, apellido, departamento);
-        empleado.listo();
-        servicioEmpleado.guardar(empleado);
-        empleadoPresenter.limpiarCampos();
-                
-        Notification.windowMessage(vista, 
-                    "Listo!", 
-                    "Ha sido registrado el empleado exitosamente!",
-                    NiconEvent.NOTIFY_OK);
-    }
-   
    long idDepartamento = 0; 
    private void asignarDepartamento() {
         if (noSeleccionoUnDepartamento()) {
@@ -198,8 +192,7 @@ public class EmpleadosController extends Controlador {
         empleadoPresenter.ver(listado);
     }
     
-    private class ManejadorDeEventos implements ActionListener, KeyListener, 
-            WindowListener {
+    private class ManejadorDeEventos extends WindowAdapter implements ActionListener, KeyListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -210,6 +203,7 @@ public class EmpleadosController extends Controlador {
                
             } else if (evento.equals(vista.btnAgregarDepartamento)) {
                 ventana(vista.VistaSeleccionarDepartamento, 400, 217);
+                
             } else if (evento.equals(vista.btnAsignarDepartamento)) {
                 asignarDepartamento();
                 
@@ -250,43 +244,11 @@ public class EmpleadosController extends Controlador {
         }
 
         @Override
-        public void windowOpened(WindowEvent e) {
-            
-        }
-
-        @Override
         public void windowClosing(WindowEvent e) {
             Object evento = e.getSource();
             if (evento.equals(vista.NuevoEmpleado)) {
                 empleadoPresenter.limpiarCampos();
             }
         }
-
-        @Override
-        public void windowClosed(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowIconified(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowDeiconified(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowActivated(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowDeactivated(WindowEvent e) {
-            
-        }
-    
     }
-    
 }

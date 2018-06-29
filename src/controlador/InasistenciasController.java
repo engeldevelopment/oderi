@@ -40,7 +40,7 @@ public class InasistenciasController extends Controlador {
         formato = DateTimeFormat.forPattern("EEEE, dd MMM YYYY");
         formatoCortoFecha = DateTimeFormat.forPattern("dd MMM YYYY");
         formatoHora = new SimpleDateFormat("hh:mm:s a");
-        vista.lblFechaDeInasistencia.setText(""+formato.print(DateTime.now()));
+        vista.lblFechaDeInasistencia.setText(formato.print(DateTime.now()));
         presenter = new InasistenciaPresenter(vista);
         inasistenciaSemanalPresenter = new InasistenciaSemanalPresenter(vista);
         reporteInasistenciaPersonal = new ReporteDeInasistenciaSemanalPersonalPresenter(vista);
