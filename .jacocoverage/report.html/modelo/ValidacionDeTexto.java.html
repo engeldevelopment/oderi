@@ -3,10 +3,10 @@ package modelo;
 
 import java.util.regex.*;
 
-<span class="nc" id="L6">public class ValidacionDeTexto {</span>
+<span class="fc" id="L6">public class ValidacionDeTexto {</span>
 
-<span class="nc" id="L8">    private Pattern letras = Pattern.compile(&quot;[^A-Za-z s]&quot;);</span>
-<span class="nc" id="L9">    private Pattern numeros = Pattern.compile(&quot;[^0-9]&quot;);</span>
+<span class="fc" id="L8">    private Pattern letras = Pattern.compile(&quot;[^A-Za-z s]&quot;);</span>
+<span class="fc" id="L9">    private Pattern numeros = Pattern.compile(&quot;[^0-9]&quot;);</span>
     private Matcher m;
     
     public boolean esValido(String cadena) {
@@ -15,12 +15,12 @@ import java.util.regex.*;
     }
     
     public boolean estaVacio(String cadena) {
-<span class="nc bnc" id="L18" title="All 6 branches missed.">        return (cadena.startsWith(&quot; &quot;) &amp;&amp; cadena.endsWith(&quot; &quot;)) || cadena.isEmpty();</span>
+<span class="pc bpc" id="L18" title="1 of 6 branches missed.">        return (cadena.startsWith(&quot; &quot;) &amp;&amp; cadena.endsWith(&quot; &quot;)) || cadena.isEmpty();</span>
     }
 
     public boolean esDigito(String cadena) {
-<span class="nc" id="L22">        m = numeros.matcher(cadena);</span>
-<span class="nc bnc" id="L23" title="All 2 branches missed.">        return !m.find();</span>
+<span class="fc" id="L22">        m = numeros.matcher(cadena);</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        return !m.find();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

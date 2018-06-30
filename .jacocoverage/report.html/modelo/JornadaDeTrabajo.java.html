@@ -2,80 +2,45 @@
 package modelo;
 
 import excepciones.*;
-import dao.*;
 import java.util.*;
 import org.joda.time.DateTime;
 
 public class JornadaDeTrabajo extends Jornada {
-    
-    private Long id;
-    private List&lt;Empleado&gt; empleados;
-    private GeneradorDeInasistencia generador;
-    
-<span class="fc" id="L15">    public JornadaDeTrabajo(List&lt;Empleado&gt; empleados, IServicioAsistencia servicio) {</span>
-<span class="fc" id="L16">        fecha = new DateTime();</span>
-<span class="fc" id="L17">        this.empleados = empleados;</span>
-<span class="fc" id="L18">        this.servicio = servicio;</span>
-<span class="fc" id="L19">        estado = EstadoDeJornada.SIN_INICIAR.Valor();</span>
-<span class="fc" id="L20">    }</span>
-    
-<span class="fc" id="L22">    public JornadaDeTrabajo() {</span>
-<span class="fc" id="L23">        estado = EstadoDeJornada.SIN_INICIAR.Valor();</span>
-<span class="fc" id="L24">    }</span>
-
-<span class="fc" id="L26">    public JornadaDeTrabajo(IServicioAsistencia servicio) {</span>
-<span class="fc" id="L27">        this.servicio = servicio;</span>
-<span class="fc" id="L28">    }</span>
-
-    public Long getId() {
-<span class="nc" id="L31">        return id;</span>
-    }
-
-    private void setId(Long id) {
-<span class="nc" id="L35">        this.id = id;</span>
-<span class="nc" id="L36">    }</span>
+     
+<span class="fc" id="L10">    public JornadaDeTrabajo() {</span>
+<span class="fc" id="L11">        estado = EstadoDeJornada.SIN_INICIAR.Valor();</span>
+<span class="fc" id="L12">    }</span>
 
     @Override
     public void iniciar() throws JornadaEnCursoException,
-            NoHayEmpleadoException,
             JornadaCerradaException {
-<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (estaEnCurso()) {</span>
-<span class="fc" id="L43">            throw new JornadaEnCursoException();</span>
-<span class="fc bfc" id="L44" title="All 2 branches covered.">        } else if (noHayEmpleadosRegistrados()) {</span>
-<span class="fc" id="L45">            throw new NoHayEmpleadoException();</span>
-<span class="fc bfc" id="L46" title="All 2 branches covered.">        } else if (estaCerrada()) {</span>
-<span class="fc" id="L47">            throw new JornadaCerradaException();</span>
-        }
-<span class="fc bfc" id="L49" title="All 2 branches covered.">        for (Empleado alEmpleado : empleados) {</span>
-<span class="fc" id="L50">             agregarALaListaDeAsistencia(alEmpleado);      </span>
-<span class="fc" id="L51">        }</span>
-<span class="fc" id="L52">        horaDeInicio = JornadaBuild.HoraActual();</span>
-<span class="fc" id="L53">        estado = EstadoDeJornada.EN_CURSO.Valor();</span>
-<span class="fc" id="L54">    }</span>
-    
-    private boolean noHayEmpleadosRegistrados() {
-<span class="fc bfc" id="L57" title="All 2 branches covered.">        return empleados.isEmpty() == true;</span>
-    }
         
-    private void agregarALaListaDeAsistencia(Empleado empleado) {
-<span class="fc" id="L61">        Asistencia asistencia = new Asistencia(empleado, </span>
-<span class="fc" id="L62">                    AsistenciaBuild.fechaActual());</span>
-<span class="fc" id="L63">            servicio.guardar(asistencia);</span>
-<span class="fc" id="L64">    }</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (estaEnCurso()) {</span>
+<span class="fc" id="L19">            throw new JornadaEnCursoException(&quot;Ya hay una jornada en curso! No puedes iniciar otra.&quot;);</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        }  else if (estaCerrada()) {</span>
+<span class="fc" id="L21">            throw new JornadaCerradaException(&quot;No puedes iniciar más &quot;</span>
+                    + &quot;jornada en el día de hoy! Ya fue iniciada y cerrada una jornada.&quot;);
+        }
+<span class="fc" id="L24">        fecha = new DateTime();</span>
+<span class="fc" id="L25">        horaDeInicio = JornadaBuild.HoraActual();</span>
+<span class="fc" id="L26">        estado = EstadoDeJornada.EN_CURSO.Valor();</span>
+<span class="fc" id="L27">    }</span>
 
     @Override
-    public void cerrar() throws AsistenciaIncompletaException {
-<span class="fc" id="L68">        List&lt;Asistencia&gt; listado = (List&lt;Asistencia&gt;) servicio.asistenciasDeHoy();</span>
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        for (Asistencia asistencia : listado) {</span>
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">            if (!asistencia.estaSinFirmar()){</span>
-<span class="pc bpc" id="L71" title="1 of 2 branches missed.">                if (!asistencia.estaMarcadaLaSalida()){</span>
-<span class="fc" id="L72">                    throw new AsistenciaIncompletaException();</span>
-                }
+    public void cerrar() throws AsistenciaIncompletaException, JornadaCerradaException {
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if (estaCerrada()) {</span>
+<span class="nc" id="L32">            throw new JornadaCerradaException(&quot;La jornada de hoy ya fue cerrada.&quot;);</span>
+        }
+<span class="fc" id="L34">        List&lt;Asistencia&gt; listado = (List&lt;Asistencia&gt;) servicio.asistenciasDeHoy();</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        for (Asistencia asistencia : listado) {</span>
+<span class="pc bpc" id="L36" title="2 of 4 branches missed.">            if (!asistencia.estaSinFirmar() &amp;&amp; !asistencia.estaMarcadaLaSalida()){</span>
+                
+<span class="fc" id="L38">                throw new AsistenciaIncompletaException(&quot;Faltan empleados por marcar su salida&quot;);   </span>
             }
-<span class="nc" id="L75">        }</span>
+<span class="nc" id="L40">        }</span>
         
-<span class="nc" id="L77">        horaDeCierre = JornadaBuild.HoraActual();</span>
-<span class="nc" id="L78">        estado = EstadoDeJornada.CERRADA.Valor();</span>
-<span class="nc" id="L79">    }</span>
+<span class="nc" id="L42">        horaDeCierre = JornadaBuild.HoraActual();</span>
+<span class="nc" id="L43">        estado = EstadoDeJornada.CERRADA.Valor();</span>
+<span class="nc" id="L44">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

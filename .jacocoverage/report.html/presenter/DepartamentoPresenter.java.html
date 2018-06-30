@@ -17,18 +17,14 @@ public class DepartamentoPresenter {
 <span class="nc" id="L17">        tabla = (DefaultTableModel) vista.listadoDeDepartamentos.getModel();</span>
 <span class="nc" id="L18">    }</span>
     
-    public void setLista(List&lt;Departamento&gt; listado) {
-<span class="nc" id="L21">        this.listado = listado;</span>
-<span class="nc" id="L22">    }</span>
-    
-    public void verLista() {
-<span class="nc" id="L25">        tabla.setNumRows(listado.size());</span>
-<span class="nc" id="L26">        int index = 0;</span>
-<span class="nc bnc" id="L27" title="All 2 branches missed.">        for(Departamento departamento : listado) {</span>
-<span class="nc" id="L28">            tabla.setValueAt(departamento.getId(), index, 0);</span>
-<span class="nc" id="L29">            tabla.setValueAt(departamento.getNombre(), index, 1);</span>
-<span class="nc" id="L30">            index = index + 1;</span>
-<span class="nc" id="L31">        }</span>
-<span class="nc" id="L32">    }</span>
+    public void ver(List&lt;Departamento&gt; listado) {
+<span class="nc" id="L21">        tabla.setNumRows(listado.size());</span>
+<span class="nc" id="L22">        int index = 0;</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        for(Departamento departamento : listado) {</span>
+<span class="nc" id="L24">            tabla.setValueAt(departamento.getId(), index, 0);</span>
+<span class="nc" id="L25">            tabla.setValueAt(departamento.getNombre(), index, 1);</span>
+<span class="nc" id="L26">            index = index + 1;</span>
+<span class="nc" id="L27">        }</span>
+<span class="nc" id="L28">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
