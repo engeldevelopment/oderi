@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<<<<<<< HEAD
 <testsuite errors="0" failures="0" hostname="engel-Presario-C700-Notebook-PC" name="empleado.JornadaDeTrabajoTest" skipped="0" tests="5" time="1.254" timestamp="2018-06-30T19:09:02">
+=======
+<testsuite errors="0" failures="0" hostname="engel-Presario-C700-Notebook-PC" name="empleado.JornadaDeTrabajoTest" skipped="0" tests="5" time="0.856" timestamp="2018-06-29T18:28:33">
+>>>>>>> dev
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="VE" />
@@ -71,7 +75,11 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
+<<<<<<< HEAD
     <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner empleado.JornadaDeTrabajoTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/engel/NetBeansProjects/AsistenciasOderiV2/build/test/results/TEST-empleado.JornadaDeTrabajoTest.xml crashfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junitvmwatcher1651290363272411833.properties propsfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junit2626660262182098371.properties" />
+=======
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner empleado.JornadaDeTrabajoTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/engel/NetBeansProjects/AsistenciasOderiV2/build/test/results/TEST-empleado.JornadaDeTrabajoTest.xml crashfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junitvmwatcher3762726848095752748.properties propsfile=/home/engel/NetBeansProjects/AsistenciasOderiV2/build/junit2114763340338112840.properties" />
+>>>>>>> dev
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -463,7 +471,11 @@
     <property name="libs.hamcrest.src" value="" />
     <property name="libs.JBehave.classpath" value="/home/engel/Documentos/librerias/jbehave-core-4.3.3.jar" />
     <property name="libs.JCalendar.maven-pom" value="" />
+<<<<<<< HEAD
     <property name="run.jvmargs" value="  -javaagent:&quot;/home/engel/.netbeans/8.2/modules/ext/jacocoagent.jar&quot;=includes=vista.*:reportes.*:nullObjects.*:dao.*:excepciones.*:mapeos.*:controlador.*:modelo.*:presenter.*:seguridad.*:hibernate.*:asistenciasoderiv2.*:vista.img.*:vista.icon.*:vista.png.*,destfile=&quot;/home/engel/NetBeansProjects/AsistenciasOderiV2/jacoco.exec-325519743754&quot;" />
+=======
+    <property name="run.jvmargs" value="  -javaagent:&quot;/home/engel/.netbeans/8.2/modules/ext/jacocoagent.jar&quot;=includes=vista.*:reportes.*:nullObjects.*:dao.*:excepciones.*:mapeos.*:controlador.*:modelo.*:presenter.*:seguridad.*:hibernate.*:asistenciasoderiv2.*:vista.img.*:vista.icon.*:vista.png.*,destfile=&quot;/home/engel/NetBeansProjects/AsistenciasOderiV2/jacoco.exec-7484169568771&quot;" />
+>>>>>>> dev
     <property name="libs.hibernate4-persistence.classpath" value="/usr/local/netbeans-8.2/java/modules/ext/hibernate4/antlr-2.7.7.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/c3p0-0.9.2.1.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-c3p0-4.3.1.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/mchange-commons-java-0.2.3.4.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/dom4j-1.6.1.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/ehcache-core-2.4.3.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-ehcache-4.3.1.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-core-4.3.1.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/jboss-logging-3.1.3.GA.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-commons-annotations-4.0.4.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-entitymanager-4.3.1.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/javassist-3.18.1-GA.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/jboss-transaction-api_1.2_spec-1.0.0.Final.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/slf4j-api-1.6.1.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/slf4j-simple-1.6.1.jar:/usr/local/netbeans-8.2/java/modules/ext/hibernate4/hibernate-jpa-2.1-api-1.0.0.Final.jar" />
     <property name="dist.archive.excludes" value="" />
     <property name="libs.JAXB-ENDORSED.src" value="" />
@@ -490,11 +502,19 @@
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/usr/local/netbeans-8.2/enterprise/docs/javaee-doc-api.jar" />
   </properties>
+<<<<<<< HEAD
   <testcase classname="empleado.JornadaDeTrabajoTest" name="NoPuedeIniciarMasJornada_YaFueCerradaLaJornadaEnCurso" time="0.748" />
   <testcase classname="empleado.JornadaDeTrabajoTest" name="jornadaSinIniciar" time="0.005" />
   <testcase classname="empleado.JornadaDeTrabajoTest" name="jornadaIniciadaYFinalizadaConExito" time="0.056" />
   <testcase classname="empleado.JornadaDeTrabajoTest" name="yaHayUnaJornadaEnCurso" time="0.207" />
   <testcase classname="empleado.JornadaDeTrabajoTest" name="NoSePuedeCerrarLaJornadaPorQueFaltanEmpleadosPorMarcarSuSalida" time="0.012" />
+=======
+  <testcase classname="empleado.JornadaDeTrabajoTest" name="NoPuedeIniciarMasJornada_YaFueCerradaLaJornadaEnCurso" time="0.46" />
+  <testcase classname="empleado.JornadaDeTrabajoTest" name="jornadaSinIniciar" time="0.001" />
+  <testcase classname="empleado.JornadaDeTrabajoTest" name="yaHayUnaJornadaEnCurso" time="0.139" />
+  <testcase classname="empleado.JornadaDeTrabajoTest" name="primeroDebeIniciarseUnaJornada" time="0.001" />
+  <testcase classname="empleado.JornadaDeTrabajoTest" name="NoSePuedeCerrarLaJornadaPorQueFaltanEmpleadosPorMarcarSuSalida" time="0.054" />
+>>>>>>> dev
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -24,19 +24,10 @@ public class SubMenuController extends Controlador {
         vista.btnInasistenciasDeEmpleado.addActionListener(manejador);
         vista.btnPermisosEmpleado.addActionListener(manejador);
     }
-
-    @Override
-    protected void boton() {
-        vista.VistaSubMenu.addWindowListener(manejador);
-    }
     
     private void verPanelDeInformacion() {
        
         vista.panelInformacionDeEmpleado.setVisible(true);
-    }
-    
-    private void ocultarPaneles() {
-        vista.panelInformacionDeEmpleado.setVisible(false);
     }
     
     private void establecerSolicitante() {
@@ -44,7 +35,7 @@ public class SubMenuController extends Controlador {
                         vista.lblApellidosEmpleado.getText());
     }
     
-    private class ManejadorDeEventos implements ActionListener, WindowListener {
+    private class ManejadorDeEventos implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -61,41 +52,5 @@ public class SubMenuController extends Controlador {
                 ventana(vista.NuevoPermiso, 400, 265);
             }
         }
-
-        @Override
-        public void windowOpened(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowClosing(WindowEvent e) {
-                
-        }
-
-        @Override
-        public void windowClosed(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowIconified(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowDeiconified(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowActivated(WindowEvent e) {
-            
-        }
-
-        @Override
-        public void windowDeactivated(WindowEvent e) {
-            
-        }
-    
     }   
 }

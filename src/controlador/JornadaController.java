@@ -8,7 +8,6 @@ import dao.*;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import javax.swing.table.DefaultTableModel;
 import nicon.notify.core.*;
 import presenter.ReporteDeInasistenciaDiariaPresenter;
 import reportes.ReporteDeInasistenciaDiaria;
@@ -26,7 +25,6 @@ public class JornadaController extends Controlador {
     private IServicioAsistencia servicioDeAsistencia;
     private IServicioInasistencia servicioDeInasistencia;
     private MotivoDeInasistenciaDAO servicioDeMotivo;
-    private DefaultTableModel tabla;
     private SimpleDateFormat formatoDeHora;
     private ReporteDeInasistenciaDiariaPresenter reporteDeInasistencia;
     
@@ -42,7 +40,6 @@ public class JornadaController extends Controlador {
         servicioDeInasistencia =  new InasistenciaDAO();
         servicioDeEmpleados = new EmpleadoDAO();
         servicioDeMotivo = new MotivoDeInasistenciaDAO();
-        tabla = (DefaultTableModel) vista.listaDeInasistenciasDiaria.getModel();
         formatoDeHora = new SimpleDateFormat("h:m:s a");
         reporteDeInasistencia = new ReporteDeInasistenciaDiariaPresenter(vista);
     }
@@ -125,13 +122,11 @@ public class JornadaController extends Controlador {
     
     private void finalizarJornada() {
         buscarJornada();
-        if (jornada.estaEnCurso()){
-            int respuesta = Notification.windowConfirmMessage(vista, 
+        int respuesta = Notification.windowConfirmMessage(vista, 
                     "Confirma", 
                     "¿Estás seguro que deseas finalizar la jornada?");
-            if (respuesta == 1) {
-                cerrar();
-            }
+        if (respuesta == 1) {
+             cerrar();
         }
     }
     
@@ -153,7 +148,8 @@ public class JornadaController extends Controlador {
                     Notification.windowMessage(vista, "Listo!",
                             "Fin de la jornada!",
                             NiconEvent.NOTIFY_OK);
-        } catch (AsistenciaIncompletaException | JornadaCerradaException ex) {
+        } catch (AsistenciaIncompletaException | 
+                JornadaCerradaException | SinIniciarJornadaException ex) {
              Notification.windowMessage(vista, "Disculpe!", 
                     ex.getMessage());
         } 

@@ -21,6 +21,7 @@ public abstract class Jornada {
     public abstract void iniciar() throws JornadaEnCursoException, 
              JornadaCerradaException;
     
+<<<<<<< HEAD
     public abstract void cerrar() throws AsistenciaIncompletaException, JornadaCerradaException;
     
     public Long getId() {
@@ -78,5 +79,65 @@ public abstract class Jornada {
     public void setServicio(IServicioAsistencia servicio) {
 <span class="fc" id="L79">        this.servicio = servicio;</span>
 <span class="fc" id="L80">    }</span>
+=======
+    public abstract void cerrar() throws AsistenciaIncompletaException, 
+            JornadaCerradaException, SinIniciarJornadaException;
+    
+    public Long getId() {
+<span class="nc" id="L28">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="nc" id="L32">        this.id = id;</span>
+<span class="nc" id="L33">    }</span>
+    
+    public void setEstado(int estado) {
+<span class="fc" id="L36">        this.estado = estado;</span>
+<span class="fc" id="L37">    }</span>
+    
+    public int getEstado() {
+<span class="fc" id="L40">        return estado;</span>
+    }
+    
+    public boolean estaCerrada() {
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        return estado == 2;</span>
+    }
+    
+    public boolean estaEnCurso() {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        return estado == 1;</span>
+    }
+    
+    public boolean estaSinIniciar() {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        return estado == 0;</span>
+    }
+    
+    public DateTime getFecha() {
+<span class="nc" id="L56">        return fecha;</span>
+    }
+
+    private void setFecha(DateTime fecha) {
+<span class="nc" id="L60">        this.fecha = fecha;</span>
+<span class="nc" id="L61">    }</span>
+    
+    public Time getHoraDeInicio() {
+<span class="nc" id="L64">        return horaDeInicio;</span>
+    }
+
+    private void setHoraDeInicio(Time horaDeInicio) {
+<span class="nc" id="L68">        this.horaDeInicio = horaDeInicio;</span>
+<span class="nc" id="L69">    }</span>
+
+    public Time getHoraDeCierre() {
+<span class="nc" id="L72">        return horaDeCierre;</span>
+    }
+
+    private void setHoraDeCierre(Time horaDeCierre) {
+<span class="nc" id="L76">        this.horaDeCierre = horaDeCierre;</span>
+<span class="nc" id="L77">    }</span>
+    
+    public void setServicio(IServicioAsistencia servicio) {
+<span class="fc" id="L80">        this.servicio = servicio;</span>
+<span class="fc" id="L81">    }</span>
+>>>>>>> dev
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

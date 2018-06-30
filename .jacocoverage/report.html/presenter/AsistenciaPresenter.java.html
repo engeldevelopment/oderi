@@ -10,47 +10,42 @@ import javax.swing.table.*;
 public class AsistenciaPresenter {
 
     private Menu vista;
-    private List&lt;Asistencia&gt; listado;
     private DefaultTableModel tabla;
     private DefaultTableCellRenderer alinear;
     
-<span class="nc" id="L17">    public AsistenciaPresenter(Menu vista) {</span>
-<span class="nc" id="L18">        this.vista = vista;</span>
-<span class="nc" id="L19">        tabla = (DefaultTableModel) vista.listaDeAsistencia.getModel();</span>
-<span class="nc" id="L20">        alinear = new DefaultTableCellRenderer();</span>
-<span class="nc" id="L21">        formatearDeTabla();</span>
-<span class="nc" id="L22">    }</span>
+<span class="nc" id="L16">    public AsistenciaPresenter(Menu vista) {</span>
+<span class="nc" id="L17">        this.vista = vista;</span>
+<span class="nc" id="L18">        tabla = (DefaultTableModel) vista.listaDeAsistencia.getModel();</span>
+<span class="nc" id="L19">        alinear = new DefaultTableCellRenderer();</span>
+<span class="nc" id="L20">        formatearDeTabla();</span>
+<span class="nc" id="L21">    }</span>
     
     private void formatearDeTabla() {
-<span class="nc" id="L25">        vista.listaDeAsistencia.getColumnModel()</span>
-<span class="nc" id="L26">                .getColumn(0).setPreferredWidth(5);</span>
-<span class="nc" id="L27">        alinearTexto();</span>
-<span class="nc" id="L28">    }</span>
+<span class="nc" id="L24">        vista.listaDeAsistencia.getColumnModel()</span>
+<span class="nc" id="L25">                .getColumn(0).setPreferredWidth(5);</span>
+<span class="nc" id="L26">        alinearTexto();</span>
+<span class="nc" id="L27">    }</span>
     
     private void alinearTexto() {
-<span class="nc" id="L31">        alinear.setHorizontalAlignment(SwingConstants.CENTER);</span>
-<span class="nc" id="L32">        vista.listaDeAsistencia.getColumnModel().getColumn(0).setCellRenderer(alinear);</span>
-<span class="nc" id="L33">        vista.listaDeAsistencia.getColumnModel().getColumn(1).setCellRenderer(alinear);</span>
-<span class="nc" id="L34">        vista.listaDeAsistencia.getColumnModel().getColumn(2).setCellRenderer(alinear);</span>
-<span class="nc" id="L35">        vista.listaDeAsistencia.getColumnModel().getColumn(3).setCellRenderer(alinear);</span>
-<span class="nc" id="L36">        vista.listaDeAsistencia.getColumnModel().getColumn(4).setCellRenderer(alinear);</span>
-<span class="nc" id="L37">    }</span>
+<span class="nc" id="L30">        alinear.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L31">        vista.listaDeAsistencia.getColumnModel().getColumn(0).setCellRenderer(alinear);</span>
+<span class="nc" id="L32">        vista.listaDeAsistencia.getColumnModel().getColumn(1).setCellRenderer(alinear);</span>
+<span class="nc" id="L33">        vista.listaDeAsistencia.getColumnModel().getColumn(2).setCellRenderer(alinear);</span>
+<span class="nc" id="L34">        vista.listaDeAsistencia.getColumnModel().getColumn(3).setCellRenderer(alinear);</span>
+<span class="nc" id="L35">        vista.listaDeAsistencia.getColumnModel().getColumn(4).setCellRenderer(alinear);</span>
+<span class="nc" id="L36">    }</span>
     
-    public void setLista(List&lt;Asistencia&gt; listado) {
-<span class="nc" id="L40">        this.listado = listado;</span>
-<span class="nc" id="L41">    }</span>
-    
-    public void verLista() {
-<span class="nc" id="L44">        tabla.setNumRows(listado.size());</span>
-<span class="nc" id="L45">        int index = 0;</span>
-<span class="nc bnc" id="L46" title="All 2 branches missed.">        for (Asistencia asistencia : listado) {</span>
-<span class="nc" id="L47">            tabla.setValueAt(String.valueOf(asistencia.getId()), index, 0);</span>
-<span class="nc" id="L48">            tabla.setValueAt(asistencia.getEmpleado().getNombre(), index, 1);</span>
-<span class="nc" id="L49">            tabla.setValueAt(asistencia.getEmpleado().getDepartamento().getNombre(), index, 2);</span>
-<span class="nc" id="L50">            tabla.setValueAt(asistencia.getHoraDeEntrada(), index, 3);</span>
-<span class="nc" id="L51">            tabla.setValueAt(asistencia.getHoraDeSalida(), index, 4);</span>
-<span class="nc" id="L52">            index = index + 1;</span>
-<span class="nc" id="L53">        }</span>
-<span class="nc" id="L54">    }</span>
+    public void ver(List&lt;Asistencia&gt; listado) {
+<span class="nc" id="L39">        tabla.setNumRows(listado.size());</span>
+<span class="nc" id="L40">        int index = 0;</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        for (Asistencia asistencia : listado) {</span>
+<span class="nc" id="L42">            tabla.setValueAt(asistencia.getId(), index, 0);</span>
+<span class="nc" id="L43">            tabla.setValueAt(asistencia.getEmpleado().getNombre(), index, 1);</span>
+<span class="nc" id="L44">            tabla.setValueAt(asistencia.getEmpleado().getDepartamento().getNombre(), index, 2);</span>
+<span class="nc" id="L45">            tabla.setValueAt(asistencia.getHoraDeEntrada(), index, 3);</span>
+<span class="nc" id="L46">            tabla.setValueAt(asistencia.getHoraDeSalida(), index, 4);</span>
+<span class="nc" id="L47">            index = index + 1;</span>
+<span class="nc" id="L48">        }</span>
+<span class="nc" id="L49">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

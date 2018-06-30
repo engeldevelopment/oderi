@@ -18,7 +18,7 @@ import org.junit.runners.Suite;
     empleado.AsistenciaTest.class, 
     empleado.InasistenciaTest.class, 
     empleado.CedulaTest.class, empleado.ReporteDeInasistenciaDiariaTest.class,
-    empleado.GeneradorDeAsistenciaTest.class})
+    empleado.GeneradorDeAsistenciaTest.class, empleado.EmpleadoTest.class})
 public class AppSuite {
 
     @BeforeClass

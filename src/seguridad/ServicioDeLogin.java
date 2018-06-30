@@ -18,12 +18,12 @@ public class ServicioDeLogin {
             ClaveIncorrectaException {
         
         if (usuario.isEmpty() || clave.isEmpty()) {
-            throw new CamposVaciosException();
+            throw new CamposVaciosException("Todos los campos son obligatorios!");
         }
         
         if ((usuario.startsWith(" ") && usuario.endsWith(" ")) || 
                 (clave.startsWith(" ") && clave.endsWith(" "))) {
-            throw new CamposVaciosException();
+            throw new CamposVaciosException("Todos los campos son obligatorios!");
         }
         
         user = servicio.buscar(usuario);

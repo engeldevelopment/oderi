@@ -24,79 +24,34 @@ public class SubMenuController extends Controlador {
 <span class="nc" id="L24">        vista.btnInasistenciasDeEmpleado.addActionListener(manejador);</span>
 <span class="nc" id="L25">        vista.btnPermisosEmpleado.addActionListener(manejador);</span>
 <span class="nc" id="L26">    }</span>
-
-    @Override
-    protected void boton() {
-<span class="nc" id="L30">        vista.VistaSubMenu.addWindowListener(manejador);</span>
-<span class="nc" id="L31">    }</span>
     
     private void verPanelDeInformacion() {
        
-<span class="nc" id="L35">        vista.panelInformacionDeEmpleado.setVisible(true);</span>
-<span class="nc" id="L36">    }</span>
-    
-    private void ocultarPaneles() {
-<span class="nc" id="L39">        vista.panelInformacionDeEmpleado.setVisible(false);</span>
-<span class="nc" id="L40">    }</span>
+<span class="nc" id="L30">        vista.panelInformacionDeEmpleado.setVisible(true);</span>
+<span class="nc" id="L31">    }</span>
     
     private void establecerSolicitante() {
-<span class="nc" id="L43">        vista.NuevoPermiso.setTitle(&quot;Solicitante: &quot;+vista.lblNombreEmpleado.getText()+&quot; &quot;+</span>
-<span class="nc" id="L44">                        vista.lblApellidosEmpleado.getText());</span>
-<span class="nc" id="L45">    }</span>
+<span class="nc" id="L34">        vista.NuevoPermiso.setTitle(&quot;Solicitante: &quot;+vista.lblNombreEmpleado.getText()+&quot; &quot;+</span>
+<span class="nc" id="L35">                        vista.lblApellidosEmpleado.getText());</span>
+<span class="nc" id="L36">    }</span>
     
-<span class="nc" id="L47">    private class ManejadorDeEventos implements ActionListener, WindowListener {</span>
+<span class="nc" id="L38">    private class ManejadorDeEventos implements ActionListener {</span>
 
         @Override
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L51">            Object evento = e.getSource();</span>
+<span class="nc" id="L42">            Object evento = e.getSource();</span>
             
-<span class="nc bnc" id="L53" title="All 2 branches missed.">            if (evento.equals(vista.btnInformacionPersonal)) {</span>
-<span class="nc" id="L54">                verPanelDeInformacion();</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">            if (evento.equals(vista.btnInformacionPersonal)) {</span>
+<span class="nc" id="L45">                verPanelDeInformacion();</span>
                 
-<span class="nc bnc" id="L56" title="All 2 branches missed.">            } else if (evento.equals(vista.btnInasistenciasDeEmpleado)) {</span>
-<span class="nc" id="L57">                ventana(vista.InasistenciaPersonal, 700, 345);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">            } else if (evento.equals(vista.btnInasistenciasDeEmpleado)) {</span>
+<span class="nc" id="L48">                ventana(vista.InasistenciaPersonal, 700, 345);</span>
             
-<span class="nc bnc" id="L59" title="All 2 branches missed.">            } else if (evento.equals(vista.btnPermisosEmpleado)) {</span>
-<span class="nc" id="L60">                establecerSolicitante();</span>
-<span class="nc" id="L61">                ventana(vista.NuevoPermiso, 400, 265);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            } else if (evento.equals(vista.btnPermisosEmpleado)) {</span>
+<span class="nc" id="L51">                establecerSolicitante();</span>
+<span class="nc" id="L52">                ventana(vista.NuevoPermiso, 400, 265);</span>
             }
-<span class="nc" id="L63">        }</span>
-
-        @Override
-        public void windowOpened(WindowEvent e) {
-            
-<span class="nc" id="L68">        }</span>
-
-        @Override
-        public void windowClosing(WindowEvent e) {
-                
-<span class="nc" id="L73">        }</span>
-
-        @Override
-        public void windowClosed(WindowEvent e) {
-            
-<span class="nc" id="L78">        }</span>
-
-        @Override
-        public void windowIconified(WindowEvent e) {
-            
-<span class="nc" id="L83">        }</span>
-
-        @Override
-        public void windowDeiconified(WindowEvent e) {
-            
-<span class="nc" id="L88">        }</span>
-
-        @Override
-        public void windowActivated(WindowEvent e) {
-            
-<span class="nc" id="L93">        }</span>
-
-        @Override
-        public void windowDeactivated(WindowEvent e) {
-            
-<span class="nc" id="L98">        }</span>
-    
+<span class="nc" id="L54">        }</span>
     }   
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -8,7 +8,6 @@ import dao.*;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import javax.swing.table.DefaultTableModel;
 import nicon.notify.core.*;
 import presenter.ReporteDeInasistenciaDiariaPresenter;
 import reportes.ReporteDeInasistenciaDiaria;
@@ -26,10 +25,10 @@ public class JornadaController extends Controlador {
     private IServicioAsistencia servicioDeAsistencia;
     private IServicioInasistencia servicioDeInasistencia;
     private MotivoDeInasistenciaDAO servicioDeMotivo;
-    private DefaultTableModel tabla;
     private SimpleDateFormat formatoDeHora;
     private ReporteDeInasistenciaDiariaPresenter reporteDeInasistencia;
     
+<<<<<<< HEAD
 <span class="nc" id="L33">    public JornadaController(Menu vista) {</span>
 <span class="nc" id="L34">        this.vista = vista;</span>
 <span class="nc" id="L35">    }</span>
@@ -86,10 +85,68 @@ public class JornadaController extends Controlador {
     private void buscarJornada() {
 <span class="nc" id="L87">        jornada = servicioDeJornada.jornadaDeHoy();</span>
 <span class="nc" id="L88">    }</span>
+=======
+<span class="nc" id="L31">    public JornadaController(Menu vista) {</span>
+<span class="nc" id="L32">        this.vista = vista;</span>
+<span class="nc" id="L33">    }</span>
+
+    @Override
+    protected void instancias() {
+<span class="nc" id="L37">        servicioDeJornada = new JornadaDAO();</span>
+<span class="nc" id="L38">        manejador = new ManejadorDeEventosAction();</span>
+<span class="nc" id="L39">        servicioDeAsistencia = new AsistenciaDAO();</span>
+<span class="nc" id="L40">        servicioDeInasistencia =  new InasistenciaDAO();</span>
+<span class="nc" id="L41">        servicioDeEmpleados = new EmpleadoDAO();</span>
+<span class="nc" id="L42">        servicioDeMotivo = new MotivoDeInasistenciaDAO();</span>
+<span class="nc" id="L43">        formatoDeHora = new SimpleDateFormat(&quot;h:m:s a&quot;);</span>
+<span class="nc" id="L44">        reporteDeInasistencia = new ReporteDeInasistenciaDiariaPresenter(vista);</span>
+<span class="nc" id="L45">    }</span>
+
+    @Override
+    protected void cargarInformacionDeLaBDs() {
+<span class="nc" id="L49">        analizar();</span>
+<span class="nc" id="L50">    }</span>
+    
+    @Override
+    protected void boton() {
+<span class="nc" id="L54">        vista.btnFinalizarJornada.addActionListener(manejador);</span>
+<span class="nc" id="L55">        vista.btnIniciarJornada.addActionListener(manejador);</span>
+<span class="nc" id="L56">        vista.btnReporte.addActionListener(manejador);</span>
+<span class="nc" id="L57">    }</span>
+    
+    private void analizar() {
+<span class="nc" id="L60">        buscarJornada();</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        if (jornada.estaSinIniciar()) {</span>
+<span class="nc" id="L62">            deshabilitarBotonesParaMarcarAsistencias();</span>
+        }
+        
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if (jornada.estaEnCurso())  {</span>
+<span class="nc" id="L66">            habilitarBotonesParaMarcarAsistencias();</span>
+<span class="nc" id="L67">            vista.lblHoraInicio.setText(formatoDeHora.format(jornada.getHoraDeInicio()));</span>
+        }
+        
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (jornada.estaCerrada()) {</span>
+<span class="nc" id="L71">            deshabilitarBotonesParaMarcarAsistencias();</span>
+<span class="nc" id="L72">            vista.lblHoraInicio.setText(formatoDeHora.format(jornada.getHoraDeInicio()));</span>
+<span class="nc" id="L73">            vista.lblHoraCierre.setText(formatoDeHora.format(jornada.getHoraDeCierre()));</span>
+        }
+<span class="nc" id="L75">        vista.lblEstado.setText(NombreDeJornada.establecer(jornada));</span>
+<span class="nc" id="L76">    }</span>
+    
+    private void iniciarJornada() {
+<span class="nc" id="L79">        buscarJornada(); </span>
+<span class="nc" id="L80">        crearNuevaJornada();</span>
+<span class="nc" id="L81">    }</span>
+    
+    private void buscarJornada() {
+<span class="nc" id="L84">        jornada = servicioDeJornada.jornadaDeHoy();</span>
+<span class="nc" id="L85">    }</span>
+>>>>>>> dev
     
     private void crearNuevaJornada() {
         try {
        
+<<<<<<< HEAD
 <span class="nc" id="L93">            jornada.iniciar();     </span>
 <span class="nc" id="L94">            generarListadoDeAsistencia();</span>
 <span class="nc" id="L95">            servicioDeJornada.guardar(jornada);</span>
@@ -195,6 +252,112 @@ public class JornadaController extends Controlador {
 <span class="nc" id="L195">                verReporteDeInasistenciaDeHoy();</span>
            }
 <span class="nc" id="L197">        }</span>
+=======
+<span class="nc" id="L90">            jornada.iniciar();     </span>
+<span class="nc" id="L91">            generarListadoDeAsistencia();</span>
+<span class="nc" id="L92">            servicioDeJornada.guardar(jornada);</span>
+<span class="nc" id="L93">            vista.lblHoraInicio.setText(formatoDeHora.format(jornada.getHoraDeInicio()));</span>
+<span class="nc" id="L94">            habilitarBotonesParaMarcarAsistencias();</span>
+<span class="nc" id="L95">            Notification.windowMessage(vista, </span>
+                    &quot;Listo!&quot;, 
+                    &quot;Nueva jornada de trabajo iniciada!&quot;, 
+                    NiconEvent.NOTIFY_OK);
+<span class="nc" id="L99">        } catch (JornadaCerradaException | JornadaEnCursoException | </span>
+                NoHayEmpleadoException ex) {
+            
+<span class="nc" id="L102">            Notification.windowMessage(vista, </span>
+                    &quot;Disculpe!&quot;, 
+<span class="nc" id="L104">                    ex.getMessage());</span>
+        
+<span class="nc" id="L106">        } </span>
+<span class="nc" id="L107">        vista.lblEstado.setText(NombreDeJornada.establecer(jornada));</span>
+<span class="nc" id="L108">    }</span>
+    
+    private void generarListadoDeAsistencia() throws NoHayEmpleadoException {
+<span class="nc" id="L111">        empleados = (List&lt;Empleado&gt;) servicioDeEmpleados.buscarTodos();    </span>
+<span class="nc" id="L112">        generadorDeAsistencia = new GeneradorDeAsistencia(empleados, servicioDeAsistencia);</span>
+            
+<span class="nc" id="L114">        generadorDeAsistencia.generar();   </span>
+<span class="nc" id="L115">    }</span>
+    
+    private void habilitarBotonesParaMarcarAsistencias() {
+<span class="nc" id="L118">        vista.btnEntrada.setEnabled(true);</span>
+<span class="nc" id="L119">        vista.btnSalida.setEnabled(true);</span>
+<span class="nc" id="L120">        vista.txtBusquedaPorCedula.setEnabled(true);</span>
+<span class="nc" id="L121">    }</span>
+    
+    private void finalizarJornada() {
+<span class="nc" id="L124">        buscarJornada();</span>
+<span class="nc" id="L125">        int respuesta = Notification.windowConfirmMessage(vista, </span>
+                    &quot;Confirma&quot;, 
+                    &quot;¿Estás seguro que deseas finalizar la jornada?&quot;);
+<span class="nc bnc" id="L128" title="All 2 branches missed.">        if (respuesta == 1) {</span>
+<span class="nc" id="L129">             cerrar();</span>
+        }
+<span class="nc" id="L131">    }</span>
+    
+    private void cerrar() {
+        try {
+<span class="nc" id="L135">            jornada.setServicio(servicioDeAsistencia);</span>
+<span class="nc" id="L136">            jornada.cerrar();</span>
+<span class="nc" id="L137">            servicioDeJornada.actualizar(jornada);</span>
+                    
+<span class="nc" id="L139">            MotivoDeInasistencia motivo = servicioDeMotivo.buscar(1l);</span>
+<span class="nc" id="L140">            generador = new GeneradorDeInasistencia(servicioDeInasistencia,</span>
+                            servicioDeAsistencia, motivo);
+            
+<span class="nc" id="L143">            generador.evaluar();</span>
+            
+<span class="nc" id="L145">            deshabilitarBotonesParaMarcarAsistencias();        </span>
+<span class="nc" id="L146">            vista.lblEstado.setText(NombreDeJornada.establecer(jornada));</span>
+<span class="nc" id="L147">            vista.lblHoraCierre.setText(formatoDeHora.format(jornada.getHoraDeCierre()));</span>
+<span class="nc" id="L148">                    Notification.windowMessage(vista, &quot;Listo!&quot;,</span>
+                            &quot;Fin de la jornada!&quot;,
+                            NiconEvent.NOTIFY_OK);
+<span class="nc" id="L151">        } catch (AsistenciaIncompletaException | </span>
+                JornadaCerradaException | SinIniciarJornadaException ex) {
+<span class="nc" id="L153">             Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
+<span class="nc" id="L154">                    ex.getMessage());</span>
+<span class="nc" id="L155">        } </span>
+<span class="nc" id="L156">    }</span>
+   
+    private void deshabilitarBotonesParaMarcarAsistencias() {
+<span class="nc" id="L159">        vista.btnEntrada.setEnabled(false);</span>
+<span class="nc" id="L160">        vista.btnSalida.setEnabled(false);</span>
+<span class="nc" id="L161">        vista.txtBusquedaPorCedula.setEnabled(false);</span>
+<span class="nc" id="L162">    }</span>
+    
+    private void verReporteDeInasistenciaDeHoy() {
+<span class="nc" id="L165">        buscarJornada();</span>
+        try {
+<span class="nc" id="L167">            ReporteDeInasistenciaDiaria reporte = </span>
+                    new ReporteDeInasistenciaDiaria(servicioDeInasistencia, jornada);
+            
+<span class="nc" id="L170">            reporte.generar();</span>
+<span class="nc" id="L171">            reporteDeInasistencia.ver(reporte);</span>
+<span class="nc" id="L172">            ventana(vista.ReporteDeInasistenciaActual, 410, 270);</span>
+            
+<span class="nc" id="L174">        } catch (SinIniciarJornadaException | SinInasistenciasException | </span>
+                JornadaEnCursoException ex) {
+<span class="nc" id="L176">           Notification.windowMessage(vista, &quot;Disculpe!&quot;, </span>
+<span class="nc" id="L177">                       ex.getMessage());</span>
+<span class="nc" id="L178">        } </span>
+<span class="nc" id="L179">    }</span>
+    
+<span class="nc" id="L181">    private class ManejadorDeEventosAction implements ActionListener {</span>
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L185">           Object evento = e.getSource();           </span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">           if (evento.equals(vista.btnIniciarJornada)) {</span>
+<span class="nc" id="L187">               iniciarJornada();</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">           } else if (evento.equals(vista.btnFinalizarJornada)) {</span>
+<span class="nc" id="L189">               finalizarJornada();</span>
+<span class="nc bnc" id="L190" title="All 2 branches missed.">           } else if(evento.equals(vista.btnReporte)) {</span>
+<span class="nc" id="L191">                verReporteDeInasistenciaDeHoy();</span>
+           }
+<span class="nc" id="L193">        }</span>
+>>>>>>> dev
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

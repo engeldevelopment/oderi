@@ -5,6 +5,7 @@ import modelo.*;
 import excepciones.AsistenciaIncompletaException;
 import dao.JornadaDAO;
 import excepciones.JornadaCerradaException;
+import excepciones.SinIniciarJornadaException;
 import java.util.*;
 import org.joda.time.DateTime;
 import org.junit.*;
@@ -41,7 +42,7 @@ public class AnalizadorDeJornadaTest {
     
     @Test
     public void cerrarJornadasDeFechasAnterioresALaActual() throws 
-            AsistenciaIncompletaException, JornadaCerradaException {
+            AsistenciaIncompletaException, JornadaCerradaException, SinIniciarJornadaException {
          
          when(jornada.estaEnCurso()).thenReturn(true);
          when(jornada.getFecha()).thenReturn(new DateTime("2017-11-01"));

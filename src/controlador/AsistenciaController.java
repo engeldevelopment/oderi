@@ -56,7 +56,7 @@ public class AsistenciaController extends Controlador {
     private void cargarAsistencias(){
         buscarAsistenciaDeHoy();
         if (hayAsistencias()) {
-            mostrarLista();
+            presenter.ver(listadoDeAsistencias);
         } 
     }
     
@@ -68,15 +68,10 @@ public class AsistenciaController extends Controlador {
         return !listadoDeAsistencias.isEmpty();
     }
     
-    private void mostrarLista() {
-        presenter.setLista(listadoDeAsistencias);
-        presenter.verLista();
-    }
-    
     private void BuscarPorCedula() {
         listadoDeAsistencias = (List<Asistencia>) 
                 servicio.buscarAsistenciaDelEmpleado(Filtro());
-        mostrarLista();
+        presenter.ver(listadoDeAsistencias);
     }
     
     private String Filtro() {

@@ -27,8 +27,13 @@ public class JornadaDeTrabajo extends Jornada {
     }
 
     @Override
-    public void cerrar() throws AsistenciaIncompletaException, JornadaCerradaException {
-        if (estaCerrada()) {
+    public void cerrar() throws AsistenciaIncompletaException, 
+            JornadaCerradaException,
+            SinIniciarJornadaException {
+        
+        if (estaSinIniciar()) {
+            throw new SinIniciarJornadaException("No haz iniciado una jornada");
+        } else if (estaCerrada()) {
             throw new JornadaCerradaException("La jornada de hoy ya fue cerrada.");
         }
         List<Asistencia> listado = (List<Asistencia>) servicio.asistenciasDeHoy();

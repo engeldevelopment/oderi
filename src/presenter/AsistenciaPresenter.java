@@ -10,7 +10,6 @@ import javax.swing.table.*;
 public class AsistenciaPresenter {
 
     private Menu vista;
-    private List<Asistencia> listado;
     private DefaultTableModel tabla;
     private DefaultTableCellRenderer alinear;
     
@@ -36,15 +35,11 @@ public class AsistenciaPresenter {
         vista.listaDeAsistencia.getColumnModel().getColumn(4).setCellRenderer(alinear);
     }
     
-    public void setLista(List<Asistencia> listado) {
-        this.listado = listado;
-    }
-    
-    public void verLista() {
+    public void ver(List<Asistencia> listado) {
         tabla.setNumRows(listado.size());
         int index = 0;
         for (Asistencia asistencia : listado) {
-            tabla.setValueAt(String.valueOf(asistencia.getId()), index, 0);
+            tabla.setValueAt(asistencia.getId(), index, 0);
             tabla.setValueAt(asistencia.getEmpleado().getNombre(), index, 1);
             tabla.setValueAt(asistencia.getEmpleado().getDepartamento().getNombre(), index, 2);
             tabla.setValueAt(asistencia.getHoraDeEntrada(), index, 3);

@@ -28,7 +28,8 @@ public class JornadaDeTrabajoTest {
     @Before
     public void setUp() {
         servicio = mock(AsistenciaDAO.class);
-        jornada = mock(JornadaDeTrabajo.class);
+        jornada = new JornadaDeTrabajo();
+        jornada.setServicio(servicio);
     }
     
     @After
@@ -38,7 +39,7 @@ public class JornadaDeTrabajoTest {
     
     @Test
     public void jornadaSinIniciar() {
-        jornada = new JornadaDeTrabajo();
+        
         assertEquals(EstadoDeJornada.SIN_INICIAR.Valor(), jornada.getEstado());
     }
     
@@ -46,7 +47,6 @@ public class JornadaDeTrabajoTest {
     public void yaHayUnaJornadaEnCurso() throws JornadaEnCursoException, 
             JornadaCerradaException {
        
-        jornada = new JornadaDeTrabajo();
         jornada.iniciar();
         jornada.iniciar();
     }
@@ -56,25 +56,16 @@ public class JornadaDeTrabajoTest {
             NoHayEmpleadoException,
             JornadaCerradaException {
        
-        jornada = new JornadaDeTrabajo();
+        
         jornada.setEstado(EstadoDeJornada.CERRADA.Valor());
         jornada.iniciar();
     }
     
-    @Test
-    public void jornadaIniciadaYFinalizadaConExito() throws JornadaEnCursoException, 
-            NoHayEmpleadoException,
-            AsistenciaIncompletaException,
-            JornadaCerradaException {
-        
-        when(jornada.getEstado()).thenReturn(EstadoDeJornada.CERRADA.Valor());
-        jornada.cerrar();
-        assertEquals(EstadoDeJornada.CERRADA.Valor(), jornada.getEstado());
-    }
     
     @Test(expected = AsistenciaIncompletaException.class)
     public void NoSePuedeCerrarLaJornadaPorQueFaltanEmpleadosPorMarcarSuSalida() throws 
-            AsistenciaIncompletaException, AsistenciaMarcadaException, JornadaCerradaException {
+            AsistenciaIncompletaException, AsistenciaMarcadaException, 
+            JornadaCerradaException, SinIniciarJornadaException, JornadaEnCursoException {
         
         Asistencia asistencia = new Asistencia();
         asistencia.marcarEntrada();
@@ -83,8 +74,15 @@ public class JornadaDeTrabajoTest {
         
         when(servicio.asistenciasDeHoy()).thenReturn(asistencias);
         
-        jornada = new JornadaDeTrabajo();
-        jornada.setServicio(servicio);
+        jornada.iniciar();
         jornada.cerrar();  
+    }
+    
+    @Test(expected = SinIniciarJornadaException.class)
+    public void primeroDebeIniciarseUnaJornada() throws AsistenciaIncompletaException, 
+            JornadaCerradaException,
+            SinIniciarJornadaException {
+        
+        jornada.cerrar();
     }
 }

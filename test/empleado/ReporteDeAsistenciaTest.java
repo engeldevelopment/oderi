@@ -52,8 +52,11 @@ public class ReporteDeAsistenciaTest {
     public void laFechaDeConsultaNoPuedeSerPosteriorALaActual() throws 
             FechaIncorrectaException, SinFechasException {
         
+        fechaDeConsulta = new DateTime("2017-12-13");
+     
         asistencias = new ReporteDeAsistencia(fechaDeConsulta.toDate(), 
                 fechaActual.toDate());
+        
         asistencias.generar();
     }
     
