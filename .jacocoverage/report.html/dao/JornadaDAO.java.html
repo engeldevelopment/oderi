@@ -2,7 +2,6 @@
 package dao;
 
 import modelo.*;
-import nullObjects.NullJornada;
 import java.util.Collection;
 import nicon.notify.core.*;
 import org.hibernate.*;
@@ -13,95 +12,95 @@ public class JornadaDAO implements IDAO&lt;Jornada&gt; {
 
     private Session sesion;
 
-<span class="nc" id="L16">    public JornadaDAO() {</span>
+<span class="nc" id="L15">    public JornadaDAO() {</span>
     
-<span class="nc" id="L18">    }</span>
+<span class="nc" id="L17">    }</span>
     
     
-<span class="nc" id="L21">    public JornadaDAO(Session sesion) {</span>
-<span class="nc" id="L22">        this.sesion = sesion;</span>
-<span class="nc" id="L23">    }</span>
+<span class="nc" id="L20">    public JornadaDAO(Session sesion) {</span>
+<span class="nc" id="L21">        this.sesion = sesion;</span>
+<span class="nc" id="L22">    }</span>
     
     @Override
     public void guardar(Jornada t) {
         try {
-<span class="nc" id="L28">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
-<span class="nc" id="L29">            sesion.beginTransaction();</span>
-<span class="nc" id="L30">            sesion.save(t);</span>
-<span class="nc" id="L31">            sesion.getTransaction().commit();</span>
-<span class="nc" id="L32">        } catch (HibernateException e) {</span>
-<span class="nc" id="L33">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
-<span class="nc" id="L34">                    +e.getMessage(), </span>
+<span class="nc" id="L27">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L28">            sesion.beginTransaction();</span>
+<span class="nc" id="L29">            sesion.save(t);</span>
+<span class="nc" id="L30">            sesion.getTransaction().commit();</span>
+<span class="nc" id="L31">        } catch (HibernateException e) {</span>
+<span class="nc" id="L32">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L33">                    +e.getMessage(), </span>
                     NiconEvent.NOTIFY_ERROR);
         } finally {
-<span class="nc" id="L37">            sesion.close();</span>
-<span class="nc" id="L38">        }</span>
-<span class="nc" id="L39">    }</span>
+<span class="nc" id="L36">            sesion.close();</span>
+<span class="nc" id="L37">        }</span>
+<span class="nc" id="L38">    }</span>
 
     @Override
     public Jornada buscar(Object fecha) {
-<span class="nc" id="L43">        Jornada jornada = new NullJornada();</span>
+<span class="nc" id="L42">        Jornada jornada = null;</span>
         try {
-<span class="nc" id="L45">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
-<span class="nc" id="L46">            sesion.beginTransaction();</span>
-<span class="nc" id="L47">            Criteria criterio = sesion.createCriteria(JornadaDeTrabajo.class);</span>
-<span class="nc" id="L48">            criterio.add(Restrictions.eq(&quot;fecha&quot;, fecha));</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">            if (!criterio.list().isEmpty()) {</span>
-<span class="nc" id="L50">                jornada = (JornadaDeTrabajo) criterio.list().get(0);</span>
+<span class="nc" id="L44">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L45">            sesion.beginTransaction();</span>
+<span class="nc" id="L46">            Criteria criterio = sesion.createCriteria(JornadaDeTrabajo.class);</span>
+<span class="nc" id="L47">            criterio.add(Restrictions.eq(&quot;fecha&quot;, fecha));</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">            if (!criterio.list().isEmpty()) {</span>
+<span class="nc" id="L49">                jornada = (JornadaDeTrabajo) criterio.list().get(0);</span>
             } 
-<span class="nc" id="L52">        } catch (HibernateException e) {</span>
-<span class="nc" id="L53">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
-<span class="nc" id="L54">                    +e.getMessage(), </span>
+<span class="nc" id="L51">        } catch (HibernateException e) {</span>
+<span class="nc" id="L52">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L53">                    +e.getMessage(), </span>
                     NiconEvent.NOTIFY_ERROR);
         } finally {
-<span class="nc" id="L57">            sesion.close();</span>
-<span class="nc" id="L58">        }</span>
-<span class="nc" id="L59">        return jornada;</span>
+<span class="nc" id="L56">            sesion.close();</span>
+<span class="nc" id="L57">        }</span>
+<span class="nc" id="L58">        return jornada;</span>
     }
     
     public Jornada jornadaDeHoy() {
-<span class="nc" id="L63">         Jornada jornada = new JornadaDeTrabajo();</span>
+<span class="nc" id="L62">         Jornada jornada = new JornadaDeTrabajo();</span>
         try {
-<span class="nc" id="L65">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
-<span class="nc" id="L66">            sesion.beginTransaction();</span>
-<span class="nc" id="L67">            Query diaDeHoy = </span>
-<span class="nc" id="L68">                    sesion.createQuery(&quot;FROM JornadaDeTrabajo as j WHERE j.fecha = current_date&quot;);</span>
-<span class="nc bnc" id="L69" title="All 2 branches missed.">           if (diaDeHoy.list().isEmpty()) </span>
-<span class="nc" id="L70">               return jornada;</span>
+<span class="nc" id="L64">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L65">            sesion.beginTransaction();</span>
+<span class="nc" id="L66">            Query diaDeHoy = </span>
+<span class="nc" id="L67">                    sesion.createQuery(&quot;FROM JornadaDeTrabajo as j WHERE j.fecha = current_date&quot;);</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">           if (diaDeHoy.list().isEmpty()) </span>
+<span class="nc" id="L69">               return jornada;</span>
            
-<span class="nc" id="L72">           jornada = (JornadaDeTrabajo) diaDeHoy.list().get(0);</span>
-<span class="nc" id="L73">        } catch (HibernateException e) {</span>
-<span class="nc" id="L74">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
-<span class="nc" id="L75">                    + e.getMessage(), </span>
+<span class="nc" id="L71">           jornada = (JornadaDeTrabajo) diaDeHoy.list().get(0);</span>
+<span class="nc" id="L72">        } catch (HibernateException e) {</span>
+<span class="nc" id="L73">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L74">                    + e.getMessage(), </span>
                     NiconEvent.NOTIFY_ERROR);
-<span class="nc" id="L77">        }</span>
-<span class="nc" id="L78">        return jornada;</span>
+<span class="nc" id="L76">        }</span>
+<span class="nc" id="L77">        return jornada;</span>
     }
 
     @Override
     public void actualizar(Jornada t) {
         try {
-<span class="nc" id="L84">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
-<span class="nc" id="L85">            sesion.beginTransaction();</span>
-<span class="nc" id="L86">            sesion.update(t);</span>
-<span class="nc" id="L87">            sesion.getTransaction().commit();</span>
-<span class="nc" id="L88">        } catch (HibernateException e) {</span>
-<span class="nc" id="L89">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
-<span class="nc" id="L90">                    +e.getMessage(), </span>
+<span class="nc" id="L83">            sesion = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L84">            sesion.beginTransaction();</span>
+<span class="nc" id="L85">            sesion.update(t);</span>
+<span class="nc" id="L86">            sesion.getTransaction().commit();</span>
+<span class="nc" id="L87">        } catch (HibernateException e) {</span>
+<span class="nc" id="L88">            Notification.windowMessage(null, &quot;Disculpe!&quot;, &quot;Ha ocurrido un Error:&quot;</span>
+<span class="nc" id="L89">                    +e.getMessage(), </span>
                     NiconEvent.NOTIFY_ERROR);
         } finally {
-<span class="nc" id="L93">            sesion.close();</span>
-<span class="nc" id="L94">        }</span>
-<span class="nc" id="L95">    }</span>
+<span class="nc" id="L92">            sesion.close();</span>
+<span class="nc" id="L93">        }</span>
+<span class="nc" id="L94">    }</span>
 
     @Override
     public void eliminar(Jornada t) {
         
-<span class="nc" id="L100">    }</span>
+<span class="nc" id="L99">    }</span>
 
     @Override
     public Collection&lt;Jornada&gt; buscarTodos() {
-<span class="nc" id="L104">        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); //To change body of generated methods, choose Tools | Templates.</span>
+<span class="nc" id="L103">        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); //To change body of generated methods, choose Tools | Templates.</span>
     }
     
     
