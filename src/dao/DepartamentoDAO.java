@@ -54,26 +54,24 @@ public class DepartamentoDAO implements IDAO<Departamento>{
         return departamento;
     }
     
-    @Override
-    public List<Departamento> buscarTodos() {
-        List<Departamento> lista = new ArrayList<>();
+    public Departamento buscarPorNombre(Object dpto){
+        Departamento departamento = new Departamento();
         try {
             sesion = HibernateUtil.getSessionFactory().openSession();
             sesion.beginTransaction();
             Criteria criterio = sesion.createCriteria(Departamento.class);
-            criterio.addOrder(Order.asc("id"));
-            lista = criterio.list();
+            criterio.add(Restrictions.eq("nombre", dpto));
+            departamento = (Departamento) criterio.list().get(0);
         } catch (HibernateException e) {
-              Notification.windowMessage(null, "Disculpe!", "Ha ocurrido un Error:"
+            Notification.windowMessage(null, "Disculpe!", "Ha ocurrido un Error:"
                     +e.getMessage(), 
                     NiconEvent.NOTIFY_ERROR);
         } finally {
             sesion.close();
         }
-        
-        return lista;
+        return departamento;
     }
-    
+        
     @Override
     public void actualizar(Departamento dpto){
         try {
@@ -105,4 +103,25 @@ public class DepartamentoDAO implements IDAO<Departamento>{
             sesion.close();
         }
     }
+    
+    @Override
+    public List<Departamento> buscarTodos() {
+        List<Departamento> lista = new ArrayList<>();
+        try {
+            sesion = HibernateUtil.getSessionFactory().openSession();
+            sesion.beginTransaction();
+            Criteria criterio = sesion.createCriteria(Departamento.class);
+            criterio.addOrder(Order.asc("id"));
+            lista = criterio.list();
+        } catch (HibernateException e) {
+              Notification.windowMessage(null, "Disculpe!", "Ha ocurrido un Error:"
+                    +e.getMessage(), 
+                    NiconEvent.NOTIFY_ERROR);
+        } finally {
+            sesion.close();
+        }
+        
+        return lista;
+    }
+
 }

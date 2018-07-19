@@ -170,7 +170,7 @@ public class InasistenciasController extends Controlador {
     
     private void mostrarVistaDeJustificacion() {   
         vista.lblHoraDeGeneracion.setText(String.valueOf(inasistencia.getHoraDeGeneracion()));
-        ventana(vista.VistaJustificacion, 373, 300);
+        mostrarVentana(vista.VistaJustificacion, 373, 300);
     }
     
     private void verJustificacion() { 
@@ -195,7 +195,7 @@ public class InasistenciasController extends Controlador {
             vista.lblFechaDeJustificacion.setText(formatoCortoFecha.print(inasistencia.getJustificacion().getFecha()));
             vista.lblHoraDeJustificacion.setText(formatoHora.format(inasistencia.getJustificacion().getHora()));
             vista.txtObservacionJustificacion.setText(inasistencia.getJustificacion().getDescripcion());
-            ventana(vista.VistaVerJustificacion, 400, 300);
+            mostrarVentana(vista.VistaVerJustificacion, 400, 300);
         } else {
             Notification.windowMessage(vista, 
                     "Disculpe!", 
@@ -212,7 +212,7 @@ public class InasistenciasController extends Controlador {
             
             reporteSemanal.generar();
             inasistenciaSemanalPresenter.ver(reporteSemanal);
-            ventana(vista.VistaInasistenciaSemanal, 729, 736);
+            mostrarVentana(vista.VistaInasistenciaSemanal, 729, 736);
             
         } catch (SinInasistenciasException | SinFechasException | FechaIncorrectaException e) {
             Notification.windowMessage(vista, "Disculpe!", 
@@ -230,7 +230,7 @@ public class InasistenciasController extends Controlador {
             
             reporteSemanal.generar();
             reporteInasistenciaPersonal.ver(reporteSemanal);
-            ventana(vista.VistaInasistenciasSemanalPersonal, 650, 270);
+            mostrarVentana(vista.VistaInasistenciasSemanalPersonal, 650, 270);
             
         } catch (SinInasistenciasException | SinFechasException | FechaIncorrectaException e) {
             Notification.windowMessage(vista, "Disculpe!", 
@@ -266,7 +266,7 @@ public class InasistenciasController extends Controlador {
             }
             
             if (evento.equals(vista.btnVerInasistenciasSemnalDeEmpleado)) {
-                ventana(vista.VistaSeleccionarFechaInasistenciaSemanalPersonal, 
+                mostrarVentana(vista.VistaSeleccionarFechaInasistenciaSemanalPersonal, 
                         500, 375);
             }
             

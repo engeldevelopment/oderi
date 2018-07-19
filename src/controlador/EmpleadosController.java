@@ -5,6 +5,9 @@ import dao.*;
 import excepciones.*;
 import java.awt.event.*;
 import java.util.List;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.*;
 import nicon.notify.core.*;
 import presenter.*;
@@ -25,7 +28,8 @@ public class EmpleadosController extends Controlador {
     private String nombre;
     private String apellido;
     private Cedula cedula;
-    
+    private boolean vaAGuardar; 
+            
     public EmpleadosController(Menu vista) {
         this.vista = vista;
     }
@@ -39,6 +43,7 @@ public class EmpleadosController extends Controlador {
          dptoPresenter = new DepartamentoPresenter(vista);
          empleadoPresenter = new EmpleadoPresenter(vista);
          texto = new ValidacionDeTexto();
+         vaAGuardar = true;
     }
 
     @Override
@@ -54,6 +59,7 @@ public class EmpleadosController extends Controlador {
         vista.NuevoEmpleado.addWindowListener(manejador);
         vista.btnGuardarEmpleado.addActionListener(manejador);
         vista.cmbFiltrarPorDepartamento.addActionListener(manejador);
+        vista.btnEditarEmpleado.addActionListener(manejador);
     }
 
     @Override
@@ -105,13 +111,14 @@ public class EmpleadosController extends Controlador {
                     "Disculpe!", 
                     "Este empleado no existe. ¿Desea registrarlo?");
             if (deseaRegistrarlo == 1) {
+                vaAGuardar = true;
                 vista.txtCedula.setText(cedula.get());
-                ventana(vista.NuevoEmpleado, 360, 295);
+                mostrarVentana(vista.NuevoEmpleado, 360, 295);
             }
         } else {
             establecerInformacionDelEmpleadoEnElSubMenu();
             vista.txtCedulaEmpleadoBuscar.setText("");
-            ventana(vista.VistaSubMenu, 700, 500);
+            mostrarVentana(vista.VistaSubMenu, 700, 500);
         }
     }
     
@@ -125,17 +132,20 @@ public class EmpleadosController extends Controlador {
     
     private void guardar() {
         try {
-        
-            validarDatosDelEmpleado();
-            empleado = new Empleado(cedula.get(), nombre, apellido, departamento);
-            servicioEmpleado.guardar(empleado);
-            empleadoPresenter.limpiarCampos();
-                
-        Notification.windowMessage(vista, 
-                    "Listo!", 
-                    "Ha sido registrado el empleado exitosamente!",
-                    NiconEvent.NOTIFY_OK);
-                 
+            
+            if (vaAGuardar) {
+                validarDatosDelEmpleado();
+                empleado = new Empleado(cedula.get(), nombre, apellido, departamento);
+                servicioEmpleado.guardar(empleado);
+                empleadoPresenter.limpiarCampos();
+
+                Notification.windowMessage(vista, 
+                        "Listo!", 
+                        "Ha sido registrado el empleado exitosamente!",
+                        NiconEvent.NOTIFY_OK);
+            } else {
+                guardarCambios();
+            }    
         } catch (SinDepartamentoAsignadoException | CamposVaciosException | 
                 ContenidoInvalidoException ex) {
            
@@ -157,6 +167,54 @@ public class EmpleadosController extends Controlador {
     private void obtenerLosDatosDelEmpleado() {
         nombre = vista.txtNombreEmpleado.getText();
         apellido = vista.txtApellidoEmpleado.getText();
+    }
+    
+    private void guardarCambios() {
+        try {
+            
+            cedula = new Cedula(vista.txtCedula.getText());
+            Empleado e = servicioEmpleado.buscar(cedula.get());
+            
+            if (!e.esNull()) {
+                if (!Objects.equals(e.getId(), empleado.getId())) {
+                    throw new ContenidoInvalidoException("Esta cédula se encuentra asignada a un empleado!");
+                }
+                
+                obtenerLosDatosDelEmpleado();
+                validarDatosDelEmpleado();
+                
+                empleado = new Empleado(e.getId(), cedula.get(), nombre, apellido, departamento);
+                servicioEmpleado.actualizar(empleado);
+                
+                Notification.windowMessage(vista, 
+                            "Listo!", 
+                            "Se han guardado los cambios exitosamente!",
+                            NiconEvent.NOTIFY_OK);
+                vista.NuevoEmpleado.dispose();
+                vista.txtCedula.setEditable(false);
+                
+            } else {
+                obtenerLosDatosDelEmpleado();
+                validarDatosDelEmpleado();
+                
+                empleado = new Empleado(e.getId(), cedula.get(), nombre, apellido, departamento);
+                servicioEmpleado.actualizar(empleado);
+                
+                Notification.windowMessage(vista, 
+                            "Listo!", 
+                            "Se han guardado los cambios exitosamente!",
+                            NiconEvent.NOTIFY_OK);
+                vista.NuevoEmpleado.dispose();
+                vista.txtCedula.setEditable(false);
+            }
+            
+        } catch (ContenidoInvalidoException | CamposVaciosException | 
+                SinDepartamentoAsignadoException e) {
+            
+            Notification.windowMessage(vista, 
+                        "Disculpe!", 
+                        e.getMessage());
+        } 
     }
     
    long idDepartamento = 0; 
@@ -182,7 +240,7 @@ public class EmpleadosController extends Controlador {
     private void listarEmpleados() {
         List<Empleado> listado = (List<Empleado>) servicioEmpleado.buscarTodos();
         empleadoPresenter.ver(listado);
-        ventana(vista.Empleados, 660, 303);
+        mostrarVentana(vista.Empleados, 660, 303);
     }
     
     private void buscarEmpleadoPorDepartamentoYCedula() {
@@ -191,6 +249,24 @@ public class EmpleadosController extends Controlador {
                         vista.cmbFiltrarPorDepartamento.getSelectedItem().toString());
         empleadoPresenter.ver(listado);
     }
+    
+    private void editar() {
+        enviarDatosAlFormulario();
+        vaAGuardar = false;
+        vista.txtCedula.setEditable(true);
+        mostrarVentana(vista.NuevoEmpleado, 360, 295);
+    }
+    
+    private void enviarDatosAlFormulario() {
+        departamento =  servicioDepartamento.buscarPorNombre(vista.lblDepartamentoEmpleado.getText());
+        empleado = servicioEmpleado.buscar(vista.lblCedulaEmpleado.getText());
+        
+        vista.txtCedula.setText(empleado.getCedula());
+        vista.txtNombreEmpleado.setText(empleado.getNombre());
+        vista.txtApellidoEmpleado.setText(empleado.getApellido());
+        vista.txtDepartamentoAsignado.setText(departamento.getNombre());
+    }
+    
     
     private class ManejadorDeEventos extends WindowAdapter implements ActionListener, KeyListener {
 
@@ -202,7 +278,7 @@ public class EmpleadosController extends Controlador {
                buscarEmpleado();
                
             } else if (evento.equals(vista.btnAgregarDepartamento)) {
-                ventana(vista.VistaSeleccionarDepartamento, 400, 217);
+                mostrarVentana(vista.VistaSeleccionarDepartamento, 400, 217);
                 
             } else if (evento.equals(vista.btnAsignarDepartamento)) {
                 asignarDepartamento();
@@ -215,6 +291,9 @@ public class EmpleadosController extends Controlador {
                 
             } else if (evento.equals(vista.cmbFiltrarPorDepartamento)) {
                 buscarEmpleadoPorDepartamentoYCedula();
+                
+            } else if (evento.equals(vista.btnEditarEmpleado)) {
+                editar();
             }
         }
 

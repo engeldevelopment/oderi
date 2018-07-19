@@ -109,7 +109,7 @@ public class Menu extends javax.swing.JFrame {
         lblDepartamentoEmpleado = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         lblCedulaEmpleado = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnEditarEmpleado = new javax.swing.JButton();
         NuevoPermiso = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         lblFechaDeEmision = new javax.swing.JLabel();
@@ -1161,8 +1161,8 @@ public class Menu extends javax.swing.JFrame {
 
         lblCedulaEmpleado.setText("cedula");
 
-        jButton3.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jButton3.setText("Editar");
+        btnEditarEmpleado.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        btnEditarEmpleado.setText("Editar");
 
         javax.swing.GroupLayout panelInformacionDeEmpleadoLayout = new javax.swing.GroupLayout(panelInformacionDeEmpleado);
         panelInformacionDeEmpleado.setLayout(panelInformacionDeEmpleadoLayout);
@@ -1172,7 +1172,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInformacionDeEmpleadoLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3))
+                        .addComponent(btnEditarEmpleado))
                     .addGroup(panelInformacionDeEmpleadoLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(panelInformacionDeEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1209,7 +1209,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jLabel29)
                     .addComponent(lblDepartamentoEmpleado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnEditarEmpleado)
                 .addContainerGap())
         );
 
@@ -2265,6 +2265,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton btnBuscarEmpleado;
     public javax.swing.JButton btnConsultarInasistencia;
     public javax.swing.JButton btnCrearJustificacion;
+    public javax.swing.JButton btnEditarEmpleado;
     public javax.swing.JButton btnEmitir;
     public org.edisoncor.gui.button.ButtonTask btnEntrada;
     public javax.swing.JButton btnEntrar;
@@ -2298,7 +2299,6 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JMenuItem itemInasistenciaQuincenalGeneral;
     public javax.swing.JMenuItem itemInasistenciaSemanalGeneral;
     private javax.swing.JMenuItem itemManual;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -171,7 +171,7 @@ public class AsistenciaController extends Controlador {
             reporte.setServicio(servicio);
             reporte.generar();
             reporteDeEntradaSalidaP.ver(reporte);
-            ventana(vista.VistaReporteDeAsistencia, 700, 490);
+            mostrarVentana(vista.VistaReporteDeAsistencia, 700, 490);
         } catch (SinFechasException | FechaIncorrectaException e  ) {
             Notification.windowMessage(vista, 
                     "Disculpe!", e.getMessage(),

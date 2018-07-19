@@ -45,11 +45,11 @@ public class SubMenuController extends Controlador {
                 verPanelDeInformacion();
                 
             } else if (evento.equals(vista.btnInasistenciasDeEmpleado)) {
-                ventana(vista.InasistenciaPersonal, 700, 345);
+                mostrarVentana(vista.InasistenciaPersonal, 700, 345);
             
             } else if (evento.equals(vista.btnPermisosEmpleado)) {
                 establecerSolicitante();
-                ventana(vista.NuevoPermiso, 400, 265);
+                mostrarVentana(vista.NuevoPermiso, 400, 265);
             }
         }
     }   
