@@ -553,6 +553,9 @@
       <SubComponents>
         <Container class="org.edisoncor.gui.panel.Panel" name="panel6">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="2d" green="33" red="b6" type="rgb"/>
+            </Property>
             <Property name="colorPrimario" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -3562,8 +3565,8 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jToolBar1" min="-2" pref="375" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="384" max="32767" attributes="0"/>
+                  <Component id="jToolBar1" min="-2" pref="479" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="280" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -3571,7 +3574,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="499" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="497" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -3623,6 +3626,22 @@
                   <Image iconType="3" name="/vista/png/glyphicons-622-businessman.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Entradas y Salidas"/>
+                <Property name="focusable" type="boolean" value="false"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+                <Property name="verticalTextPosition" type="int" value="3"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JToolBar$Separator" name="jSeparator4">
+            </Component>
+            <Component class="javax.swing.JButton" name="barraEmpleados">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/vista/png/glyphicons-30-notes-2.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Empleados"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>

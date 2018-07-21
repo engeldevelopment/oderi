@@ -202,6 +202,8 @@ public class Menu extends javax.swing.JFrame {
         barraRegistroDeAsistencias = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         barraEntradasSalidas = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
+        barraEmpleados = new javax.swing.JButton();
         barraDeMenu = new javax.swing.JMenuBar();
         Archivo = new javax.swing.JMenu();
         itemEmpleado = new javax.swing.JMenuItem();
@@ -516,6 +518,7 @@ public class Menu extends javax.swing.JFrame {
 
         NuevoEmpleado.setTitle("Nuevo empleado");
 
+        panel6.setBackground(new java.awt.Color(182, 51, 45));
         panel6.setColorPrimario(new java.awt.Color(255, 255, 255));
         panel6.setColorSecundario(java.awt.Color.white);
 
@@ -2144,20 +2147,28 @@ public class Menu extends javax.swing.JFrame {
         barraEntradasSalidas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         barraEntradasSalidas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(barraEntradasSalidas);
+        jToolBar1.add(jSeparator4);
+
+        barraEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/png/glyphicons-30-notes-2.png"))); // NOI18N
+        barraEmpleados.setText("Empleados");
+        barraEmpleados.setFocusable(false);
+        barraEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        barraEmpleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(barraEmpleados);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 384, Short.MAX_VALUE))
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 280, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 499, Short.MAX_VALUE))
+                .addGap(0, 497, Short.MAX_VALUE))
         );
 
         barraDeMenu.setForeground(java.awt.Color.white);
@@ -2258,6 +2269,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JTextArea areaObservacion;
     private javax.swing.JMenuBar barraDeMenu;
     public javax.swing.JButton barraEmpleado;
+    public javax.swing.JButton barraEmpleados;
     public javax.swing.JButton barraEntradasSalidas;
     public javax.swing.JButton barraRegistroDeAsistencias;
     public javax.swing.JButton btnAgregarDepartamento;
@@ -2371,6 +2383,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JLabel lblApellidosEmpleado;
     public javax.swing.JLabel lblCedulaEmpleado;
