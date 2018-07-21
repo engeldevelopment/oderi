@@ -81,7 +81,7 @@ public class UsuariosController extends Controlador {
     }
     
     public void vistaLogin() {
-        ventana(vista.Login, 320, 245);
+        mostrarVentana(vista.Login, 320, 245);
     }
     
     private class ManejadorDeEventos extends WindowAdapter implements ActionListener  {

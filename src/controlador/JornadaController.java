@@ -169,7 +169,7 @@ public class JornadaController extends Controlador {
             
             reporte.generar();
             reporteDeInasistencia.ver(reporte);
-            ventana(vista.ReporteDeInasistenciaActual, 410, 270);
+            mostrarVentana(vista.ReporteDeInasistenciaActual, 410, 270);
             
         } catch (SinIniciarJornadaException | SinInasistenciasException | 
                 JornadaEnCursoException ex) {

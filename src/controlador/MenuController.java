@@ -37,23 +37,23 @@ public class MenuController extends Controlador {
             Object evento = e.getSource();
             
             if (evento.equals(vista.itemEmpleado) || evento.equals(vista.barraEmpleado)) {
-                ventana(vista.VistaBuscarEmpleado, 400, 180);
+                mostrarVentana(vista.VistaBuscarEmpleado, 400, 180);
             } 
             
             if(evento.equals(vista.itemAsistenciaDiaria) || evento.equals(vista.barraRegistroDeAsistencias)) {
-                ventana(vista.VistaDeAsistenciaDiaria, 880, 540);
+                mostrarVentana(vista.VistaDeAsistenciaDiaria, 880, 540);
             }
             
             if (evento.equals(vista.itemEntradaSalida) || evento.equals(vista.barraEntradasSalidas)) {
-                ventana(vista.VistaSeleccionarFechaES, 400, 175);
+                mostrarVentana(vista.VistaSeleccionarFechaES, 400, 175);
             }
             
             if (evento.equals(vista.itemInasistenciaSemanalGeneral)) {
-                ventana(vista.VistaSeleccionDeFecha, 500, 375);
+                mostrarVentana(vista.VistaSeleccionDeFecha, 500, 375);
             }
             
             if (evento.equals(vista.itemInasistenciaQuincenalGeneral)) {
-                ventana(vista.VistaSeleccionDeMesYQuincena, 420, 220);
+                mostrarVentana(vista.VistaSeleccionDeMesYQuincena, 420, 220);
             }
         }
     }  

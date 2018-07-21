@@ -26,6 +26,19 @@ public class Empleado {
         this.apellido = apellido;
         this.departamento = dpto;        
     }
+    
+    public Empleado(Long id, String cedula, String nombre, String apellido, 
+            Departamento dpto) throws SinDepartamentoAsignadoException {
+        
+        if (dpto.esNull()) {
+            throw new SinDepartamentoAsignadoException("Debes asignar al empleado en un departamento.");
+        }
+        this.id = id;
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.departamento = dpto;        
+    }
 
     public Long getId() {
         return id;

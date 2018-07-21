@@ -45,7 +45,7 @@ public abstract class Controlador implements IControlador {
     
     }
     
-    protected void ventana(JDialog dialogo, int ancho, int alto) {
+    protected void mostrarVentana(JDialog dialogo, int ancho, int alto) {
         dialogo.setSize(ancho, alto);
         dialogo.setResizable(false);
         dialogo.setLocationRelativeTo(null);
